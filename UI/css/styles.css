@@ -1,0 +1,159 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+html {
+    font-size: 62.5%;
+}
+body{
+    font-family: 'Lato', sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    background-color: #f4f4f4;
+    box-sizing: border-box;
+}
+
+/* Global Styling */
+.container{
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #161925;
+}
+/* styling for all buttons, still under global styling */
+.btn {
+    background: #4E9CAF;
+    text-align: center;
+    border-radius: .5rem;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border: .1rem solid #fff;
+}
+
+.btn-primary {
+    background: #005C9A;
+    text-align: center;
+    border-radius: .5rem;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border: .1rem solid #fff;
+    margin: .5rem auto;
+}
+
+.form-card{
+    max-width: 38rem;
+    margin: auto;
+    height: auto;
+    border: .1rem solid #e4e6e8;
+    background: #FFF;
+    box-shadow: .1rem .1rem .1rem #e4e6e8;
+    border-radius: .5rem;
+}
+.form-card-header {
+    font-size: 2rem;
+    text-align: center;
+    margin-top:10%;
+}
+
+/*header styling */
+header{
+    background-color: #161925;
+    color: #fff;
+    min-width: 100%;
+    min-height: 10%;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+}
+
+header a{
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+}
+header li{
+    display: inline;
+    padding: 0 2rem 0 2rem;
+}
+
+header #company-logo{
+    float:left;
+}
+header #company-logo h1{
+    margin-top: 1.2rem;
+    font-size: 2rem;
+}
+
+header nav{
+    float: right;
+    margin-top: 1.7rem;
+}
+
+.highlight, .highlight-current a{
+    font-weight: bold;
+    color: rgb(142,168,195);
+    cursor: pointer;
+}
+
+header a:hover{
+    color: #4E9CAF;
+    font-weight: bold;
+}
+
+/* footer stlying */
+footer{
+    background-color: #161925;
+    min-height: 8rem;
+}
+
+.footer-center {
+    text-align: center;
+    padding-top: 2rem;
+}
+
+footer p{
+    color: #fff;
+}
+footer a{
+    color: #fff;
+}
+footer a:hover{
+    color: #183ccc;
+}
+
+/*Media query*/
+@media(max-width: 600px){
+    header li{
+        padding-left: 0;
+    }
+    header #company-logo {
+        float: none;
+        text-align: left;
+    }
+
+    header nav {
+        float:none;
+    }   
+}
+
+@media (max-width: 414px) {
+    body {
+        padding: 0;
+    }
+    div.container {
+        width:90%;
+    }
+}
