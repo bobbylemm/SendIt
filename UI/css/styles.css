@@ -33,6 +33,9 @@ a {
     text-decoration: none;
     color: #161925;
 }
+.active {
+    color: #09dbf7;
+}
 /* styling for all buttons, still under global styling */
 .btn {
     background: #4E9CAF;
@@ -72,7 +75,7 @@ a {
 
 /*header styling */
 header{
-    background-color: #55595D;
+    background-color: #173e43;
     color: #fff;
     min-width: 100%;
     min-height: 10%;
@@ -115,11 +118,57 @@ header a:hover{
     color: #4E9CAF;
     font-weight: bold;
 }
+/* this is the styling for the users actions and the responses that follow it */
+.user-actions-options {
+    display: inline-block;
+    width: 30%;
+    border-right: .1rem solid rgb(219, 213, 213);
+    transition: all .4s;
+    margin-top: 2rem;
+}
+.user-actions-options h3 {
+    margin-top: 1.1rem;
+    transition: all .4s;
+}
+.user-actions-options h3 a {
+    color: #020505;
+    transform: translateX(0);
+    transition: all .4s;
+}
+.user-actions-options h3 a:hover {
+    color: #173e43;
+    transform: translateX(3rem);
+}
+.user-actions-options h3 a:active {
+    color: #173e43;
+    transform: translateX(3rem);
+}
+.user-actions-results {
+    display: inline-block;
+    width: 60%;
+    border-right: .1rem solid rgb(219, 213, 213);
+    margin-top: 2rem;
+}
+
+/* this is more styling for the user-action pages */
+.app-feature {
+    position: absolute;
+    top: 10rem;
+    right: 0;
+    left: 0;
+    min-height: 70vh;
+}
 
 /* footer stlying */
 footer{
-    background-color: #55595D;
+    background-color: #173e43;
     min-height: 8rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+.footer-feature {
+    top: 60rem;
 }
 
 .footer-center {
@@ -149,7 +198,15 @@ footer a:hover{
 
     header nav {
         float:none;
-    }   
+    }
+    .hero-text h1 {
+        font-size: 2rem;
+        letter-spacing: .2rem;
+        width: 100%;
+    }
+    .hero-text .hero-description {
+        font-size: 1.3rem;
+    }
 }
 
 @media (max-width: 414px) {
