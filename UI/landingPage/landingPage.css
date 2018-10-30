@@ -1,0 +1,30 @@
+body {
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* hero section */
+#hero-bg {
+    background: #e1e8f0;
+    height: 65vh;
+    width: 100%;
+    position: relative;
+}
+.hero-text {
+    text-align: center;
+    margin: 10rem auto;
+}
+.hero-text h1 {
+    font-size: 5rem;
+    letter-spacing: .4rem;
+    display: inline;
+}
+.hero-description {
+    padding: 1rem 28rem;
+    font-size: 1.9rem;
+}
+/* the styling for the get started section */
+.get-started {
+    background: 
+}
