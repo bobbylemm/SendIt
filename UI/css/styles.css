@@ -56,6 +56,7 @@ a {
     cursor: pointer;
     border: .1rem solid #fff;
     margin: .5rem auto;
+    padding: 0.6rem 1rem;
 }
 
 .form-card{
@@ -70,12 +71,24 @@ a {
 .form-card-header {
     font-size: 2.3rem;
     text-align: center;
-    margin-top:10%;
+    margin-top:6%;
+}
+.form-card label {
+    display: block;
+}
+
+.form-card select {
+    /* background: #aaa; */
+    /* border: thin solid #005C9A; */
+    border-radius: 4px;
+    display: block;
+    padding: .5rem;
+    width: 70%;
 }
 
 /*header styling */
 header{
-    background-color: #173e43;
+    background-image: transparent;
     color: #fff;
     min-width: 100%;
     min-height: 10%;
@@ -106,6 +119,9 @@ header #company-logo h1{
 header nav{
     float: right;
     margin-top: 1.7rem;
+}
+.nav {
+    background: #7028e4;
 }
 
 .highlight, .highlight-current a{
@@ -161,7 +177,7 @@ header a:hover{
 
 /* footer stlying */
 footer{
-    background-color: #173e43;
+    background: #7028e4;
     min-height: 8rem;
     position: absolute;
     left: 0;

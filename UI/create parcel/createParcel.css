@@ -1,0 +1,21 @@
+.courier-form {
+    width: 50rem;
+    margin: auto;
+    height: auto;
+    border: .1rem solid #e4e6e8;
+    background: #FFF;
+    box-shadow: .1rem .1rem .1rem #e4e6e8;
+    border-radius: .5rem;
+    padding: 2rem 5rem;
+}
+.courier-form input {
+    display: block;
+    border: .1rem solid rgb(173, 169, 169);
+    padding: .4rem 2rem;
+    border-radius: .3rem;
+    width: 70%;
+}
+.courier-form input:focus {
+    border: .1rem solid rgb(15, 221, 170);
+    outline: rgb(15, 221, 170);
+}
