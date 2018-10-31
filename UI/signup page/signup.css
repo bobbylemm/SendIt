@@ -39,5 +39,8 @@ button{
     text-align: center;
     font-size: 1.6rem;
 }
+footer {
+    bottom: 0;
+}
 
 /* Media Query */

@@ -4,6 +4,6 @@ const nav = document.querySelector('header');
             nav.classList.add('add-border');
             console.log(scrollY)
         }else {
-            return;
+            nav.classList.remove('add-border');
         }
         }
