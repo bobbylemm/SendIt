@@ -6,6 +6,7 @@
     <title>Delete-parcel | SendIt</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="../css/styles.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./viewAllParcel.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="../landingPage/landingPage.css" />
 </head>
 <body>
@@ -36,7 +37,25 @@
             <h3><a href="../view all parcel/view-all-parcel.html">View all parcel delivery</a></h3>
         </div>
         <div class="user-actions-results">
-                
+            <table id="all-parcels">
+                <tr>
+                  <th>Package name</th>
+                  <th>Destination</th>
+                  <th>Pickup location</th>
+                  <th>Weight category</th>
+                </tr>
+                <tr>
+                  <td>new package name</td>
+                  <td>new package destination</td>
+                  <td>new package pickup location</td>
+                  <td>new package weight category</td>
+                  <td>
+                      <button>Edit</button>
+                      <button>Delete</button>
+                  </td>
+                </tr>
+            </table>
+            
         </div>
     </section>
     <!-- footer section -->
@@ -46,5 +65,6 @@
             <p>Designed by <span><a href="#">Nwoga Chidozie</a></span></p>
         </div>
     </footer>
+    <script src="./viewallParcel.js"></script>
 </body>
 </html>
