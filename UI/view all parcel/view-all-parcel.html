@@ -17,7 +17,7 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#">Profile</a></li>
+                    <li><a href="../profile page/profile.html">Profile</a></li>
                     <li><a href="../signin page/signin.html">Login</a></li>
                     <li class="highlight-current"><a href="../signup page/signup.html">Sign Up</a></li>
                 </ul>
@@ -30,33 +30,24 @@
         <div class="container">
             <h1>view all parcel delivery</h1>
         </div>
-        <div class="user-actions-options">
-            <h3><a href="../create parcel/create-parcel.html">Create parcel delivery</a></h3>
-            <h3><a href="../edit parcel/edit-parcel.html" class="active">Edit parcel delivery</a></h3>
-            <h3><a href="../delete parcel/delete-parcel.html">Delete parcel delivery</a></h3>
-            <h3><a href="../view all parcel/view-all-parcel.html">View all parcel delivery</a></h3>
+        <div>
+            <div class="user-actions-options">
+                <h3><a href="../create parcel/create-parcel.html">Create parcel delivery</a></h3>
+                <h3><a href="../view all parcel/view-all-parcel.html">View all parcel delivery</a></h3>
+            </div>
+            <div class="user-actions-results">
+                <div class="table">
+                    <div class="row header" id="packageName">
+                        <div class="cell">Package name</div>
+                        <div class="cell">destination</div>
+                        <div class="cell">pickup location</div>                    
+                        <div class="cell">weight category</div>
+                        <div class="cell">price</div>
+                    </div>  
+                </div>
+            </div>
         </div>
-        <div class="user-actions-results">
-            <table id="all-parcels">
-                <tr>
-                  <th>Package name</th>
-                  <th>Destination</th>
-                  <th>Pickup location</th>
-                  <th>Weight category</th>
-                </tr>
-                <tr>
-                  <td>new package name</td>
-                  <td>new package destination</td>
-                  <td>new package pickup location</td>
-                  <td>new package weight category</td>
-                  <td>
-                      <button>Edit</button>
-                      <button>Delete</button>
-                  </td>
-                </tr>
-            </table>
-            
-        </div>
+        
     </section>
     <!-- footer section -->
     <footer class="footer-feature">

@@ -21,7 +21,7 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#">Profile</a></li>
+                    <li><a href="../profile page/profile.html">Profile</a></li>
                     <li><a href="../signin page/signin.html">Login</a></li>
                     <li class="highlight-current"><a href="../signup page/signup.html">Sign Up</a></li>
                 </ul>
@@ -34,47 +34,47 @@
         <div class="container">
             <h1>create parcel delivery</h1>
         </div>
-        <div class="user-actions-options">
-            <h3><a href="../create parcel/create-parcel.html">Create parcel delivery</a></h3>
-            <h3><a href="../edit parcel/edit-parcel.html" class="active">Edit parcel delivery</a></h3>
-            <h3><a href="../delete parcel/delete-parcel.html">Delete parcel delivery</a></h3>
-            <h3><a href="../view all parcel/view-all-parcel.html">View all parcel delivery</a></h3>
-        </div>
-        <div class="user-actions-results">
-            <div class="form-card">
-                <form class="courier-form">
-                    <div id="message-output"></div>
-
-                    <label for="packageName">Package name</label>
-                    <input type="text" name="packageName" id="packageName" placeholder="package name" required>
-
-                    <label for="destination">destination</label>
-                    <input type="text" name="destination" id="destination" placeholder="put in a destination" required>
-
-                    <label for="pickupLocation">Pickup location</label>
-                    <input type="text" name="pickupLocation" id="pickupLocation" placeholder="pickup location" required>
-
-                    <label for="weightCategories">Weight categories</label>
-                    <!-- <input type="text" name="weightCategories" id="weightCategories" required> -->
-                    <select name="weightCategories" id="weightCategories" required>
-                        <option value="light-weight">0-100kg (light weight)</option>
-                        <option value="medium-weight">101-200kg(medium weight)</option>
-                        <option value="heavy-weight">201+(heavy-weight)</option>
-                    </select>
-
-                    <button type="submit" id="submit" class="btn btn-primary">Create</button>
-                    <p id="login">Do you have an account? <a href="../signin page/signin.html">Login </a></p>
-                </form>
+        <div>
+            <div class="user-actions-options">
+                <h3><a href="../create parcel/create-parcel.html">Create parcel delivery</a></h3>
+                <h3><a href="../view all parcel/view-all-parcel.html">View all parcel delivery</a></h3>
             </div>
-            <!-- The Modal -->
-            <div id="myModal" class="modal">
+            <div class="user-actions-results">
+                <div class="form-card">
+                    <form class="courier-form">
+                        <div id="message-output"></div>
 
-                <!-- Modal content -->
-                <div class="modal-content">
-                <span class="close">&times;</span>
-                <p>your parcel is on its way</p>
+                        <label for="packageName">Package name</label>
+                        <input type="text" name="packageName" id="packageName" placeholder="package name" required>
+
+                        <label for="destination">destination</label>
+                        <input type="text" name="destination" id="destination" placeholder="put in a destination" required>
+
+                        <label for="pickupLocation">Pickup location</label>
+                        <input type="text" name="pickupLocation" id="pickupLocation" placeholder="pickup location" required>
+
+                        <label for="weightCategories">Weight categories</label>
+                        <!-- <input type="text" name="weightCategories" id="weightCategories" required> -->
+                        <select name="weightCategories" id="weightCategories" required>
+                            <option value="light-weight">0-100kg (light weight)</option>
+                            <option value="medium-weight">101-200kg(medium weight)</option>
+                            <option value="heavy-weight">201+(heavy-weight)</option>
+                        </select>
+                        <h4>price: $<span>45</span></h4>
+
+                        <button type="submit" id="submit" class="btn btn-primary">Create</button>
+                        <p id="login">Do you have an account? <a href="../signin page/signin.html">Login </a></p>
+                    </form>
                 </div>
-            
+                <!-- The Modal -->
+                <div id="myModal" class="modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p>your parcel is on its way</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

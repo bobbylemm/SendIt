@@ -2,12 +2,13 @@ body {
     margin: 0;
     padding: 0;
     color: #333;
+    height: 100vh;
 }
 
 /* hero section */
 #hero-bg {
     background-image: linear-gradient(to bottom, #7028e4 0%, #e5b2ca 100%);
-    height: 65vh;
+    height: 60vh;
     width: 100%;
     position: relative;
     color: #ffffff;
@@ -33,25 +34,36 @@ body {
 #get-started h1 {
     text-align: center;
 }
-/* this is still under the get-started section, this is the user action section */
-.user-actions-options {
-    display: inline-block;
-    width: 30%;
-    border-right: .1rem solid rgb(219, 213, 213);
+#get-started-tabs {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0;
+    flex-flow: row wrap;
 }
-.user-actions-options h3 {
-    margin-top: 1.1rem;
+.get-started-actions {
+    flex: -1;
+    width: 40%;
+    text-align: center;
+    border: 1px solid #CCC9A1;
+    padding: 2rem 1rem;
+    background: #CCC9A1;
+    transition: all .3s;
+    border-radius: .7rem;
+    margin: .3rem;
 }
-
-.user-actions-options h3 a:hover {
-    color: #173e43
-}
-.user-actions-results {
-    display: inline-block;
-    width: 60%;
-    border-right: .1rem solid rgb(219, 213, 213);
+.get-started-actions:hover {
+    box-shadow: 0 .5rem .5rem #333;
 }
 .add-border {
     border-bottom: .1rem solid #7028e4;
     box-shadow: 0 .4rem .3rem 0 #333;
+}
+@media (max-width: 414px) {
+    .hero-text {
+        margin: 11rem auto 0 auto;
+        padding: 1.3rem 2rem;
+    }
+    .get-started-actions {
+        flex-basis: 100%;
+    }
 }

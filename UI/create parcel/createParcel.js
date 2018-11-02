@@ -7,8 +7,7 @@ const modal = document.getElementById ('myModal');
 const btn = document.getElementById ('submit');
 const close = document.querySelector ('.close');
 
-let packages = [], dest = [], pickup = [], weight = []
-
+let packages = [], dest = [], pickup = [], weight = [];
 
 form.addEventListener ('submit', handleSubmit);
 
