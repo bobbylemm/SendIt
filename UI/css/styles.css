@@ -20,7 +20,7 @@ body{
 .container{
     width: 80%;
     margin: auto;
-    overflow: hidden;
+ 
     height: 100%;
 }
 
@@ -63,9 +63,9 @@ a {
     padding: 0.6rem 1rem;
 }
 
-.form-card{
+.form-card {
     max-width: 38rem;
-    margin: auto;
+    margin: 0 auto;
     height: auto;
     border: .1rem solid #e4e6e8;
     background: #FFF;
@@ -92,7 +92,7 @@ a {
 
 /*header styling */
 header{
-    background-image: transparent;
+    background: #7028e4;
     color: #fff;
     min-width: 100%;
     min-height: 10%;
@@ -138,11 +138,40 @@ header a:hover{
     color: #4E9CAF;
     font-weight: bold;
 }
+/*  */
+/* the styling for the get started section */
+#get-started {
+    background: #f0eeee;
+    position: relative;
+    bottom: 0;
+}
+#get-started h1 {
+    text-align: center;
+}
+#get-started-tabs {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+    flex-flow: row wrap;
+}
+.get-started-actions {
+    flex: -1;
+    width: 40%;
+    text-align: center;
+    border: 1px solid #ff7eb3;
+    padding: 2rem 1rem;
+    background-image: linear-gradient(to right, #ff758c 0%, #ff7eb3 100%);
+    transition: all .3s;
+    border-radius: .7rem;
+    margin: .3rem;
+}
+.get-started-actions:hover {
+    box-shadow: 0 .5rem .5rem #333;
+}
 /* this is the styling for the users actions and the responses that follow it */
 .user-actions-options {
-    display: inline-block;
-    width: 30%;
-    border-right: .1rem solid rgb(219, 213, 213);
+    width: 100%;
+    border: .1rem solid rgb(219, 213, 213);
     transition: all .4s;
 }
 .user-actions-options h3 {
@@ -165,15 +194,15 @@ header a:hover{
 .user-actions-results {
     width: 100%;
     margin: 0 auto;
-    padding: 4rem;
+    padding: 1rem;
 }
 /* table styling */
-.table {
+/* .table {
     margin: 0 0 40px 0;
     width: 100%;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     display: table;
-  }
+  } */
 
 /* this is more styling for the user-action pages */
 .app-feature {
@@ -203,12 +232,14 @@ header a:hover{
 footer{
     background: #7028e4;
     min-height: 8rem;
-    position: absolute;
+    position: fixed;
     left: 0;
     right: 0;
+    bottom: 0;
+    clear: both;
 }
 .footer-feature {
-    top: 60rem;
+
 }
 
 .footer-center {
@@ -248,8 +279,19 @@ footer a:hover{
         font-size: 1.3rem;
     }
     .display-tabs {
-        
         width: 20%;
+    }
+    .form-card-header {
+        margin-top:29%;
+    }
+    .form-card {
+        margin: 0 1rem;
+    }
+    .app-feature {
+        padding-top: 1rem;
+    }
+    .footer-feature {
+        margin-top: -4rem;
     }
 }
 

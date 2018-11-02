@@ -15,8 +15,8 @@ body {
 }
 .hero-text {
     text-align: center;
-    margin: 16rem auto;
-    padding: 0 2rem;
+    margin: 6rem auto;
+    padding: 8rem 2rem 0 2rem;
 }
 .hero-text h1 {
     font-size: 4rem;
@@ -26,44 +26,24 @@ body {
 .hero-description {
     font-size: 1.9rem;
 }
-/* the styling for the get started section */
-#get-started {
-    background: #f0eeee;
-    padding: 2rem 1.3rem;
-}
-#get-started h1 {
-    text-align: center;
-}
-#get-started-tabs {
-    display: flex;
-    justify-content: center;
-    padding: 2rem 0;
-    flex-flow: row wrap;
-}
-.get-started-actions {
-    flex: -1;
-    width: 40%;
-    text-align: center;
-    border: 1px solid #CCC9A1;
-    padding: 2rem 1rem;
-    background: #CCC9A1;
-    transition: all .3s;
-    border-radius: .7rem;
-    margin: .3rem;
-}
-.get-started-actions:hover {
-    box-shadow: 0 .5rem .5rem #333;
-}
+
+
 .add-border {
     border-bottom: .1rem solid #7028e4;
     box-shadow: 0 .4rem .3rem 0 #333;
 }
 @media (max-width: 414px) {
     .hero-text {
-        margin: 11rem auto 0 auto;
-        padding: 1.3rem 2rem;
+        margin: 5rem auto 0 auto;
+        padding: 1.7rem 2rem 0 2rem;
+    }
+    .hero-text h1 {
+        margin-top: 2rem;
     }
     .get-started-actions {
         flex-basis: 100%;
+    }
+    footer{
+        position: relative;
     }
 }
