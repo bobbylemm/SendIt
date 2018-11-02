@@ -29,29 +29,29 @@
 }
 @media(max-width: 600px) {
     .row {
-      padding: 14px 0 7px;
+      padding: 1.4rem 0 .7rem;
       display: block;
     }
     .cell {
-        padding: 2px 16px;
+        padding: .2rem 1.6rem;
         display: block;
       }
     .row.header {
       padding: 0;
-      height: 6px;
+      height: .6rem;
     }
     .row.header .cell {
       display: none;
     }
     .row .cell {
-      margin-bottom: 10px;
+      margin-bottom: 1rem;
     }
     .row .cell::before {
-      margin-bottom: 3px;
+      margin-bottom: .3rem;
       content: attr(data-title);
-      min-width: 98px;
-      font-size: 10px;
-      line-height: 10px;
+      min-width: 9.8rem;
+      font-size: 1rem;
+      line-height: 1rem;
       font-weight: bold;
       text-transform: uppercase;
       color: #969696;
