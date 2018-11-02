@@ -42,19 +42,33 @@ body {
         padding: 0;
     }
     .hero-text h1 {
-        font-size: 2rem;
+        font-size: 2.8rem;
         margin-top: 8rem;
+        padding-top: 2rem;
     }
     .get-started-actions {
         flex-basis: 100%;
     }
-  
 }
 /* how to use section */
+.highlight {
+    color: #D48166;
+}
+.services h2 {
+    text-transform: capitalize;
+    margin: 2rem 1rem;
+}
+.services p {
+    font-size: 1.6rem;
+    margin: 0 1rem;
+}
 .how-to-use {
     display: flex;
     justify-content: space-around;
     flex-flow: row wrap;
+}
+.how-to-use h2 {
+    margin: 3rem 0 1.5rem 0;
 }
 .how-to-use img {
     width: 100%;
@@ -62,14 +76,15 @@ body {
     margin: .5rem 0 3rem 0;
 }
 .how-to-use p {
-    width: 300px;
+    width: auto;
 }
 .description-cards {
     display: inline-block;
     width: 300px;
-    border: .1rem solid #E6E2DD;
+    border: .1rem solid #D48166;
     padding: 0 1rem 1rem 1rem;
-    margin-top: 5rem;
+    margin-top: .4rem;
     border-radius: .4rem;
-    background: #E6E2DD;
+    background: #D48166;
+    box-shadow: 0 .3rem .3rem rgba(0,0,0,0.5);
 }
