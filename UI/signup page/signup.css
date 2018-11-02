@@ -18,3 +18,8 @@ form{
 }
 
 /* Media Query */
+@media(max-width: 600px) {
+    .form-card{
+        margin: 12rem auto !important;
+    }
+}

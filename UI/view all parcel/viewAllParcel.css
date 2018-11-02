@@ -1,7 +1,6 @@
 .table {
-    margin: 0 0 40px 0;
-    width: 100%;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    width: 80%;
     display: table;
   }
   /* the media query for the table */
@@ -58,9 +57,3 @@
       display: block;
     }
   }
-
-@media (max-width: 414px) {
-    footer{
-        position: fixed !important;
-    }
-}
