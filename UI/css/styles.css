@@ -42,6 +42,9 @@ a {
 span a {
     color: #333;
 }
+h3 a {
+    color: #333;
+}
 /* styling for all buttons, still under global styling */
 .btn {
     background: #E6E2DD;
@@ -308,10 +311,13 @@ footer {
         margin-top:29%;
     }
     .form-card {
-        margin: 0 1rem;
+        margin: 0 auto;
     }
     .app-feature {
         padding-top: 1rem;
+    }
+    .get-started-actions {
+        margin: 1rem 6rem;
     }
     footer {
         margin-top: 18rem;
