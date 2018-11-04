@@ -28,41 +28,77 @@
             </nav>
         </div>
     </header>
-
+    
     <!-- parcel features -->
-    <section id="get-started" class="app-feature">
+    <main id="get-started">
         <div class="container">
             <h1>create parcel delivery</h1>
         </div>
-        <div>
+        <div class="p-3">
             <div id="get-started-tabs">
                 <div class="get-started-actions">
                     <h3><a href="../view all parcel/view-all-parcel.html">View all parcel delivery</a></h3>
                 </div>
             </div>
             <div class="user-actions-results">
-                <div class="form-card">
-                    <form class="courier-form">
-                        <label for="packageName">Package name</label>
-                        <input type="text" name="packageName" id="packageName" placeholder="package name" required>
-
-                        <label for="destination">destination</label>
-                        <input type="text" name="destination" id="destination" placeholder="put in a destination" required>
-
-                        <label for="pickupLocation">Pickup location</label>
-                        <input type="text" name="pickupLocation" id="pickupLocation" placeholder="pickup location" required>
-
-                        <label for="weightCategories">Weight categories</label>
-                        <!-- <input type="text" name="weightCategories" id="weightCategories" required> -->
-                        <select name="weightCategories" id="weightCategories" required>
-                            <option value="light-weight">0-100kg (light weight)</option>
-                            <option value="medium-weight">101-200kg(medium weight)</option>
-                            <option value="heavy-weight">201+(heavy-weight)</option>
-                        </select>
-                        <h4>price: $<span>45</span></h4>
-                        <button type="submit" id="submit" class="btn">Create</button>
-                    </form>
-                </div>
+                <main class="container">
+                    <div class="form-card">
+                        <form id="form">
+                            <h2>Create a parcel order</h2>
+                            <div class="row">
+                                <div class="col-3">
+                                    <label class="label" for="packageName">Package name</label>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" name="username" id="packageName" placeholder="Enter your Username for display..." required>
+                                </div>
+                            </div>
+                            <!--  -->
+                            <div class="row">
+                                <div class="col-3">
+                                    <label class="label" for="Destination">Destination</label>
+                                </div>
+                                <div class="col-9">
+                                    <input type="email" name="email" id="Destination" placeholder="Enter your Email..." required>
+                                </div>
+                            </div>
+                            <!--  -->
+                            <div class="row">
+                                <div class="col-3">
+                                    <label class="label" for="destination">destination</label>
+                                </div>
+                                <div class="col-9">
+                                    <input type="password" name="password" id="destination" placeholder="Enter your Password" required>
+                                </div>
+                            </div>
+                            <!--  -->
+                            <div class="row">
+                                    <div class="col-3">
+                                        <label class="label" for="pickupLocation">Pickup location</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="password" name="password" id="destination" placeholder="Enter your Password" required>
+                                    </div>
+                                </div>
+                            <!--  -->
+                            <div class="row">
+                                <div class="col-3">
+                                    <label class="label" for="email">Weight categories</label>
+                                </div>
+                                <div class="col-9">
+                                    <select name="weightCategories" id="weightCategories" required>
+                                        <option value="light-weight">0-100kg (light weight)</option>
+                                        <option value="medium-weight">101-200kg(medium weight)</option>
+                                        <option value="heavy-weight">201+(heavy-weight)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--  -->
+                            <h4>price: $<span>45</span></h4>
+                            <button type="submit" id="submit" class="btn">Create</button>
+                        </form>
+                    </div>
+                </main>
                 <!-- The Modal -->
                 <div id="myModal" class="modal">
 
@@ -74,10 +110,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </main>
     <!-- footer section -->
     <footer>
-        <div class="container footer">
+        <div class="footer">
             <p>SendIt &copy; 2018</p>
             <p>Designed by <span><a href="#">Nwoga Chidozie</a></span></p>
         </div>

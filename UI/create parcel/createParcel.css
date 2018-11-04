@@ -1,34 +1,13 @@
-.courier-form {
-    margin: auto;
-    height: auto;
-    /* border: .1rem solid #e4e6e8; */
-    /* background: #D48166; */
-    box-shadow: .1rem .1rem .1rem #e4e6e8;
-    border-radius: .5rem;
-    padding: 2rem;
+body {
+    display: flex;
+    flex-flow: column;
+    min-height: 100vh;
 }
-.courier-form label {
-    display: inline-block;
-    text-align: right;
-    float: left;
-    width: 13rem;
-    margin-top: 1rem;
+main {
+    flex: 1;
 }
-.courier-form input, .courier-form select {
-    display: inline-block;
-    border: .1rem solid rgb(173, 169, 169);
-    padding: .4rem 2rem;
-    border-radius: .3rem;
-    width: 46%;
-    margin-top: 1rem;
-    margin-left: 3rem;
-}
-.courier-form input:focus {
-    border: .1rem solid rgb(15, 221, 170);
-    outline: rgb(15, 221, 170);
-}
-.courier-form h4 {
-    margin-top: 1rem;
+.form-card {
+    padding: 3rem;
 }
 /* the modal styling, i refrenced this form w3schools */
 .modal {
