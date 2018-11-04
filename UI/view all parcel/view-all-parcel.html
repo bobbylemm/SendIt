@@ -26,7 +26,7 @@
     </header>
     
     <!-- parcel features -->
-    <section id="get-started" class="app-feature" >
+    <main id="get-started">
         <div class="container">
             <h1>view all parcel delivery</h1>
         </div>
@@ -37,34 +37,41 @@
                 </div>
             </div>
             <div class="user-actions-results">
-                <div class="table">
-                    <div class="row header" id="packageName">
-                        <div class="cell">Package name</div>
-                        <div class="cell">destination</div>
-                        <div class="cell">pickup location</div>                    
-                        <div class="cell">weight category</div>
-                        <div class="cell">price</div>
-                    </div>
-                    <div class="row">
-                        <div class="cell" data-title="Package name">
-                        </div>
-                        <div class="cell" data-title="destination">
-                        </div>
-                        <div class="cell" data-title="pickup location">
-                        </div>
-                        <div class="cell" data-title="weight category">
-                        </div>
-                        <div class="cell" data-title="price">
-                        </div>
-                    </div>                   
-                </div>
+                <table>
+                    <h2>all parcel orders</h2>
+                    <thead data-title="all parcels">
+                        <tr>
+                            <th>package name</th>
+                            <th>destination</th>
+                            <th>pickup location</th>
+                            <th>price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="mobile-view-title">package name:</span><span class="parcel-detail">fridge</span></td>
+                            <td><span class="mobile-view-title">destination:</span><span class="parcel-detail">lagos</span></td>
+                            <td><span class="mobile-view-title">pickup location:</span><span class="parcel-detail">ipaja</span></td>
+                            <td><span class="mobile-view-title">price:</span><span class="parcel-detail">5678</span></td>
+                            <td><button class="table-action-btn" id="editBtn">edit</button></td>
+                            <td><button class="table-action-btn" id="deleteBtn">delete</button></td>
+                        </tr>
+                        <tr>
+                            <td><span class="mobile-view-title">package name:</span><span class="parcel-detail">car</span></td>
+                            <td><span class="mobile-view-title">destination:</span><span class="parcel-detail">abuja</span></td>
+                            <td><span class="mobile-view-title">pickup location:</span><span class="parcel-detail">maitama</span></td>
+                            <td><span class="mobile-view-title">price:</span><span class="parcel-detail">70000</span></td>
+                            <td><button class="table-action-btn" id="editBtn">edit</button></td>
+                            <td><button class="table-action-btn" id="deleteBtn">delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-        
-    </section>
+    </main>
     <!-- footer section -->
     <footer>
-        <div class="container footer">
+        <div class="footer">
             <p>SendIt &copy; 2018</p>
             <p>Designed by <span><a href="#">Nwoga Chidozie</a></span></p>
         </div>

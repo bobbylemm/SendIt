@@ -1,59 +1,72 @@
-.table {
-    margin: auto;
-    width: 80%;
-    display: table;
-  }
-  /* the media query for the table */
-  @media(max-width: 600px) {
-    .table {
-      display: block;
-    }
-  }
-.row {
-    display: table-row;
-    background: #f6f6f6;
-  }
-  .cell {
-    padding: 6px 12px;
-    display: table-cell;
-  }
-  .row.header {
-    font-weight: 900;
-    color: #ffffff;
-    background: #ea6153;
-  }
-.cell {
-    padding: .6rem 1.2rem;
-    display: table-cell;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: .1rem solid #D48166;
+}
+.user-actions-results h2 {
+  text-align: center;
+  margin: 1.2rem;
+  text-transform: capitalize;
+}
+thead tr th {
+  border: .1rem solid #D48166;
+  background: #D48166
+}
+tr {
+  text-align: center;
+}
+tr:nth-of-type(odd) {
+  background: #eee;
+}
+/*  */
+#get-started-tabs {
+  padding: 4rem 0;
+}
+/* buttons styling */
+.table-action-btn {
+  width: auto;
+  border-radius: 60rem;
+  padding: 1rem 2rem;
+}
+#deleteBtn {
+  background: #D48166;
+  border: .1rem solid #D48166;
+  font-weight: bold;
+  cursor: pointer;
+}
+#editBtn {
+  background: rgb(212, 197, 178);
+  border: .1rem solid #E6E2DD;
+  font-weight: bold;
+  cursor: pointer;
+}
+td .mobile-view-title {
+  display: none;
 }
 @media(max-width: 600px) {
-    .row {
-      padding: 1.4rem 0 .7rem;
-      display: block;
-    }
-    .cell {
-        padding: .2rem 1.6rem;
-        display: block;
-      }
-    .row.header {
-      padding: 0;
-      height: .6rem;
-    }
-    .row.header .cell {
-      display: none;
-    }
-    .row .cell {
-      margin-bottom: 1rem;
-    }
-    .row .cell::before {
-      margin-bottom: .3rem;
-      content: attr(data-title);
-      min-width: 9.8rem;
-      font-size: 1rem;
-      line-height: 1rem;
-      font-weight: bold;
-      text-transform: uppercase;
-      color: #969696;
-      display: block;
-    }
+  thead{
+    display: none;
+    content: attr(data-title);
   }
+  td {
+    display: block;
+    font-size: 2rem;
+  }
+  td button {
+    margin: 1rem auto;
+  }
+  td #editBtn {
+    margin-top: 14rem;
+  }
+  td .mobile-view-title {
+    display: inline-block;
+    margin: 0 5rem 0 1rem;
+    float: left;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+td .parcel-detail {
+  float: right;
+  margin: 0 1rem 0 0;
+}
+}

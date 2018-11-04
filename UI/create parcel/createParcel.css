@@ -9,6 +9,10 @@ main {
 .form-card {
     padding: 3rem;
 }
+.form-card h4 {
+    font-size: 2.5rem;
+    margin: 1rem 0;
+}
 /* the modal styling, i refrenced this form w3schools */
 .modal {
     display: none; 
