@@ -9,6 +9,7 @@
     <title>Signup | SendIt</title>
 </head>
 <body>
+    <div class="main-container">
     <header>
         <div class="container">
             <div id="app-logo">
@@ -22,29 +23,51 @@
             </nav>
         </div>
         </header>
-        <div class="form-card">
-                <h2>Signup</h2>
-            <form id="form">
-               
-                <label class="label" for="username">Username</label>
-                <input type="text" name="username" id="username" placeholder="Enter your Username for display..." required>
-                
-                <label class="label" for="email">Email</label>
-                    <input type="email" name="email" id="email" placeholder="Enter your Email..." required>
-                
-                <label class="label" for="password">Password</label>
-                    <input type="password" name="password" id="password" placeholder="Enter your Password" required>
-                
-                <button type="submit" id="signup" class="btn">Signup</button>
-                <p id="login">Do you have an account? <a href="../signin page/signin.html">Login </a></p>
-            </form>
-        </div>
+        <!--  -->
+        <main class="container">
+            <h2>Signup</h2>
+            <div class="form-card">
+                <form id="form">
+                    <div class="row">
+                        <div class="col-3">
+                            <label class="label" for="username">Username</label>
+                        </div>
+                        <div class="col-9">
+                            <input type="text" name="username" id="username" placeholder="Enter your Username for display..." required>
+                        </div>
+                    </div>
+                    <!--  -->
+                    <div class="row">
+                        <div class="col-3">
+                            <label class="label" for="email">Email</label>
+                        </div>
+                        <div class="col-9">
+                            <input type="email" name="email" id="email" placeholder="Enter your Email..." required>
+                        </div>
+                    </div>
+                    <!--  -->
+                    <div class="row">
+                        <div class="col-3">
+                            <label class="label" for="password">Password</label>
+                        </div>
+                        <div class="col-9">
+                            <input type="password" name="password" id="password" placeholder="Enter your Password" required>
+                        </div>
+                    </div>
+                    <!--  -->
+                    <button type="submit" id="signup" class="btn">Signup</button>
+                    <p id="login">Do you have an account? <a href="../signin page/signin.html">Login </a></p>
+                </form>
+            </div>
+        </main>
+        <!--  -->
     <footer>
-        <div class="container footer">
+        <div class="footer">
             <p>SendIt &copy; 2018</p>
             <p>Designed by <span><a href="#">Nwoga Chidozie</a></span></p>
         </div>
     </footer>
+    </div>
     <script src="./signup.js"></script>
 </body>
 </html>

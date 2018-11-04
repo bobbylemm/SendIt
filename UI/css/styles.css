@@ -3,7 +3,7 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: inherit;
+    box-sizing: border-box;
 }
 html {
     font-size: 62.5%;
@@ -14,12 +14,17 @@ body{
     line-height: 1.5;
     background-color: #f4f4f4;
     box-sizing: border-box;
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
     overflow-x: hidden;
+    display: flex;
+    flex-flow: column;
 }
 
 /* Global Styling */
+main {
+    flex: 1
+}
 .container{
     width: 85%;
     margin: auto;
@@ -44,6 +49,19 @@ span a {
 }
 h3 a {
     color: #333;
+}
+.col-3 {
+    float: left;
+    width: 30%;
+}
+.col-9 {
+    float: left;
+    width: 70%;
+}
+.row {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
 }
 /* styling for all buttons, still under global styling */
 .btn {
@@ -70,9 +88,8 @@ h3 a {
 }
 
 .form-card {
-    max-width: 40rem;
+    max-width: 50rem;
     margin: 10rem auto;
-    height: auto;
     border: .1rem solid #373A36;
     background: #373A36;
     box-shadow: 0 .1rem .3rem .5rem rgba(51, 51, 51, 0.459);
@@ -86,14 +103,10 @@ h3 a {
 }
 form label {
     display: inline-block;
-    text-align: right;
-    float: left;
-    width: 4rem;
 }
-form input {
-    width: 70%;
+input {
+    width: 100%;
     line-height: 1.3;
-    font-size: 100%;
     padding: 1rem;
     margin-bottom: 1.9rem;
     height: 3.5rem;
@@ -101,7 +114,6 @@ form input {
     border-radius: .5rem;
     cursor: auto;
     display: inline-block;
-    margin-left: 4rem;
 }
 
 button{
@@ -113,8 +125,6 @@ button{
 }
 
 .form-card select {
-    /* background: #aaa; */
-    /* border: thin solid #005C9A; */
     border-radius: 4px;
     display: block;
     padding: .5rem;
@@ -252,7 +262,7 @@ header a:hover{
 }
 /* this is for the display of the tabs */
 
-.row {
+.roww {
     display: table-row;
     background: #f6f6f6;
   }
@@ -267,29 +277,25 @@ header a:hover{
 }
 
 /* footer stlying */
-footer {
-    background:#E6E2DD;
-}
+
 .footer {
     background:#E6E2DD;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    text-align: center;
-    min-height: 7rem;
-    padding: 3rem 0;
-    margin-top: 10rem;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+    padding: 3rem 6rem;
 }
 
 
 /*Media query*/
 @media(max-width: 600px) {
-    header li{
-        padding-left: 0;
+    header nav{
+        display: flex;
+        flex-flow: row nowrap;
     }
     header #app-logo {
         float: none;
-        text-align: left;
+        text-align: center;
         display: block;
     }
 
@@ -300,6 +306,9 @@ footer {
         color: #fff;
         font-weight: 600;
         font-size: 1.9rem;
+    }
+    .col-3, .col-9, input {
+        width: 100%;
     }
     .hero-text .hero-description {
         font-size: 1.9rem;
@@ -324,9 +333,18 @@ footer {
     }
 }
 
-@media (max-width: 414px) {
+@media (max-width: 450px) {
     body {
         padding: 0;
+    }
+    header ul{
+       display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-around;
+    }
+    header ul li a {
+        font-size: 1.4rem;
+        justify-content: space-around;
     }
     
     div.container {

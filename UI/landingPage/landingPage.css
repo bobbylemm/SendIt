@@ -2,8 +2,12 @@ body {
     margin: 0;
     padding: 0;
     color: #333;
-    height: 100vh;
     overflow-x: hidden;
+    display: flex;
+    flex-flow: column;
+}
+main {
+    flex: 1;
 }
 
 /* hero section */
@@ -87,4 +91,19 @@ body {
     border-radius: .4rem;
     background: #D48166;
     box-shadow: 0 .3rem .3rem rgba(0,0,0,0.5);
+}
+/*  */
+@media (max-width: 450px) {
+    .hero-text {
+        margin: 0;
+        padding: 0;
+    }
+    .hero-text h1 {
+        font-size: 2rem;
+        margin-top: 8rem;
+        padding-top: 2rem;
+    }
+    .hero-description p {
+        font-size: 1.3rem;
+    }
 }
