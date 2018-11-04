@@ -25,6 +25,16 @@ body{
 main {
     flex: 1
 }
+.section {
+    padding-top: 6rem;
+}
+.section h1 {
+    text-align: center;
+    background: #E6E2DD;
+    color: #333;
+    text-transform: uppercase;
+    padding: 1rem;
+}
 .container{
     width: 85%;
     margin: auto;
@@ -125,10 +135,7 @@ input {
 
 button{
     display: block;
-    width: 11.5rem;
-    height: 5%;
     padding: 1rem;
-    margin-top: 1.5rem;
 }
 
 .form-card select {
@@ -273,6 +280,7 @@ header a:hover{
     justify-content: space-around;
     flex-flow: row wrap;
     padding: 3rem 6rem;
+    font-weight: 600;
 }
 
 
@@ -295,6 +303,10 @@ header a:hover{
         color: #fff;
         font-weight: 600;
         font-size: 1.9rem;
+    }
+    .section h1 {
+        padding-top: 3rem;
+        font-size: 1.5rem;
     }
     .col-3, .col-9, input {
         width: 100%;
