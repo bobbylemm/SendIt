@@ -90,11 +90,11 @@ h3 a {
 .form-card {
     max-width: 50rem;
     margin: 10rem auto;
-    border: .1rem solid #373A36;
-    background: #373A36;
-    box-shadow: 0 .1rem .3rem .5rem rgba(51, 51, 51, 0.459);
+    border: .1rem solid #EFEFEF;
+    background: #EFEFEF;
+    box-shadow: 0 .1rem .3rem 0 rgba(0, 0, 0, 0.459);
     border-radius: .5rem;
-    color: #fff;
+    color: #333;
 }
 .form-card h2 {
     font-size: 3rem;
@@ -110,7 +110,7 @@ input {
     padding: 1rem;
     margin-bottom: 1.9rem;
     height: 3.5rem;
-    border: .1rem solid #e4e6e8;
+    border: .1rem solid #726766;
     border-radius: .5rem;
     cursor: auto;
     display: inline-block;
