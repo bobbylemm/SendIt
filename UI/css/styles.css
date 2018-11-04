@@ -151,10 +151,10 @@ header{
     background: #373A36;
     color: #fff;
     min-width: 100%;
-    min-height: 10%;
     position: fixed;
     top: 0;
     z-index: 1;
+    padding-bottom: 1.4rem
 }
 
 header a{

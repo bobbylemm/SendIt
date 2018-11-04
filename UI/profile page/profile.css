@@ -13,6 +13,13 @@ body {
     .dashboard {
         height: 30vh;
     }
+    header {
+        padding-bottom: 0;
+    }
+    nav {
+        display: flex;
+        justify-content: center;
+    }
 }
 .dashboard-min {
     background: #D48166;

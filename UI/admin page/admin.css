@@ -3,40 +3,77 @@ body {
     padding: 0;
     color: #333;
 }
-
 /* the styling for the get started section */
-#profile {
-    background: #ffffff;
-    padding: 2rem 1.3rem;
+.dashboard {
+    border: 1px solid #D48166;
+    height: 80vh;
 }
-#profile h1 {
-    text-align: center;
-    margin-bottom: 2rem;
+
+@media(max-width: 600px) {
+    .dashboard {
+        height: 30vh;
+    }
+    header {
+        padding-bottom: 0;
+    }
+    nav {
+        display: flex;
+        justify-content: center;
+    }
+}
+.dashboard-min {
+    background: #D48166;
+}
+
+.btn-profile {
+    width: 20rem;
+    padding: 2rem;
+    margin: 2rem auto;
+    border-radius: 4rem;
+    border: .1rem solid #E6E2DD;
+    background: #E6E2DD;
+    box-shadow: .2rem .3rem .3rem 0 rgba(0,0,0,0.75);
+    cursor: pointer;
+    transition: all .3s;
+    font-size: 1.5rem;
+}
+.btn-profile:hover {
+    box-shadow: .3rem .4rem .5rem 0 rgba(0,0,0,0.75);
+}
+@keyframes pulse {
+    0% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateY(1rem);
+    }
+    70% {
+        transform: translateY(1.4rem);
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
 /* this is still under the get-started section, this is the user action section */
-.admin-sideBar {
-    display: inline-block;
-    width: 30%;
-    border-right: .2rem solid rgb(219, 213, 213);
-    padding-bottom: 25rem;
+
+.profile-details {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+    width: 100%;
+    margin-bottom: 4rem;
 }
-.admin-sideBar button {
-    
+/* profile tabs */
+.profile-tabs {
+    width: 60rem;
+    margin: 2rem;
+    text-align: center;
+    border: .1rem solid #373A36;
+    padding: 2rem;
+    background: #373A36;
+    color: #ffffff;
+    box-shadow: 0 .3rem .6rem .3rem rgba(0,0,0,0.5);
 }
-.admin-actions {
-    display: inline-block;
-    width: 60%;
-}
-@media(max-width: 600px) {
-    .admin-sideBar {
-        width: 100%;
-        justify-content: space-around;
-    }
-    .admin-sideBar button {
-        margin: auto;
-    }
-    .admin-actions {
-        display: block;
-        width: 100%;
-    }
+.profile-tabs h4 {
+    font-size: 3rem;
 }
