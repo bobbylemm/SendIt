@@ -5,7 +5,7 @@ body {
 }
 /* the styling for the get started section */
 .dashboard {
-    border: 1px solid #D48166;
+    border: 1px solid #373A36;
     height: 80vh;
 }
 
@@ -22,7 +22,7 @@ body {
     }
 }
 .dashboard-min {
-    background: #D48166;
+    background: #373A36;
 }
 #profile h1 {
     text-align: center;

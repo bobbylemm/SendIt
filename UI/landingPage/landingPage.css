@@ -18,6 +18,7 @@ main {
     height: 60vh;
     width: 100%;
     color: #ffffff;
+    clip-path: polygon(0 0, 100% 0, 100% 81%, 0% 100%);
 }
 .hero-text {
     text-align: left;
@@ -34,7 +35,11 @@ main {
 .hero-description {
     font-size: 1.9rem;
 }
-
+.services-title {
+    color: rgb(175, 171, 166);
+    font-size: 2rem;
+    margin: 2rem 1rem;
+}
 
 .add-border {
     border-bottom: .1rem solid #373A36;
