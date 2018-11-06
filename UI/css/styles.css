@@ -26,9 +26,6 @@ body{
 main {
     flex: 1
 }
-.section {
-    padding-top: 6rem;
-}
 .section h1 {
     text-align: center;
     background: #E6E2DD;
