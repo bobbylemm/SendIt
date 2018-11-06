@@ -169,7 +169,6 @@ main {
 }
 .description-cards:hover {
     box-shadow: 0 .6rem .6rem rgba(0,0,0,0.5);
-    cursor: pointer;
 }
 /*  */
 @media (max-width: 450px) {
@@ -179,7 +178,6 @@ main {
     }
     .hero-text h1 {
         font-size: 2rem;
-        margin-top: 8rem;
         padding-top: 2rem;
     }
     .hero-description p {
