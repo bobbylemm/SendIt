@@ -19,6 +19,7 @@ body{
     overflow-x: hidden;
     display: flex;
     flex-flow: column;
+    padding: 0 1rem;
 }
 
 /* Global Styling */
@@ -105,7 +106,7 @@ h3 a {
     margin: 10rem auto;
     border: .1rem solid #EFEFEF;
     background: #EFEFEF;
-    box-shadow: -.6rem .7rem 1.3rem -.1rem rgba(0,0,0,0.53);
+    box-shadow: -.2rem 1rem 1.6rem -.2rem rgba(0,0,0,0.4);
     border-radius: .5rem;
     color: #333;
 }
@@ -145,16 +146,26 @@ button{
     width: 100%;
     background: #CEE5F2;
 }
-
+/* this is the styling for the form tip */
+#tip {
+    margin-top: 10%;
+    text-align: center;
+    font-size: 1.6rem;
+    color: #333;
+}
+#tip a {
+    color: rgb(44, 88, 145);
+    font-weight: 600;
+}
 /*header styling */
 header{
-    background: #F1F1EF;
+    background: #C6C4C5;
     color: #333;
     min-width: 100%;
-    position: fixed;
+    position: sticky;
     top: 0;
     z-index: 1;
-    padding: 1.4rem
+    padding: 1.4rem;
 }
 
 header a{
@@ -182,11 +193,9 @@ header nav{
     float: right;
     margin-top: 1.7rem;
 }
-.nav {
-    background: #D48166;
-}
+
 nav ul li a {
-    margin: .3rem .4rem;
+    margin: .3rem 0;
     color: #333;
     font-weight: 600;
     font-size: 1.4rem;
@@ -198,7 +207,7 @@ header a:hover{
 }
 /*services styliing  */
 .services {
-    padding: 2rem 1rem;
+    padding: 5rem 1rem;
 }
 .services-header {
     text-align: left;
@@ -260,17 +269,6 @@ header a:hover{
     margin: 0 auto;
     padding: 1rem;
 }
-/* table styling */
-/* .table {
-    margin: 0 0 40px 0;
-    width: 100%;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-    display: table;
-  } */
-
-/* this is more styling for the user-action pages */
-
-/* this is for the display of the tabs */
 
 /* footer stlying */
 
@@ -307,6 +305,9 @@ header a:hover{
         padding: .5rem;
         font-size: 1rem;
     }
+    .hide-on-small {
+        display: none;
+    }
     .section h1 {
         padding-top: 3rem;
         font-size: 1.5rem;
@@ -316,6 +317,9 @@ header a:hover{
     }
     .hero-text .hero-description {
         font-size: 1.9rem;
+    }
+    .services {
+        padding: 2rem 1rem;
     }
     .display-tabs {
         width: 20%;

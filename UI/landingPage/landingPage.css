@@ -1,6 +1,5 @@
 body {
     margin: 0;
-    padding: 1rem;
     color: #333;
     overflow-x: hidden;
     display: flex;
@@ -94,10 +93,8 @@ main {
 }
 .hero-text {
     text-align: left;
-    margin: 6rem 0;
-    padding: 8rem 2rem 0 2rem;
+    padding: 6rem 1rem 0 1rem;
     width: 60%;
-    
 }
 .hero-text h1 {
     font-size: 4rem;
@@ -123,8 +120,8 @@ main {
         padding: 0;
     }
     .hero-text h1 {
-        font-size: 2.8rem;
-        margin-top: 8rem;
+        font-size: 2.7rem;
+   
         padding-top: 2rem;
     }
     .get-started-actions {
@@ -162,12 +159,17 @@ main {
 .description-cards {
     display: inline-block;
     width: 300px;
-    border: .1rem solid #D48166;
+    border: .1rem solid #F7F7F7;
     padding: 0 1rem 1rem 1rem;
     margin-top: .4rem;
     border-radius: .4rem;
-    background: #D48166;
+    background: #F7F7F7;
     box-shadow: 0 .3rem .3rem rgba(0,0,0,0.5);
+    transition: all .3s;
+}
+.description-cards:hover {
+    box-shadow: 0 .6rem .6rem rgba(0,0,0,0.5);
+    cursor: pointer;
 }
 /*  */
 @media (max-width: 450px) {

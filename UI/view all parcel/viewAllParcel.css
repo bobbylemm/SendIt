@@ -14,6 +14,7 @@ thead tr th {
 }
 tr {
   text-align: center;
+  height: 5.2rem;
 }
 tr:nth-of-type(odd) {
   background: #eee;
@@ -25,8 +26,8 @@ tr:nth-of-type(odd) {
 /* buttons styling */
 .table-action-btn {
   width: auto;
-  border-radius: 60rem;
-  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  padding: 0.4rem 0.6rem;
 }
 #deleteBtn {
   background: #D48166;
@@ -43,25 +44,36 @@ tr:nth-of-type(odd) {
 td .mobile-view-title {
   display: none;
 }
+.td{
+  padding: 0 4px;
+  width: 138px;
+}
 @media(max-width: 600px) {
+  .td{
+    padding: 0 4px;
+    width: 117px;
+  }
   thead{
     display: none;
     content: attr(data-title);
   }
   td {
     display: block;
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
   td button {
     margin: 1rem auto;
   }
   td #editBtn {
-    margin-top: 14rem;
+    /* margin-top: 14rem; */
+  }
+  tr {
+    text-align: unset;
   }
   td .mobile-view-title {
     display: inline-block;
     margin: 0 5rem 0 1rem;
-    float: left;
+    float: none !important;
     font-weight: 700;
     text-transform: uppercase;
 }

@@ -25,10 +25,15 @@ button{
     margin-top: 1rem;
 }
 
-#signin {
+#tip {
     margin-top: 10%;
     text-align: center;
     font-size: 1.6rem;
+    color: #333;
+}
+#tip a {
+    color: rgb(44, 88, 145);
+    font-weight: 600;
 }
 
 /* Media Query */
