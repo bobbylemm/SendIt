@@ -148,17 +148,17 @@ button{
 
 /*header styling */
 header{
-    background: #373A36;
-    color: #fff;
+    background: #F1F1EF;
+    color: #333;
     min-width: 100%;
     position: fixed;
     top: 0;
     z-index: 1;
-    padding-bottom: 1.4rem
+    padding: 1.4rem
 }
 
 header a{
-    color: #fff;
+    color: #333;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 1.4rem;
@@ -172,10 +172,10 @@ header #app-logo{
     float:left;
 }
 header #app-logo h1{
-    margin-top: .7rem;
-    font-size: 2.6rem;
+    font-size: 3rem;
     font-family: 'Oxygen', sans-serif;
-    text-transform: capitalize
+    text-transform: capitalize;
+    letter-spacing: .1rem;
 }
 
 header nav{
@@ -187,7 +187,7 @@ header nav{
 }
 nav ul li a {
     margin: .3rem .4rem;
-    color: #fff;
+    color: #333;
     font-weight: 600;
     font-size: 1.4rem;
 }
@@ -300,9 +300,12 @@ header a:hover{
         float:none;
     }
     nav ul li a {
-        color: #fff;
-        font-weight: 600;
-        font-size: 1.9rem;
+        font-weight: 500;
+        font-size: 1.8rem;
+    }
+    button{
+        padding: .5rem;
+        font-size: 1rem;
     }
     .section h1 {
         padding-top: 3rem;
@@ -344,8 +347,9 @@ header a:hover{
         justify-content: space-around;
     }
     header ul li a {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
         justify-content: space-around;
+        margin: 0;
     }
     
     div.container {

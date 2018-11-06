@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    padding: 0;
+    padding: 1rem;
     color: #333;
     overflow-x: hidden;
     display: flex;
@@ -11,14 +11,86 @@ main {
 }
 
 /* hero section */
+#slide-container {
+    height: 65vh;
+    width: 100%;
+    color: #ffffff;
+    clip-path: polygon(0 0, 100% 0, 100% 81%, 0% 100%);
+    position: relative;
+}
 #hero-bg {
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('./img/hero-img.jpg') no-repeat;
     background-size: cover;
     background-position: center;
-    height: 60vh;
+    height: 65vh;
     width: 100%;
     color: #ffffff;
     clip-path: polygon(0 0, 100% 0, 100% 81%, 0% 100%);
+    animation: fade 8s infinite;
+    position: absolute;
+}
+#hero-bg-2 {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('./img/maarten-van-den-heuvel-246398-unsplash.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 65vh;
+    width: 100%;
+    color: #ffffff;
+    clip-path: polygon(0 0, 100% 0, 100% 81%, 0% 100%);
+    animation: fade2 12s infinite;
+    position: absolute;
+}
+#hero-bg-3 {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('./img/receive-parcel.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 65vh;
+    width: 100%;
+    color: #ffffff;
+    clip-path: polygon(0 0, 100% 0, 100% 81%, 0% 100%);
+    animation: fade3 8s infinite;
+}
+@keyframes fade1 {
+    5% {
+        opacity: 1;
+    }
+    33.333% {
+        opacity: 0;
+    }
+    66.666% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes fade2 {
+    0% {
+        opacity: 0;
+    }
+    33.333% {
+        opacity: 1;
+    }
+    66.666% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+ @keyframes fade3 {
+    0% {
+        opacity: 0;
+    }
+    33.333% {
+        opacity: 0;
+    }
+    66.666% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 }
 .hero-text {
     text-align: left;
