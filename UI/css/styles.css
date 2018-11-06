@@ -77,6 +77,12 @@ h3 a {
 .p-3 {
     padding: 3rem;
 }
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
 /* styling for all buttons, still under global styling */
 .btn {
     background: #373A36;
