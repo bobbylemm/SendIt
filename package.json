@@ -1,0 +1,25 @@
+{
+  "name": "SendIt",
+  "version": "1.0.0",
+  "description": "SendIt is a courier service that helps users deliver parcels to different destinations, SendIt provides courier quotes based on weight categories",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bobbylemm/SendIt.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bobbylemm/SendIt/issues"
+  },
+  "homepage": "https://github.com/bobbylemm/SendIt#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
+  }
+}
