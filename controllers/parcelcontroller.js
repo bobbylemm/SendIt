@@ -24,3 +24,4 @@ class parcelController {
         }
     }
 }
+export default parcelController;
