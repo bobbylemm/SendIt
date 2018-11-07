@@ -8,6 +8,11 @@ body {
     border: 1px solid #373A36;
     height: 80vh;
 }
+.dashboard h1 {
+    font-size: 2rem;
+    background: #373A36;
+    color: #ffffff;
+}
 
 @media(max-width: 600px) {
     .dashboard {
