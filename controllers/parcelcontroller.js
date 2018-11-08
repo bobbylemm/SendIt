@@ -1,4 +1,5 @@
 import allParcels from '../sampleDatabase/parceldb';
+import helper from '../helpers/findFromDb';
 
 class parcelController {
     static createNewParcel (req, res) {
@@ -29,6 +30,21 @@ class parcelController {
             response: "you have sent me a get request to get all questions",
             parcels: allParcels
         })
+    }
+    // this is to get a specific parcel
+    static getSpecificParcel (req, res) {
+        let parcelId = req.params.id;
+        const findParcel = helper.findFromDb(allParcels, 'id', parcelId);
+        if (findParcel) {
+            return res.status(200).json({
+                message: "the parcel was found",
+                parcel: findParcel
+            })
+        }else {
+            return res.status(400).json({
+                message: "sorry the parcel was not found"
+            })
+        }
     }
 }
 export default parcelController;
