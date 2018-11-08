@@ -4,6 +4,11 @@ import usersControllers from '../controllers/usersController';
 
 const router = express.Router();
 
+// this is for the home route
+router.get('/', (req, res) => {
+    res.status(200).send('welcome to SendIt')
+})
+
 // this is the route for creating parcels
 // CREATE PARCELS
 router.post('/parcels', parcelController.createNewParcel)
