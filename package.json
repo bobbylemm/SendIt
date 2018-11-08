@@ -11,6 +11,7 @@
     "build-test": "npm run clean-test && cd dist && mkdir test && babel .././test/**.test.js -s -d test",
     "build": "npm run clean && mkdir dist && babel src/app.js controllers/**.js sampleDatabase/**.js helpers/**.js -s -d dist && npm run build-test && npm run build-routes",
     "test": "nyc mocha --require babel-core/register test/**.test.js --exit",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "start": "nodemon bin/dev",
     "production": "npm run build && nodemon bin/production"
   },
@@ -36,11 +37,13 @@
     "babel-register": "^6.26.0",
     "chai": "^4.2.0",
     "chai-http": "^4.2.0",
+    "coveralls": "^3.0.2",
     "eslint": "^5.8.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
     "istanbul": "^0.4.5",
     "mocha": "^5.2.0",
+    "mocha-lcov-reporter": "^1.3.0",
     "morgan": "^1.9.1",
     "nodemon": "^1.18.6",
     "nyc": "^13.1.0"
