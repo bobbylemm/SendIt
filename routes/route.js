@@ -25,4 +25,9 @@ router.put('/parcels/:id/cancel', parcelController.cancelParcelOrder)
 // this is to get all users 
 // GET ALL USERS
 router.get('/users', usersControllers.getAllUsers)
+// this is to register a new user
+// POST A NEW USER
+router.post('/register', usersControllers.registerUser)
+// this is to login in an existing user// 
+router.post('/login', usersControllers.login)
 export default router;
