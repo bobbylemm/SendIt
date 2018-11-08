@@ -37,4 +37,5 @@ router.post('/login', usersControllers.login)
 // fetch all parcels for a given user
 // GET ALL PARCELS FOR A GIVEN USER
 router.get('/users/:id/parcels', usersControllers.getAllParcelsByUser)
+// 
 export default router;
