@@ -23,5 +23,12 @@ class parcelController {
             })
         }
     }
+    // this is to get all parcels
+    static getAllParcels (req, res) {
+        return res.json({
+            response: "you have sent me a get request to get all questions",
+            parcels: allParcels
+        })
+    }
 }
 export default parcelController;
