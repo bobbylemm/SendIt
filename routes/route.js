@@ -22,6 +22,10 @@ router.put('/parcels/status/:id', parcelController.updateParcelStatus)
 // this is to change the status of a parcel order
 // PUT IN A NEW STATUS
 router.put('/parcels/:id/cancel', parcelController.cancelParcelOrder)
+// this is to delete a specific parcel order
+// DELETE A PARCEL ORDER
+router.delete('/parcels/:id/delete', parcelController.deleteSpecificParcel)
+
 // this is to get all users 
 // GET ALL USERS
 router.get('/users', usersControllers.getAllUsers)

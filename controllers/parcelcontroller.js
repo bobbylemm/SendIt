@@ -2,6 +2,7 @@ import allParcels from '../sampleDatabase/parceldb';
 import helper from '../helpers/findFromDb';
 
 class parcelController {
+    // this is to create a new parcel
     static createNewParcel (req, res) {
         let newId = allParcels[allParcels.length - 1].id + 1;
         const packageName = req.body.packageName, destination = req.body.destination, pickupLocation = req.body.pickupLocation, price = req.body.price;
@@ -76,6 +77,24 @@ class parcelController {
         }else {
            return res.status(400).json({
                 message: "could not update parcel order"
+            })
+        }
+    }
+    // this is to delete a specific parcel order
+    static deleteSpecificParcel (req, res) {
+        let parcelId = req.params.id;
+        const findParcel = helper.findFromDb(allParcels, 'id', parcelId);
+        if (findParcel) {
+            const allCurrentParcels = allParcels.filter(parcel => {
+                return parcel !== findParcel
+            })
+            res.status(200).json({
+                message: "parcel successfully deleted",
+                allparcel: allCurrentParcels
+            })
+        }else {
+            return res.status(400).json({
+                message: "could not delete the parcel"
             })
         }
     }
