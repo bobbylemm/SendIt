@@ -2,7 +2,7 @@
   "name": "SendIt",
   "version": "1.0.0",
   "engines": {
-    "node": "8.12.0"
+    "node": "8.x"
   },
   "description": "SendIt is a courier service that helps users deliver parcels to different destinations, SendIt provides courier quotes based on weight categories",
   "main": "app.js",
