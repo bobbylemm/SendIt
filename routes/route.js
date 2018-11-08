@@ -1,5 +1,6 @@
 import express from 'express';
 import parcelController from '../controllers/parcelcontroller';
+import usersControllers from '../controllers/usersController';
 
 const router = express.Router();
 
@@ -12,5 +13,8 @@ router.get('/parcels', parcelController.getAllParcels)
 // this is the route to get a specific parcel
 // GET A SPECIFIC PARCEL
 router.get('/parcels/:id', parcelController.getSpecificParcel)
+// this is to regiater a new user
+// POST A NEW USER
+router.post('/register', usersControllers.registerUser)
 
 export default router;
