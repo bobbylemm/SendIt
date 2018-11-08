@@ -25,5 +25,11 @@ class usersControllers {
             })
         }
     }
+    // this is to get all users
+    static getAllUsers (req, res) {
+        return res.status(200).json({
+            allUsers: allUsers
+        })
+    }
 }
 export default usersControllers;
