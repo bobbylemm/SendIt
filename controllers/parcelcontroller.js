@@ -11,7 +11,8 @@ class parcelController {
             destination,
             pickupLocation,
             price,
-            status: ""
+            status: "",
+            cancelled: false
         };
         if (newParcel) {
             allParcels.push(newParcel)
@@ -56,6 +57,22 @@ class parcelController {
                 message: "parcel updated successfully"
             })
             return findParcel.status = newStatus
+        }else {
+           return res.status(400).json({
+                message: "could not update parcel order"
+            })
+        }
+    }
+    // this is to cancel a specific order
+    static cancelParcelOrder (req, res) {
+        let parcelId = req.params.id;
+        const findParcel = helper.findFromDb(allParcels, 'id', parcelId);
+        if (findParcel) {
+            const toCancel = req.body.cancelled;
+            res.status(200).json({
+                message: "this parcel order has been cancelled successfully"
+            })
+            return findParcel.cancelled = toCancel;
         }else {
            return res.status(400).json({
                 message: "could not update parcel order"
