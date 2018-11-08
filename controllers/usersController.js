@@ -47,5 +47,20 @@ class usersControllers {
             })
         }
     }
+    // this is to get all parcels by a user
+    static getAllParcelsByUser (req, res) {
+        let userId = req.params.id;
+        const findUser = helper.findFromDb(allUsers, 'id', userId);
+        if (findUser) {
+            res.status(200).json({
+                message: 'successfully fetched all of this user parcels',
+                userParcels: findUser.parcels
+            })
+        }else {
+            res.json({
+                error: "could not fetch user parcels"
+            })
+        }
+    }
 }
 export default usersControllers;

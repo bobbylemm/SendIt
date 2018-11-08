@@ -4,7 +4,16 @@ const usersdb = [
         username: "doxic",
         email: "doxic@gmail.com",
         password: 'dozixsecret',
-        parcels: []
+        parcels: [
+            {
+                id: 1,
+                packageName: "fridge",
+                destination: "lagos",
+                pickupLocation: "iyana ipaja",
+                status: 'enroute',
+                price: "45000 naira"
+            }
+        ]
     },
     {
         id: 2,
