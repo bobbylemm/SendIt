@@ -31,5 +31,21 @@ class usersControllers {
             allUsers: allUsers
         })
     }
+    // this is to login user
+    static login (req, res) {
+        let userEmail = req.body.email, password = req.body.password;
+        const findUser = helper.findFromDb(allUsers, 'email', userEmail);
+        if (findUser && findUser.password == password) {
+            findUser.loggedIn = true;
+            return res.status(200).json({
+                message: "successfully logged in",
+                currentUser: findUser
+            })
+        }else {
+            return res.status(400).json({
+                message: "error logging in"
+            })
+        }
+    }
 }
 export default usersControllers;
