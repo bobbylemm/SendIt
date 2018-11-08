@@ -16,5 +16,7 @@ router.get('/parcels/:id', parcelController.getSpecificParcel)
 // this is to regiater a new user
 // POST A NEW USER
 router.post('/register', usersControllers.registerUser)
-
+// this is to get all users 
+// GET ALL USERS
+router.get('/users', usersControllers.getAllUsers)
 export default router;
