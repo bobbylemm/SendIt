@@ -12,6 +12,8 @@ var _parceldb2 = _interopRequireDefault(_parceldb);
 
 var _findFromDb = require('../helpers/findFromDb');
 
+var _findFromDb2 = _interopRequireDefault(_findFromDb);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -64,7 +66,7 @@ var parcelController = function () {
         key: 'getSpecificParcel',
         value: function getSpecificParcel(req, res) {
             var parcelId = req.params.id;
-            var findParcel = _findFromDb.helper.findFromDb(_parceldb2.default, 'id', parcelId);
+            var findParcel = _findFromDb2.default.findFromDb(_parceldb2.default, 'id', parcelId);
             if (findParcel) {
                 return res.status(200).json({
                     message: "the parcel was found",
