@@ -15,7 +15,8 @@
     "build": "npm run clean && mkdir dist && babel src/app.js controllers/**.js sampleDatabase/**.js helpers/**.js -s -d dist && npm run build-test && npm run build-routes",
     "test": "nyc mocha --require babel-core/register test/**.test.js --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "start": "nodemon bin/dev",
+    "start-dev": "nodemon bin/dev",
+    "start": "node bin/dev",
     "production": "npm run build && nodemon bin/production"
   },
   "repository": {
