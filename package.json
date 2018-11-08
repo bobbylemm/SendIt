@@ -16,7 +16,7 @@
     "test": "nyc mocha --require babel-core/register test/**.test.js --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "start-dev": "nodemon bin/dev",
-    "start": "node bin/dev",
+    "start": "cross-env NODE_ENV=production npm run build && cross-env NODE_ENV=production node bin/production",
     "production": "npm run build && nodemon bin/production"
   },
   "repository": {
