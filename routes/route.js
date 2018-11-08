@@ -9,5 +9,8 @@ router.post('/parcels', parcelController.createNewParcel)
 // this is the route to get all parcels
 // GET ALL PARCELS
 router.get('/parcels', parcelController.getAllParcels)
+// this is the route to get a specific parcel
+// GET A SPECIFIC PARCEL
+router.get('/parcels/:id', parcelController.getSpecificParcel)
 
 export default router;
