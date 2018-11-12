@@ -51,6 +51,53 @@ var usersControllers = function () {
                 });
             }
         }
+        // this is to get all users
+
+    }, {
+        key: 'getAllUsers',
+        value: function getAllUsers(req, res) {
+            return res.status(200).json({
+                allUsers: _usersdb2.default
+            });
+        }
+        // this is to login user
+
+    }, {
+        key: 'login',
+        value: function login(req, res) {
+            var userEmail = req.body.email,
+                password = req.body.password;
+            var findUser = _findFromDb2.default.findFromDb(_usersdb2.default, 'email', userEmail);
+            if (findUser && findUser.password == password) {
+                findUser.loggedIn = true;
+                return res.status(200).json({
+                    message: "successfully logged in",
+                    currentUser: findUser
+                });
+            } else {
+                return res.status(400).json({
+                    message: "error logging in"
+                });
+            }
+        }
+        // this is to get all parcels by a user
+
+    }, {
+        key: 'getAllParcelsByUser',
+        value: function getAllParcelsByUser(req, res) {
+            var userId = req.params.id;
+            var findUser = _findFromDb2.default.findFromDb(_usersdb2.default, 'id', userId);
+            if (findUser) {
+                res.status(200).json({
+                    message: 'successfully fetched all of this user parcels',
+                    userParcels: findUser.parcels
+                });
+            } else {
+                res.json({
+                    error: "could not fetch user parcels"
+                });
+            }
+        }
     }]);
 
     return usersControllers;

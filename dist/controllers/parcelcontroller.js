@@ -25,6 +25,8 @@ var parcelController = function () {
 
     _createClass(parcelController, null, [{
         key: 'createNewParcel',
+
+        // this is to create a new parcel
         value: function createNewParcel(req, res) {
             var newId = _parceldb2.default[_parceldb2.default.length - 1].id + 1;
             var packageName = req.body.packageName,
@@ -37,7 +39,8 @@ var parcelController = function () {
                 destination: destination,
                 pickupLocation: pickupLocation,
                 price: price,
-                status: ""
+                status: "",
+                cancelled: false
             };
             if (newParcel) {
                 _parceldb2.default.push(newParcel);
@@ -75,6 +78,65 @@ var parcelController = function () {
             } else {
                 return res.status(400).json({
                     message: "sorry the parcel was not found"
+                });
+            }
+        }
+        // this is to update a parcel order status
+
+    }, {
+        key: 'updateParcelStatus',
+        value: function updateParcelStatus(req, res) {
+            var parcelId = req.params.id;
+            var findParcel = _findFromDb2.default.findFromDb(_parceldb2.default, 'id', parcelId);
+            if (findParcel) {
+                var newStatus = req.body.newStatus;
+                res.status(200).json({
+                    message: "parcel updated successfully"
+                });
+                return findParcel.status = newStatus;
+            } else {
+                return res.status(400).json({
+                    message: "could not update parcel order"
+                });
+            }
+        }
+        // this is to cancel a specific order
+
+    }, {
+        key: 'cancelParcelOrder',
+        value: function cancelParcelOrder(req, res) {
+            var parcelId = req.params.id;
+            var findParcel = _findFromDb2.default.findFromDb(_parceldb2.default, 'id', parcelId);
+            if (findParcel) {
+                var toCancel = req.body.cancelled;
+                res.status(200).json({
+                    message: "this parcel order has been cancelled successfully"
+                });
+                return findParcel.cancelled = toCancel;
+            } else {
+                return res.status(400).json({
+                    message: "could not update parcel order"
+                });
+            }
+        }
+        // this is to delete a specific parcel order
+
+    }, {
+        key: 'deleteSpecificParcel',
+        value: function deleteSpecificParcel(req, res) {
+            var parcelId = req.params.id;
+            var findParcel = _findFromDb2.default.findFromDb(_parceldb2.default, 'id', parcelId);
+            if (findParcel) {
+                var allCurrentParcels = _parceldb2.default.filter(function (parcel) {
+                    return parcel !== findParcel;
+                });
+                res.status(200).json({
+                    message: "parcel successfully deleted",
+                    allparcel: allCurrentParcels
+                });
+            } else {
+                return res.status(400).json({
+                    message: "could not delete the parcel"
                 });
             }
         }
