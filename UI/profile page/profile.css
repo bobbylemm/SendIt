@@ -49,6 +49,12 @@ body {
 .btn-profile:hover {
     box-shadow: .3rem .4rem .5rem 0 rgba(0,0,0,0.75);
 }
+#btn-one-ft {
+    display: none;
+}
+#btn-two-ft {
+    display: none;
+}
 @keyframes pulse {
     0% {
         transform: translateY(0);

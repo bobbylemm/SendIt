@@ -58,6 +58,14 @@ span a {
 h3 a {
     color: #333;
 }
+.d-flex {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 1rem;
+}
+.d-flex button {
+    margin: 0 .5rem;
+}
 .col-3 {
     float: left;
     width: 30%;
@@ -338,6 +346,14 @@ header a:hover{
     }
     .get-started-actions {
         margin: 1rem 6rem;
+    }
+    .profile-btn {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 1rem;
+    }
+    .profile-btn button {
+        margin: 0 0.5rem;
     }
     footer {
         margin-top: 18rem;
