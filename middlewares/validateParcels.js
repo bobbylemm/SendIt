@@ -2,7 +2,7 @@ import helpers from '../helpers/handleError';
 
 const validateParcels = (req, res, next) => {
   const { packageName, pickupLocation, destination } = req.body;
-  if (!packageName || packageName == Number) {
+  if (!packageName || typeof(packageName) == 'number') {
     return next(helpers.handleError('please put in a valid parcel name'));
   }
   if (!destination) {
