@@ -25,7 +25,7 @@ main {
     width: 100%;
     color: #ffffff;
     clip-path: polygon(0 0, 100% 0, 100% 81%, 0% 100%);
-    animation: fade 8s infinite;
+    animation: fade 15s infinite;
     position: absolute;
 }
 #hero-bg-2 {
@@ -36,7 +36,7 @@ main {
     width: 100%;
     color: #ffffff;
     clip-path: polygon(0 0, 100% 0, 100% 81%, 0% 100%);
-    animation: fade2 12s infinite;
+    animation: fade2 15s infinite;
     position: absolute;
 }
 #hero-bg-3 {
@@ -47,7 +47,7 @@ main {
     width: 100%;
     color: #ffffff;
     clip-path: polygon(0 0, 100% 0, 100% 81%, 0% 100%);
-    animation: fade3 8s infinite;
+    animation: fade3 15s infinite;
 }
 @keyframes fade1 {
     5% {
