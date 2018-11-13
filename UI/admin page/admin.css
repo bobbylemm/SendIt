@@ -4,6 +4,11 @@ body {
     color: #333;
 }
 /* the styling for the get started section */
+.td button {
+    display: flex;
+    justify-content: center;
+    margin: 1.2rem 0 0 0;
+}
 .dashboard {
     border: 1px solid #D48166;
     height: 80vh;

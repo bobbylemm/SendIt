@@ -19,7 +19,6 @@ body{
     overflow-x: hidden;
     display: flex;
     flex-flow: column;
-    padding: 0 1rem;
 }
 
 /* Global Styling */
@@ -82,40 +81,64 @@ h3 a {
 .p-3 {
     padding: 3rem;
 }
+.py-3 {
+    padding: 1rem 2rem !important;
+}
+.ml-1 {
+    margin-left: 2rem !important;
+}
 .fl {
     float: left;
 }
 .fr {
     float: right;
 }
+.t-center {
+    text-align: center;
+}
+.bg-white {
+    background: #fff;
+    margin: 0 auto;
+}
 /* styling for all buttons, still under global styling */
 .btn {
-    background: #373A36;
+    background: #89bdd3;
+    border-radius: .3rem;
     text-align: center;
-    border-radius: .5rem;
     color: #fff;
     font-weight: bold;
     cursor: pointer;
-    border: .1rem solid #373A36;
+    border: .1rem solid #89bdd3;
     margin: 1rem auto;
+    padding: 1 1.6rem;
+}
+
+.btn-inline {
+    display: inline-block;
 }
 
 .btn-primary {
-    background: #D48166;
+    background: #89bdd3;
     text-align: center;
-    border-radius: .5rem;
     color: white;
     font-weight: bold;
     cursor: pointer;
-    border: .1rem solid #D48166;
+    border: .1rem solid #89bdd3;
     margin: 1.5rem 0;
     padding: 1.2rem .5rem;
+    box-shadow: -.1rem .3rem .5rem 0rem rgba(0,0,0,0.66);
+    text-transform: uppercase;
+    transition: all .3s;
+}
+.btn-primary:hover {
+    box-shadow: 0rem .6rem .5rem 0rem rgba(0,0,0,0.57);
 }
 
 .form-card {
     max-width: 50rem;
     margin: 10rem auto;
     border: .1rem solid #EFEFEF;
+    border-top: 2rem solid #89bdd3;
     background: #EFEFEF;
     box-shadow: -.2rem 1rem 1.6rem -.2rem rgba(0,0,0,0.4);
     border-radius: .5rem;
@@ -170,13 +193,14 @@ button{
 }
 /*header styling */
 header{
-    background: #C6C4C5;
+    background: #FFFFFF;
     color: #333;
     min-width: 100%;
     position: sticky;
     top: 0;
     z-index: 1;
     padding: 1.4rem;
+    box-shadow: 0rem .3rem .8rem -.1rem rgba(0,0,0,0.55);
 }
 
 header a{
@@ -193,11 +217,18 @@ header li{
 header #app-logo{
     float:left;
 }
+header #app-logo img{
+    width: 3rem;
+    height: 3rem;
+    display: inline-block;
+    margin: 0 .7rem 0 0;
+}
 header #app-logo h1{
     font-size: 3rem;
     font-family: 'Oxygen', sans-serif;
     text-transform: capitalize;
     letter-spacing: .1rem;
+    display: inline-block;
 }
 
 header nav{
@@ -213,7 +244,7 @@ nav ul li a {
 }
 
 header a:hover{
-    color: #fff;
+    color: rgb(69, 107, 133);
     font-weight: bold;
 }
 /*services styliing  */
@@ -229,7 +260,7 @@ header a:hover{
     text-align: center;
     font-size: 3rem;
     text-transform: uppercase;
-    margin-bottom: 1rem;
+    margin: 2rem 0 1rem 0;
 }
 #get-started-tabs {
     display: flex;
@@ -280,6 +311,42 @@ header a:hover{
     margin: 0 auto;
     padding: 1rem;
 }
+/* styling for modal */
+#modal-edit, #modal-cancel {
+    display: none;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow: auto;
+    background: rgba(0,0,0,0.62)
+  }
+  #modal-content-edit {
+    color: #333;
+    margin: 10% auto;
+    animation: fadeIn .4s ease-in-out;
+  }
+  #modal-content-cancel {
+    color: #333;
+    margin: 10% 35%;
+    animation: fadeIn .4s ease-in-out;
+  }
+  #modal-content-cancel h3 {
+    text-align: center;
+  }
+  #modal-content-cancel .container {
+      display: flex;
+
+  }
+  #close {
+    cursor: pointer;
+    font-weight: 700;
+    float: right;
+    color: #333;
+    font-size: 3rem;
+  }
 
 /* footer stlying */
 
@@ -291,7 +358,37 @@ header a:hover{
     padding: 3rem 6rem;
     font-weight: 600;
 }
-
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    30% {
+        opacity: 0.4;
+    }
+    70% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+/* @keyframes fallOut {
+    0% {
+        transform: translateY(0rem);
+    }
+    30% {
+        transform: translateY(1rem);
+        opacity: 0.7;
+    }
+    70% {
+        transform: translateY(2rem);
+        opacity: 0.4;
+    }
+    100% {
+        transform: translateY(3rem);
+        opacity: 0;
+    }
+} */
 
 /*Media query*/
 @media(max-width: 600px) {
@@ -354,6 +451,9 @@ header a:hover{
     }
     .profile-btn button {
         margin: 0 0.5rem;
+    }
+    #user-ft {
+        padding: 2rem 4rem;
     }
     footer {
         margin-top: 18rem;

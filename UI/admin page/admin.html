@@ -6,6 +6,7 @@
     <title>Admin | SendIt</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="../css/styles.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../view all parcel/viewAllParcel.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./admin.css" />
 </head>
 <body>
@@ -24,14 +25,67 @@
     <!--  -->
     <main>
         <div class="section">
-            <h1>Admin page</h1>
             <div class="col-3 dashboard dashboard-min">
-                <button class="btn-profile">edit status</button>
-                <button class="btn-profile">edit present location</button>
+                <button class="btn-profile">view more details </button>
             </div>
             <!--  -->
             <div class="col-9 border">
-                HEY
+                <div class="p-3">
+                    <table>
+                        <h2>all parcel orders</h2>
+                        <thead data-title="all parcels">
+                            <tr>
+                                <th>package name</th>
+                                <th>destination</th>
+                                <th>pickup location</th>
+                                <th>present location</th>
+                                <th>status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="mobile-view-title">package name:</span><span class="parcel-detail">fridge</span></td>
+                                <td><span class="mobile-view-title">destination:</span><span class="parcel-detail">lagos</span></td>
+                                <td><span class="mobile-view-title">pickup location:</span><span class="parcel-detail">ipaja</span></td>
+                                <td><span class="mobile-view-title">present location</span><span class="parcel-detail">surulere</span></td>
+                                <td><span class="mobile-view-title">status</span><span class="parcel-detail">enroute</span></td>
+                                <td class="td"><button class="table-action-btn fl" class="editBtn" onclick="edit()"><span><i class="far fa-edit"></i></span> Edit</button>
+                                <!-- <td></td> -->
+                            </tr>
+                            <tr>
+                                <td><span class="mobile-view-title">package name:</span><span class="parcel-detail">car</span></td>
+                                <td><span class="mobile-view-title">destination:</span><span class="parcel-detail">abuja</span></td>
+                                <td><span class="mobile-view-title">pickup location:</span><span class="parcel-detail">maitama</span></td>
+                                <td><span class="mobile-view-title">present location</span><span class="parcel-detail">agidingbi</span></td>
+                                <td><span class="mobile-view-title">status</span><span class="parcel-detail">delivered</span></td>
+                                <td class="td"><button class="table-action-btn fl" class="editBtn" onclick="edit()"><span><i class="far fa-edit"></i></span> Edit</button>
+                            </tr>
+                        </tbody>
+                        <div id="modal">
+                            <div id="modal-content">
+                                <main class="container">
+                                    <div class="form-card p-3">
+                                        <span id="close">&times;</span>
+                                        <h2>Edit a parcel</h2>
+                                        <form id="form">
+                                            <div class="row">
+                                                <div class="col-3">
+                                                    <label class="label" for="newLocation">New present location</label>
+                                                </div>
+                                                <div class="col-9">
+                                                    <input type="email" name="email" id="email" placeholder="Enter your Email..." required>
+                                                </div>
+                                            </div>
+                                            <!--  -->
+                                            <button type="submit" id="signup" class="btn">Done</button>
+                                        </form>
+                                    </div>
+                                </main>
+                            </div>
+                        </div>
+                    </table>
+                </div>
             </div>
         </div>
     </main>

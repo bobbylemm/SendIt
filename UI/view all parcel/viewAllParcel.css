@@ -1,7 +1,8 @@
 table {
   width: 100%;
   border-collapse: collapse;
-  border: .1rem solid #D48166;
+  border: .1rem solid #ffffff;
+  box-shadow: 0rem .4rem .5rem -.1rem rgba(0,0,0,0.62);
 }
 .user-actions-results h2 {
   text-align: center;
@@ -9,8 +10,8 @@ table {
   text-transform: capitalize;
 }
 thead tr th {
-  border: .1rem solid #D48166;
-  background: #D48166
+  border: .1rem solid #89bdd3;
+  background: #89bdd3
 }
 tr {
   text-align: center;
@@ -27,11 +28,11 @@ tr:nth-of-type(odd) {
 .table-action-btn {
   width: auto;
   border-radius: 0.5rem;
-  padding: 0.4rem 0.6rem;
+  padding: 0.4rem 0.5rem;
 }
 #deleteBtn {
-  background: #D48166;
-  border: .1rem solid #D48166;
+  background: #89bdd3;
+  border: .1rem solid #89bdd3;
   font-weight: bold;
   cursor: pointer;
 }
@@ -64,7 +65,7 @@ td .mobile-view-title {
   td button {
     margin: 1rem auto;
   }
-  td #editBtn {
+  td .editBtn {
     /* margin-top: 14rem; */
   }
   tr {

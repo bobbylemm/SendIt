@@ -11,17 +11,17 @@ main {
 
 /* hero section */
 #slide-container {
-    height: 65vh;
+    height: 85vh;
     width: 100%;
     color: #ffffff;
     clip-path: polygon(0 0, 100% 0, 100% 81%, 0% 100%);
     position: relative;
 }
 #hero-bg {
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('./img/hero-img.jpg') no-repeat;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('./img/hero-img.jpg') no-repeat;
     background-size: cover;
     background-position: center;
-    height: 65vh;
+    height: 85vh;
     width: 100%;
     color: #ffffff;
     clip-path: polygon(0 0, 100% 0, 100% 81%, 0% 100%);
@@ -29,10 +29,10 @@ main {
     position: absolute;
 }
 #hero-bg-2 {
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('./img/maarten-van-den-heuvel-246398-unsplash.jpg') no-repeat;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('./img/maarten-van-den-heuvel-246398-unsplash.jpg') no-repeat;
     background-size: cover;
     background-position: center;
-    height: 65vh;
+    height: 85vh;
     width: 100%;
     color: #ffffff;
     clip-path: polygon(0 0, 100% 0, 100% 81%, 0% 100%);
@@ -40,10 +40,10 @@ main {
     position: absolute;
 }
 #hero-bg-3 {
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('./img/receive-parcel.jpg') no-repeat;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('./img/receive-parcel.jpg') no-repeat;
     background-size: cover;
     background-position: center;
-    height: 65vh;
+    height: 85vh;
     width: 100%;
     color: #ffffff;
     clip-path: polygon(0 0, 100% 0, 100% 81%, 0% 100%);
@@ -97,12 +97,12 @@ main {
     width: 60%;
 }
 .hero-text h1 {
-    font-size: 4rem;
+    font-size: 5rem;
     letter-spacing: .4rem;
     width: 100%;
 }
 .hero-description {
-    font-size: 1.9rem;
+    font-size: 2rem;
 }
 .services-title {
     color: rgb(175, 171, 166);

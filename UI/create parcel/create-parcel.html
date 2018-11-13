@@ -16,6 +16,7 @@
         <div class="container">
             <div id="app-logo">
                 <a href="../landingPage/landingPage.html">
+                    <img src='../img/icon.svg' />
                     <a href="../../index.html"><h1>SendIt</h1></a>
                 </a>
             </div>
@@ -45,48 +46,68 @@
                     <div class="form-card">
                         <form id="form">
                             <h2>Create a parcel order</h2>
-                            <div class="row">
-                                <div class="col-3">
-                                    <label class="label" for="packageName">Package name</label>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text" name="username" id="packageName" placeholder="Enter your Username for display..." required>
-                                </div>
-                            </div>
-                            <!--  -->
-                            <div class="row">
-                                <div class="col-3">
-                                    <label class="label" for="Destination">Destination</label>
-                                </div>
-                                <div class="col-9">
-                                    <input type="email" name="email" id="Destination" placeholder="Enter your Email..." required>
-                                </div>
-                            </div>
-                            <!--  -->
-                            <div class="row">
+                            <div class="d-inline col-9">
+                                <div class="row">
                                     <div class="col-3">
-                                        <label class="label" for="pickupLocation">Pickup location</label>
+                                        <label class="label" for="packageName">Package name</label>
                                     </div>
                                     <div class="col-9">
-                                        <input type="password" name="password" id="destination" placeholder="Enter your Password" required>
+                                        <input type="text" name="packageName" id="packageName" placeholder="Enter package name..." required>
                                     </div>
                                 </div>
-                            <!--  -->
-                            <div class="row">
-                                <div class="col-3">
-                                    <label class="label" for="email">Weight categories</label>
+                                <!--  -->
+                                <div class="row">
+                                    <div class="col-3">
+                                        <label class="label" for="parcelLocation">Parcel location</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text" name="parcelLocation" id="parcelLocation" placeholder="Enter parcel location..." required>
+                                    </div>
                                 </div>
-                                <div class="col-9">
-                                    <select name="weightCategories" id="weightCategories" required>
-                                        <option value="light-weight">0-100kg (light weight)</option>
-                                        <option value="medium-weight">101-200kg(medium weight)</option>
-                                        <option value="heavy-weight">201+(heavy-weight)</option>
-                                    </select>
+                                <!--  -->
+                                <div class="row">
+                                    <div class="col-3">
+                                        <label class="label" for="Destination">Destination</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text" name="Destination" id="Destination" placeholder="Enter destination..." required>
+                                    </div>
+                                </div>
+                                <!--  -->
+                                <div class="row">
+                                        <div class="col-3">
+                                            <label class="label" for="pickupLocation">Pickup location</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input type="text" name="pickupLocation" id="pickupLocation" placeholder="Enter pickup location" required>
+                                        </div>
+                                </div>
+                                <!--  -->
+                                <div class="row">
+                                    <div class="col-3">
+                                        <label class="label" for="email">Weight categories</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <select name="weightCategories" id="weightCategories" required>
+                                            <option value="light-weight">0-100kg (light weight)</option>
+                                            <option value="medium-weight">101-200kg(medium weight)</option>
+                                            <option value="heavy-weight">201+(heavy-weight)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                    </div>
+                                    <div class="col-9">
+                                        <button type="submit" id="submit" class="btn-primary">Create</button>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="d-inline col-3 t-center">
+                                <h2>PRICE</h2>
+                                <h3>$45</h3>
+                            </div>
                             <!--  -->
-                            <h4>price: $<span>45</span></h4>
-                            <button type="submit" id="submit" class="btn">Create</button>
                         </form>
                     </div>
                 </main>

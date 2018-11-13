@@ -1,7 +1,7 @@
 const email = document.querySelector ('#email');
 const password = document.querySelector ('#password');
 const form = document.querySelector ('#form');
-const errFlag = document.getElementById ('message-output');
+const errFlag = document.querySelector('.message');
 form.addEventListener ('submit', handleSubmit);
 function handleSubmit (e) {
   e.preventDefault ();

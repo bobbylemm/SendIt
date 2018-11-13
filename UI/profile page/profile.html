@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="../css/styles.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./profile.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../view all parcel/viewAllParcel.css" />
 </head>
 <body>
     <header>
@@ -35,10 +36,52 @@
             <div class="col-9 border">
                 <div id="user-ft">
                     <div id="btn-one-ft">
-                        this is the feature for button one
+                        <table>
+                            <h2>all parcel orders</h2>
+                            <thead data-title="all parcels">
+                                <tr>
+                                    <th>parcels delivered</th>
+                                    <th>parcels not delivered/in transit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="mobile-view-title">parcels delivered</span><span class="parcel-detail">23</span></td>
+                                    <td><span class="mobile-view-title">parcels not delivered/in transit</span><span class="parcel-detail">20</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                     <div id="btn-two-ft">
-                        this is the feature for button two
+                        <table>
+                            <h2>all parcel orders</h2>
+                            <thead data-title="all parcels">
+                                <tr>
+                                    <th>package name</th>
+                                    <th>destination</th>
+                                    <th>pickup location</th>
+                                    <th>price</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="mobile-view-title">package name:</span><span class="parcel-detail">fridge</span></td>
+                                    <td><span class="mobile-view-title">destination:</span><span class="parcel-detail">lagos</span></td>
+                                    <td><span class="mobile-view-title">pickup location:</span><span class="parcel-detail">ipaja</span></td>
+                                    <td><span class="mobile-view-title">price:</span><span class="parcel-detail">5678</span></td>
+                                    <td class="td"><button class="table-action-btn fl" id="editBtn"><span><i class="far fa-edit"></i></span> Edit</button>&nbsp;<button class="table-action-btn fr" id="deleteBtn"><span><i class="far fa-trash-alt"></i></span> delete</button></td>
+                                    <!-- <td></td> -->
+                                </tr>
+                                <tr>
+                                    <td><span class="mobile-view-title">package name:</span><span class="parcel-detail">car</span></td>
+                                    <td><span class="mobile-view-title">destination:</span><span class="parcel-detail">abuja</span></td>
+                                    <td><span class="mobile-view-title">pickup location:</span><span class="parcel-detail">maitama</span></td>
+                                    <td><span class="mobile-view-title">price:</span><span class="parcel-detail">70000</span></td>
+                                    <td class="td"><button class="table-action-btn fl" id="editBtn"><span><i class="far fa-edit"></i></span> Edit</button>&nbsp;<button class="table-action-btn fr" id="deleteBtn"><span><i class="far fa-trash-alt"></i></span> delete</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
