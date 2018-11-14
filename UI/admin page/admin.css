@@ -8,10 +8,23 @@ body {
     display: flex;
     justify-content: center;
     margin: 1.2rem 0 0 0;
+    border: .2rem solid #777171;
+    background: #e3e3e3;
+    cursor: pointer;
+}
+.editbtn {
+    border: 0rem solid #e3e3e3;
+    background: #e3e3e3;
 }
 .dashboard {
-    border: 1px solid #D48166;
-    height: 80vh;
+    border: 1px solid #89bdd3;
+    height: 100vh;
+}
+.dashboard h2 {
+    text-align: center;
+    padding: 2rem 0;
+    text-transform: capitalize;
+    font-size: 3rem;
 }
 
 @media(max-width: 600px) {
@@ -27,7 +40,7 @@ body {
     }
 }
 .dashboard-min {
-    background: #D48166;
+    background: #89bdd3;
 }
 
 .btn-profile {
@@ -44,6 +57,27 @@ body {
 }
 .btn-profile:hover {
     box-shadow: .3rem .4rem .5rem 0 rgba(0,0,0,0.75);
+}
+.col-9 h2 {
+    text-align: center;
+    padding: 2rem 0;
+    text-transform: capitalize;
+}
+#modal-admin-edit {
+    display: none;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow: auto;
+    background: rgba(0,0,0,0.62);
+}
+#modal-admin-content {
+    color: #333;
+    margin: 10% auto;
+    animation: fadeIn .4s ease-in-out;
 }
 @keyframes pulse {
     0% {

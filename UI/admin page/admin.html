@@ -13,6 +13,7 @@
     <header>
         <div class="container">
             <div id="app-logo">
+                <img src="../img/icon.svg" />
                     <a href="../../index.html"><h1>SendIt</h1></a>
             </div>
             <nav>
@@ -25,14 +26,15 @@
     <!--  -->
     <main>
         <div class="section">
-            <div class="col-3 dashboard dashboard-min">
-                <button class="btn-profile">view more details </button>
+            <div class="col-2 dashboard dashboard-min">
+                <h2>administrator</h2>
+                <!-- <button class="btn-profile">view more details</button> -->
             </div>
             <!--  -->
             <div class="col-9 border">
                 <div class="p-3">
                     <table>
-                        <h2>all parcel orders</h2>
+                        <h2>welcome admin</h2>
                         <thead data-title="all parcels">
                             <tr>
                                 <th>package name</th>
@@ -50,7 +52,7 @@
                                 <td><span class="mobile-view-title">pickup location:</span><span class="parcel-detail">ipaja</span></td>
                                 <td><span class="mobile-view-title">present location</span><span class="parcel-detail">surulere</span></td>
                                 <td><span class="mobile-view-title">status</span><span class="parcel-detail">enroute</span></td>
-                                <td class="td"><button class="table-action-btn fl" class="editBtn" onclick="edit()"><span><i class="far fa-edit"></i></span> Edit</button>
+                                <td class="td"><button class="table-action-btn fl w-100 editBtn" onclick="edit()"><span><i class="far fa-edit"></i></span> Edit</button>
                                 <!-- <td></td> -->
                             </tr>
                             <tr>
@@ -59,11 +61,11 @@
                                 <td><span class="mobile-view-title">pickup location:</span><span class="parcel-detail">maitama</span></td>
                                 <td><span class="mobile-view-title">present location</span><span class="parcel-detail">agidingbi</span></td>
                                 <td><span class="mobile-view-title">status</span><span class="parcel-detail">delivered</span></td>
-                                <td class="td"><button class="table-action-btn fl" class="editBtn" onclick="edit()"><span><i class="far fa-edit"></i></span> Edit</button>
+                                <td class="td"><button class="table-action-btn fl w-100 editBtn" onclick="edit()"><span><i class="far fa-edit"></i></span> Edit</button>
                             </tr>
                         </tbody>
-                        <div id="modal">
-                            <div id="modal-content">
+                        <div id="modal-admin-edit">
+                            <div id="modal-admin-content">
                                 <main class="container">
                                     <div class="form-card p-3">
                                         <span id="close">&times;</span>
@@ -71,14 +73,28 @@
                                         <form id="form">
                                             <div class="row">
                                                 <div class="col-3">
-                                                    <label class="label" for="newLocation">New present location</label>
+                                                    <label class="label" for="newLocation">updated present location</label>
                                                 </div>
                                                 <div class="col-9">
-                                                    <input type="email" name="email" id="email" placeholder="Enter your Email..." required>
+                                                    <input type="text" name="newLocation" id="newLocation" placeholder="Enter new present location" required>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-3">
+                                                    <label class="label" for="newLocation">Updated Status</label>
+                                                </div>
+                                                <div class="col-9">
+                                                    <input type="text" name="newStatus" id="newStatus" placeholder="Enter new status" required>
                                                 </div>
                                             </div>
                                             <!--  -->
-                                            <button type="submit" id="signup" class="btn">Done</button>
+                                            <div class="row">
+                                                <div class="col-3">
+                                                </div>
+                                                <div class="col-9">
+                                                    <button type="submit" id="signup" class="btn w-100">Done</button>
+                                                </div>
+                                            </div>
                                         </form>
                                     </div>
                                 </main>
@@ -97,5 +113,6 @@
             <p>Designed by <span><a href="#">Nwoga Chidozie</a></span></p>
         </div>
     </footer>
+    <script src="./admin.js"></script>
 </body>
 </html>
