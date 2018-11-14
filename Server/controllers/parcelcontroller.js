@@ -29,7 +29,6 @@ class parcelController {
 
   static getAllParcels(req, res) {
     return res.json({
-      response: 'you have sent me a get request to get all questions',
       parcels: allParcels
     });
   }
@@ -86,9 +85,7 @@ class parcelController {
     const parcelId = req.params.id;
     const findParcel = helper.findFromDb(allParcels, 'id', parcelId);
     if (findParcel) {
-      const allCurrentParcels = allParcels.filter(parcel => {
-        return parcel !== findParcel;
-      });
+      const allCurrentParcels = allParcels.filter(parcel => parcel !== findParcel);
       return res.status(200).json({
         message: 'parcel successfully deleted',
         allparcel: allCurrentParcels

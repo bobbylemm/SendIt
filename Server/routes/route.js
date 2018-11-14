@@ -19,9 +19,6 @@ router.get('/parcels', parcelController.getAllParcels);
 // this is the route to get a specific parcel
 // GET A SPECIFIC PARCEL
 router.get('/parcels/:id', parcelController.getSpecificParcel);
-// this is to register a new user
-// POST A NEW USER
-router.post('/register', usersControllers.registerUser);
 // this is to change the status of a parcel order
 // PUT IN A NEW STATUS
 router.put('/parcels/status/:id', parcelController.updateParcelStatus);

@@ -1,8 +1,4 @@
-const findFromDb = (db, par, id) => {
-  return db.find(user => {
-    return user[par] == id;
-  });
-};
+const findFromDb = (db, index, id) => db.find(item => item[index] == id);
 export default {
   findFromDb
 };
