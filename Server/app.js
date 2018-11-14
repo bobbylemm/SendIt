@@ -1,13 +1,13 @@
 import express from 'express';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
-import routes from '../routes/route';
+import routes from './routes/route';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(morgan('dev'));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/api/v1/', routes);

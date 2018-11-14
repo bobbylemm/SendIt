@@ -53,12 +53,12 @@ class usersControllers {
     const userId = req.params.id;
     const findUser = helper.findFromDb(allUsers, 'id', userId);
     if (findUser) {
-      res.status(200).json({
+      return res.status(200).json({
         message: 'successfully fetched all of this user parcels',
         userParcels: findUser.parcels
       });
     }
-    res.json({
+    return res.status(400).json({
       error: 'could not fetch user parcels'
     });
   }

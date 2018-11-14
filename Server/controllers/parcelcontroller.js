@@ -4,7 +4,6 @@ import helper from '../helpers/findFromDb';
 class parcelController {
   // this is to create a new parcel
   static createNewParcel(req, res) {
-    console.log('i am here');
     const newId = allParcels[allParcels.length - 1].id + 1;
     const { packageName, destination, pickupLocation, price } = req.body;
     const newParcel = {
