@@ -11,5 +11,6 @@ const validateParcels = (req, res, next) => {
   if (!pickupLocation) {
     return next(helpers.handleError('please put in a pickup location'));
   }
+  return next();
 };
 export default validateParcels;

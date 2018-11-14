@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _express = require('express');
@@ -12,13 +12,13 @@ var _morgan = require('morgan');
 
 var _morgan2 = _interopRequireDefault(_morgan);
 
-var _route = require('../routes/route');
-
-var _route2 = _interopRequireDefault(_route);
-
 var _bodyParser = require('body-parser');
 
 var _bodyParser2 = _interopRequireDefault(_bodyParser);
+
+var _route = require('../routes/route');
+
+var _route2 = _interopRequireDefault(_route);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -32,24 +32,24 @@ app.use(_bodyParser2.default.json());
 app.use('/api/v1/', _route2.default);
 // catching an error before passing it to the erro handler
 app.use(function (req, res, next) {
-    var err = new Error('this page was not found');
-    err.status = 404;
-    next(err);
+  var err = new Error('this page was not found');
+  err.status = 404;
+  next(err);
 });
 // error handler
-app.use(function (err, req, res, next) {
-    res.status(err.status || 500);
-    res.json({
-        error: {
-            message: err.message
-        }
-    });
+app.use(function (err, req, res) {
+  res.status(err.status || 500);
+  res.json({
+    error: {
+      message: err.message
+    }
+  });
 });
 // this api is hosted here
 // https://fathomless-spire-38172.herokuapp.com/api/v1/users
 
 app.listen(PORT, function () {
-    console.log('Express server running on port ' + PORT);
+  console.log('Express server running on port ' + PORT);
 });
 
 exports.default = app;

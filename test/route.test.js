@@ -1,15 +1,16 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../src/app';
+
 const { expect } = chai;
 
 chai.use(chaiHttp);
 
-describe("post/parcels", () => {
-    describe("get/parcels", () => {
-        describe("get/parcels/:id", () => {
-            describe("post/register", () => {
-                describe("get/users", () => {
+describe('post/parcels', () => {
+describe('get/parcels', () => {
+    describe('get/parcels/:id', () => {
+            describe('post/register', () => {
+                describe('get/users', () => {
                     describe("put/parcels/status/:id", () => {
                         describe("put/parcels/:id/cancel", () => {
                             describe("post/login", () => {

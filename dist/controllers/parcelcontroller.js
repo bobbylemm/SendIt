@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -19,130 +19,129 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var parcelController = function () {
-    function parcelController() {
-        _classCallCheck(this, parcelController);
+  function parcelController() {
+    _classCallCheck(this, parcelController);
+  }
+
+  _createClass(parcelController, null, [{
+    key: 'createNewParcel',
+
+    // this is to create a new parcel
+    value: function createNewParcel(req, res) {
+      var newId = _parceldb2.default[_parceldb2.default.length - 1].id + 1;
+      var _req$body = req.body,
+          packageName = _req$body.packageName,
+          destination = _req$body.destination,
+          pickupLocation = _req$body.pickupLocation,
+          price = _req$body.price;
+
+      var newParcel = {
+        id: newId,
+        packageName: packageName,
+        destination: destination,
+        pickupLocation: pickupLocation,
+        price: price,
+        status: '',
+        cancelled: false
+      };
+      if (newParcel) {
+        _parceldb2.default.push(newParcel);
+        return res.status(200).json({
+          message: 'new parcel created'
+        });
+      }
+      return res.status(400).json({
+        message: 'could not add new parcel'
+      });
     }
+    // this is to get all parcels
 
-    _createClass(parcelController, null, [{
-        key: 'createNewParcel',
+  }, {
+    key: 'getAllParcels',
+    value: function getAllParcels(req, res) {
+      return res.json({
+        response: 'you have sent me a get request to get all questions',
+        parcels: _parceldb2.default
+      });
+    }
+    // this is to get a specific parcel
 
-        // this is to create a new parcel
-        value: function createNewParcel(req, res) {
-            var newId = _parceldb2.default[_parceldb2.default.length - 1].id + 1;
-            var packageName = req.body.packageName,
-                destination = req.body.destination,
-                pickupLocation = req.body.pickupLocation,
-                price = req.body.price;
-            var newParcel = {
-                id: newId,
-                packageName: packageName,
-                destination: destination,
-                pickupLocation: pickupLocation,
-                price: price,
-                status: "",
-                cancelled: false
-            };
-            if (newParcel) {
-                _parceldb2.default.push(newParcel);
-                return res.status(200).json({
-                    message: "new parcel created"
-                });
-            } else {
-                return res.status(400).json({
-                    message: "could not add new parcel"
-                });
-            }
-        }
-        // this is to get all parcels
+  }, {
+    key: 'getSpecificParcel',
+    value: function getSpecificParcel(req, res) {
+      var parcelId = req.params.id;
+      var findParcel = _findFromDb2.default.findFromDb(_parceldb2.default, 'id', parcelId);
+      if (findParcel) {
+        return res.status(200).json({
+          parcel: findParcel
+        });
+      }
+      return res.status(400).json({
+        message: 'sorry the parcel was not found'
+      });
+    }
+    // this is to update a parcel order status
 
-    }, {
-        key: 'getAllParcels',
-        value: function getAllParcels(req, res) {
-            return res.json({
-                response: "you have sent me a get request to get all questions",
-                parcels: _parceldb2.default
-            });
-        }
-        // this is to get a specific parcel
+  }, {
+    key: 'updateParcelStatus',
+    value: function updateParcelStatus(req, res) {
+      var parcelId = req.params.id;
+      var findParcel = _findFromDb2.default.findFromDb(_parceldb2.default, 'id', parcelId);
+      if (findParcel) {
+        var newStatus = req.body.newStatus;
 
-    }, {
-        key: 'getSpecificParcel',
-        value: function getSpecificParcel(req, res) {
-            var parcelId = req.params.id;
-            var findParcel = _findFromDb2.default.findFromDb(_parceldb2.default, 'id', parcelId);
-            if (findParcel) {
-                return res.status(200).json({
-                    message: "the parcel was found",
-                    parcel: findParcel
-                });
-            } else {
-                return res.status(400).json({
-                    message: "sorry the parcel was not found"
-                });
-            }
-        }
-        // this is to update a parcel order status
+        findParcel.status = newStatus;
+        return res.status(200).json({
+          message: 'parcel updated successfully'
+        });
+      }
+      return res.status(400).json({
+        message: 'could not update parcel order'
+      });
+    }
+    // this is to cancel a specific order
 
-    }, {
-        key: 'updateParcelStatus',
-        value: function updateParcelStatus(req, res) {
-            var parcelId = req.params.id;
-            var findParcel = _findFromDb2.default.findFromDb(_parceldb2.default, 'id', parcelId);
-            if (findParcel) {
-                var newStatus = req.body.newStatus;
-                res.status(200).json({
-                    message: "parcel updated successfully"
-                });
-                return findParcel.status = newStatus;
-            } else {
-                return res.status(400).json({
-                    message: "could not update parcel order"
-                });
-            }
-        }
-        // this is to cancel a specific order
+  }, {
+    key: 'cancelParcelOrder',
+    value: function cancelParcelOrder(req, res) {
+      var parcelId = req.params.id;
+      var findParcel = _findFromDb2.default.findFromDb(_parceldb2.default, 'id', parcelId);
+      if (findParcel) {
+        var toCancel = req.body.cancelled;
+        findParcel.cancelled = toCancel;
+        return res.status(200).json({
+          message: 'this parcel order has been cancelled successfully'
+        });
+      }
+      return res.status(400).json({
+        message: 'could not update parcel order'
+      });
+    }
+    // this is to delete a specific parcel order
 
-    }, {
-        key: 'cancelParcelOrder',
-        value: function cancelParcelOrder(req, res) {
-            var parcelId = req.params.id;
-            var findParcel = _findFromDb2.default.findFromDb(_parceldb2.default, 'id', parcelId);
-            if (findParcel) {
-                var toCancel = req.body.cancelled;
-                res.status(200).json({
-                    message: "this parcel order has been cancelled successfully"
-                });
-                return findParcel.cancelled = toCancel;
-            } else {
-                return res.status(400).json({
-                    message: "could not update parcel order"
-                });
-            }
-        }
-        // this is to delete a specific parcel order
+  }, {
+    key: 'deleteSpecificParcel',
+    value: function deleteSpecificParcel(req, res) {
+      var parcelId = req.params.id;
+      var findParcel = _findFromDb2.default.findFromDb(_parceldb2.default, 'id', parcelId);
+      if (findParcel) {
+        var allCurrentParcels = _parceldb2.default.filter(function (parcel) {
+          return parcel !== findParcel;
+        });
+        return res.status(200).json({
+          message: 'parcel successfully deleted',
+          allparcel: allCurrentParcels
+        });
+      }
+      return res.status(400).json({
+        message: 'could not delete the parcel'
+      });
+    }
+    // end of class
 
-    }, {
-        key: 'deleteSpecificParcel',
-        value: function deleteSpecificParcel(req, res) {
-            var parcelId = req.params.id;
-            var findParcel = _findFromDb2.default.findFromDb(_parceldb2.default, 'id', parcelId);
-            if (findParcel) {
-                var allCurrentParcels = _parceldb2.default.filter(function (parcel) {
-                    return parcel !== findParcel;
-                });
-                res.status(200).json({
-                    message: "parcel successfully deleted",
-                    allparcel: allCurrentParcels
-                });
-            } else {
-                return res.status(400).json({
-                    message: "could not delete the parcel"
-                });
-            }
-        }
-    }]);
+  }]);
 
-    return parcelController;
+  return parcelController;
 }();
 
 exports.default = parcelController;
