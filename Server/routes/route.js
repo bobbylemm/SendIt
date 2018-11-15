@@ -27,7 +27,7 @@ router.put('/parcels/status/:id', parcelController.updateParcelStatus);
 router.put('/parcels/:id/cancel', parcelController.cancelParcelOrder);
 // this is to delete a specific parcel order
 // DELETE A PARCEL ORDER
-router.delete('/parcels/:id/delete', parcelController.deleteSpecificParcel);
+router.delete('/parcels/:id', parcelController.deleteSpecificParcel);
 
 // this is to get all users
 // GET ALL USERS

@@ -84,12 +84,12 @@ describe('parcels route', () => {
         });
     });
   });
-  describe('delete/parcels/:id/delete', () => {
+  describe('delete/parcels/:id', () => {
     it('should delete a parcel order', done => {
       const id = 1;
       chai
         .request(app)
-        .delete(`/api/v1/parcels/${id}/delete`)
+        .delete(`/api/v1/parcels/${id}`)
         .end((err, res) => {
           expect(res.status).to.equal(200);
           expect(res.body.message).to.equal('parcel successfully deleted');

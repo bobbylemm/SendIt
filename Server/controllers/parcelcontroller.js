@@ -84,11 +84,12 @@ class parcelController {
   static deleteSpecificParcel(req, res) {
     const parcelId = req.params.id;
     const findParcel = helper.findFromDb(allParcels, 'id', parcelId);
+    const index = allParcels.indexOf(findParcel);
     if (findParcel) {
-      const allCurrentParcels = allParcels.filter(parcel => parcel !== findParcel);
+      allParcels.splice(index, 1);
       return res.status(200).json({
         message: 'parcel successfully deleted',
-        allparcel: allCurrentParcels
+        allParcels
       });
     }
     return res.status(400).json({
