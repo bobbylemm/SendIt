@@ -12,20 +12,22 @@ app.use(bodyParser.json());
 
 app.use('/api/v1/', routes);
 // catching an error before passing it to the erro handler
-app.use((req, res, next) => {
-  const err = new Error('this page was not found');
+app.use('*', (req, res, next) => {
+  const err = new Error('sorry this page was not found');
   err.status = 404;
   next(err);
 });
 // error handler
-app.use((err, req, res) => {
+app.use((err, req, res, next) => {
   res.status(err.status || 500);
   res.json({
     error: {
       message: err.message
     }
   });
+  return next();
 });
+
 // this api is hosted here
 // https://fathomless-spire-38172.herokuapp.com/api/v1/users
 
