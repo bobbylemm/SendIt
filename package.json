@@ -8,14 +8,11 @@
   "main": "app.js",
   "scripts": {
     "clean": "rm -rf dist",
-    "clean-routes": "cd dist && rm -rf routes",
-    "build-routes": "npm run clean-routes && cd dist && mkdir routes && babel .././Server/routes/**.js -s -d routes",
-    "build": "npm run clean && mkdir dist && babel ./Server/app.js ./Server/controllers/**.js ./Server/sampleDatabase/**.js ./Server/helpers/**.js -s -d dist && npm run build-test && npm run build-routes",
+    "build": "npm run clean && mkdir dist && babel Server -s -d dist",
     "test": "nyc mocha --require babel-core/register ./Server/test/**.test.js --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "dev": "nodemon ./Server/bin/dev",
-    "start": "node ./Server/bin/production",
-    "production": "npm run build && nodemon ./Server/bin/production",
+    "dev": "nodemon bin/dev",
+    "start": "node bin/production",
     "heroku-prebuild": "export NPM_CONFIG_PRODUCTION=false; export NODE_ENV=; NPM_CONFIG_PRODUCTION=false NODE_ENV=development npm install --only=dev --dev",
     "heroku-postbuild": "export NPM_CONFIG_PRODUCTION=true; export NODE_ENV=production;",
     "postinstall": "npm run build"
