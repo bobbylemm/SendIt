@@ -5,12 +5,13 @@ class parcelController {
   // this is to create a new parcel
   static createNewParcel(req, res) {
     const newId = allParcels[allParcels.length - 1].id + 1;
-    const { packageName, destination, pickupLocation, price } = req.body;
+    const { packageName, destination, pickupLocation, price, weight } = req.body;
     const newParcel = {
       id: newId,
       packageName,
       destination,
       pickupLocation,
+      weight,
       price,
       status: '',
       cancelled: false
