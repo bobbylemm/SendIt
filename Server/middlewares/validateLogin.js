@@ -1,9 +1,16 @@
+import helpers from '../helpers/handleError';
+
 const validateLogin = (req, res, next) => {
-  const { email, password } = req.body;
-  if (!email || !password) {
-    return res.status(400).json({
-      message: 'please fill in your email and password'
-    });
+  const { Email, password } = req.body;
+  const emailRegex = /\S+@\S+\.\S+/;
+  if (!emailRegex.test(Email)) {
+    return next(helpers.handleError('this email is not valid'));
+  }
+  if (!Email) {
+    return next(helpers.handleError('please fill in a valid email'));
+  }
+  if (!password) {
+    return next(helpers.handleError('please fill in a password'));
   }
   return next();
 };
