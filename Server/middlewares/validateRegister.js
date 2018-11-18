@@ -1,12 +1,12 @@
 import helpers from '../helpers/handleError';
 
 const validateRegister = (req, res, next) => {
-  const { email, username, password } = req.body;
+  const { Email, userName, password } = req.body;
   const emailRegex = /\S+@\S+\.\S+/;
-  if (!emailRegex.test(email)) {
+  if (!emailRegex.test(Email)) {
     return next(helpers.handleError('this email is not valid'));
   }
-  if (!email) {
+  if (!Email) {
     return next(helpers.handleError('please fill in a valid email'));
   }
   if (!password) {
@@ -15,10 +15,10 @@ const validateRegister = (req, res, next) => {
   if (password < 8) {
     return next(helpers.handleError('your password cannot be less than 8 characters'));
   }
-  if (!username) {
+  if (!userName) {
     return next(helpers.handleError('please fill in a valid username'));
   }
-  if (username < 5) {
+  if (userName < 5) {
     return next(helpers.handleError('your username cannot be less than 5 characters'));
   }
   return next();
