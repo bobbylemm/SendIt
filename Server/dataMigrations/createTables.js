@@ -11,9 +11,13 @@ DROP TABLE IF EXISTS users CASCADE;
 CREATE TABLE IF NOT EXISTS users(
     user_id SERIAL NOT NULL PRIMARY KEY,
     username varchar(10) UNIQUE NOT NULL,
+    firstname varchar(25) NOT NULL,
+    lastname varchar(25) NOT NULL,
+    othernames varchar(25) NOT NULL,
     email varchar(100) UNIQUE NOT NULL,
     password text NOT NULL,
-    createdat TIMESTAMP NOT NULL DEFAULT NOW()
+    isadmin boolean NOT NULL,
+    registeredat TIMESTAMP NOT NULL DEFAULT NOW()
 );`;
 const parcelsTable = `
 DROP TABLE IF EXISTS parcels CASCADE;
