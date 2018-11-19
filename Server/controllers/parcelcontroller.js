@@ -1,5 +1,5 @@
 import allParcels from '../sampleDatabase/parceldb';
-import helper from '../helpers/findFromDb';
+
 
 class parcelController {
   // this is to create a new parcel
@@ -37,7 +37,7 @@ class parcelController {
 
   static getSpecificParcel(req, res) {
     const parcelId = req.params.id;
-    const findParcel = helper.findFromDb(allParcels, 'id', parcelId);
+    // const findParcel = helper.findFromDb(allParcels, 'id', parcelId);
     if (findParcel) {
       return res.status(200).json({
         message: 'the parcel was found',

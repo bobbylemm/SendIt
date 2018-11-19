@@ -1,9 +1,11 @@
-import db from '../dbManager/dbManager';
 
 class UserManager {
-  static async registerUser(username, email, password) {
+  constructor(db) {
+    this.db = db;
+  }
+  async registerUser(username, email, password) {
     try {
-      const res = await db.registerNewUser(username, email, password);
+      const res = await this.db.registerNewUser(username, email, password);
       return res;
     } catch (error) {
       console.log('user manager error', error);
@@ -11,9 +13,9 @@ class UserManager {
   }
 
   // this is to login a user
-  static async loginUser(email, password) {
+  async loginUser(email, password) {
     try {
-      const res = await db.loginExistingUser(email, password);
+      const res = await this.db.loginExistingUser(email, password);
       return res;
     } catch (e) {
       return e;

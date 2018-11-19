@@ -3,6 +3,7 @@ import parcelController from '../controllers/parcelcontroller';
 import usersControllers from '../controllers/usersController';
 import middlewares from '../middlewares/index';
 
+const { validateParcels, validateRegister, validateLogin } = middlewares;
 const router = express.Router();
 
 // this is for the home route
@@ -12,7 +13,7 @@ router.get('/', (req, res) => {
 
 // this is the route for creating parcels
 // CREATE PARCELS
-router.post('/parcels', middlewares.validateParcels, parcelController.createNewParcel);
+router.post('/parcels', validateParcels, parcelController.createNewParcel);
 // this is the route to get all parcels
 // GET ALL PARCELS
 router.get('/parcels', parcelController.getAllParcels);
@@ -34,9 +35,9 @@ router.delete('/parcels/:id', parcelController.deleteSpecificParcel);
 router.get('/users', usersControllers.getAllUsers);
 // this is to register a new user
 // POST A NEW USER
-router.post('/register', middlewares.validateRegister, usersControllers.registerUser);
+router.post('/register', validateRegister, usersControllers.registerUser);
 // this is to login in an existing user//
-router.post('/login', middlewares.validateLogin, usersControllers.login);
+router.post('/login', validateLogin, usersControllers.login);
 // fetch all parcels for a given user
 // GET ALL PARCELS FOR A GIVEN USER
 router.get('/users/:id/parcels', usersControllers.getAllParcelsByUser);
