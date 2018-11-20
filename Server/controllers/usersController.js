@@ -116,5 +116,22 @@ class UsersControllers {
         })
     }
 }
+
+// this is for the super admin admin role
+static async createAdmin (req, res) {
+  const { adminEmail, isadmin  } = req.body;
+  try {
+    const response = await usermanger.createNewAdmin(adminEmail, isadmin);
+    console.log('admin response',response.rows[0]);
+      return res.status(200).json({
+        message: 'hey superadmin, you have successfully added or removed an admin'
+      })
+  }catch (e) {
+    return res.status(401).json({
+      message: 'sorry could not add or remove admin, as the user was not found'
+    })
+  }
+  
+}
 }
 export default UsersControllers;
