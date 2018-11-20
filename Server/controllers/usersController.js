@@ -1,6 +1,5 @@
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
-import allUsers from '../sampleDatabase/usersdb';
 import UserManager from './userManger';
 import Db from '../dbManager/dbManager';
 

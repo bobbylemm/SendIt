@@ -33,5 +33,16 @@ class DbManager {
       console.log(e);
     }
   }
+
+  // this is the section for the parcels
+  async insertNewParcel(packageName, pickupLocation, dropOfflocation, presentLocation, weight, price, initialStatus, userId) {
+    try {
+        const q = 'INSERT INTO parcels (packagename, pickuplocation, dropofflocation, presentlocation, weight, price, status, user_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *';
+        const response = await this.pool.query(q, [packageName, pickupLocation, dropOfflocation, presentLocation, weight, price, initialStatus, userId]);
+        console.log(response);
+    }catch(e) {
+        console.error(e)
+    }
+}
 }
 export default DbManager;

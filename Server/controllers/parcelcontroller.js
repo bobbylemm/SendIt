@@ -1,90 +1,30 @@
-import allParcels from '../sampleDatabase/parceldb';
+import Db from '../dbManager/dbManager';
+import ParcelManager from './parcelManger';
 
+const database = new Db ();
+const parcelmanger = new ParcelManager (database);
 
-class parcelController {
+class ParcelController {
   // this is to create a new parcel
-  static createNewParcel(req, res) {
-    const newId = allParcels[allParcels.length - 1].id + 1;
-    const { packageName, destination, pickupLocation, price, weight } = req.body;
-    const newParcel = {
-      id: newId,
-      packageName,
-      destination,
-      pickupLocation,
-      weight,
-      price,
-      status: '',
-      cancelled: false
-    };
-    if (newParcel) {
-      allParcels.push(newParcel);
-      return res.status(200).json({
-        message: 'new parcel created'
-      });
-    }
-    return res.status(400).json({
-      message: 'could not add new parcel'
-    });
-  }
+  static async createNewParcel(req, res) {
+    const userId = req.user.user.user_id;
+    const initialStatus = 'processing'
+    const { packageName, pickupLocation, dropOfflocation, presentLocation, weight, price } = req.body;
+    try {
+        const response = await parcelmanger.addNewParcel(packageName, pickupLocation, dropOfflocation, presentLocation, weight, price, initialStatus, userId);
+        return res.status(200).json({
+            message: 'new parcel created',
+            resp: response
+        })
+    }catch(e) {
+        return res.status(400).json({
+            message: "parcel could not be added",
+        });
+   }
+}
   // this is to get all parcels
 
-  static getAllParcels(req, res) {
-    return res.json({
-      parcels: allParcels
-    });
-  }
-  // this is to get a specific parcel
-
   
-  // this is to update a parcel order status
-
-  static updateParcelStatus(req, res) {
-    const parcelId = req.params.id;
-    const findParcel = helper.findFromDb(allParcels, 'id', parcelId);
-    if (findParcel) {
-      const { newStatus } = req.body;
-      findParcel.status = newStatus;
-      return res.status(200).json({
-        message: 'parcel updated successfully'
-      });
-    }
-    return res.status(400).json({
-      message: 'could not update parcel order'
-    });
-  }
-  // this is to cancel a specific order
-
-  static cancelParcelOrder(req, res) {
-    const parcelId = req.params.id;
-    const findParcel = helper.findFromDb(allParcels, 'id', parcelId);
-    if (findParcel) {
-      const toCancel = req.body.cancelled;
-      findParcel.cancelled = toCancel;
-      return res.status(200).json({
-        message: 'this parcel order has been cancelled successfully'
-      });
-    }
-    return res.status(400).json({
-      message: 'could not update parcel order'
-    });
-  }
-  // this is to delete a specific parcel order
-
-  static deleteSpecificParcel(req, res) {
-    const parcelId = req.params.id;
-    const findParcel = helper.findFromDb(allParcels, 'id', parcelId);
-    const index = allParcels.indexOf(findParcel);
-    if (findParcel) {
-      allParcels.splice(index, 1);
-      return res.status(200).json({
-        message: 'parcel successfully deleted',
-        allParcels
-      });
-    }
-    return res.status(400).json({
-      message: 'could not delete the parcel'
-    });
-  }
   // end of class
 }
-export default parcelController;
+export default ParcelController;
