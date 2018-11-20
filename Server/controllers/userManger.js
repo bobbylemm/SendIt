@@ -33,5 +33,15 @@ class UserManager {
         console.log(e)
     }
 }
+
+// this is to create a new admin
+async createNewAdmin(adminEmail, isadmin) {
+  try {
+    const res = await this.db.makeNewAdmin(adminEmail, isadmin);
+    return res;
+  }catch(e) {
+    return e;
+  }
+}
 }
 export default UserManager;

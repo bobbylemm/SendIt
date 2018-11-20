@@ -67,6 +67,19 @@ class DbManager {
     }catch(e) {
         console.log(e)
     }
-}
+  }
+
+  // this is to create or remove an admin
+  async makeNewAdmin(adminEmail, isadmin) {
+    try {
+        const q = 'UPDATE users SET isadmin=$2 WHERE email=$1 RETURNING *;';
+        const response = await this.pool.query(q, [adminEmail, isadmin]);
+        console.log(response);
+        return response;
+    }catch(e) {
+        console.log(e);
+        return e;
+    }
+  }
 }
 export default DbManager;
