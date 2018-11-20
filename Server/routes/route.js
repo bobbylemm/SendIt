@@ -3,7 +3,7 @@ import parcelController from '../controllers/parcelcontroller';
 import usersControllers from '../controllers/usersController';
 import middlewares from '../middlewares/index';
 
-const { validateParcels, validateRegister, validateLogin, validateToken, validateLocationUpdate, validateSuperAdmin } = middlewares;
+const { validateParcels, validateRegister, validateLogin, validateToken, validateLocationUpdate, validateSuperAdmin, validateAdmin } = middlewares;
 
 const router = express.Router();
 
@@ -41,7 +41,7 @@ router.post('/register', validateRegister, usersControllers.registerUser);
 router.post('/login', validateLogin, usersControllers.login);
 // fetch all parcels in the application
 // GET ALL PARCELS IN THE APP (accessible to admin only)
-router.get('/parcels', validateToken, parcelController.getAllParcels);
+router.get('/parcels', validateToken,validateAdmin, parcelController.getAllParcels);
 // this is for the superadmin
 router.put('/superadmin/createadmin', validateSuperAdmin, usersControllers.createAdmin);
 export default router;

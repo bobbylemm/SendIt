@@ -88,8 +88,10 @@ class DbManager {
         const q = 'SELECT packagename, dropofflocation, pickuplocation, price, presentlocation, weight, price, status FROM parcels;';
         const response = await this.pool.query(q);
         console.log(response);
+        return response;
     }catch(e) {
-        console.error(e)
+        console.error(e);
+        return e;
     }
 }
 }

@@ -45,7 +45,7 @@ static async getAllParcels (req, res) {
         const response = await parcelmanger.getAllParcels();
         return res.status(200).json({
         message: "there was success, all parcels have been fetched",
-        response
+        allParcels: response.rows[0]
     })
     }catch (e) {
         return res.status(400).json({
