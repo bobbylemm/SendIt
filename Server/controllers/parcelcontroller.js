@@ -22,8 +22,22 @@ class ParcelController {
         });
    }
 }
-  // this is to get all parcels
 
+  // this is to get all parcels by the user
+  static async getParcelsByUser(req, res) {
+    const { userId } = req.body;
+    try {
+        const response = await parcelmanger.getAllUsersParcelOrder(userId);
+        res.status(200).json({
+            message: 'got all this users parcels',
+            parcels: response.fields
+        })
+        console.log('all this users parcels',response.fields)
+    }catch(e) {
+        console.log(e)
+    }
+    
+}
   
   // end of class
 }

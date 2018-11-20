@@ -12,5 +12,15 @@ class ParcelManager {
         }
     }
 
+    // this is to get all the users parcels
+    async getAllUsersParcelOrder(userId) {
+        try {
+            const res = await this.database.getAllUserParcels(userId);
+            return res;
+        }catch(e) {
+            return e;
+        }
+    }
+
 }
 export default ParcelManager;
