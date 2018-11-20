@@ -44,5 +44,15 @@ class ParcelManager {
         }
     }
 
+    // this to update the present location of a parcel delivery order
+    async updateParcelPresentlocation(newLocation, pid) {
+        try {
+            const res = await this.database.updateParcelslocation(newLocation, pid);
+            return res;
+        }catch(e) {
+            return e;
+        }
+    }
+
 }
 export default ParcelManager;
