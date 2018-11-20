@@ -94,5 +94,16 @@ class DbManager {
         return e;
     }
 }
+
+// this is the query to update a parcel delivery order
+async updateParcelStatus(newStatus, pid) {
+  try {
+      const q = 'UPDATE parcels SET status=$1 WHERE parcel_id=$2 RETURNING *;';
+      const response = await this.pool.query(q, [newStatus, pid]);
+      console.log(response);
+  }catch(e) {
+      console.log(e)
+  }
+}
 }
 export default DbManager;

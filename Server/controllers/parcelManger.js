@@ -21,6 +21,7 @@ class ParcelManager {
             return e;
         }
     }
+// -------------admin section------------------------
 
     // this is to get all parcels in the app,accessible by admin only
     async getAllParcels() {
@@ -29,6 +30,16 @@ class ParcelManager {
             return res;
         }catch(e) {
             console.log(e)
+            return e;
+        }
+    }
+
+    // this is to update the status of a parcel status
+    async updateParcelStatus(newStatus, pid) {
+        try {
+            const res = await this.database.updateParcelStatus(newStatus, pid);
+            return res;
+        }catch(e) {
             return e;
         }
     }
