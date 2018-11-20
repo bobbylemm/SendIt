@@ -20,13 +20,13 @@ module.exports = {
         "comma-dangle": 0,
         "curly": ["error", "multi-line"],
         "no-shadow": ["error", { "allow": ["req", "done", "res", "err"] }],
-        "valid-jsdoc": [0, {
+        "valid-jsdoc": [1, {
           "requireReturn": false,
           "requireReturnType": false,
           "requireParamDescription": false,
           "requireReturnDescription": false
         }],
-        "require-jsdoc": [0, {
+        "require-jsdoc": [1, {
             "require": {
                 "FunctionDeclaration": true,
                 "MethodDefinition": true,

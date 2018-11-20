@@ -12,6 +12,15 @@ dotenv.config ();
  */
 class UsersControllers {
   // this is to register a user
+  /**
+   *
+   *
+   * @static
+   * @param {*} req
+   * @param {*} res
+   * @returns
+   * @memberof UsersControllers
+   */
   static async registerUser (req, res) {
     const {userName, Email, password} = req.body;
     const isAdmin = false;
@@ -22,13 +31,13 @@ class UsersControllers {
         password,
         isAdmin
       );
-      console.log ('user controller reponse', response.rows[0]);
+      // console.log ('user controller reponse', response.rows[0]);
       if (response.status !== 400) {
         const {user_id, email, username, isadmin} = response.rows[0];
         const user = {user_id, email, username, isadmin};
         return jwt.sign ({user}, process.env.SECRET_KEY, (err, token) => {
           if (err) {
-            return console.log (err);
+            // return console.log (err);
           }
           return res.header ('x-auth-token', token).status (200).json ({
             message: 'successfully registered user',
@@ -43,29 +52,31 @@ class UsersControllers {
       res.status (401).json ({
         message: 'unable to create user',
       });
-      console.log ('user controller error', error);
+      // console.log ('user controller error', error);
     }
-  }
-  // this is to get all users
-
-  static getAllUsers (req, res) {
-    return res.status (200).json ({
-      allUsers,
-    });
   }
   // this is to login user
 
+  /**
+   *
+   *
+   * @static
+   * @param {*} req
+   * @param {*} res
+   * @returns
+   * @memberof UsersControllers
+   */
   static async login (req, res) {
     const {Email, password} = req.body;
     try {
       const response = await usermanger.loginUser (Email, password);
-      console.log ('LOGIN CONTROLLER response', response);
+      // console.log ('LOGIN CONTROLLER response', response);
       if (response.rows[0] !== undefined) {
         const {user_id, email, username, isadmin} = response.rows[0];
         const user = {user_id, email, username, isadmin};
         return jwt.sign ({user}, process.env.SECRET_KEY, (err, token) => {
           if (err) {
-            return console.log (err);
+            return err;
           }
           return res.header ('x-auth-token', token).status (200).json ({
             message: 'successfully logged in',
@@ -82,35 +93,29 @@ class UsersControllers {
       });
     }
   }
-  // this is to get all parcels by a user
-
-  static getAllParcelsByUser (req, res) {
-    const userId = req.params.id;
-    const findUser = helper.findFromDb (allUsers, 'id', userId);
-    if (findUser) {
-      return res.status (200).json ({
-        message: 'successfully fetched all of this user parcels',
-        userParcels: findUser.parcels,
-      });
-    }
-    return res.status (400).json ({
-      error: 'could not fetch user parcels',
-    });
-  }
 
   // this is to change the drop off location of a parcel order
+  /**
+   *
+   *
+   * @static
+   * @param {*} req
+   * @param {*} res
+   * @returns
+   * @memberof UsersControllers
+   */
   static async updateParcelDestination (req, res) {
     const { newdropOff } = req.body;
     const userId = req.user.user.user_id;
     const { pid } = req.params;
     try {
-        const response = await usermanger.changeParcelDestination(newdropOff, pid, userId);
-        console.log(response);
+        await usermanger.changeParcelDestination(newdropOff, pid, userId);
+        // console.log(response);
         return res.status(200).json({
             message: "parcel destination was updated successfully"
         })
     }catch(e) {
-        console.log(e);
+        // console.log(e);
         return res.status(400).json({
             message: "this parcel destination was not updated successfully",
         })
@@ -118,11 +123,20 @@ class UsersControllers {
 }
 
 // this is for the super admin admin role
+/**
+ *
+ *
+ * @static
+ * @param {*} req
+ * @param {*} res
+ * @returns
+ * @memberof UsersControllers
+ */
 static async createAdmin (req, res) {
   const { adminEmail, isadmin  } = req.body;
   try {
-    const response = await usermanger.createNewAdmin(adminEmail, isadmin);
-    console.log('admin response',response.rows[0]);
+    await usermanger.createNewAdmin(adminEmail, isadmin);
+    // console.log('admin response',response.rows[0]);
       return res.status(200).json({
         message: 'hey superadmin, you have successfully added or removed an admin'
       })
@@ -131,7 +145,7 @@ static async createAdmin (req, res) {
       message: 'sorry could not add or remove admin, as the user was not found'
     })
   }
-  
 }
+
 }
 export default UsersControllers;

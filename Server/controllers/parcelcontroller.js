@@ -4,8 +4,22 @@ import ParcelManager from './parcelManger';
 const database = new Db ();
 const parcelmanger = new ParcelManager (database);
 
+/**
+ *
+ *
+ * @class ParcelController
+ */
 class ParcelController {
   // this is to create a new parcel
+  /**
+   *
+   *
+   * @static
+   * @param {*} req
+   * @param {*} res
+   * @returns
+   * @memberof ParcelController
+   */
   static async createNewParcel(req, res) {
     const userId = req.user.user.user_id;
     const initialStatus = 'processing'
@@ -24,6 +38,14 @@ class ParcelController {
 }
 
   // this is to get all parcels by the user
+  /**
+   *
+   *
+   * @static
+   * @param {*} req
+   * @param {*} res
+   * @memberof ParcelController
+   */
   static async getParcelsByUser(req, res) {
     const { userId } = req.body;
     try {
@@ -32,15 +54,24 @@ class ParcelController {
             message: 'got all this users parcels',
             parcels: response.fields
         })
-        console.log('all this users parcels',response.fields)
+        // console.log('all this users parcels',response.fields)
     }catch(e) {
-        console.log(e)
+        return e;
     }
 }
 
 // this is the controller to get all parcels in the application and it should be accessible by the admin only
+/**
+ *
+ *
+ * @static
+ * @param {*} req
+ * @param {*} res
+ * @returns
+ * @memberof ParcelController
+ */
 static async getAllParcels (req, res) {
-    console.log('the request object', req.user);
+    // console.log('the request object', req.user);
     try {
         const response = await parcelmanger.getAllParcels();
         return res.status(200).json({
@@ -56,6 +87,15 @@ static async getAllParcels (req, res) {
 }
 
 // this is the controller to update the status of a parcel
+/**
+ *
+ *
+ * @static
+ * @param {*} req
+ * @param {*} res
+ * @returns
+ * @memberof ParcelController
+ */
 static async updateParcelStatus (req, res) {
     const { pid } = req.params;
     const { newStatus } = req.body;
@@ -66,8 +106,8 @@ static async updateParcelStatus (req, res) {
         })
     }
     try {
-        const response = await parcelmanger.updateParcelStatus(newStatus, pid);
-        console.log(response);
+        await parcelmanger.updateParcelStatus(newStatus, pid);
+        // console.log(response);
         return res.status(200).json({
             messsage: 'parcel status was updated successfully'
         })
@@ -79,6 +119,15 @@ static async updateParcelStatus (req, res) {
 }
   
 // this is to update the present location of a parcel delivery order
+/**
+ *
+ *
+ * @static
+ * @param {*} req
+ * @param {*} res
+ * @returns
+ * @memberof ParcelController
+ */
 static async updateParcelPresentLocation (req, res) {
     const { pid } = req.params;
     const { newLocation } = req.body;
@@ -89,7 +138,7 @@ static async updateParcelPresentLocation (req, res) {
     }
     try {
         const response = await parcelmanger.updateParcelPresentlocation(newLocation, pid);
-        console.log('new location response',response);
+        // console.log('new location response',response);
         if (response.rowCount >= 1) {
             return res.status(200).json({
                 messsage: 'parcel present location was updated successfully'

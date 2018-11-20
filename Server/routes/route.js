@@ -3,7 +3,7 @@ import parcelController from '../controllers/parcelcontroller';
 import usersControllers from '../controllers/usersController';
 import middlewares from '../middlewares/index';
 
-const { validateParcels, validateRegister, validateLogin, validateToken, validateLocationUpdate, validateSuperAdmin, validateAdmin } = middlewares;
+const { validateParcels, validateRegister, validateLogin, validateToken, validateSuperAdmin, validateAdmin } = middlewares;
 
 const router = express.Router();
 
