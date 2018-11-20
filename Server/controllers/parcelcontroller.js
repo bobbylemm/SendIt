@@ -1,90 +1,107 @@
-import allParcels from '../sampleDatabase/parceldb';
+import Db from '../dbManager/dbManager';
+import ParcelManager from './parcelManger';
 
+const database = new Db ();
+const parcelmanger = new ParcelManager (database);
 
-class parcelController {
+class ParcelController {
   // this is to create a new parcel
-  static createNewParcel(req, res) {
-    const newId = allParcels[allParcels.length - 1].id + 1;
-    const { packageName, destination, pickupLocation, price, weight } = req.body;
-    const newParcel = {
-      id: newId,
-      packageName,
-      destination,
-      pickupLocation,
-      weight,
-      price,
-      status: '',
-      cancelled: false
-    };
-    if (newParcel) {
-      allParcels.push(newParcel);
-      return res.status(200).json({
-        message: 'new parcel created'
-      });
+  static async createNewParcel(req, res) {
+    const userId = req.user.user.user_id;
+    const initialStatus = 'processing'
+    const { packageName, pickupLocation, dropOfflocation, presentLocation, weight, price } = req.body;
+    try {
+        const response = await parcelmanger.addNewParcel(packageName, pickupLocation, dropOfflocation, presentLocation, weight, price, initialStatus, userId);
+        return res.status(200).json({
+            message: 'new parcel created',
+            resp: response
+        })
+    }catch(e) {
+        return res.status(400).json({
+            message: "parcel could not be added",
+        });
+   }
+}
+
+  // this is to get all parcels by the user
+  static async getParcelsByUser(req, res) {
+    const { userId } = req.body;
+    try {
+        const response = await parcelmanger.getAllUsersParcelOrder(userId);
+        res.status(200).json({
+            message: 'got all this users parcels',
+            parcels: response.fields
+        })
+        console.log('all this users parcels',response.fields)
+    }catch(e) {
+        console.log(e)
     }
-    return res.status(400).json({
-      message: 'could not add new parcel'
-    });
-  }
-  // this is to get all parcels
+}
 
-  static getAllParcels(req, res) {
-    return res.json({
-      parcels: allParcels
-    });
-  }
-  // this is to get a specific parcel
+// this is the controller to get all parcels in the application and it should be accessible by the admin only
+static async getAllParcels (req, res) {
+    console.log('the request object', req.user);
+    try {
+        const response = await parcelmanger.getAllParcels();
+        return res.status(200).json({
+        message: "there was success, all parcels have been fetched",
+        allParcels: response.rows[0]
+    })
+    }catch (e) {
+        return res.status(400).json({
+            message: "error in retrieving",
+            e
+        })
+    }
+}
 
+// this is the controller to update the status of a parcel
+static async updateParcelStatus (req, res) {
+    const { pid } = req.params;
+    const { newStatus } = req.body;
+    const validStatus = ['in-transit', 'delivered', 'cancelled'].includes(newStatus);
+    if (!newStatus || !validStatus) {
+        return res.status(400).json({
+            message: 'please enter a valid status, as this is not valid'
+        })
+    }
+    try {
+        const response = await parcelmanger.updateParcelStatus(newStatus, pid);
+        console.log(response);
+        return res.status(200).json({
+            messsage: 'parcel status was updated successfully'
+        })
+    }catch(e) {
+        return res.status(400).json({
+            message: 'could not update the parcel status'
+        })
+    }
+}
   
-  // this is to update a parcel order status
-
-  static updateParcelStatus(req, res) {
-    const parcelId = req.params.id;
-    const findParcel = helper.findFromDb(allParcels, 'id', parcelId);
-    if (findParcel) {
-      const { newStatus } = req.body;
-      findParcel.status = newStatus;
-      return res.status(200).json({
-        message: 'parcel updated successfully'
-      });
+// this is to update the present location of a parcel delivery order
+static async updateParcelPresentLocation (req, res) {
+    const { pid } = req.params;
+    const { newLocation } = req.body;
+    if(!newLocation) {
+        return res.status(400).json({
+            message: 'please put in a valid new location'
+        })
     }
-    return res.status(400).json({
-      message: 'could not update parcel order'
-    });
-  }
-  // this is to cancel a specific order
-
-  static cancelParcelOrder(req, res) {
-    const parcelId = req.params.id;
-    const findParcel = helper.findFromDb(allParcels, 'id', parcelId);
-    if (findParcel) {
-      const toCancel = req.body.cancelled;
-      findParcel.cancelled = toCancel;
-      return res.status(200).json({
-        message: 'this parcel order has been cancelled successfully'
-      });
+    try {
+        const response = await parcelmanger.updateParcelPresentlocation(newLocation, pid);
+        console.log('new location response',response);
+        if (response.rowCount >= 1) {
+            return res.status(200).json({
+                messsage: 'parcel present location was updated successfully'
+            })
+        }
+            return res.status(400).json({
+                message: 'this parcel has already been delivered'
+            })
+    }catch(e) {
+        return e;
     }
-    return res.status(400).json({
-      message: 'could not update parcel order'
-    });
-  }
-  // this is to delete a specific parcel order
-
-  static deleteSpecificParcel(req, res) {
-    const parcelId = req.params.id;
-    const findParcel = helper.findFromDb(allParcels, 'id', parcelId);
-    const index = allParcels.indexOf(findParcel);
-    if (findParcel) {
-      allParcels.splice(index, 1);
-      return res.status(200).json({
-        message: 'parcel successfully deleted',
-        allParcels
-      });
-    }
-    return res.status(400).json({
-      message: 'could not delete the parcel'
-    });
-  }
+}
   // end of class
 }
-export default parcelController;
+export default ParcelController;
