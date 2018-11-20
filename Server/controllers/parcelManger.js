@@ -22,5 +22,15 @@ class ParcelManager {
         }
     }
 
+    // this is to get all parcels in the app,accessible by admin only
+    async getAllParcels() {
+        try {
+            const res = await this.database.getAllParcels();
+            console.log(res)
+        }catch(e) {
+            console.log(e)
+        }
+    }
+
 }
 export default ParcelManager;

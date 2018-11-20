@@ -81,5 +81,16 @@ class DbManager {
         return e;
     }
   }
+
+  // this is to get all parcels in the app, accessible by admin only
+  async getAllParcels() {
+    try {
+        const q = 'SELECT packagename, dropofflocation, pickuplocation, price, presentlocation, weight, price, status FROM parcels;';
+        const response = await this.pool.query(q);
+        console.log(response);
+    }catch(e) {
+        console.error(e)
+    }
+}
 }
 export default DbManager;

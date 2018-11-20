@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 // this is the route for creating parcels
 // CREATE PARCELS
 router.post('/parcels', validateParcels, validateToken, parcelController.createNewParcel);
-// this is the route to get all parcels
+// this is the route to get all parcels for a user
 // GET ALL PARCELS
 router.get('/parcels/user', parcelController.getParcelsByUser);
 // this is the route to get a specific parcel
@@ -39,9 +39,9 @@ router.get('/users', usersControllers.getAllUsers);
 router.post('/register', validateRegister, usersControllers.registerUser);
 // this is to login in an existing user//
 router.post('/login', validateLogin, usersControllers.login);
-// fetch all parcels for a given user
-// GET ALL PARCELS FOR A GIVEN USER
-router.get('/users/:id/parcels', usersControllers.getAllParcelsByUser);
+// fetch all parcels in the application
+// GET ALL PARCELS IN THE APP (accessible to admin only)
+router.get('/parcels', validateToken, parcelController.getAllParcels);
 // this is for the superadmin
 router.put('/superadmin/createadmin', validateSuperAdmin, usersControllers.createAdmin);
 export default router;

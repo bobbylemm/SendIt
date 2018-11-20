@@ -36,7 +36,23 @@ class ParcelController {
     }catch(e) {
         console.log(e)
     }
-    
+}
+
+// this is the controller to get all parcels in the application and it should be accessible by the admin only
+static async getAllParcels (req, res) {
+    console.log('the request object', req.user);
+    try {
+        const response = await parcelmanger.getAllParcels();
+        return res.status(200).json({
+        message: "there was success, all parcels have been fetched",
+        response
+    })
+    }catch (e) {
+        return res.status(400).json({
+            message: "error in retrieving",
+            e
+        })
+    }
 }
   
   // end of class
