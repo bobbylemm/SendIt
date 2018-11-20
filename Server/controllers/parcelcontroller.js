@@ -35,19 +35,7 @@ class parcelController {
   }
   // this is to get a specific parcel
 
-  static getSpecificParcel(req, res) {
-    const parcelId = req.params.id;
-    // const findParcel = helper.findFromDb(allParcels, 'id', parcelId);
-    if (findParcel) {
-      return res.status(200).json({
-        message: 'the parcel was found',
-        parcel: findParcel
-      });
-    }
-    return res.status(400).json({
-      message: 'sorry the parcel was not found'
-    });
-  }
+  
   // this is to update a parcel order status
 
   static updateParcelStatus(req, res) {

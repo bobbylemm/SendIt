@@ -3,6 +3,7 @@ class UserManager {
   constructor(db) {
     this.db = db;
   }
+
   async registerUser(username, email, password) {
     try {
       const res = await this.db.registerNewUser(username, email, password);
