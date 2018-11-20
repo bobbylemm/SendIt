@@ -54,6 +54,29 @@ static async getAllParcels (req, res) {
         })
     }
 }
+
+// this is the controller to update the status of a parcel
+static async updateParcelStatus (req, res) {
+    const { pid } = req.params;
+    const { newStatus } = req.body;
+    const validStatus = ['in-transit', 'delivered', 'cancelled'].includes(newStatus);
+    if (!newStatus || !validStatus) {
+        return res.status(400).json({
+            message: 'please enter a valid status, as this is not valid'
+        })
+    }
+    try {
+        const response = await parcelmanger.updateParcelStatus(newStatus, pid);
+        console.log(response);
+        return res.status(200).json({
+            messsage: 'parcel status was updated successfully'
+        })
+    }catch(e) {
+        return res.status(400).json({
+            message: 'could not update the parcel status'
+        })
+    }
+}
   
   // end of class
 }

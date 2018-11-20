@@ -41,7 +41,9 @@ router.post('/register', validateRegister, usersControllers.registerUser);
 router.post('/login', validateLogin, usersControllers.login);
 // fetch all parcels in the application
 // GET ALL PARCELS IN THE APP (accessible to admin only)
-router.get('/parcels', validateToken,validateAdmin, parcelController.getAllParcels);
+router.get('/parcels', validateToken, validateAdmin, parcelController.getAllParcels);
+// this is the route for an admin to update the status of a parcel delivery order
+router.put('/parcels/:pid/status', validateToken, validateAdmin, parcelController.updateParcelStatus);
 // this is for the superadmin
 router.put('/superadmin/createadmin', validateSuperAdmin, usersControllers.createAdmin);
 export default router;
