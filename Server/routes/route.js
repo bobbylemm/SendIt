@@ -3,7 +3,7 @@ import parcelController from '../controllers/parcelcontroller';
 import usersControllers from '../controllers/usersController';
 import middlewares from '../middlewares/index';
 
-const { validateParcels, validateRegister, validateLogin, validateToken } = middlewares;
+const { validateParcels, validateRegister, validateLogin, validateToken, validateLocationUpdate } = middlewares;
 
 const router = express.Router();
 
@@ -21,9 +21,9 @@ router.get('/parcels/user', parcelController.getParcelsByUser);
 // this is the route to get a specific parcel
 // GET A SPECIFIC PARCEL
 // router.get('/parcels/:id', parcelController.getSpecificParcel);
-// this is to change the status of a parcel order
-// PUT IN A NEW STATUS
-// router.put('/parcels/status/:id', parcelController.updateParcelStatus);
+// this is to change the dropofflocation of a parcel
+// PUT IN A NEW DROPOFFLOCATION
+router.put('/parcels/:pid/newlocation', validateLocationUpdate, validateToken, usersControllers.updateParcelDestination);
 // this is to change the status of a parcel order
 // PUT IN A NEW STATUS
 // router.put('/parcels/:id/cancel', parcelController.cancelParcelOrder);
