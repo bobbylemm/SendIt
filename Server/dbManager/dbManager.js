@@ -105,5 +105,18 @@ async updateParcelStatus(newStatus, pid) {
       console.log(e)
   }
 }
+
+// this is the query to update the present location of a parcel delivery order
+async updateParcelslocation(newLocation, pid) {
+  try {
+      const q = "UPDATE parcels SET presentlocation=$1 WHERE parcel_id=$2 AND  status NOT LIKE 'delivered%' RETURNING *;";
+      const response = await this.pool.query(q, [newLocation, pid]);
+      console.log(response);
+      return response;
+  }catch(e) {
+      console.log(e)
+      return e;
+  }
+}
 }
 export default DbManager;

@@ -23,7 +23,7 @@ router.get('/parcels/user', parcelController.getParcelsByUser);
 // router.get('/parcels/:id', parcelController.getSpecificParcel);
 // this is to change the dropofflocation of a parcel
 // PUT IN A NEW DROPOFFLOCATION
-router.put('/parcels/:pid/newlocation', validateLocationUpdate, validateToken, usersControllers.updateParcelDestination);
+router.put('/parcels/:pid/newlocation', validateToken, validateAdmin, parcelController.updateParcelPresentLocation);
 // this is to change the status of a parcel order
 // PUT IN A NEW STATUS
 // router.put('/parcels/:id/cancel', parcelController.cancelParcelOrder);

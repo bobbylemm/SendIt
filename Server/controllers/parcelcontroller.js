@@ -78,6 +78,30 @@ static async updateParcelStatus (req, res) {
     }
 }
   
+// this is to update the present location of a parcel delivery order
+static async updateParcelPresentLocation (req, res) {
+    const { pid } = req.params;
+    const { newLocation } = req.body;
+    if(!newLocation) {
+        return res.status(400).json({
+            message: 'please put in a valid new location'
+        })
+    }
+    try {
+        const response = await parcelmanger.updateParcelPresentlocation(newLocation, pid);
+        console.log('new location response',response);
+        if (response.rowCount >= 1) {
+            return res.status(200).json({
+                messsage: 'parcel present location was updated successfully'
+            })
+        }
+            return res.status(400).json({
+                message: 'this parcel has already been delivered'
+            })
+    }catch(e) {
+        return e;
+    }
+}
   // end of class
 }
 export default ParcelController;
