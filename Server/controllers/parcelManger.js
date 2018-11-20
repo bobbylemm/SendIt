@@ -26,9 +26,10 @@ class ParcelManager {
     async getAllParcels() {
         try {
             const res = await this.database.getAllParcels();
-            console.log(res)
+            return res;
         }catch(e) {
             console.log(e)
+            return e;
         }
     }
 
