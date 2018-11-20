@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 router.post('/parcels', validateParcels, validateToken, parcelController.createNewParcel);
 // this is the route to get all parcels
 // GET ALL PARCELS
-// router.get('/parcels', parcelController.getAllParcels);
+router.get('/parcels/user', parcelController.getParcelsByUser);
 // this is the route to get a specific parcel
 // GET A SPECIFIC PARCEL
 // router.get('/parcels/:id', parcelController.getSpecificParcel);
