@@ -80,18 +80,23 @@ class usersControllers {
   }
   // this is to get all parcels by a user
 
-  static getAllParcelsByUser(req, res) {
-    const userId = req.params.id;
-    const findUser = helper.findFromDb(allUsers, 'id', userId);
-    if (findUser) {
+  static async getAllParcelsByUser(req, res) {
+    const { uid } = req.params;
+    try {
+      const response = await userrManager.getAllUsersParcelOrder(uid);
+      console.log('response', response);
       return res.status(200).json({
-        message: 'successfully fetched all of this user parcels',
-        userParcels: findUser.parcels
+        message: 'successfully got all user parcels',
+        respon: response.rows,
+        totalNumOfParcels: response.rowCount
+      });
+    } catch (e) {
+      console.log(e);
+      return res.status(400).json({
+        message: 'could not get parcels',
+        e
       });
     }
-    return res.status(400).json({
-      error: 'could not fetch user parcels'
-    });
   }
 }
 export default usersControllers;
