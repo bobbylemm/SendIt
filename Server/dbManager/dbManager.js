@@ -11,10 +11,10 @@ class DbManager {
   }
 
   // this is to register a new user
-  async registerNewUser(userName, email, password) {
+  async registerNewUser(userName, email, password, isAdmin) {
     try {
-      const q = 'INSERT INTO users(userName, email, password) VALUES($1, $2, $3) RETURNING *;';
-      const response = await this.pool.query(q, [userName, email, password]);
+      const q = 'INSERT INTO users(username, email, password, isadmin) VALUES($1, $2, $3, $4) RETURNING *;';
+      const response = await this.pool.query(q, [userName, email, password, isAdmin]);
       console.log(' database response', response);
       return response;
     } catch (error) {
@@ -57,5 +57,16 @@ class DbManager {
         return e;
     }
   }
+
+  // this is the query to enable the user to update thr parcel dropoff location
+  async updateParcelDestination(newdropOff, parcelId, userId) {
+    try {
+        const q = 'UPDATE parcels SET dropofflocation=$1 WHERE parcel_id=$2 AND user_id=$3 RETURNING *;';
+        const response = await this.pool.query(q, [newdropOff, parcelId, userId]);
+        console.log(response);
+    }catch(e) {
+        console.log(e)
+    }
+}
 }
 export default DbManager;

@@ -14,16 +14,18 @@ class UsersControllers {
   // this is to register a user
   static async registerUser (req, res) {
     const {userName, Email, password} = req.body;
+    const isAdmin = false;
     try {
       const response = await usermanger.registerUser (
         userName,
         Email,
-        password
+        password,
+        isAdmin
       );
       console.log ('user controller reponse', response.rows[0]);
       if (response.status !== 400) {
-        const {user_id, email, username} = response.rows[0];
-        const user = {user_id, email, username};
+        const {user_id, email, username, isadmin} = response.rows[0];
+        const user = {user_id, email, username, isadmin};
         return jwt.sign ({user}, process.env.SECRET_KEY, (err, token) => {
           if (err) {
             return console.log (err);
@@ -95,5 +97,24 @@ class UsersControllers {
       error: 'could not fetch user parcels',
     });
   }
+
+  // this is to change the drop off location of a parcel order
+  static async updateParcelDestination (req, res) {
+    const { newdropOff } = req.body;
+    const userId = req.user.user.user_id;
+    const { pid } = req.params;
+    try {
+        const response = await usermanger.changeParcelDestination(newdropOff, pid, userId);
+        console.log(response);
+        return res.status(200).json({
+            message: "parcel destination was updated successfully"
+        })
+    }catch(e) {
+        console.log(e);
+        return res.status(400).json({
+            message: "this parcel destination was not updated successfully",
+        })
+    }
+}
 }
 export default UsersControllers;
