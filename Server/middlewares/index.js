@@ -1,10 +1,12 @@
 import validateRegister from './validateRegister';
 import validateLogin from './validateLogin';
 import validateParcels from './validateParcels';
+import validateToken from './validateToken';
 
 const Middlewares = {
   validateLogin,
   validateRegister,
-  validateParcels
+  validateParcels,
+  validateToken
 };
 export default Middlewares;
