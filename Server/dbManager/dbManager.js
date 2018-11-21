@@ -19,14 +19,17 @@ class DbManager {
 
     createTables() {
     const usersTable = `
+    DROP TABLE IF EXISTS users CASCADE;
     CREATE TABLE IF NOT EXISTS users(
         user_id SERIAL NOT NULL PRIMARY KEY,
-        username varchar(10) UNIQUE NOT NULL,
+        username varchar(25) UNIQUE NOT NULL,
         email varchar(100) UNIQUE NOT NULL,
         password text NOT NULL,
-        createdat TIMESTAMP NOT NULL DEFAULT NOW()
+        isadmin boolean NOT NULL,
+        registeredat TIMESTAMP NOT NULL DEFAULT NOW()
     );`;
         const parcelsTable = `
+        DROP TABLE IF EXISTS parcels CASCADE;
         CREATE TABLE IF NOT EXISTS parcels(
             parcel_id SERIAL NOT NULL PRIMARY KEY,
             packagename varchar(10) NOT NULL,
@@ -58,6 +61,7 @@ class DbManager {
       return error;
     }
   }
+  
 
   //   this is to login an existing user
   async loginExistingUser(email) {

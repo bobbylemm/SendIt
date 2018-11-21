@@ -10,12 +10,12 @@ chai.use(chaiHttp);
     describe("post/register", () => {
         it('should register a new user', (done) => {
             chai.request(app)
-            .post('/api/v1/register')
+            .post('/api/v1/auth/register')
             .set('content-type', 'application/json')
             .send({
-                Email: 'hada@gmail.com',
-                userName: 'hada',
-                password: 'hadasecret'
+                Email: 'loll@gmail.com',
+                userName: 'loll',
+                password: 'lollsecret'
             })
             .end((err, res) => {
                 expect(res.status).to.equal(200);
