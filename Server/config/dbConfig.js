@@ -11,14 +11,13 @@ const databaseConfig = {
     password: process.env.DATABASE_PASSWORD,
     max: 10
   },
-  test: {
+  "test": {
     user: process.env.DATABASE_TEST_USER,
-    host: process.env.DATABASE_TEST_HOST,
-    port: '5432',
     database: process.env.DATABASE_TEST_NAME,
     password: process.env.DATABASE_TEST_PASSWORD,
-    max: 10
-  },
+    host: process.env.DATABASE_TEST_HOST,
+    port: '5432'
+},
   production: {
     user: process.env.DATABASE_URL,
     host: process.env.DATABASE_URL,
