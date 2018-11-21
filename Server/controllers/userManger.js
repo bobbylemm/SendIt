@@ -7,7 +7,7 @@
 class UserManager {
   /**
    *Creates an instance of UserManager.
-   * @param {*} db
+   * @param {Object} db
    * @memberof UserManager
    */
   constructor(db) {
@@ -17,10 +17,10 @@ class UserManager {
   /**
    *
    *
-   * @param {*} username
-   * @param {*} email
-   * @param {*} password
-   * @param {*} isAdmin
+   * @param {String} username
+   * @param {String} email
+   * @param {String} password
+   * @param {Boolean} isAdmin
    * @returns
    * @memberof UserManager
    */
@@ -38,8 +38,8 @@ class UserManager {
   /**
    *
    *
-   * @param {*} email
-   * @param {*} password
+   * @param {String} email
+   * @param {String} password
    * @returns
    * @memberof UserManager
    */
@@ -56,9 +56,9 @@ class UserManager {
   /**
    *
    *
-   * @param {*} newdropOff
-   * @param {*} parcelId
-   * @param {*} userId
+   * @param {String} newdropOff
+   * @param {Number} parcelId
+   * @param {Number} userId
    * @memberof UserManager
    */
   async changeParcelDestination(newdropOff, parcelId, userId) {
@@ -74,8 +74,8 @@ class UserManager {
 /**
  *
  *
- * @param {*} adminEmail
- * @param {*} isadmin
+ * @param {String} adminEmail
+ * @param {Boolean} isadmin
  * @returns
  * @memberof UserManager
  */

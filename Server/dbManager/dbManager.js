@@ -23,10 +23,10 @@ class DbManager {
   /**
    *
    *
-   * @param {*} userName
-   * @param {*} email
-   * @param {*} password
-   * @param {*} isAdmin
+   * @param {String} userName
+   * @param {String} email
+   * @param {String} password
+   * @param {String} isAdmin
    * @returns
    * @memberof DbManager
    */
@@ -45,8 +45,8 @@ class DbManager {
   /**
    *
    *
-   * @param {*} email
-   * @param {*} password
+   * @param {String} email
+   * @param {String} password
    * @returns
    * @memberof DbManager
    */
@@ -65,14 +65,14 @@ class DbManager {
     /**
      *
      *
-     * @param {*} packageName
-     * @param {*} pickupLocation
-     * @param {*} dropOfflocation
-     * @param {*} presentLocation
-     * @param {*} weight
-     * @param {*} price
-     * @param {*} initialStatus
-     * @param {*} userId
+     * @param {String} packageName
+     * @param {String} pickupLocation
+     * @param {String} dropOfflocation
+     * @param {String} presentLocation
+     * @param {Number} weight
+     * @param {Number} price
+     * @param {String} initialStatus
+     * @param {Number} userId
      * @memberof DbManager
      */
     async insertNewParcel(packageName, pickupLocation, dropOfflocation, presentLocation, weight, price, initialStatus, userId) {
@@ -89,7 +89,7 @@ class DbManager {
   /**
    *
    *
-   * @param {*} userId
+   * @param {Number} userId
    * @returns
    * @memberof DbManager
    */
@@ -109,9 +109,9 @@ class DbManager {
   /**
    *
    *
-   * @param {*} newdropOff
-   * @param {*} parcelId
-   * @param {*} userId
+   * @param {String} newdropOff
+   * @param {Number} parcelId
+   * @param {Number} userId
    * @memberof DbManager
    */
   async updateParcelDestination(newdropOff, parcelId, userId) {
@@ -128,8 +128,8 @@ class DbManager {
   /**
    *
    *
-   * @param {*} adminEmail
-   * @param {*} isadmin
+   * @param {String} adminEmail
+   * @param {Boolean} isadmin
    * @returns
    * @memberof DbManager
    */
@@ -168,8 +168,8 @@ class DbManager {
 /**
  *
  *
- * @param {*} newStatus
- * @param {*} pid
+ * @param {Boolean} newStatus
+ * @param {Number} pid
  * @memberof DbManager
  */
 async updateParcelStatus(newStatus, pid) {
@@ -186,8 +186,8 @@ async updateParcelStatus(newStatus, pid) {
 /**
  *
  *
- * @param {*} newLocation
- * @param {*} pid
+ * @param {String} newLocation
+ * @param {Number} pid
  * @returns
  * @memberof DbManager
  */

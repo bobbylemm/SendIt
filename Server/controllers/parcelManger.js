@@ -6,7 +6,7 @@
 class ParcelManager {
     /**
      *Creates an instance of ParcelManager.
-     * @param {*} database
+     * @param {object} database
      * @memberof ParcelManager
      */
     constructor(database) {
@@ -16,14 +16,14 @@ class ParcelManager {
     /**
      *
      *
-     * @param {*} packageName
-     * @param {*} pickupLocation
-     * @param {*} dropOfflocation
-     * @param {*} presentLocation
-     * @param {*} weight
-     * @param {*} price
-     * @param {*} initialStatus
-     * @param {*} userId
+     * @param {String} packageName
+     * @param {String} pickupLocation
+     * @param {String} dropOfflocation
+     * @param {String} presentLocation
+     * @param {Number} weight
+     * @param {Number} price
+     * @param {Boolean} initialStatus
+     * @param {Number} userId
      * @memberof ParcelManager
      */
     async addNewParcel(packageName, pickupLocation, dropOfflocation, presentLocation, weight, price, initialStatus, userId) {
@@ -39,7 +39,7 @@ class ParcelManager {
     /**
      *
      *
-     * @param {*} userId
+     * @param {Number} userId
      * @returns
      * @memberof ParcelManager
      */
@@ -74,8 +74,8 @@ class ParcelManager {
     /**
      *
      *
-     * @param {*} newStatus
-     * @param {*} pid
+     * @param {Boolean} newStatus
+     * @param {Number} pid
      * @returns
      * @memberof ParcelManager
      */
@@ -92,8 +92,8 @@ class ParcelManager {
     /**
      *
      *
-     * @param {*} newLocation
-     * @param {*} pid
+     * @param {String} newLocation
+     * @param {Number} pid
      * @returns
      * @memberof ParcelManager
      */

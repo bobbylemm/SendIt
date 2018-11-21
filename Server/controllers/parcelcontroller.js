@@ -15,8 +15,8 @@ class ParcelController {
    *
    *
    * @static
-   * @param {*} req
-   * @param {*} res
+   * @param {object} req
+   * @param {object} res
    * @returns
    * @memberof ParcelController
    */
@@ -42,8 +42,8 @@ class ParcelController {
    *
    *
    * @static
-   * @param {*} req
-   * @param {*} res
+   * @param {object} req
+   * @param {object} res
    * @memberof ParcelController
    */
   static async getParcelsByUser(req, res) {
@@ -65,8 +65,8 @@ class ParcelController {
  *
  *
  * @static
- * @param {*} req
- * @param {*} res
+ * @param {object} req
+ * @param {object} res
  * @returns
  * @memberof ParcelController
  */
@@ -91,8 +91,8 @@ static async getAllParcels (req, res) {
  *
  *
  * @static
- * @param {*} req
- * @param {*} res
+ * @param {object} req
+ * @param {object} res
  * @returns
  * @memberof ParcelController
  */
@@ -123,8 +123,8 @@ static async updateParcelStatus (req, res) {
  *
  *
  * @static
- * @param {*} req
- * @param {*} res
+ * @param {object} req
+ * @param {object} res
  * @returns
  * @memberof ParcelController
  */

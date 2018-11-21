@@ -16,8 +16,8 @@ class UsersControllers {
    *
    *
    * @static
-   * @param {*} req
-   * @param {*} res
+   * @param {object} req
+   * @param {object} res
    * @returns
    * @memberof UsersControllers
    */
@@ -61,8 +61,8 @@ class UsersControllers {
    *
    *
    * @static
-   * @param {*} req
-   * @param {*} res
+   * @param {object} req
+   * @param {object} res
    * @returns
    * @memberof UsersControllers
    */
@@ -99,8 +99,8 @@ class UsersControllers {
    *
    *
    * @static
-   * @param {*} req
-   * @param {*} res
+   * @param {object} req
+   * @param {object} res
    * @returns
    * @memberof UsersControllers
    */
@@ -127,8 +127,8 @@ class UsersControllers {
  *
  *
  * @static
- * @param {*} req
- * @param {*} res
+ * @param {object} req
+ * @param {object} res
  * @returns
  * @memberof UsersControllers
  */
