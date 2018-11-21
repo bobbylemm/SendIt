@@ -23,10 +23,10 @@ class DbManager {
   }
 
   //   this is to login an existing user
-  async loginExistingUser(email, password) {
+  async loginExistingUser(email) {
     try {
-      const q = 'SELECT * FROM users WHERE email=$1 AND password=$2';
-      const response = await this.pool.query(q, [email, password]);
+      const q = 'SELECT password, user_id, email, username, isadmin FROM users WHERE email=$1';
+      const response = await this.pool.query(q, [email]);
       console.log('login response', response);
       return response;
     } catch (e) {

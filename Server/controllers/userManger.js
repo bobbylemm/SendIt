@@ -1,3 +1,4 @@
+import bcrypt from 'bcrypt';
 
 class UserManager {
   constructor(db) {
@@ -5,8 +6,9 @@ class UserManager {
   }
 
   async registerUser(username, email, password, isAdmin) {
+    const hashed = await bcrypt.hash(password, 10);
     try {
-      const res = await this.db.registerNewUser(username, email, password, isAdmin);
+      const res = await this.db.registerNewUser(username, email, hashed, isAdmin);
       return res;
     } catch (error) {
       console.log('user manager error', error);
@@ -17,8 +19,13 @@ class UserManager {
   // this is to login a user
   async loginUser(email, password) {
     try {
-      const res = await this.db.loginExistingUser(email, password);
-      return res;
+      const res = await this.db.loginExistingUser(email);
+      console.log('manager login', res);
+      const comparePassword = await bcrypt.compare(password, res.rows[0].password);
+      if (comparePassword) {
+        return res;
+      }
+      return undefined;
     } catch (e) {
       return e;
     }
@@ -43,6 +50,7 @@ class UserManager {
       return e;
     }
   }
+
 // -------------------admin only---------------------
 // this is to create a new admin
 async createNewAdmin(adminEmail, isadmin) {
