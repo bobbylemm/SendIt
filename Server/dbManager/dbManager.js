@@ -35,13 +35,15 @@ class DbManager {
   }
 
   // this is the section for the parcels
-    async insertNewParcel(packageName, pickupLocation, dropOfflocation, presentLocation, weight, price, initialStatus, userId) {
+    async insertNewParcel(packageName, pickupLocation, dropOfflocation, presentLocation, weight, price, initialStatus, cancelStatus, userId) {
       try {
-          const q = 'INSERT INTO parcels (packagename, pickuplocation, dropofflocation, presentlocation, weight, price, status, user_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *';
-          const response = await this.pool.query(q, [packageName, pickupLocation, dropOfflocation, presentLocation, weight, price, initialStatus, userId]);
+          const q = 'INSERT INTO parcels (packagename, pickuplocation, dropofflocation, presentlocation, weight, price, status, cancelled, user_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *';
+          const response = await this.pool.query(q, [packageName, pickupLocation, dropOfflocation, presentLocation, weight, price, initialStatus, cancelStatus, userId]);
           console.log(response);
+          return response;
       }catch(e) {
-          console.error(e)
+          console.error(e);
+          return e;
       }
   }
 
@@ -63,12 +65,24 @@ class DbManager {
     try {
         const q = 'UPDATE parcels SET dropofflocation=$1 WHERE parcel_id=$2 AND user_id=$3 RETURNING *;';
         const response = await this.pool.query(q, [newdropOff, parcelId, userId]);
-        console.log(response);
+        return response;
     }catch(e) {
-        console.log(e)
+        return e;
     }
   }
 
+//   this is the query to enable a user to cancel a parcel delivery order
+  async cancelParcelOrder(cancelled, userId, pid) {
+      try {
+          const q = "UPDATE parcels SET cancelled=$1 WHERE parcel_id=$3 AND user_id=$2 AND status NOT LIKE 'delivered%' RETURNING *;";
+          const res = await this.pool.query(q, [cancelled, userId, pid]);
+          return res;
+      }catch (e) {
+        return e;
+      }
+  }
+
+//   -----------------admin only-----------------------
   // this is to create or remove an admin
   async makeNewAdmin(adminEmail, isadmin) {
     try {
@@ -87,10 +101,10 @@ class DbManager {
     try {
         const q = 'SELECT packagename, dropofflocation, pickuplocation, price, presentlocation, weight, price, status FROM parcels;';
         const response = await this.pool.query(q);
-        console.log(response);
+        // console.log(response);
         return response;
     }catch(e) {
-        console.error(e);
+        // console.error(e);
         return e;
     }
 }
@@ -100,16 +114,16 @@ async updateParcelStatus(newStatus, pid) {
   try {
       const q = 'UPDATE parcels SET status=$1 WHERE parcel_id=$2 RETURNING *;';
       const response = await this.pool.query(q, [newStatus, pid]);
-      console.log(response);
+      return response;
   }catch(e) {
-      console.log(e)
+      return e;
   }
 }
 
 // this is the query to update the present location of a parcel delivery order
 async updateParcelslocation(newLocation, pid) {
   try {
-      const q = "UPDATE parcels SET presentlocation=$1 WHERE parcel_id=$2 AND  status NOT LIKE 'delivered%' RETURNING *;";
+      const q = "UPDATE parcels SET presentlocation=$1 WHERE parcel_id=$2 AND status NOT LIKE 'delivered%' RETURNING *;";
       const response = await this.pool.query(q, [newLocation, pid]);
       console.log(response);
       return response;

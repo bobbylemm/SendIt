@@ -28,12 +28,22 @@ class UserManager {
   async changeParcelDestination(newdropOff, parcelId, userId) {
     try {
         const res = await this.db.updateParcelDestination(newdropOff, parcelId, userId);
-        console.log(res);
+        return res;
     }catch(e) {
-        console.log(e)
+        return e;
     }
 }
 
+// this is to enable a user to cancel a parcel delivery order
+  async cancelParcelOrder(cancelled, userId, pid) {
+    try {
+      const res = await this.db.cancelParcelOrder(cancelled, userId, pid);
+      return res;
+    }catch (e) {
+      return e;
+    }
+  }
+// -------------------admin only---------------------
 // this is to create a new admin
 async createNewAdmin(adminEmail, isadmin) {
   try {
