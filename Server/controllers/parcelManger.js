@@ -6,10 +6,9 @@ class ParcelManager {
     async addNewParcel(packageName, pickupLocation, dropOfflocation, presentLocation, weight, price, initialStatus, cancelStatus, userId) {
         try {
             const resp = await this.database.insertNewParcel(packageName, pickupLocation, dropOfflocation, presentLocation, weight, price, initialStatus, cancelStatus, userId);
-            console.log(resp)
             return resp;
         }catch(e) {
-            console.log(e)
+            return e;
         }
     }
 
@@ -30,7 +29,6 @@ class ParcelManager {
             const res = await this.database.getAllParcels();
             return res;
         }catch(e) {
-            console.log(e)
             return e;
         }
     }

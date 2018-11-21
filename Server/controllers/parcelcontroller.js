@@ -37,15 +37,15 @@ class ParcelController {
             message: 'got all this users parcels',
             parcels: response.fields
         })
-        console.log('all this users parcels',response.fields)
+        // console.log('all this users parcels',response.fields)
     }catch(e) {
-        console.log(e)
+        return e;
     }
 }
 
 // this is the controller to get all parcels in the application and it should be accessible by the admin only
 static async getAllParcels (req, res) {
-    console.log('the request object', req.user);
+    // console.log('the request object', req.user);
     try {
         const response = await parcelmanger.getAllParcels();
         return res.status(200).json({
@@ -71,8 +71,8 @@ static async updateParcelStatus (req, res) {
         })
     }
     try {
-        const response = await parcelmanger.updateParcelStatus(newStatus, pid);
-        console.log(response);
+        await parcelmanger.updateParcelStatus(newStatus, pid);
+        // console.log(response);
         return res.status(200).json({
             messsage: 'parcel status was updated successfully'
         })
@@ -94,7 +94,7 @@ static async updateParcelPresentLocation (req, res) {
     }
     try {
         const response = await parcelmanger.updateParcelPresentlocation(newLocation, pid);
-        console.log('new location response',response);
+        // console.log('new location response',response);
         if (response.rowCount >= 1) {
             return res.status(200).json({
                 messsage: 'parcel present location was updated successfully'

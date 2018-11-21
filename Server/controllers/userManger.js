@@ -11,7 +11,7 @@ class UserManager {
       const res = await this.db.registerNewUser(username, email, hashed, isAdmin);
       return res;
     } catch (error) {
-      console.log('user manager error', error);
+      // console.log('user manager error', error);
       return error;
     }
   }
@@ -20,7 +20,7 @@ class UserManager {
   async loginUser(email, password) {
     try {
       const res = await this.db.loginExistingUser(email);
-      console.log('manager login', res);
+      // console.log('manager login', res);
       const comparePassword = await bcrypt.compare(password, res.rows[0].password);
       if (comparePassword) {
         return res;

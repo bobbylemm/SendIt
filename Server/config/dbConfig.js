@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const databaseConfig = {
-  development: {
+  "development": {
     user: process.env.DATABASE_USER,
     host: process.env.DATABASE_HOST,
     port: '5432',
@@ -18,7 +18,7 @@ const databaseConfig = {
     host: process.env.DATABASE_TEST_HOST,
     port: '5432'
 },
-  production: {
+  "production": {
     user: process.env.DATABASE_URL,
     host: process.env.DATABASE_URL,
     port: process.env.DATABASE_URL,

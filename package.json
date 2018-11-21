@@ -9,9 +9,9 @@
   "scripts": {
     "clean": "rm -rf dist",
     "build": "npm run clean && mkdir dist && babel Server -s -d dist",
-    "test": "nyc mocha --require babel-core/register ./Server/test/**.test.js --exit",
+    "test": "NODE_ENV=test nyc mocha --require babel-core/register ./Server/test/route.test.js --timeout 6000 --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "dev": "nodemon bin/dev",
+    "dev": "NODE_ENV=development nodemon bin/dev",
     "start": "node bin/production",
     "heroku-prebuild": "export NPM_CONFIG_PRODUCTION=false; export NODE_ENV=; NPM_CONFIG_PRODUCTION=false NODE_ENV=development npm install --only=dev --dev",
     "heroku-postbuild": "export NPM_CONFIG_PRODUCTION=true; export NODE_ENV=production;",
