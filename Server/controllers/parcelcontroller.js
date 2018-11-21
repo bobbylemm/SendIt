@@ -8,13 +8,18 @@ class ParcelController {
   // this is to create a new parcel
   static async createNewParcel(req, res) {
     const userId = req.user.user.user_id;
-    const initialStatus = 'processing'
+    const initialStatus = 'processing';
+    const cancelStatus = false;
     const { packageName, pickupLocation, dropOfflocation, presentLocation, weight, price } = req.body;
     try {
-        const response = await parcelmanger.addNewParcel(packageName, pickupLocation, dropOfflocation, presentLocation, weight, price, initialStatus, userId);
-        return res.status(200).json({
-            message: 'new parcel created',
-            resp: response
+        const response = await parcelmanger.addNewParcel(packageName, pickupLocation, dropOfflocation, presentLocation, weight, price, initialStatus, cancelStatus, userId);
+        if (response.name !== 'error') {
+            return res.status(200).json({
+                message: 'new parcel created',
+                resp: response
+            })
+        }return res.status(400).json({
+            message: 'could not add a new parcel'
         })
     }catch(e) {
         return res.status(400).json({

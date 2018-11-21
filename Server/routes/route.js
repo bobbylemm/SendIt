@@ -3,7 +3,7 @@ import parcelController from '../controllers/parcelcontroller';
 import usersControllers from '../controllers/usersController';
 import middlewares from '../middlewares/index';
 
-const { validateParcels, validateRegister, validateLogin, validateToken, validateLocationUpdate, validateSuperAdmin, validateAdmin } = middlewares;
+const { validateParcels, validateRegister, validateLogin, validateToken, validateSuperAdmin, validateAdmin } = middlewares;
 
 const router = express.Router();
 
@@ -24,22 +24,19 @@ router.get('/parcels/user', parcelController.getParcelsByUser);
 // this is to change the dropofflocation of a parcel
 // PUT IN A NEW DROPOFFLOCATION
 router.put('/parcels/:pid/newlocation', validateToken, validateAdmin, parcelController.updateParcelPresentLocation);
-// this is to change the status of a parcel order
-// PUT IN A NEW STATUS
-// router.put('/parcels/:id/cancel', parcelController.cancelParcelOrder);
+// this is to enable a user to cancel a parcel delivery order
+router.put('/parcels/:pid/cancel', validateToken, usersControllers.cancelParcelOrder);
 // this is to delete a specific parcel order
 // DELETE A PARCEL ORDER
 // router.delete('/parcels/:id', parcelController.deleteSpecificParcel);
 
-// this is to get all users
-// GET ALL USERS
-router.get('/users', usersControllers.getAllUsers);
 // this is to register a new user
 // POST A NEW USER
-router.post('/register', validateRegister, usersControllers.registerUser);
+router.post('/auth/register', validateRegister, usersControllers.registerUser);
 // this is to login in an existing user//
-router.post('/login', validateLogin, usersControllers.login);
+router.post('/auth/login', validateLogin, usersControllers.login);
 // fetch all parcels in the application
+// ------------------------admin only------------------
 // GET ALL PARCELS IN THE APP (accessible to admin only)
 router.get('/parcels', validateToken, validateAdmin, parcelController.getAllParcels);
 // this is the route for an admin to update the status of a parcel delivery order
