@@ -24,6 +24,16 @@ class ParcelManager {
         }
     }
 
+    // get the email of the user
+    async getUserEmail(id) {
+        try {
+            const res = await this.database.getEmail(id);
+            return res;
+        }catch(e) {
+            return e
+        }
+    }
+
     // this is to get all parcels for a particular delivery order
     async getSpecificUsersParcel(uid) {
         try {

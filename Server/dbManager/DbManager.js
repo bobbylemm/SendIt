@@ -15,9 +15,6 @@ class DbManager {
             configString = config.test;
         }
     this.pool = new Pool(configString);
-    console.log('this pool', this.pool);
-    console.log('production string', config.production);
-    console.log('config string', configString);
     }
 
   // this is to register a new user
@@ -106,6 +103,17 @@ class DbManager {
         const response = await this.pool.query(q);
         return response;
     }catch(e) {
+        return e;
+    }
+}
+
+// get the email of a user
+async getEmail(id) {
+    try {
+        const q = 'SELECT email FROM users WHERE user_id=$1;';
+        const res = await this.pool.query(q, [id]);
+        return res;
+    }catch (e) {
         return e;
     }
 }

@@ -51,7 +51,6 @@ class UsersControllers {
     const {Email, password} = req.body;
     try {
       const response = await usermanger.loginUser (Email, password);
-      // console.log ('LOGIN CONTROLLER response', response);
       if (response.rows[0] !== undefined) {
         const {user_id, email, username, isadmin} = response.rows[0];
         const user = {user_id, email, username, isadmin};

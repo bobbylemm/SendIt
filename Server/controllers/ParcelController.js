@@ -1,5 +1,6 @@
 import Db from '../dbManager/DbManager';
 import ParcelManager from './ParcelManger';
+import sendEmail from '../mailer/emailNotification';
 
 const database = new Db ();
 const parcelmanger = new ParcelManager (database);
@@ -69,7 +70,14 @@ static async updateParcelStatus (req, res) {
         })
     }
     try {
-        await parcelmanger.updateParcelStatus(newStatus, pid);
+        const response = await parcelmanger.updateParcelStatus(newStatus, pid);
+        const message = `hello there, your sendIt parcel delivery status is now ${newStatus}`;
+        if (response.rows[0]) {
+            const { user_id } = response.rows[0];
+            const recipient = await parcelmanger.getUserEmail(user_id);
+            const subject = `parcel status update`;
+            sendEmail(recipient.rows[0].email, subject ,message)
+        }    
         return res.status(200).json({
             messsage: 'parcel status was updated successfully'
         })
@@ -92,9 +100,16 @@ static async updateParcelPresentLocation (req, res) {
     try {
         const response = await parcelmanger.updateParcelPresentlocation(newLocation, pid);
         if (response.rowCount >= 1) {
-            return res.status(200).json({
-                messsage: 'parcel present location was updated successfully'
-            })
+            const message = `hello there, your sendIt parcel delivery location is now ${newLocation}`;
+            if (response.rows[0]) {
+                const { user_id } = response.rows[0];
+                const recipient = await parcelmanger.getUserEmail(user_id);
+                const subject = `parcel location update`;
+                sendEmail(recipient.rows[0].email, subject ,message)
+                return res.status(200).json({
+                    messsage: 'parcel present location was updated successfully'
+                })
+            }
         }
             return res.status(400).json({
                 message: 'this parcel has already been delivered'
