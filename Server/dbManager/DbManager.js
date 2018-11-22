@@ -7,14 +7,17 @@ dotenv.config();
 class DbManager {
     constructor() {
         let configString = '';
-        if(process.env.NODE_ENV.trim() == 'test') {
-        configString = config.development;
-        } else if (process.env.NODE_ENV.trim() == 'production') {
-            configString = config.production;
+        if(process.env.NODE_ENV.trim() == 'production') {
+        configString = config.production2;
+        } else if (process.env.NODE_ENV.trim() == 'development') {
+            configString = config.development;
         }else {
             configString = config.test;
         }
     this.pool = new Pool(configString);
+    console.log('this pool', this.pool);
+    console.log('production string', config.production);
+    console.log('config string', configString);
     }
 
   // this is to register a new user
