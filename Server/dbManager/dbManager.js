@@ -32,13 +32,14 @@ class DbManager {
         DROP TABLE IF EXISTS parcels CASCADE;
         CREATE TABLE IF NOT EXISTS parcels(
             parcel_id SERIAL NOT NULL PRIMARY KEY,
-            packagename varchar(10) NOT NULL,
+            packagename varchar(25) NOT NULL,
             pickuplocation varchar(25) NOT NULL,
             dropofflocation varchar(25) NOT NULL,
             presentlocation text NOT NULL,
             weight SMALLINT NOT NULL,
             price INTEGER NOT NULL,
-            status varchar(10) NOT NULL,
+            status varchar(25) NOT NULL,
+            cancelled boolean NOT NULL,
             user_id INTEGER REFERENCES users(user_id) ON DELETE CASCADE,
             createdat TIMESTAMP NOT NULL DEFAULT NOW(),
             updatedat TIMESTAMP NOT NULL DEFAULT NOW()

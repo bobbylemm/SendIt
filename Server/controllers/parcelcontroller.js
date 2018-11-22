@@ -49,13 +49,13 @@ static async getAllParcels (req, res) {
     try {
         const response = await parcelmanger.getAllParcels();
         return res.status(200).json({
-        message: "there was success, all parcels have been fetched",
+        message: "there was success admin, all parcels have been fetched",
         allParcels: response.rows[0]
     })
-    }catch (e) {
-        return res.status(400).json({
-            message: "error in retrieving",
-            e
+    }catch (error) {
+        return res.status(401).json({
+            message: "error in retrieving parcels, you are not authorized",
+            error
         })
     }
 }
@@ -64,7 +64,7 @@ static async getAllParcels (req, res) {
 static async updateParcelStatus (req, res) {
     const { pid } = req.params;
     const { newStatus } = req.body;
-    const validStatus = ['in-transit', 'delivered', 'cancelled'].includes(newStatus);
+    const validStatus = ['in-transit', 'delivered'].includes(newStatus);
     if (!newStatus || !validStatus) {
         return res.status(400).json({
             message: 'please enter a valid status, as this is not valid'
