@@ -28,20 +28,6 @@ class ParcelController {
    }
 }
 
-  // this is to get all parcels by the user
-  static async getParcelsByUser(req, res) {
-    const { userId } = req.user.user.user_id;
-    try {
-        const response = await parcelmanger.getAllUsersParcelOrder(userId);
-        res.status(200).json({
-            message: 'got all this users parcels',
-            parcels: response.rows
-        })
-    }catch(e) {
-        return e;
-    }
-}
-
 // this is the controller to get all parcels in the application and it should be accessible by the admin only
 static async getAllParcels (req, res) {
     try {

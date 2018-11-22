@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 import routes from './routes/route';
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 6000;
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));

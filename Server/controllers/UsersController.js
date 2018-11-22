@@ -74,6 +74,20 @@ class UsersControllers {
     }
   }
 
+  // this is to get all parcels by the user
+  static async getParcelsByUser(req, res) {
+    const { userId } = req.user.user.user_id;
+    try {
+        const response = await usermanger.getAllUsersParcelOrder(userId);
+        res.status(200).json({
+            message: 'got all this users parcels',
+            parcels: response.rows
+        })
+    }catch(e) {
+        return e;
+    }
+}
+
   // this is to change the drop off location of a parcel order
   static async updateParcelDestination (req, res) {
     const { newdropOff } = req.body;

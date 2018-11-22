@@ -12,15 +12,6 @@ class ParcelManager {
         }
     }
 
-    // this is to get all the users parcels
-    async getAllUsersParcelOrder(userId) {
-        try {
-            const res = await this.database.getAllUserParcels(userId);
-            return res;
-        }catch(e) {
-            return e;
-        }
-    }
 // -------------admin section------------------------
 
     // this is to get all parcels in the app,accessible by admin only

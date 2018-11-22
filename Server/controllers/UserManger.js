@@ -29,6 +29,16 @@ class UserManager {
     }
   }
 
+  // this is to get all the users parcels
+  async getAllUsersParcelOrder(userId) {
+    try {
+        const res = await this.db.getAllUserParcels(userId);
+        return res;
+    }catch(e) {
+        return e;
+    }
+}
+
   // this is to change the destination of a parcel order
   async changeParcelDestination(newdropOff, parcelId, userId) {
     try {
