@@ -7,9 +7,11 @@ dotenv.config();
 class DbManager {
     constructor() {
         let configString = '';
-        if(process.env.NODE_ENV.trim() !== 'test') {
+        if(process.env.NODE_ENV.trim() == 'test') {
         configString = config.development;
-        } else {
+        } else if (process.env.NODE_ENV.trim() == 'production') {
+            configString = config.production;
+        }else {
             configString = config.test;
         }
     this.pool = new Pool(configString);

@@ -28,9 +28,6 @@ app.use((err, req, res, next) => {
   return next();
 });
 
-// this api is hosted here
-// https://fathomless-spire-38172.herokuapp.com/api/v1/users
-
 app.listen(PORT, () => {
   console.log(`Express server running on port ${PORT}`);
 });

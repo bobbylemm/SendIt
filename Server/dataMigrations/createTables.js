@@ -1,15 +1,16 @@
 import pg from 'pg';
 import dotenv from 'dotenv';
 import config from '../config/dbConfig';
-// psql -U dozic -h127.0.0.1 senditdb
 
 dotenv.config();
 let configString = '';
-    if(process.env.NODE_ENV.trim() !== 'test') {
-        configString = config.development;
-    } else {
-            configString = config.test;
-    }
+if(process.env.NODE_ENV.trim() == 'test') {
+    configString = config.development;
+} else if (process.env.NODE_ENV.trim() == 'production') {
+    configString = config.production;
+}else {
+    configString = config.test;
+}
 const pool = new pg.Pool(configString);
 
 const usersTable = `

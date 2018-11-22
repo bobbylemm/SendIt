@@ -22,7 +22,6 @@ class UsersControllers {
         password,
         isAdmin
       );
-      // console.log ('user controller reponse', response.rows[0]);
       if (response.status !== 400) {
         const {user_id, email, username, isadmin} = response.rows[0];
         const user = {user_id, email, username, isadmin};
@@ -43,11 +42,10 @@ class UsersControllers {
       res.status (401).json ({
         message: 'unable to create user',
       });
-      // console.log ('user controller error', error);
     }
   }
-  // this is to login user
 
+  // this is to login user
   static async login (req, res) {
     const {Email, password} = req.body;
     try {
@@ -83,12 +81,10 @@ class UsersControllers {
     const { pid } = req.params;
     try {
         await usermanger.changeParcelDestination(newdropOff, pid, userId);
-        // console.log(response);
         return res.status(200).json({
             message: "parcel destination was updated successfully"
         })
     }catch(e) {
-        // console.log(e);
         return res.status(400).json({
             message: "this parcel destination was not updated successfully",
         })
@@ -102,7 +98,6 @@ class UsersControllers {
     const { pid } = req.params;
     try {
       const response = await usermanger.cancelParcelOrder(cancelled, userId, pid);
-      // console.log(response);
       return res.status(200).json({
         message: 'this parcel delivery has been cancelled successfully',
         parcel: response.rows[0]
@@ -120,7 +115,6 @@ static async createAdmin (req, res) {
   const { adminEmail, isadmin  } = req.body;
   try {
     await usermanger.createNewAdmin(adminEmail, isadmin);
-    // console.log('admin response',response.rows[0]);
       return res.status(200).json({
         message: 'hey superadmin, you have successfully added or removed an admin'
       })

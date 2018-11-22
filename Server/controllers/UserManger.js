@@ -19,7 +19,6 @@ class UserManager {
   async loginUser(email, password) {
     try {
       const res = await this.db.loginExistingUser(email);
-      // console.log('manager login', res);
       const comparePassword = await bcrypt.compare(password, res.rows[0].password);
       if (comparePassword) {
         return res;

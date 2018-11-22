@@ -15,20 +15,15 @@ const router = express.Router();
 router.get('/', (req, res) => {
   res.status(200).send('welcome to SendIt');
 });
-
 // this is the route for creating parcels
-// CREATE PARCELS
 router.post('/parcels', validateParcels, validateToken, createNewParcel);
 // this is the route to get all parcels for a user
-// GET ALL PARCELS
 router.get('/parcels/user',validateToken, getParcelsByUser);
 // this is to enable a user change the dropoff location of a parcel
-router.put('/parcels/:pid/newdropoff',validateLocationUpdate, validateToken, updateParcelDestination);
+router.put('/parcels/:pid/destination',validateLocationUpdate, validateToken, updateParcelDestination);
 // this is to enable a user to cancel a parcel delivery order
 router.put('/parcels/:pid/cancel', validateToken, cancelParcelOrder);
-
 // this is to register a new user
-// POST A NEW USER
 router.post('/auth/register', validateRegister, registerUser);
 // this is to login in an existing user//
 router.post('/auth/login', validateLogin, login);
@@ -41,8 +36,7 @@ router.get('/parcels/:uid', validateToken, validateAdmin, getAllParcelsBySpecifi
 // this is the route for an admin to update the status of a parcel delivery order
 router.put('/parcels/:pid/status', validateToken, validateAdmin, updateParcelStatus);
 // this is to change the dropofflocation of a parcel
-// PUT IN A NEW DROPOFFLOCATION
-router.put('/parcels/:pid/newlocation', validateToken, validateAdmin, updateParcelPresentLocation);
+router.put('/parcels/:pid/presentLocation', validateToken, validateAdmin, updateParcelPresentLocation);
 // this is for the superadmin
 router.put('/superadmin/createadmin', validateSuperAdmin, createAdmin);
 export default router;

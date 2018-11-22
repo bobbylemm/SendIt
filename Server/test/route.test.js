@@ -143,7 +143,7 @@ describe("all the test", () => {
         describe("put/parcels/newdropoff", () => {
             it('should update a parcel dropoff location', (done) => {
                 chai.request(app)
-                .put('/api/v1/parcels/1/newdropoff')
+                .put('/api/v1/parcels/1/destination')
                 .set('x-auth-token', userToken)
                 .set('content-type', 'application/json')
                 .send({
@@ -189,10 +189,10 @@ describe("all the test", () => {
                 })
             })
         })
-        describe("put/parcels/1/newlocation", () => {
+        describe("put/parcels/1/presentLocation", () => {
             it('should update a parcel presentlocation', (done) => {
                 chai.request(app)
-                .put('/api/v1/parcels/1/newlocation')
+                .put('/api/v1/parcels/1/presentLocation')
                 .set('x-auth-token', userToken)
                 .set('content-type', 'application/json')
                 .send({
