@@ -425,6 +425,9 @@ header a:hover{
     .hide-on-small {
         display: none;
     }
+    .ml-1 {
+        margin-left: 0 !important;
+    }
     .section h1 {
         padding-top: 3rem;
         font-size: 1.5rem;
