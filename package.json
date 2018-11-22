@@ -13,8 +13,6 @@
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "dev": "NODE_ENV=development nodemon bin/dev",
     "start": "npm run db_migrations && node bin/production",
-    "heroku-prebuild": "export NPM_CONFIG_PRODUCTION=false; export NODE_ENV=; NPM_CONFIG_PRODUCTION=false NODE_ENV=development npm install --only=dev --dev",
-    "heroku-postbuild": "export NPM_CONFIG_PRODUCTION=true; export NODE_ENV=production;",
     "postinstall": "npm run build",
     "db_migrations": " babel-node Server/dataMigrations/createTables.js --exit"
   },
