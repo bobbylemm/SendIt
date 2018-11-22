@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
-import UserManager from './userManger';
-import Db from '../dbManager/dbManager';
+import UserManager from './UserManger';
+import Db from '../dbManager/DbManager';
 
 const database = new Db ();
 const usermanger = new UserManager (database);
@@ -36,7 +36,7 @@ class UsersControllers {
           });
         });
       }
-      return res.status (401).json ({
+      return res.status (400).json ({
         message: 'unable to register user',
       });
     } catch (error) {

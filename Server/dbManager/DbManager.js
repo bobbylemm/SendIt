@@ -15,41 +15,6 @@ class DbManager {
     this.pool = new Pool(configString);
     }
 
-    // createTables() {
-    // const usersTable = `
-    // DROP TABLE IF EXISTS users CASCADE;
-    // CREATE TABLE IF NOT EXISTS users(
-    //     user_id SERIAL NOT NULL PRIMARY KEY,
-    //     username varchar(25) UNIQUE NOT NULL,
-    //     email varchar(100) UNIQUE NOT NULL,
-    //     password text NOT NULL,
-    //     isadmin boolean NOT NULL,
-    //     registeredat TIMESTAMP NOT NULL DEFAULT NOW()
-    // );`;
-    //     const parcelsTable = `
-    //     DROP TABLE IF EXISTS parcels CASCADE;
-    //     CREATE TABLE IF NOT EXISTS parcels(
-    //         parcel_id SERIAL NOT NULL PRIMARY KEY,
-    //         packagename varchar(25) NOT NULL,
-    //         pickuplocation varchar(25) NOT NULL,
-    //         dropofflocation varchar(25) NOT NULL,
-    //         presentlocation text NOT NULL,
-    //         weight SMALLINT NOT NULL,
-    //         price INTEGER NOT NULL,
-    //         status varchar(25) NOT NULL,
-    //         cancelled boolean NOT NULL,
-    //         user_id INTEGER REFERENCES users(user_id) ON DELETE CASCADE,
-    //         createdat TIMESTAMP NOT NULL DEFAULT NOW(),
-    //         updatedat TIMESTAMP NOT NULL DEFAULT NOW()
-    //     );`;
-    //     this.pool.query(usersTable)
-    //         .then(res => console.log(res))
-    //             this.pool.query(parcelsTable)
-    //             .then(res => console.log(res))
-    //         .catch(err => console.log(err))
-    //     .catch(err => console.log(err));
-    // }
-
   // this is to register a new user
   async registerNewUser(userName, email, password, isAdmin) {
     try {

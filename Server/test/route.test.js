@@ -9,6 +9,16 @@ const { expect } = chai;
 let userToken = '';
 
 chai.use(chaiHttp);
+describe("handle all unregistered routes", () => {
+    it("should give an error when the route entered is an unregistered one", (done) => {
+        chai.request(app)
+        .get('/*')
+        .end((err, res) => {
+            expect(res.body.error.message).to.equal('sorry this page was not found');
+            done();
+        })
+    })
+})
 describe("all the test", () => {
     describe("all about the user", () => {
         describe("post/register", () => {
@@ -24,6 +34,23 @@ describe("all the test", () => {
                 .end((err, res) => {
                     expect(res.status).to.equal(200);
                     expect(res.body.message).to.equal('successfully registered user');
+                    done();
+                })
+            })
+        })
+        describe("post/register", () => {
+            it('should not register a new user when the user already exists', (done) => {
+                chai.request(app)
+                .post('/api/v1/auth/register')
+                .set('content-type', 'application/json')
+                .send({
+                    Email: 'loll@gmail.com',
+                    userName: 'loll',
+                    password: 'lollsecret'
+                })
+                .end((err, res) => {
+                    expect(res.status).to.equal(401);
+                    expect(res.body.message).to.equal('unable to create user');
                     done();
                 })
             })

@@ -11,7 +11,6 @@ class UserManager {
       const res = await this.db.registerNewUser(username, email, hashed, isAdmin);
       return res;
     } catch (error) {
-      console.log('user manager error', error);
       return error;
     }
   }

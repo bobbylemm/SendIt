@@ -1,5 +1,5 @@
-import Db from '../dbManager/dbManager';
-import ParcelManager from './parcelManger';
+import Db from '../dbManager/DbManager';
+import ParcelManager from './ParcelManger';
 
 const database = new Db ();
 const parcelmanger = new ParcelManager (database);
