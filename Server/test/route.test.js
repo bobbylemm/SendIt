@@ -64,7 +64,7 @@ describe("all the test", () => {
                 .end((err, res) => {
                     expect(res.status).to.equal(200);
                     expect(res.body.message).to.equal('new parcel created');
-                    expect(res.body.resp).to.be.an('object');
+                    expect(res.body.resp).to.be.an('Array');
                     done();
                 })
             })
@@ -92,6 +92,71 @@ describe("all the test", () => {
                     expect(res.status).to.equal(400);
                     expect(res.body.error.message).to.equal('you are not authorized to perform this action, admin only');
                     expect(res.body).to.be.have.property('error');
+                    done();
+                })
+            })
+        })
+        describe("put/parcels/newdropoff", () => {
+            it('should update a parcel dropoff location', (done) => {
+                chai.request(app)
+                .put('/api/v1/parcels/1/newdropoff')
+                .set('x-auth-token', userToken)
+                .set('content-type', 'application/json')
+                .send({
+                    newdropOff: 'asaba'
+                })
+                .end((err, res) => {
+                    expect(res.status).to.equal(200);
+                    expect(res.body.message).to.equal('parcel destination was updated successfully');
+                    done();
+                })
+            })
+        })
+        describe("put/parcels/:pid/cancel", () => {
+            it('should cancel a parcel order of a user', (done) => {
+                chai.request(app)
+                .put('/api/v1/parcels/1/cancel')
+                .set('x-auth-token', userToken)
+                .set('content-type', 'application/json')
+                .send({
+                    cancelled: true
+                })
+                .end((err, res) => {
+                    expect(res.status).to.equal(200);
+                    expect(res.body.message).to.equal('this parcel delivery has been cancelled successfully');
+                    done();
+                })
+            })
+        })
+        describe("put/parcels/status", () => {
+            it('should update a parcel status, admin only', (done) => {
+                chai.request(app)
+                .put('/api/v1/parcels/1/status')
+                .set('x-auth-token', userToken)
+                .set('content-type', 'application/json')
+                .send({
+                    newStatus: 'delivered'
+                })
+                .end((err, res) => {
+                    expect(res.status).to.equal(400);
+                    expect(res.body.error.message).to.equal('you are not authorized to perform this action, admin only');
+                    expect(res.body).to.be.have.property('error');
+                    done();
+                })
+            })
+        })
+        describe("put/parcels/1/newlocation", () => {
+            it('should update a parcel presentlocation', (done) => {
+                chai.request(app)
+                .put('/api/v1/parcels/1/newlocation')
+                .set('x-auth-token', userToken)
+                .set('content-type', 'application/json')
+                .send({
+                    newLocation: 'lokoja'
+                })
+                .end((err, res) => {
+                    expect(res.status).to.equal(400);
+                    expect(res.body.error.message).to.equal('you are not authorized to perform this action, admin only');
                     done();
                 })
             })

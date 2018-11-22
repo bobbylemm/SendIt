@@ -16,7 +16,7 @@ class ParcelController {
         if (response.name !== 'error') {
             return res.status(200).json({
                 message: 'new parcel created',
-                resp: response
+                resp: response.rows
             })
         }return res.status(400).json({
             message: 'could not add a new parcel'
@@ -30,12 +30,12 @@ class ParcelController {
 
   // this is to get all parcels by the user
   static async getParcelsByUser(req, res) {
-    const { userId } = req.body;
+    const { userId } = req.user.user.user_id;
     try {
         const response = await parcelmanger.getAllUsersParcelOrder(userId);
         res.status(200).json({
             message: 'got all this users parcels',
-            parcels: response.fields
+            parcels: response.rows
         })
         // console.log('all this users parcels',response.fields)
     }catch(e) {
@@ -57,6 +57,21 @@ static async getAllParcels (req, res) {
             message: "error in retrieving parcels, you are not authorized",
             error
         })
+    }
+}
+
+// this should enable an admin to get all parcels for a particular user
+static async getAllParcelsBySpecificUser(req, res) {
+    const { uid } = req.params;
+    try {
+        const response = await parcelmanger.getSpecificUsersParcel(uid);
+        res.status(200).json({
+            message: 'got all this users parcels',
+            parcels: response.rows[0]
+        })
+        // console.log('all this users parcels',response.fields)
+    }catch(e) {
+        return e;
     }
 }
 

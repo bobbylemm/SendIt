@@ -33,6 +33,16 @@ class ParcelManager {
         }
     }
 
+    // this is to get all parcels for a particular delivery order
+    async getSpecificUsersParcel(uid) {
+        try {
+            const res = await this.database.getSpecificUserParcels(uid);
+            return res;
+        }catch(e) {
+            return e;
+        }
+    }
+
     // this is to update the status of a parcel status
     async updateParcelStatus(newStatus, pid) {
         try {
