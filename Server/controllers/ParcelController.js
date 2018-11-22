@@ -19,7 +19,7 @@ class ParcelController {
                 resp: response.rows
             })
         }return res.status(400).json({
-            message: 'could not add a new parcel'
+            error: 'could not add a new parcel'
         })
     }catch(e) {
         return res.status(400).json({

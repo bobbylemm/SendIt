@@ -32,11 +32,12 @@ class UsersControllers {
           return res.header ('x-auth-token', token).status (200).json ({
             message: 'successfully registered user',
             token,
+            user
           });
         });
       }
       return res.status (400).json ({
-        message: 'unable to register user',
+        error: 'unable to register user',
       });
     } catch (error) {
       res.status (401).json ({
@@ -61,11 +62,12 @@ class UsersControllers {
           return res.header ('x-auth-token', token).status (200).json ({
             message: 'successfully logged in',
             token,
+            user: response.rows[0]
           });
         });
       }
       return res.status (401).json ({
-        message: 'there was an error logging in',
+        error: 'there was an error logging in',
       });
     } catch (e) {
       res.status (401).json ({
