@@ -2,6 +2,7 @@ import helpers from '../helpers/handleError';
 
 const validateParcels = (req, res, next) => {
     const { packageName, pickupLocation, dropOfflocation, presentLocation, weight, price } = req.body;
+    const whitespace = /\s/;
     if (!packageName || packageName == Number) {
         return next(helpers.handleError('please put in a valid parcel name'))
     }
@@ -14,10 +15,10 @@ const validateParcels = (req, res, next) => {
     if (!presentLocation) {
         return next(helpers.handleError('please put in a present location'))
     }
-    if (!weight) {
+    if (!weight || whitespace.test(weight)) {
         return next(helpers.handleError('please put in a weight'))
     }
-    if (!price) {
+    if (!price || whitespace.test(price)) {
         return next(helpers.handleError('please put in a pickup location'))
     }
     return next();
