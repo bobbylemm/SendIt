@@ -8,7 +8,7 @@ class DbManager {
     constructor() {
         let configString = '';
         if(process.env.NODE_ENV.trim() == 'production') {
-        configString = config.production2;
+        configString = config.test;
         } else if (process.env.NODE_ENV.trim() == 'development') {
             configString = config.development;
         }else {
