@@ -22,6 +22,23 @@ describe("handle all unregistered routes", () => {
 describe("all the test", () => {
     describe("all about the user", () => {
         describe("post/register", () => {
+            it('should not register if all the required fields are not filled', (done) => {
+                chai.request(app)
+                .post('/api/v1/auth/register')
+                .set('content-type', 'application/json')
+                .send({
+                    Email: '',
+                    userName: 'loll',
+                    password: 'lollsecret'
+                })
+                .end((err, res) => {
+                    expect(res.status).to.equal(400);
+                    expect(res.body.error.message).to.equal('this email is not valid');
+                    done();
+                })
+            })
+        })
+        describe("post/register", () => {
             it('should register a new user', (done) => {
                 chai.request(app)
                 .post('/api/v1/auth/register')
