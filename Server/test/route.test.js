@@ -116,7 +116,7 @@ describe("all the test", () => {
         describe("get/parcels/user", () => {
             it('should get all the user parcels', (done) => {
                 chai.request(app)
-                .get('/api/v1/parcels/user')
+                .get('/api/v1/parcels')
                 .set('x-auth-token', userToken)
                 .set('content-type', 'application/json')
                 .end((err, res) => {
@@ -130,7 +130,7 @@ describe("all the test", () => {
         describe("get/parcels", () => {
             it('should get all parcels in the application, admin only', (done) => {
                 chai.request(app)
-                .get('/api/v1/parcels')
+                .get('/api/v1/parcels/users')
                 .set('x-auth-token', userToken)
                 .end((err, res) => {
                     expect(res.status).to.equal(400);
@@ -143,7 +143,7 @@ describe("all the test", () => {
         describe("put/parcels/newdropoff", () => {
             it('should update a parcel dropoff location', (done) => {
                 chai.request(app)
-                .put('/api/v1/parcels/1/destination')
+                .patch('/api/v1/parcels/1/destination')
                 .set('x-auth-token', userToken)
                 .set('content-type', 'application/json')
                 .send({
@@ -159,7 +159,7 @@ describe("all the test", () => {
         describe("put/parcels/:pid/cancel", () => {
             it('should cancel a parcel order of a user', (done) => {
                 chai.request(app)
-                .put('/api/v1/parcels/1/cancel')
+                .patch('/api/v1/parcels/1/cancel')
                 .set('x-auth-token', userToken)
                 .set('content-type', 'application/json')
                 .send({
@@ -175,7 +175,7 @@ describe("all the test", () => {
         describe("put/parcels/status", () => {
             it('should update a parcel status, admin only', (done) => {
                 chai.request(app)
-                .put('/api/v1/parcels/1/status')
+                .patch('/api/v1/parcels/1/status')
                 .set('x-auth-token', userToken)
                 .set('content-type', 'application/json')
                 .send({
@@ -190,9 +190,9 @@ describe("all the test", () => {
             })
         })
         describe("put/parcels/1/presentLocation", () => {
-            it('should update a parcel presentlocation', (done) => {
+            it('should update a parcel current location', (done) => {
                 chai.request(app)
-                .put('/api/v1/parcels/1/presentLocation')
+                .patch('/api/v1/parcels/1/currentlocation')
                 .set('x-auth-token', userToken)
                 .set('content-type', 'application/json')
                 .send({
@@ -208,7 +208,7 @@ describe("all the test", () => {
         describe("put/parcels/status", () => {
             it('should update a parcel status, admin only', (done) => {
                 chai.request(app)
-                .put('/api/v1/parcels/1/status')
+                .patch('/api/v1/parcels/1/status')
                 .set('x-auth-token', userToken)
                 .set('content-type', 'application/json')
                 .send({

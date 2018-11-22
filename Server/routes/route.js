@@ -18,11 +18,11 @@ router.get('/', (req, res) => {
 // this is the route for creating parcels
 router.post('/parcels', validateParcels, validateToken, createNewParcel);
 // this is the route to get all parcels for a user
-router.get('/parcels/user',validateToken, getParcelsByUser);
+router.get('/parcels',validateToken, getParcelsByUser);
 // this is to enable a user change the dropoff location of a parcel
-router.put('/parcels/:pid/destination',validateLocationUpdate, validateToken, updateParcelDestination);
+router.patch('/parcels/:pid/destination',validateLocationUpdate, validateToken, updateParcelDestination);
 // this is to enable a user to cancel a parcel delivery order
-router.put('/parcels/:pid/cancel', validateToken, cancelParcelOrder);
+router.patch('/parcels/:pid/cancel', validateToken, cancelParcelOrder);
 // this is to register a new user
 router.post('/auth/register', validateRegister, registerUser);
 // this is to login in an existing user//
@@ -30,13 +30,13 @@ router.post('/auth/login', validateLogin, login);
 // fetch all parcels in the application
 // ------------------------admin only------------------
 // GET ALL PARCELS IN THE APP (accessible to admin only)
-router.get('/parcels', validateToken, validateAdmin, getAllParcels);
+router.get('/parcels/users', validateToken, validateAdmin, getAllParcels);
 // this is to get all parcels for a specific user
 router.get('/parcels/:uid', validateToken, validateAdmin, getAllParcelsBySpecificUser)
 // this is the route for an admin to update the status of a parcel delivery order
-router.put('/parcels/:pid/status', validateToken, validateAdmin, updateParcelStatus);
+router.patch('/parcels/:pid/status', validateToken, validateAdmin, updateParcelStatus);
 // this is to change the dropofflocation of a parcel
-router.put('/parcels/:pid/presentLocation', validateToken, validateAdmin, updateParcelPresentLocation);
+router.patch('/parcels/:pid/currentlocation', validateToken, validateAdmin, updateParcelPresentLocation);
 // this is for the superadmin
-router.put('/superadmin/createadmin', validateSuperAdmin, createAdmin);
+router.patch('/superadmin/createadmin', validateSuperAdmin, createAdmin);
 export default router;
