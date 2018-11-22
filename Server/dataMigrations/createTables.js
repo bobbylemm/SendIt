@@ -4,12 +4,12 @@ import config from '../config/dbConfig';
 
 dotenv.config();
 let configString = '';
-if(process.env.NODE_ENV.trim() === 'test') {
-    configString = config.test;
+if(process.env.NODE_ENV.trim() === 'production') {
+    configString = config.production;
 } else if (process.env.NODE_ENV.trim() === 'development') {
     configString = config.development;
 }else {
-    configString = config.production;
+    configString = config.test;
 }
 const pool = new pg.Pool(configString);
 
