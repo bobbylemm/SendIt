@@ -9,14 +9,12 @@
   "scripts": {
     "clean": "rm -rf dist",
     "build": "npm run clean && mkdir dist && babel Server -s -d dist",
-    "test": "nyc mocha --require babel-core/register ./Server/test/**.test.js --exit",
+    "test": "NODE_ENV=test npm run db_migrations && NODE_ENV=test nyc mocha --require babel-core/register ./Server/test/route.test.js --timeout 6000 --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "dev": "nodemon bin/dev",
-    "start": "node bin/production",
-    "heroku-prebuild": "export NPM_CONFIG_PRODUCTION=false; export NODE_ENV=; NPM_CONFIG_PRODUCTION=false NODE_ENV=development npm install --only=dev --dev",
-    "heroku-postbuild": "export NPM_CONFIG_PRODUCTION=true; export NODE_ENV=production;",
+    "dev": "NODE_ENV=development nodemon bin/dev",
+    "start": "npm run build && npm run db_migrations && node bin/production",
     "postinstall": "npm run build",
-    "db_migrations": " babel-node Server/dataMigrations/createTables.js --exit"
+    "db_migrations": "node dist/dataMigrations/createTables.js --exit"
   },
   "repository": {
     "type": "git",
@@ -35,6 +33,8 @@
     "dotenv": "^6.1.0",
     "express": "^4.16.4",
     "jsonwebtoken": "^8.4.0",
+    "nodemailer": "^4.7.0",
+    "nodemailer-smtp-transport": "^2.7.4",
     "pg": "^7.6.1"
   },
   "devDependencies": {
@@ -56,6 +56,7 @@
     "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-prettier": "^3.0.0",
+    "har-validator": "^5.1.3",
     "istanbul": "^1.1.0-alpha.1",
     "mocha": "^5.2.0",
     "mocha-lcov-reporter": "^1.3.0",

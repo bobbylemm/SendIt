@@ -6,22 +6,12 @@ class ParcelManager {
     async addNewParcel(packageName, pickupLocation, dropOfflocation, presentLocation, weight, price, initialStatus, cancelStatus, userId) {
         try {
             const resp = await this.database.insertNewParcel(packageName, pickupLocation, dropOfflocation, presentLocation, weight, price, initialStatus, cancelStatus, userId);
-            console.log(resp)
             return resp;
-        }catch(e) {
-            console.log(e)
-        }
-    }
-
-    // this is to get all the users parcels
-    async getAllUsersParcelOrder(userId) {
-        try {
-            const res = await this.database.getAllUserParcels(userId);
-            return res;
         }catch(e) {
             return e;
         }
     }
+
 // -------------admin section------------------------
 
     // this is to get all parcels in the app,accessible by admin only
@@ -30,7 +20,36 @@ class ParcelManager {
             const res = await this.database.getAllParcels();
             return res;
         }catch(e) {
-            console.log(e)
+            return e;
+        }
+    }
+
+    // this is to get a specific parcel
+    async getSpecificParcel(pid) {
+        try {
+            const res = await this.database.getSpecificParcel(pid);
+            return res;
+        }catch(e) {
+            return e;
+        }
+    }
+
+    // get the email of the user
+    async getUserEmail(id) {
+        try {
+            const res = await this.database.getEmail(id);
+            return res;
+        }catch(e) {
+            return e
+        }
+    }
+
+    // this is to get all parcels for a particular delivery order
+    async getSpecificUsersParcel(uid) {
+        try {
+            const res = await this.database.getSpecificUserParcels(uid);
+            return res;
+        }catch(e) {
             return e;
         }
     }
