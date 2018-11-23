@@ -44,9 +44,9 @@ describe("all the test", () => {
                 .post('/api/v1/auth/register')
                 .set('content-type', 'application/json')
                 .send({
-                    Email: 'loll@gmail.com',
-                    userName: 'loll',
-                    password: 'lollsecret'
+                    Email: 'soll@gmail.com',
+                    userName: 'soll',
+                    password: 'sollsecret'
                 })
                 .end((err, res) => {
                     expect(res.status).to.equal(200);
@@ -61,9 +61,9 @@ describe("all the test", () => {
                 .post('/api/v1/auth/register')
                 .set('content-type', 'application/json')
                 .send({
-                    Email: 'loll@gmail.com',
-                    userName: 'loll',
-                    password: 'lollsecret'
+                    Email: 'soll@gmail.com',
+                    userName: 'soll',
+                    password: 'sollsecret'
                 })
                 .end((err, res) => {
                     expect(res.status).to.equal(401);
@@ -78,8 +78,8 @@ describe("all the test", () => {
                 .post('/api/v1/auth/login')
                 .set('content-type', 'application/json')
                 .send({
-                    Email: 'loll@gmail.com',
-                    password: 'lollsecret'
+                    Email: 'soll@gmail.com',
+                    password: 'sollsecret'
                 })
                 .end((err, res) => {
                     expect(res.status).to.equal(200);
