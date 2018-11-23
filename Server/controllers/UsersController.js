@@ -78,12 +78,16 @@ class UsersControllers {
 
   // this is to get all parcels by the user
   static async getParcelsByUser(req, res) {
-    const { userId } = req.user.user.user_id;
+    const userId = req.user.user.user_id;
     try {
         const response = await usermanger.getAllUsersParcelOrder(userId);
-        res.status(200).json({
-            message: 'got all this users parcels',
-            parcels: response.rows
+        if (response.rowCount >= 1) {
+          return res.status(200).json({
+              message: 'got all your parcels user',
+              parcels: response.rows[0]
+          })
+        }return res.status(400).json({
+          message: 'sorry could not find any of ypur parcels'
         })
     }catch(e) {
         return e;
@@ -96,9 +100,15 @@ class UsersControllers {
     const userId = req.user.user.user_id;
     const { pid } = req.params;
     try {
-        await usermanger.changeParcelDestination(newdropOff, pid, userId);
-        return res.status(200).json({
-            message: "parcel destination was updated successfully"
+        const response = await usermanger.changeParcelDestination(newdropOff, pid, userId);
+        console.log(response)
+        if (response.rowCount === 1) {
+          return res.status(200).json({
+              message: "parcel destination was updated successfully Admin",
+              parcel: response.rows[0]
+          })
+        }return res.status(400).json({
+          message: 'could not find this parcel Admin'
         })
     }catch(e) {
         return res.status(400).json({
@@ -114,10 +124,15 @@ class UsersControllers {
     const { pid } = req.params;
     try {
       const response = await usermanger.cancelParcelOrder(cancelled, userId, pid);
-      return res.status(200).json({
-        message: 'this parcel delivery has been cancelled successfully',
-        parcel: response.rows[0]
-      });
+      console.log(response);
+      if(response.rowCount === 1) {
+        return res.status(200).json({
+          message: 'this parcel delivery has been cancelled successfully',
+          parcel: response.rows[0]
+        });
+      }return res.status(400).json({
+        message: 'sorry you cannot cancel a parcel order that is not yours'
+      })
     }catch (e) {
       res.status(400).json({
         message: 'sorry could not cancel parcel delivery order'
@@ -130,10 +145,14 @@ class UsersControllers {
 static async createAdmin (req, res) {
   const { adminEmail, isadmin  } = req.body;
   try {
-    await usermanger.createNewAdmin(adminEmail, isadmin);
+    const response = await usermanger.createNewAdmin(adminEmail, isadmin);
+    if (response.rowCount === 1) {
       return res.status(200).json({
         message: 'hey superadmin, you have successfully added or removed an admin'
       })
+    }return res.status(400).json({
+      message: 'could not find this email SuperAdmin'
+    })
   }catch (e) {
     return res.status(401).json({
       message: 'sorry could not add or remove admin, as the user was not found'

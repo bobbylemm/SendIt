@@ -14,13 +14,14 @@ class ParcelController {
     const { packageName, pickupLocation, dropOfflocation, presentLocation, weight, price } = req.body;
     try {
         const response = await parcelmanger.addNewParcel(packageName, pickupLocation, dropOfflocation, presentLocation, weight, price, initialStatus, cancelStatus, userId);
+        console.log(response)
         if (response.name !== 'error') {
             return res.status(200).json({
                 message: 'new parcel created',
                 resp: response.rows
             })
         }return res.status(400).json({
-            error: 'could not add a new parcel'
+            error: 'could not add a new parcel, please recheck details'
         })
     }catch(e) {
         return res.status(400).json({
