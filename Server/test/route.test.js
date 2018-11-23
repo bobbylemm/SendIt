@@ -44,9 +44,9 @@ describe("all the test", () => {
                 .post('/api/v1/auth/register')
                 .set('content-type', 'application/json')
                 .send({
-                    Email: 'loll@gmail.com',
-                    userName: 'loll',
-                    password: 'lollsecret'
+                    Email: 'poll@gmail.com',
+                    userName: 'poll',
+                    password: 'pollsecret'
                 })
                 .end((err, res) => {
                     expect(res.status).to.equal(200);
@@ -61,9 +61,9 @@ describe("all the test", () => {
                 .post('/api/v1/auth/register')
                 .set('content-type', 'application/json')
                 .send({
-                    Email: 'loll@gmail.com',
-                    userName: 'loll',
-                    password: 'lollsecret'
+                    Email: 'poll@gmail.com',
+                    userName: 'poll',
+                    password: 'pollsecret'
                 })
                 .end((err, res) => {
                     expect(res.status).to.equal(401);
@@ -78,8 +78,8 @@ describe("all the test", () => {
                 .post('/api/v1/auth/login')
                 .set('content-type', 'application/json')
                 .send({
-                    Email: 'loll@gmail.com',
-                    password: 'lollsecret'
+                    Email: 'poll@gmail.com',
+                    password: 'pollsecret'
                 })
                 .end((err, res) => {
                     expect(res.status).to.equal(200);
@@ -121,7 +121,7 @@ describe("all the test", () => {
                 .set('content-type', 'application/json')
                 .end((err, res) => {
                     expect(res.status).to.equal(200);
-                    expect(res.body.message).to.equal('got all this users parcels');
+                    expect(res.body.message).to.equal('got all your parcels user');
                     expect(res.body).to.be.have.property('parcels');
                     done();
                 })
@@ -151,7 +151,7 @@ describe("all the test", () => {
                 })
                 .end((err, res) => {
                     expect(res.status).to.equal(200);
-                    expect(res.body.message).to.equal('parcel destination was updated successfully');
+                    expect(res.body.message).to.equal('parcel destination was updated successfully Admin');
                     done();
                 })
             })
