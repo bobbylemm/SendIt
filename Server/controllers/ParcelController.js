@@ -50,9 +50,31 @@ static async getAllParcelsBySpecificUser(req, res) {
     const { uid } = req.params;
     try {
         const response = await parcelmanger.getSpecificUsersParcel(uid);
-        res.status(200).json({
-            message: 'got all this users parcels',
-            parcels: response.rows[0]
+        if(response.rows[0] >= 1) {
+            return res.status(200).json({
+                message: 'got all this users parcels',
+                parcels: response.rows[0]
+            })
+        }return res.status(400).json({
+            error: 'sorry admin there is no such user'
+        })
+    }catch(e) {
+        return e;
+    }
+}
+
+// this is to get a specific parcel
+static async getASpecificParcel(req, res) {
+    const { pid } = req.params;
+    try {
+        const response = await parcelmanger.getSpecificParcel(pid);
+        if(response.rows[0] >= 1) {
+            return res.status(200).json({
+                message: 'success, got this specific parcel',
+                parcels: response.rows[0]
+            })
+        }return res.status(400).json({
+            error: 'sorry admin there is no such parcel'
         })
     }catch(e) {
         return e;

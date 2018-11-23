@@ -23,6 +23,7 @@ class UsersControllers {
         isAdmin
       );
       if (response.status !== 400) {
+        console.log(response);
         const {user_id, email, username, isadmin} = response.rows[0];
         const user = {user_id, email, username, isadmin};
         return jwt.sign ({user}, process.env.SECRET_KEY, (err, token) => {

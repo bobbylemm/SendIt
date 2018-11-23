@@ -107,6 +107,17 @@ class DbManager {
     }
 }
 
+// get specific parcel
+async getSpecificParcel(pid) {
+    try {
+        const q = 'SELECT packagename, dropofflocation, pickuplocation, price, presentlocation, weight, price, status FROM parcels WHERE parcel_id=$1;';
+        const response = await this.pool.query(q, [pid]);
+        return response;
+    }catch (e) {
+        return e;
+    }
+}
+
 // get the email of a user
 async getEmail(id) {
     try {

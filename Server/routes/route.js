@@ -7,7 +7,7 @@ const { validateParcels, validateRegister, validateLogin, validateToken, validat
 
 const { updateParcelDestination, cancelParcelOrder, registerUser, login, createAdmin, getParcelsByUser  } = usersControllers;
 
-const { createNewParcel, getAllParcels, getAllParcelsBySpecificUser, updateParcelStatus, updateParcelPresentLocation } = parcelController;
+const { createNewParcel, getAllParcels, getAllParcelsBySpecificUser, updateParcelStatus, updateParcelPresentLocation, getASpecificParcel } = parcelController;
 
 const router = express.Router();
 
@@ -32,7 +32,9 @@ router.post('/auth/login', validateLogin, login);
 // GET ALL PARCELS IN THE APP (accessible to admin only)
 router.get('/parcels', validateToken, validateAdmin, getAllParcels);
 // this is to get all parcels for a specific user
-router.get('/parcels/:uid', validateToken, validateAdmin, getAllParcelsBySpecificUser)
+router.get('/parcels/:uid/users', validateToken, validateAdmin, getAllParcelsBySpecificUser);
+// this is to get a specific parcel
+router.get('/parcels/:pid', validateToken, validateAdmin, getASpecificParcel);
 // this is the route for an admin to update the status of a parcel delivery order
 router.put('/parcels/:pid/status', validateToken, validateAdmin, updateParcelStatus);
 // this is to change the dropofflocation of a parcel

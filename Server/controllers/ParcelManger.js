@@ -24,6 +24,16 @@ class ParcelManager {
         }
     }
 
+    // this is to get a specific parcel
+    async getSpecificParcel(pid) {
+        try {
+            const res = await this.database.getSpecificParcel(pid);
+            return res;
+        }catch(e) {
+            return e;
+        }
+    }
+
     // get the email of the user
     async getUserEmail(id) {
         try {
