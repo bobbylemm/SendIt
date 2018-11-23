@@ -7,10 +7,10 @@ dotenv.config();
 class DbManager {
     constructor() {
         let configString = '';
-        if(process.env.NODE_ENV.trim() == 'test') {
-        configString = config.development;
-        } else if (process.env.NODE_ENV.trim() == 'production') {
-            configString = config.production;
+        if(process.env.NODE_ENV.trim() == 'production') {
+        configString = config.test;
+        } else if (process.env.NODE_ENV.trim() == 'development') {
+            configString = config.development;
         }else {
             configString = config.test;
         }
@@ -103,6 +103,28 @@ class DbManager {
         const response = await this.pool.query(q);
         return response;
     }catch(e) {
+        return e;
+    }
+}
+
+// get specific parcel
+async getSpecificParcel(pid) {
+    try {
+        const q = 'SELECT packagename, dropofflocation, pickuplocation, price, presentlocation, weight, price, status FROM parcels WHERE parcel_id=$1;';
+        const response = await this.pool.query(q, [pid]);
+        return response;
+    }catch (e) {
+        return e;
+    }
+}
+
+// get the email of a user
+async getEmail(id) {
+    try {
+        const q = 'SELECT email FROM users WHERE user_id=$1;';
+        const res = await this.pool.query(q, [id]);
+        return res;
+    }catch (e) {
         return e;
     }
 }

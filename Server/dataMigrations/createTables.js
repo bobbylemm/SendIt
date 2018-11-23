@@ -4,10 +4,10 @@ import config from '../config/dbConfig';
 
 dotenv.config();
 let configString = '';
-if(process.env.NODE_ENV.trim() == 'test') {
+if(process.env.NODE_ENV.trim() === 'production') {
+    configString = config.test;
+} else if (process.env.NODE_ENV.trim() === 'development') {
     configString = config.development;
-} else if (process.env.NODE_ENV.trim() == 'production') {
-    configString = config.production;
 }else {
     configString = config.test;
 }
