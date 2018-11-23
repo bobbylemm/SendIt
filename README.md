@@ -9,6 +9,8 @@ SendIt is a courier service that helps users deliver parcels to different destin
 <p>the template for the front end of thisapplication can be found here <a>
 https://bobbylemm.github.io/SendIt/</a></p>
 
+<h3>The Pivotal Tracker Story link can be found here <a>https://www.pivotaltracker.com/n/projects/2213096</a></h3>
+
 <h3>The API</h3>
 <p>the API for this application has 12 endpoints</p>
 
