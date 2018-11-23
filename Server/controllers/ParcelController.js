@@ -1,5 +1,6 @@
 import Db from '../dbManager/DbManager';
 import ParcelManager from './ParcelManger';
+import sendEmail from '../mailer/emailNotification';
 
 const database = new Db ();
 const parcelmanger = new ParcelManager (database);
@@ -13,13 +14,14 @@ class ParcelController {
     const { packageName, pickupLocation, dropOfflocation, presentLocation, weight, price } = req.body;
     try {
         const response = await parcelmanger.addNewParcel(packageName, pickupLocation, dropOfflocation, presentLocation, weight, price, initialStatus, cancelStatus, userId);
+        console.log(response)
         if (response.name !== 'error') {
             return res.status(200).json({
                 message: 'new parcel created',
                 resp: response.rows
             })
         }return res.status(400).json({
-            message: 'could not add a new parcel'
+            error: 'could not add a new parcel, please recheck details'
         })
     }catch(e) {
         return res.status(400).json({
@@ -49,9 +51,31 @@ static async getAllParcelsBySpecificUser(req, res) {
     const { uid } = req.params;
     try {
         const response = await parcelmanger.getSpecificUsersParcel(uid);
-        res.status(200).json({
-            message: 'got all this users parcels',
-            parcels: response.rows[0]
+        if(response.rows[0] >= 1) {
+            return res.status(200).json({
+                message: 'got all this users parcels',
+                parcels: response.rows[0]
+            })
+        }return res.status(400).json({
+            error: 'sorry admin there is no such user'
+        })
+    }catch(e) {
+        return e;
+    }
+}
+
+// this is to get a specific parcel
+static async getASpecificParcel(req, res) {
+    const { pid } = req.params;
+    try {
+        const response = await parcelmanger.getSpecificParcel(pid);
+        if(response.rows[0] >= 1) {
+            return res.status(200).json({
+                message: 'success, got this specific parcel',
+                parcels: response.rows[0]
+            })
+        }return res.status(400).json({
+            error: 'sorry admin there is no such parcel'
         })
     }catch(e) {
         return e;
@@ -69,7 +93,14 @@ static async updateParcelStatus (req, res) {
         })
     }
     try {
-        await parcelmanger.updateParcelStatus(newStatus, pid);
+        const response = await parcelmanger.updateParcelStatus(newStatus, pid);
+        const message = `hello there, your sendIt parcel delivery status is now ${newStatus}`;
+        if (response.rows[0]) {
+            const { user_id } = response.rows[0];
+            const recipient = await parcelmanger.getUserEmail(user_id);
+            const subject = `parcel status update`;
+            sendEmail(recipient.rows[0].email, subject ,message)
+        }    
         return res.status(200).json({
             messsage: 'parcel status was updated successfully'
         })
@@ -92,9 +123,16 @@ static async updateParcelPresentLocation (req, res) {
     try {
         const response = await parcelmanger.updateParcelPresentlocation(newLocation, pid);
         if (response.rowCount >= 1) {
-            return res.status(200).json({
-                messsage: 'parcel present location was updated successfully'
-            })
+            const message = `hello there, your sendIt parcel delivery location is now ${newLocation}`;
+            if (response.rows[0]) {
+                const { user_id } = response.rows[0];
+                const recipient = await parcelmanger.getUserEmail(user_id);
+                const subject = `parcel location update`;
+                sendEmail(recipient.rows[0].email, subject ,message)
+                return res.status(200).json({
+                    messsage: 'parcel present location was updated successfully'
+                })
+            }
         }
             return res.status(400).json({
                 message: 'this parcel has already been delivered'

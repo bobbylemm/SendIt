@@ -7,7 +7,7 @@ const { validateParcels, validateRegister, validateLogin, validateToken, validat
 
 const { updateParcelDestination, cancelParcelOrder, registerUser, login, createAdmin, getParcelsByUser  } = usersControllers;
 
-const { createNewParcel, getAllParcels, getAllParcelsBySpecificUser, updateParcelStatus, updateParcelPresentLocation } = parcelController;
+const { createNewParcel, getAllParcels, getAllParcelsBySpecificUser, updateParcelStatus, updateParcelPresentLocation, getASpecificParcel } = parcelController;
 
 const router = express.Router();
 
@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 // this is the route for creating parcels
 router.post('/parcels', validateParcels, validateToken, createNewParcel);
 // this is the route to get all parcels for a user
-router.get('/users/parcels',validateToken, getParcelsByUser);
+router.get('/users/:uid/parcels',validateToken, getParcelsByUser);
 // this is to enable a user change the dropoff location of a parcel
 router.put('/parcels/:pid/destination',validateLocationUpdate, validateToken, updateParcelDestination);
 // this is to enable a user to cancel a parcel delivery order
@@ -30,9 +30,11 @@ router.post('/auth/login', validateLogin, login);
 // fetch all parcels in the application
 // ------------------------admin only------------------
 // GET ALL PARCELS IN THE APP (accessible to admin only)
-router.get('/parcels/users', validateToken, validateAdmin, getAllParcels);
+router.get('/parcels', validateToken, validateAdmin, getAllParcels);
 // this is to get all parcels for a specific user
-router.get('/parcels/:uid', validateToken, validateAdmin, getAllParcelsBySpecificUser)
+router.get('/parcels/:uid/users', validateToken, validateAdmin, getAllParcelsBySpecificUser);
+// this is to get a specific parcel
+router.get('/parcels/:pid', validateToken, validateAdmin, getASpecificParcel);
 // this is the route for an admin to update the status of a parcel delivery order
 router.put('/parcels/:pid/status', validateToken, validateAdmin, updateParcelStatus);
 // this is to change the dropofflocation of a parcel

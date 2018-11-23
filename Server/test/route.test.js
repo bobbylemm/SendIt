@@ -116,12 +116,12 @@ describe("all the test", () => {
         describe("get/parcels/user", () => {
             it('should get all the user parcels', (done) => {
                 chai.request(app)
-                .get('/api/v1/users/parcels')
+                .get('/api/v1/users/1/parcels')
                 .set('x-auth-token', userToken)
                 .set('content-type', 'application/json')
                 .end((err, res) => {
                     expect(res.status).to.equal(200);
-                    expect(res.body.message).to.equal('got all this users parcels');
+                    expect(res.body.message).to.equal('got all your parcels user');
                     expect(res.body).to.be.have.property('parcels');
                     done();
                 })
@@ -130,7 +130,7 @@ describe("all the test", () => {
         describe("get/parcels", () => {
             it('should get all parcels in the application, admin only', (done) => {
                 chai.request(app)
-                .get('/api/v1/parcels/users')
+                .get('/api/v1/parcels')
                 .set('x-auth-token', userToken)
                 .end((err, res) => {
                     expect(res.status).to.equal(400);
@@ -151,7 +151,7 @@ describe("all the test", () => {
                 })
                 .end((err, res) => {
                     expect(res.status).to.equal(200);
-                    expect(res.body.message).to.equal('parcel destination was updated successfully');
+                    expect(res.body.message).to.equal('parcel destination was updated successfully Admin');
                     done();
                 })
             })
