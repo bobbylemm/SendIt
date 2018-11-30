@@ -30,10 +30,9 @@ class UsersControllers {
           if (err) {
             return err;
           }
-          return res.header ('x-auth-token', token).status (200).json ({
-            message: 'successfully registered user',
-            token,
-            user
+          return res.header ('x-auth-token', token).status (201).json ({
+            status: 'success',
+            message: 'successfully registered user'
           });
         });
       }
@@ -41,7 +40,7 @@ class UsersControllers {
         error: 'unable to register user',
       });
     } catch (error) {
-      res.status (401).json ({
+      res.status (400).json ({
         message: 'unable to create user',
       });
     }
@@ -59,10 +58,9 @@ class UsersControllers {
           if (err) {
             return err;
           }
-          return res.header ('x-auth-token', token).status (200).json ({
-            message: 'successfully logged in',
-            token,
-            user: response.rows[0]
+          return res.header ('x-auth-token', token).status (201).json ({
+            status: 'success',
+            message: 'successfully logged in'
           });
         });
       }
@@ -83,10 +81,11 @@ class UsersControllers {
         const response = await usermanger.getAllUsersParcelOrder(userId);
         if (response.rowCount >= 1) {
           return res.status(200).json({
+            status: 'success',
               message: 'got all your parcels user',
               parcels: response.rows[0]
           })
-        }return res.status(400).json({
+        }return res.status(404).json({
           message: 'sorry could not find any of ypur parcels'
         })
     }catch(e) {
@@ -101,9 +100,9 @@ class UsersControllers {
     const { pid } = req.params;
     try {
         const response = await usermanger.changeParcelDestination(newdropOff, pid, userId);
-        console.log(response)
         if (response.rowCount === 1) {
-          return res.status(200).json({
+          return res.status(201).json({
+            status: 'success',
               message: "parcel destination was updated successfully Admin",
               parcel: response.rows[0]
           })
@@ -124,13 +123,12 @@ class UsersControllers {
     const { pid } = req.params;
     try {
       const response = await usermanger.cancelParcelOrder(cancelled, userId, pid);
-      console.log(response);
       if(response.rowCount === 1) {
         return res.status(200).json({
           message: 'this parcel delivery has been cancelled successfully',
           parcel: response.rows[0]
         });
-      }return res.status(400).json({
+      }return res.status(401).json({
         message: 'sorry you cannot cancel a parcel order that is not yours'
       })
     }catch (e) {
@@ -147,14 +145,14 @@ static async createAdmin (req, res) {
   try {
     const response = await usermanger.createNewAdmin(adminEmail, isadmin);
     if (response.rowCount === 1) {
-      return res.status(200).json({
+      return res.status(201).json({
         message: 'hey superadmin, you have successfully added or removed an admin'
       })
     }return res.status(400).json({
       message: 'could not find this email SuperAdmin'
     })
   }catch (e) {
-    return res.status(401).json({
+    return res.status(400).json({
       message: 'sorry could not add or remove admin, as the user was not found'
     })
   }

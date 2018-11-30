@@ -14,11 +14,10 @@ class ParcelController {
     const { packageName, pickupLocation, dropOfflocation, presentLocation, weight, price } = req.body;
     try {
         const response = await parcelmanger.addNewParcel(packageName, pickupLocation, dropOfflocation, presentLocation, weight, price, initialStatus, cancelStatus, userId);
-        console.log(response)
         if (response.name !== 'error') {
-            return res.status(200).json({
-                message: 'new parcel created',
-                resp: response.rows
+            return res.status(201).json({
+                status: 'success',
+                message: 'new parcel created'
             })
         }return res.status(400).json({
             error: 'could not add a new parcel, please recheck details'
@@ -35,6 +34,7 @@ static async getAllParcels (req, res) {
     try {
         const response = await parcelmanger.getAllParcels();
         return res.status(200).json({
+        status: 'success',
         message: "there was success admin, all parcels have been fetched",
         allParcels: response.rows[0]
     })
@@ -53,6 +53,7 @@ static async getAllParcelsBySpecificUser(req, res) {
         const response = await parcelmanger.getSpecificUsersParcel(uid);
         if(response.rows[0] >= 1) {
             return res.status(200).json({
+                status: 'success',
                 message: 'got all this users parcels',
                 parcels: response.rows[0]
             })
@@ -71,6 +72,7 @@ static async getASpecificParcel(req, res) {
         const response = await parcelmanger.getSpecificParcel(pid);
         if(response.rows[0] >= 1) {
             return res.status(200).json({
+                status: 'success',
                 message: 'success, got this specific parcel',
                 parcels: response.rows[0]
             })
