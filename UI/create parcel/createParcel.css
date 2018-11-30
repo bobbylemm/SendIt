@@ -6,10 +6,16 @@ body {
 main {
     flex: 1;
 }
+.bg {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('../img/bg-create-parcels.jpg') no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
 .form-card {
     padding: 3rem;
     max-width: 70rem;
     overflow: auto;
+    opacity: 0.93;
 }
 
 #submit {

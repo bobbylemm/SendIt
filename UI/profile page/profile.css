@@ -39,7 +39,7 @@ body {
     text-transform: uppercase;
 }
 .btn-profile {
-    width: 20rem;
+    width: 17rem;
     padding: 2rem;
     margin: 2rem auto;
     border-radius: 4rem;
@@ -49,6 +49,7 @@ body {
     cursor: pointer;
     transition: all .3s;
     font-size: 1.5rem;
+    outline: none;
 }
 .btn-profile:hover {
     box-shadow: .3rem .4rem .5rem 0 rgba(0,0,0,0.75);
@@ -106,31 +107,36 @@ body {
     overflow: auto;
     background: rgba(0,0,0,0.62);
   }
-  #modal-content-edit {
+#modal-content-edit {
     color: #333;
     margin: 10% auto;
     animation: fadeIn .4s ease-in-out;
-  }
-  #modal-content-cancel {
+}
+#modal-content-cancel {
     color: #333;
     margin: 10% 35%;
     animation: fadeIn .4s ease-in-out;
-  }
-  #modal-content-cancel h3 {
+}
+#modal-content-cancel h3 {
     text-align: center;
-  }
-  #modal-content-cancel .container {
-      display: flex;
-
-  }
-  #close {
-    cursor: pointer;
-    font-weight: 700;
-    float: right;
-    color: #333;
-    font-size: 3rem;
-  }
-  @keyframes fadeIn {
+}
+#modal-content-cancel .container {
+    display: flex;
+}
+#close {
+cursor: pointer;
+font-weight: 700;
+float: right;
+color: #333;
+font-size: 3rem;
+}
+.dropoff-input {
+    margin-top: 1.1rem;
+    border: 0rem solid #fff;
+    padding: 0 1rem;
+    width: 5rem;
+}
+@keyframes fadeIn {
     0% {
         opacity: 0;
     }

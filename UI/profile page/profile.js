@@ -14,10 +14,7 @@ viewAllParcels.addEventListener('click', () => {
         contentOne.style.display = 'none';
         contentTwo.style.display = 'block';
 })
-// js for the modal
-const edit = () => {
-        modalEdit.style.display = 'block';
-}
+
 close.addEventListener('click', () => {
         modalEdit.style.display = 'none';
 })
@@ -27,4 +24,16 @@ const cancel = () => {
 }
 const noCancel = () => {
         modalCancel.style.display = 'none';
+}
+// this is to be able to edit the table
+const edit = (e) => {
+let td = e.closest('tr').querySelector('.editMe');
+        if (e.innerHTML === 'Edit') {
+                e.innerHTML = 'Save';
+                td.setAttribute("contenteditable", true);
+        }else {
+                e.innerHTML = 'Edit';
+        td.setAttribute("contenteditable", false);
+        }
+        console.log(td);
 }
