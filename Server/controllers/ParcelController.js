@@ -17,10 +17,12 @@ class ParcelController {
         if (response.name !== 'error') {
             return res.status(201).json({
                 status: 'success',
-                message: 'new parcel created'
+                message: 'new parcel created',
+                newParcel: response.rows[0]
             })
         }return res.status(400).json({
-            error: 'could not add a new parcel, please recheck details'
+            status: 'failed',
+            message: 'could not add a new parcel, please recheck details'
         })
     }catch(e) {
         return res.status(400).json({
@@ -57,8 +59,9 @@ static async getAllParcelsBySpecificUser(req, res) {
                 message: 'got all this users parcels',
                 parcels: response.rows[0]
             })
-        }return res.status(400).json({
-            error: 'sorry admin there is no such user'
+        }return res.status(404).json({
+            status: 'failed',
+            message: 'sorry admin there is no such user'
         })
     }catch(e) {
         return e;
@@ -76,7 +79,7 @@ static async getASpecificParcel(req, res) {
                 message: 'success, got this specific parcel',
                 parcels: response.rows[0]
             })
-        }return res.status(400).json({
+        }return res.status(404).json({
             error: 'sorry admin there is no such parcel'
         })
     }catch(e) {

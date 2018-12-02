@@ -1,11 +1,10 @@
 import helpers from '../helpers/handleError';
 
 const validateAdmin = (req, res, next) => {
-    const { isadmin } = req.user.user;
-    console.log(isadmin);
+    const { is_admin } = req.user.user;
 
-    if (isadmin == false) {
-        return next(helpers.handleError('you are not authorized to perform this action, admin only'))
+    if (is_admin === false) {
+        return next(helpers.handleError(401 ,'you are not authorized to perform this action, admin only'))
     }
     return next();
 }

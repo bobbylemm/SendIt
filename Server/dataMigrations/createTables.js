@@ -17,27 +17,27 @@ const usersTable = `
 DROP TABLE IF EXISTS users CASCADE;
 CREATE TABLE IF NOT EXISTS users(
     user_id SERIAL NOT NULL PRIMARY KEY,
-    username varchar(25) UNIQUE NOT NULL,
+    user_name varchar(25) UNIQUE NOT NULL,
     email varchar(100) UNIQUE NOT NULL,
     password text NOT NULL,
-    isadmin boolean NOT NULL,
-    registeredat TIMESTAMP NOT NULL DEFAULT NOW()
+    is_admin boolean NOT NULL,
+    registered_at TIMESTAMP NOT NULL DEFAULT NOW()
 );`;
 const parcelsTable = `
 DROP TABLE IF EXISTS parcels CASCADE;
 CREATE TABLE IF NOT EXISTS parcels(
     parcel_id SERIAL NOT NULL PRIMARY KEY,
-    packagename varchar(25) NOT NULL,
-    pickuplocation varchar(25) NOT NULL,
-    dropofflocation varchar(25) NOT NULL,
-    presentlocation text NOT NULL,
+    package_name varchar(25) NOT NULL,
+    pickup_location varchar(25) NOT NULL,
+    dropoff_location varchar(25) NOT NULL,
+    present_location text NOT NULL,
     weight SMALLINT NOT NULL,
     price INTEGER NOT NULL,
     status varchar(25) NOT NULL,
     cancelled boolean NOT NULL,
     user_id INTEGER REFERENCES users(user_id) ON DELETE CASCADE,
-    createdat TIMESTAMP NOT NULL DEFAULT NOW(),
-    updatedat TIMESTAMP NOT NULL DEFAULT NOW()
+    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMP NOT NULL DEFAULT NOW()
 );`;
 
 pool.query(usersTable)

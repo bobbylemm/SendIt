@@ -1,6 +1,6 @@
-const handleError = errorMessage => {
+const handleError = (errCode, errorMessage) => {
   const err = new Error(errorMessage);
-  err.status = 400;
+  err.status = errCode;
   return err;
 };
 export default {

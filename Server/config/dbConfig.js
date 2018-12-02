@@ -19,13 +19,12 @@ const databaseConfig = {
     port: '5432'
 },
   "production": {
-    user: process.env.DATABASE_URL_USER,
-    database: process.env.DATABASE_URL_DATABASE,
-    password: process.env.DATABASE_URL_PASSWORD,
-    host: process.env.DATABASE_URL_HOSTNAME,
+    user: process.env.DATABASE_PRODUCTION_USER,
+    database: process.env.DATABASE_PRODUCTION_NAME,
+    password: process.env.DATABASE_PRODUCTION_PASSWORD,
+    host: process.env.DATABASE_PRODUCTION_HOST,
     port: '5432'
-  },
-  "production2": process.env.DATABASE_URL
+  }
 
 };
 export default databaseConfig;

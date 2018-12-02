@@ -23,9 +23,8 @@ class UsersControllers {
         isAdmin
       );
       if (response.status !== 400) {
-        console.log(response);
-        const {user_id, email, username, isadmin} = response.rows[0];
-        const user = {user_id, email, username, isadmin};
+        const {user_id, email, user_name, is_admin} = response.rows[0];
+        const user = {user_id, email, user_name, is_admin};
         return jwt.sign ({user}, process.env.SECRET_KEY, (err, token) => {
           if (err) {
             return err;
@@ -36,12 +35,12 @@ class UsersControllers {
           });
         });
       }
-      return res.status (400).json ({
-        error: 'unable to register user',
+      return res.status (401).json ({
+        message: 'unable to register user',
       });
     } catch (error) {
-      res.status (400).json ({
-        message: 'unable to create user',
+      res.status (401).json ({
+        message: 'unable to register user',
       });
     }
   }
@@ -52,15 +51,16 @@ class UsersControllers {
     try {
       const response = await usermanger.loginUser (Email, password);
       if (response.rows[0] !== undefined) {
-        const {user_id, email, username, isadmin} = response.rows[0];
-        const user = {user_id, email, username, isadmin};
+        const {user_id, email, user_name, is_admin} = response.rows[0];
+        const user = {user_id, email, user_name, is_admin};
         return jwt.sign ({user}, process.env.SECRET_KEY, (err, token) => {
           if (err) {
             return err;
           }
           return res.header ('x-auth-token', token).status (201).json ({
             status: 'success',
-            message: 'successfully logged in'
+            message: 'successfully logged in',
+            token
           });
         });
       }

@@ -8,7 +8,7 @@ class DbManager {
     constructor() {
         let configString = '';
         if(process.env.NODE_ENV.trim() == 'production') {
-        configString = config.test;
+        configString = config.production;
         } else if (process.env.NODE_ENV.trim() == 'development') {
             configString = config.development;
         }else {
@@ -20,7 +20,7 @@ class DbManager {
   // this is to register a new user
   async registerNewUser(userName, email, password, isAdmin) {
     try {
-      const q = 'INSERT INTO users(username, email, password, isadmin) VALUES($1, $2, $3, $4) RETURNING *;';
+      const q = 'INSERT INTO users(user_name, email, password, is_admin) VALUES($1, $2, $3, $4) RETURNING *;';
       const response = await this.pool.query(q, [userName, email, password, isAdmin]);
       return response;
     } catch (error) {
@@ -32,7 +32,7 @@ class DbManager {
   //   this is to login an existing user
   async loginExistingUser(email) {
     try {
-      const q = 'SELECT password, user_id, email, username, isadmin FROM users WHERE email=$1';
+      const q = 'SELECT password, user_id, email, user_name, is_admin FROM users WHERE email=$1';
       const response = await this.pool.query(q, [email]);
       return response;
     } catch (e) {
@@ -43,7 +43,7 @@ class DbManager {
   // this is the section for the parcels
     async insertNewParcel(packageName, pickupLocation, dropOfflocation, presentLocation, weight, price, initialStatus, cancelStatus, userId) {
       try {
-          const q = 'INSERT INTO parcels (packagename, pickuplocation, dropofflocation, presentlocation, weight, price, status, cancelled, user_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *';
+          const q = 'INSERT INTO parcels (package_name, pickup_location, dropoff_location, present_location, weight, price, status, cancelled, user_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *';
           const response = await this.pool.query(q, [packageName, pickupLocation, dropOfflocation, presentLocation, weight, price, initialStatus, cancelStatus, userId]);
           return response;
       }catch(e) {
@@ -54,7 +54,7 @@ class DbManager {
   // get all parcels by a speciific user
   async getAllUserParcels(userId) {
     try {
-        const q = 'SELECT packagename, pickuplocation, dropofflocation, presentlocation, weight, price, status FROM parcels WHERE user_id = $1';
+        const q = 'SELECT package_name, pickup_location, dropoff_location, present_location, weight, price, status FROM parcels WHERE user_id = $1';
         const response = await this.pool.query(q, [userId]);
         return response
     }catch(e) {
@@ -65,7 +65,7 @@ class DbManager {
   // this is the query to enable the user to update thr parcel dropoff location
   async updateParcelDestination(newdropOff, parcelId, userId) {
     try {
-        const q = 'UPDATE parcels SET dropofflocation=$1 WHERE parcel_id=$2 AND user_id=$3 RETURNING *;';
+        const q = 'UPDATE parcels SET dropoff_location=$1 WHERE parcel_id=$2 AND user_id=$3 RETURNING *;';
         const response = await this.pool.query(q, [newdropOff, parcelId, userId]);
         return response;
     }catch(e) {
@@ -99,7 +99,7 @@ class DbManager {
   // this is to get all parcels in the app, accessible by admin only
   async getAllParcels() {
     try {
-        const q = 'SELECT packagename, dropofflocation, pickuplocation, price, presentlocation, weight, price, status FROM parcels;';
+        const q = 'SELECT package_name, dropoff_location, pickup_location, price, present_location, weight, price, status FROM parcels;';
         const response = await this.pool.query(q);
         return response;
     }catch(e) {
@@ -110,7 +110,7 @@ class DbManager {
 // get specific parcel
 async getSpecificParcel(pid) {
     try {
-        const q = 'SELECT packagename, dropofflocation, pickuplocation, price, presentlocation, weight, price, status FROM parcels WHERE parcel_id=$1;';
+        const q = 'SELECT package_name, dropoff_location, pickup_location, price, present_location, weight, price, status FROM parcels WHERE parcel_id=$1;';
         const response = await this.pool.query(q, [pid]);
         return response;
     }catch (e) {
@@ -132,7 +132,7 @@ async getEmail(id) {
 // this is to get parcel orders for a specific user
 async getSpecificUserParcels(uid) {
     try {
-        const q = 'SELECT packagename, dropofflocation, pickuplocation, price, presentlocation, weight, price, status FROM parcels WHERE user_id=$1;';
+        const q = 'SELECT package_name, dropoff_location, pickup_location, price, present_location, weight, price, status FROM parcels WHERE user_id=$1;';
         const response = await this.pool.query(q, [uid]);
         return response;
     }catch(e) {
@@ -154,7 +154,7 @@ async updateParcelStatus(newStatus, pid) {
 // this is the query to update the present location of a parcel delivery order
 async updateParcelslocation(newLocation, pid) {
   try {
-      const q = "UPDATE parcels SET presentlocation=$1 WHERE parcel_id=$2 AND status NOT LIKE 'delivered%' RETURNING *;";
+      const q = "UPDATE parcels SET present_location=$1 WHERE parcel_id=$2 AND status NOT LIKE 'delivered%' RETURNING *;";
       const response = await this.pool.query(q, [newLocation, pid]);
       return response;
   }catch(e) {

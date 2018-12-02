@@ -49,7 +49,7 @@ describe("all the test", () => {
                     password: 'sollsecret'
                 })
                 .end((err, res) => {
-                    expect(res.status).to.equal(200);
+                    expect(res.status).to.equal(201);
                     expect(res.body.message).to.equal('successfully registered user');
                     done();
                 })
@@ -67,7 +67,7 @@ describe("all the test", () => {
                 })
                 .end((err, res) => {
                     expect(res.status).to.equal(401);
-                    expect(res.body.message).to.equal('unable to create user');
+                    expect(res.body.message).to.equal('unable to register user');
                     done();
                 })
             })
@@ -82,8 +82,9 @@ describe("all the test", () => {
                     password: 'sollsecret'
                 })
                 .end((err, res) => {
-                    expect(res.status).to.equal(200);
+                    expect(res.status).to.equal(201);
                     expect(res.body.message).to.equal('successfully logged in');
+                    expect(res.body.status).to.equal('success');
                     userToken = res.header['x-auth-token'];
                     done();
                 })
@@ -106,9 +107,9 @@ describe("all the test", () => {
                     price: 10000
                 })
                 .end((err, res) => {
-                    expect(res.status).to.equal(200);
+                    expect(res.status).to.equal(201);
                     expect(res.body.message).to.equal('new parcel created');
-                    expect(res.body.resp).to.be.an('Array');
+                    expect(res.body.newParcel).to.be.an('Object');
                     done();
                 })
             })
@@ -133,7 +134,7 @@ describe("all the test", () => {
                 .get('/api/v1/parcels')
                 .set('x-auth-token', userToken)
                 .end((err, res) => {
-                    expect(res.status).to.equal(400);
+                    expect(res.status).to.equal(401);
                     expect(res.body.error.message).to.equal('you are not authorized to perform this action, admin only');
                     expect(res.body).to.be.have.property('error');
                     done();
@@ -150,7 +151,7 @@ describe("all the test", () => {
                     newdropOff: 'asaba'
                 })
                 .end((err, res) => {
-                    expect(res.status).to.equal(200);
+                    expect(res.status).to.equal(201);
                     expect(res.body.message).to.equal('parcel destination was updated successfully Admin');
                     done();
                 })
@@ -182,7 +183,7 @@ describe("all the test", () => {
                     newStatus: 'delivered'
                 })
                 .end((err, res) => {
-                    expect(res.status).to.equal(400);
+                    expect(res.status).to.equal(401);
                     expect(res.body.error.message).to.equal('you are not authorized to perform this action, admin only');
                     expect(res.body).to.be.have.property('error');
                     done();
@@ -199,7 +200,7 @@ describe("all the test", () => {
                     newLocation: 'lokoja'
                 })
                 .end((err, res) => {
-                    expect(res.status).to.equal(400);
+                    expect(res.status).to.equal(401);
                     expect(res.body.error.message).to.equal('you are not authorized to perform this action, admin only');
                     done();
                 })
