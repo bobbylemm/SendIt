@@ -24,7 +24,8 @@ const validateSuperAdmin = (req, res, next) => {
   if (!adminEmail) {
     return next(helpers.handleError(400, 'please fill in a valid new admin email'));
   }
-  if (!isadmin) {
+  if (isadmin === '') {
+    console.log(isadmin)
     return next(helpers.handleError(400, 'you have to state new admin role'));
   }
   if (typeof isadmin !== 'boolean') {

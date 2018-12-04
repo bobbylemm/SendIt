@@ -55,9 +55,9 @@ class ParcelManager {
     }
 
     // this is to update the status of a parcel status
-    async updateParcelStatus(newStatus, pid) {
+    async updateParcelStatus(newStatus, pid, updatedAt) {
         try {
-            const res = await this.database.updateParcelStatus(newStatus, pid);
+            const res = await this.database.updateParcelStatus(newStatus, pid, updatedAt);
             return res;
         }catch(e) {
             return e;
@@ -65,9 +65,9 @@ class ParcelManager {
     }
 
     // this to update the present location of a parcel delivery order
-    async updateParcelPresentlocation(newLocation, pid) {
+    async updateParcelPresentlocation(newLocation, pid, updatedAt) {
         try {
-            const res = await this.database.updateParcelslocation(newLocation, pid);
+            const res = await this.database.updateParcelslocation(newLocation, pid, updatedAt);
             return res;
         }catch(e) {
             return e;

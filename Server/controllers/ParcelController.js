@@ -91,6 +91,11 @@ static async getASpecificParcel(req, res) {
 static async updateParcelStatus (req, res) {
     const { pid } = req.params;
     const { newStatus } = req.body;
+    const today = new Date();
+    const dd = today.getDate();
+    const mm = today.getMonth() + 1;
+    const yyyy = today.getFullYear();
+    const updatedAt = `${dd}/${mm}/${yyyy}`;
     const validStatus = ['in-transit', 'delivered'].includes(newStatus);
     if (!newStatus || !validStatus) {
         return res.status(400).json({
@@ -98,7 +103,7 @@ static async updateParcelStatus (req, res) {
         })
     }
     try {
-        const response = await parcelmanger.updateParcelStatus(newStatus, pid);
+        const response = await parcelmanger.updateParcelStatus(newStatus, pid, updatedAt);
         const message = `hello there, your sendIt parcel delivery status is now ${newStatus}`;
         if (response.rows[0]) {
             const { user_id } = response.rows[0];
@@ -120,13 +125,18 @@ static async updateParcelStatus (req, res) {
 static async updateParcelPresentLocation (req, res) {
     const { pid } = req.params;
     const { newLocation } = req.body;
+    const today = new Date();
+    const dd = today.getDate();
+    const mm = today.getMonth() + 1;
+    const yyyy = today.getFullYear();
+    const updatedAt = `${dd}/${mm}/${yyyy}`;
     if(!newLocation) {
         return res.status(400).json({
             message: 'please put in a valid new location'
         })
     }
     try {
-        const response = await parcelmanger.updateParcelPresentlocation(newLocation, pid);
+        const response = await parcelmanger.updateParcelPresentlocation(newLocation, pid, updatedAt);
         if (response.rowCount >= 1) {
             const message = `hello there, your sendIt parcel delivery location is now ${newLocation}`;
             if (response.rows[0]) {

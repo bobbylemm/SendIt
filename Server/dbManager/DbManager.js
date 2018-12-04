@@ -62,11 +62,22 @@ class DbManager {
     }
   }
 
-  // this is the query to enable the user to update thr parcel dropoff location
-  async updateParcelDestination(newdropOff, parcelId, userId) {
+//   this is to check for a parcel status
+async checkParcelStatus(pid, userId) {
     try {
-        const q = 'UPDATE parcels SET dropoff_location=$1 WHERE parcel_id=$2 AND user_id=$3 RETURNING *;';
-        const response = await this.pool.query(q, [newdropOff, parcelId, userId]);
+        const q = "SELECT status FROM parcels WHERE parcel_id=$1 AND user_id=$2;";
+        const response = await this.pool.query(q, [pid, userId]);
+        return response;
+    }catch(e) {
+        return e;
+    }
+  }
+
+  // this is the query to enable the user to update thr parcel dropoff location
+  async updateParcelDestination(newdropOff, parcelId, userId, updatedAt) {
+    try {
+        const q = "UPDATE parcels SET dropoff_location=$1, updated_at=$4 WHERE parcel_id=$2 AND user_id=$3 AND status NOT LIKE 'delivered%' RETURNING *;";
+        const response = await this.pool.query(q, [newdropOff, parcelId, userId, updatedAt]);
         return response;
     }catch(e) {
         return e;
@@ -88,7 +99,7 @@ class DbManager {
   // this is to create or remove an admin
   async makeNewAdmin(adminEmail, isadmin) {
     try {
-        const q = 'UPDATE users SET isadmin=$2 WHERE email=$1 RETURNING *;';
+        const q = 'UPDATE users SET is_admin=$2 WHERE email=$1 RETURNING *;';
         const response = await this.pool.query(q, [adminEmail, isadmin]);
         return response;
     }catch(e) {
@@ -141,10 +152,10 @@ async getSpecificUserParcels(uid) {
 }
 
 // this is the query to update a parcel delivery order
-async updateParcelStatus(newStatus, pid) {
+async updateParcelStatus(newStatus, pid, updatedAt) {
   try {
-      const q = 'UPDATE parcels SET status=$1 WHERE parcel_id=$2 RETURNING *;';
-      const response = await this.pool.query(q, [newStatus, pid]);
+      const q = 'UPDATE parcels SET status=$1, updated_at=$3 WHERE parcel_id=$2 RETURNING *;';
+      const response = await this.pool.query(q, [newStatus, pid, updatedAt]);
       return response;
   }catch(e) {
       return e;
@@ -152,10 +163,10 @@ async updateParcelStatus(newStatus, pid) {
 }
 
 // this is the query to update the present location of a parcel delivery order
-async updateParcelslocation(newLocation, pid) {
+async updateParcelslocation(newLocation, pid, updatedAt) {
   try {
-      const q = "UPDATE parcels SET present_location=$1 WHERE parcel_id=$2 AND status NOT LIKE 'delivered%' RETURNING *;";
-      const response = await this.pool.query(q, [newLocation, pid]);
+      const q = "UPDATE parcels SET present_location=$1, updated_at=$3 WHERE parcel_id=$2 AND status NOT LIKE 'delivered%' RETURNING *;";
+      const response = await this.pool.query(q, [newLocation, pid, updatedAt]);
       return response;
   }catch(e) {
       return e;

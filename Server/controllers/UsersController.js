@@ -31,11 +31,12 @@ class UsersControllers {
           }
           return res.header ('x-auth-token', token).status (201).json ({
             status: 'success',
-            message: 'successfully registered user'
+            message: 'successfully registered user',
+            token
           });
         });
       }
-      return res.status (401).json ({
+      return res.status (403).json ({
         message: 'unable to register user',
       });
     } catch (error) {
@@ -64,7 +65,7 @@ class UsersControllers {
           });
         });
       }
-      return res.status (401).json ({
+      return res.status (403).json ({
         error: 'there was an error logging in',
       });
     } catch (e) {
@@ -98,21 +99,37 @@ class UsersControllers {
     const { newdropOff } = req.body;
     const userId = req.user.user.user_id;
     const { pid } = req.params;
+    const today = new Date();
+    const dd = today.getDate();
+    const mm = today.getMonth() + 1;
+    const yyyy = today.getFullYear();
+    const updatedAt = `${dd}/${mm}/${yyyy}`;
     try {
-        const response = await usermanger.changeParcelDestination(newdropOff, pid, userId);
-        if (response.rowCount === 1) {
-          return res.status(201).json({
-            status: 'success',
-              message: "parcel destination was updated successfully Admin",
-              parcel: response.rows[0]
-          })
-        }return res.status(400).json({
-          message: 'could not find this parcel Admin'
-        })
-    }catch(e) {
+      const ress = await usermanger.checkParcelStatus(pid, userId);
+      if (ress.rows[0].status === 'delivered') {
         return res.status(400).json({
-            message: "this parcel destination was not updated successfully",
+          status: 'success',
+          message: 'sorry this parcel has been delivered'
         })
+      }
+         try {
+            const response = await usermanger.changeParcelDestination(newdropOff, pid, userId, updatedAt);
+            if (response.rowCount === 1) {
+              return res.status(201).json({
+                status: 'success',
+                  message: "parcel destination was updated successfully Admin",
+                  parcel: response.rows[0]
+              })
+            }return res.status(400).json({
+              message: 'could not update the location of this parcel'
+            })
+        }catch(e) {
+            return res.status(400).json({
+                message: "this parcel destination was not updated successfully",
+            })
+        }      
+    }catch (e) {
+      return e;
     }
 }
 
@@ -145,8 +162,14 @@ static async createAdmin (req, res) {
   try {
     const response = await usermanger.createNewAdmin(adminEmail, isadmin);
     if (response.rowCount === 1) {
+      let message = '';
+      if (isadmin === true) {
+        message = 'hey superadmin, you have successfully added an admin';
+      }else if (isadmin === false) {
+        message = 'hey superadmin, you have successfully removed an admin';
+      }
       return res.status(201).json({
-        message: 'hey superadmin, you have successfully added or removed an admin'
+        message
       })
     }return res.status(400).json({
       message: 'could not find this email SuperAdmin'

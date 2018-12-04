@@ -5,10 +5,10 @@ class UserManager {
     this.db = db;
   }
 
-  async registerUser(username, email, password, isAdmin) {
+  async registerUser(userName, email, password, isAdmin) {
     const hashed = await bcrypt.hash(password, 10);
     try {
-      const res = await this.db.registerNewUser(username, email, hashed, isAdmin);
+      const res = await this.db.registerNewUser(userName, email, hashed, isAdmin);
       return res;
     } catch (error) {
       return error;
@@ -40,9 +40,9 @@ class UserManager {
 }
 
   // this is to change the destination of a parcel order
-  async changeParcelDestination(newdropOff, parcelId, userId) {
+  async changeParcelDestination(newdropOff, parcelId, userId, updatedAt) {
     try {
-        const res = await this.db.updateParcelDestination(newdropOff, parcelId, userId);
+        const res = await this.db.updateParcelDestination(newdropOff, parcelId, userId, updatedAt);
         return res;
     }catch(e) {
         return e;
@@ -58,6 +58,17 @@ class UserManager {
       return e;
     }
   }
+
+  // this is to check the status of a parcel
+  async checkParcelStatus(pid, userId) {
+    try {
+      const res = await this.db.checkParcelStatus(pid, userId);
+      return res;
+    }catch (e) {
+      return e;
+    }
+  }
+
 
 // -------------------admin only---------------------
 // this is to create a new admin
