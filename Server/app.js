@@ -1,11 +1,13 @@
 import express from 'express';
 import morgan from 'morgan';
+import cors from 'cors';
 import bodyParser from 'body-parser';
 import routes from './routes/route';
 
 const app = express();
 const PORT = process.env.PORT || 6000;
 
+app.use(cors());
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
