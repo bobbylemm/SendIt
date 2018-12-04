@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Delete-parcel | SendIt</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/styles.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./viewAllParcel.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../landingPage/landingPage.css" />
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div id="app-logo">
+                <a href="../../index.html">
+                    <img src='../img/icon.svg' />
+                    <h1>SendIt</h1>
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../profile page/profile.html">Profile</a></li>
+                    <li><a href="../signin page/signin.html">Login</a></li>
+                    <li class="highlight-current"><a href="../signup page/signup.html">Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- parcel features -->
+    <main id="get-started">
+        <div class="container">
+            <h1>view all parcel delivery</h1>
+        </div>
+        <div>
+            <div id="get-started-tabs">
+                <div class="get-started-actions">
+                    <h3><a href="../create parcel/create-parcel.html">Create parcel delivery</a></h3>
+                </div>
+            </div>
+            <div class="user-actions-results">
+                <table>
+                    <h2>all parcel orders</h2>
+                    <thead data-title="all parcels">
+                        <tr>
+                            <th>Package name</th>
+                            <th>Pickup location</th>
+                            <th>Dropoff location</th>
+                            <th>Present location</th>
+                            <th>Price</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="mobile-view-title">package name:</span><span class="parcel-detail">fridge</span></td>
+                            <td><span class="mobile-view-title">destination:</span><span class="parcel-detail">lagos</span></td>
+                            <td><span class="mobile-view-title">pickup location:</span><span class="parcel-detail">ipaja</span></td>
+                            <td><span class="mobile-view-title">price:</span><span class="parcel-detail">5678</span></td>
+                            <td class="td"><button class="table-action-btn fl" id="editBtn" onclick="edit()"><span><i class="far fa-edit"></i></span> Edit</button>&nbsp;<button class="table-action-btn fr" id="deleteBtn" onclick="cancel()"><span><i class="far fa-trash-alt"></i></span> cancel</button></td>
+                            <!-- <td></td> -->
+                        </tr>
+                        <tr>
+                            <td><span class="mobile-view-title">package name:</span><span class="parcel-detail">car</span></td>
+                            <td><span class="mobile-view-title">destination:</span><span class="parcel-detail">abuja</span></td>
+                            <td><span class="mobile-view-title">pickup location:</span><span class="parcel-detail">maitama</span></td>
+                            <td><span class="mobile-view-title">price:</span><span class="parcel-detail">70000</span></td>
+                            <td class="td"><button class="table-action-btn fl" id="editBtn" onclick="edit()"><span><i class="far fa-edit"></i></span> Edit</button>&nbsp;<button class="table-action-btn fr" id="deleteBtn" onclick="cancel()"><span><i class="far fa-trash-alt"></i></span> cancel</button></td>
+                        </tr>
+                    </tbody>
+                    <div id="modal-edit">
+                        <div id="modal-content-edit">
+                            <main class="container">
+                                <div class="form-card p-3">
+                                    <span id="close">&times;</span>
+                                    <h2>Edit a parcel</h2>
+                                    <form id="form">
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <label class="label" for="newDestination">New destination</label>
+                                            </div>
+                                            <div class="col-9">
+                                                <input type="text" name="newDestination" id="newDestination" placeholder="new destination" required>
+                                            </div>
+                                        </div>
+                                        <!--  -->
+                                        <div class="row">
+                                            <div class="col-3">
+                                            </div>
+                                            <div class="col-9">
+                                                <button type="submit" id="signup" class="btn w-100">Done</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </main>
+                        </div>
+                    </div>
+                    <!-- modal to cancel order -->
+                    <div id="modal-cancel">
+                        <div id="modal-content-cancel" class="bg-white p-3">
+                            <h3>Are you sure yo want to cancel parcel</h3>
+                            <main class="container">
+                                <button type="submit" id="signup" class="btn" onclick="yesCancel()">yes</button>
+                                <button type="submit" id="signup" class="btn" onclick="noCancel()">no</button>
+                            </main>
+                        </div>
+                    </div>
+                </table>
+            </div>
+        </div>
+    </main>
+    <!-- footer section -->
+    <footer>
+        <div class="footer">
+            <p>SendIt &copy; 2018</p>
+            <p>Designed by <span><a href="#">Nwoga Chidozie</a></span></p>
+        </div>
+    </footer>
+    <script src="./viewallParcel.js"></script>
+</body>
+
+</html>

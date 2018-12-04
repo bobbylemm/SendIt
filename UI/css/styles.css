@@ -1,0 +1,637 @@
+@import url('https://fonts.googleapis.com/css?family=Karla|Oxygen');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    font-size: 62.5%;
+}
+body{
+    font-family: 'Karla', sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    background-color: #f4f4f4;
+    box-sizing: border-box;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+    display: flex;
+    flex-flow: column;
+}
+
+/* Global Styling */
+main {
+    flex: 1
+}
+.section h1 {
+    text-align: center;
+    background: #E6E2DD;
+    color: #333;
+    text-transform: uppercase;
+    padding: 1rem;
+}
+.container{
+    width: 85%;
+    margin: auto;
+    height: 100%;
+}
+.w-100 {
+    width: 100% !important;
+}
+.w-3 {
+    width: 80% !important; 
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+span a {
+    color: #333;
+}
+h3 a {
+    color: #333;
+}
+.d-flex {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 1rem;
+}
+.d-flex button {
+    margin: 0 .5rem;
+}
+.col-2 {
+    float: left;
+    width: 20%;
+}
+.col-3 {
+    float: left;
+    width: 30%;
+}
+.col-9 {
+    float: left;
+    width: 70%;
+}
+.col-10 {
+    float: left;
+    width: 80%;
+}
+.row {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+.ht-6 {
+    height: 60%;
+}
+.p-3 {
+    padding: 3rem;
+}
+.py-3 {
+    padding: 1rem 2rem !important;
+}
+.ml-1 {
+    margin-left: 2rem !important;
+}
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+.t-center {
+    text-align: center;
+}
+.bg-white {
+    background: #fff;
+    margin: 0 auto;
+}
+/* styling for all buttons, still under global styling */
+.btn {
+    background: #89bdd3;
+    border-radius: .3rem;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    border: .1rem solid #89bdd3;
+    margin: 1rem auto;
+    padding: 1 1.6rem;
+}
+
+.btn-inline {
+    display: inline-block;
+}
+
+.btn-primary {
+    background: #89bdd3;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border: .1rem solid #89bdd3;
+    margin: 1.5rem 0;
+    padding: 1.2rem .5rem;
+    box-shadow: -.1rem .3rem .5rem 0rem rgba(0,0,0,0.66);
+    text-transform: uppercase;
+    transition: all .3s;
+}
+.btn-primary:hover {
+    box-shadow: 0rem .6rem .5rem 0rem rgba(0,0,0,0.57);
+}
+
+.form-card {
+    max-width: 50rem;
+    margin: 10rem auto;
+    border: .1rem solid #EFEFEF;
+    background: #EFEFEF;
+    box-shadow: -.2rem 1rem 1.6rem -.2rem rgba(0,0,0,0.4);
+    border-radius: .5rem;
+    color: #333;
+}
+.form-card h2 {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 1.3rem;
+    text-transform: capitalize;
+}
+form label {
+    display: inline-block;
+}
+input {
+    width: 100%;
+    line-height: 1.3;
+    padding: 1rem;
+    margin-bottom: 1.9rem;
+    height: 3.5rem;
+    border: .1rem solid #b3aaaa;
+    border-radius: .5rem;
+    cursor: auto;
+    display: inline-block;
+}
+::placeholder {
+    opacity: 0.5;
+}
+
+button{
+    display: block;
+    padding: 1rem;
+}
+
+.form-card select {
+    border-radius: 4px;
+    display: block;
+    padding: .7rem;
+    width: 100%;
+    background: #CEE5F2;
+}
+/* this is the styling for the form tip */
+#tip {
+    margin-top: 10%;
+    text-align: center;
+    font-size: 1.6rem;
+    color: #333;
+}
+#tip a {
+    color: rgb(44, 88, 145);
+    font-weight: 600;
+}
+/*header styling */
+header{
+    background: #FFFFFF;
+    color: #333;
+    min-width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding: 1.4rem;
+    box-shadow: 0rem .3rem .8rem -.1rem rgba(0,0,0,0.55);
+}
+
+header a{
+    color: #333;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+}
+header li{
+    display: inline;
+    padding: 0 2rem 0 2rem;
+}
+
+header #app-logo{
+    float:left;
+}
+header #app-logo img{
+    width: 3rem;
+    height: 3rem;
+    display: inline-block;
+    margin: 0 .7rem 0 0;
+}
+header #app-logo h1{
+    font-size: 3rem;
+    font-family: 'Oxygen', sans-serif;
+    text-transform: capitalize;
+    letter-spacing: .1rem;
+    display: inline-block;
+}
+
+header nav{
+    float: right;
+    margin-top: 1.7rem;
+}
+
+nav ul li a {
+    margin: .3rem 0;
+    color: #333;
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+
+header a:hover{
+    color: rgb(69, 107, 133);
+    font-weight: bold;
+}
+/*services styliing  */
+.services {
+    padding: 5rem 1rem;
+}
+.services-header {
+    text-align: left;
+}
+
+/* the styling for the get started section */
+#get-started h1 {
+    text-align: center;
+    font-size: 3rem;
+    text-transform: uppercase;
+    margin: 2rem 0 1rem 0;
+}
+#get-started-tabs {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+    flex-flow: row wrap;
+}
+.get-started-actions {
+    flex: -1;
+    width: 40%;
+    text-align: center;
+    border: 1px solid #EDE9E6;
+    padding: 2rem 1rem;
+    background: #EDE9E6;
+    transition: all .3s;
+    border-radius: .7rem;
+    margin: .3rem;
+    box-shadow: 0 .1rem .2rem #333;
+}
+.get-started-actions:hover {
+    box-shadow: 0 .5rem .5rem #333;
+}
+/* this is the styling for the users actions and the responses that follow it */
+.user-actions-options {
+    width: 100%;
+    border: .1rem solid rgb(219, 213, 213);
+    transition: all .4s;
+}
+.user-actions-options h3 {
+    transition: all .4s;
+    margin-bottom: 1rem;
+}
+.user-actions-options h3 a {
+    color: #020505;
+    transform: translateX(0);
+    transition: all .4s;
+}
+.user-actions-options h3 a:hover {
+    color: #173e43;
+    transform: translateX(3rem);
+}
+.user-actions-options h3 a:active {
+    color: #173e43;
+    transform: translateX(3rem);
+}
+.user-actions-results {
+    width: 100%;
+    margin: 0 auto;
+    padding: 1rem;
+}
+/* styling for modal */
+#modal-edit, #modal-cancel {
+    display: none;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow: auto;
+    background: rgba(0,0,0,0.62);
+  }
+  #modal-content-edit {
+    color: #333;
+    margin: 10% auto;
+    animation: fadeIn .4s ease-in-out;
+  }
+  #modal-content-cancel {
+    color: #333;
+    margin: 10% 35%;
+    animation: fadeIn .4s ease-in-out;
+  }
+  #modal-content-cancel h3 {
+    text-align: center;
+  }
+  #modal-content-cancel .container {
+      display: flex;
+
+  }
+  #close {
+    cursor: pointer;
+    font-weight: 700;
+    float: right;
+    color: #333;
+    font-size: 3rem;
+  }
+
+/* footer stlying */
+
+.footer {
+    background:#E6E2DD;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+    padding: 3rem 6rem;
+    font-weight: 600;
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    30% {
+        opacity: 0.4;
+    }
+    70% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+/* @keyframes fallOut {
+    0% {
+        transform: translateY(0rem);
+    }
+    30% {
+        transform: translateY(1rem);
+        opacity: 0.7;
+    }
+    70% {
+        transform: translateY(2rem);
+        opacity: 0.4;
+    }
+    100% {
+        transform: translateY(3rem);
+        opacity: 0;
+    }
+} */
+
+/*Media query*/
+@media(max-width: 600px) {
+    header nav{
+        display: flex;
+        flex-flow: row nowrap;
+    }
+    header #app-logo {
+        float: none;
+        text-align: center;
+        display: block;
+    }
+
+    header nav {
+        float:none;
+    }
+    nav ul li a {
+        font-weight: 500;
+        font-size: 1.8rem;
+    }
+    button{
+        padding: .5rem;
+        font-size: 1rem;
+    }
+    .hide-on-small {
+        display: none;
+    }
+    .ml-1 {
+        margin-left: 0 !important;
+    }
+    .section h1 {
+        padding-top: 3rem;
+        font-size: 1.5rem;
+    }
+    .col-3, .col-9, input {
+        width: 100%;
+    }
+    .hero-text .hero-description {
+        font-size: 1.9rem;
+    }
+    .services {
+        padding: 2rem 1rem;
+    }
+    .display-tabs {
+        width: 20%;
+    }
+    .form-card-header {
+        margin-top:29%;
+    }
+    .form-card {
+        margin: 0 auto;
+    }
+    .app-feature {
+        padding-top: 1rem;
+    }
+    .get-started-actions {
+        margin: 1rem 6rem;
+    }
+    .profile-btn {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 1rem;
+    }
+    .profile-btn button {
+        margin: 0 0.5rem;
+    }
+    #user-ft {
+        padding: 2rem 4rem;
+    }
+    footer {
+        margin-top: 18rem;
+    }
+}
+
+@media (max-width: 450px) {
+    body {
+        padding: 0;
+    }
+    header ul{
+       display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-around;
+    }
+    header ul li a {
+        font-size: 1.3rem;
+        justify-content: space-around;
+        margin: 0;
+    }
+    
+    div.container {
+        width:90%;
+    }
+
+    .display-tabs {
+        padding: .3rem .4rem;
+    }
+}
+/* this is for the table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: .1rem solid #ffffff;
+    box-shadow: 0rem .4rem .5rem -.1rem rgba(0,0,0,0.62);
+  }
+  .user-actions-results h2 {
+    text-align: center;
+    margin: 1.2rem;
+    text-transform: capitalize;
+  }
+  thead tr th {
+    border: .1rem solid #89bdd3;
+    background: #89bdd3
+  }
+  tr {
+    text-align: center;
+    height: 5.2rem;
+  }
+  tr:nth-of-type(odd) {
+    background: #eee;
+  }
+  /*  */
+  #get-started-tabs {
+    padding: 4rem 0;
+  }
+  /* buttons styling */
+  .table-action-btn {
+    width: auto;
+    border-radius: 0.5rem;
+    padding: 0.4rem 0.5rem;
+  }
+  #deleteBtn {
+    background: #89bdd3;
+    border: .1rem solid #89bdd3;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  #editBtn {
+    background: rgb(212, 197, 178);
+    border: .1rem solid #E6E2DD;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  td .mobile-view-title {
+    display: none;
+  }
+  .td{
+    padding: 0 4px;
+    width: 138px;
+  }
+  @media(max-width: 600px) {
+    .td{
+      padding: 0 4px;
+      width: 117px;
+    }
+    thead{
+      display: none;
+      content: attr(data-title);
+    }
+    td {
+      display: block;
+      font-size: 1.5rem;
+    }
+    td button {
+      margin: 1rem auto;
+    }
+    td .editBtn {
+      /* margin-top: 14rem; */
+    }
+    tr {
+      text-align: unset;
+    }
+    td .mobile-view-title {
+      display: inline-block;
+      margin: 0 5rem 0 1rem;
+      float: none !important;
+      font-weight: 700;
+      text-transform: uppercase;
+  }
+  td .parcel-detail {
+    float: right;
+    margin: 0 1rem 0 0;
+  }
+  }
+  /* modal styling */
+  #modal-edit, #modal-cancel {
+    display: none;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow: auto;
+    background: rgba(0,0,0,0.62);
+  }
+  #modal-content-edit {
+    color: #333;
+    margin: 10% auto;
+    animation: fadeIn .4s ease-in-out;
+  }
+  #modal-content-cancel {
+    color: #333;
+    margin: 10% 35%;
+    animation: fadeIn .4s ease-in-out;
+  }
+  #modal-content-cancel h3 {
+    text-align: center;
+  }
+  #modal-content-cancel .container {
+      display: flex;
+  
+  }
+  #close {
+    cursor: pointer;
+    font-weight: 700;
+    float: right;
+    color: #333;
+    font-size: 3rem;
+  }
+  @keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    30% {
+        opacity: 0.4;
+    }
+    70% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 1;
+    }
+  }
+  

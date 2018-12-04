@@ -1,0 +1,187 @@
+body {
+    margin: 0;
+    color: #333;
+    overflow-x: hidden;
+    display: flex;
+    flex-flow: column;
+}
+main {
+    flex: 1;
+}
+
+/* hero section */
+#slide-container {
+    height: 85vh;
+    width: 100%;
+    color: #ffffff;
+    clip-path: polygon(0 0, 100% 0, 100% 81%, 0% 100%);
+    position: relative;
+}
+#hero-bg {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('./img/hero-img.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 85vh;
+    width: 100%;
+    color: #ffffff;
+    clip-path: polygon(0 0, 100% 0, 100% 81%, 0% 100%);
+    animation: fade 15s infinite;
+    position: absolute;
+}
+#hero-bg-2 {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('./img/maarten-van-den-heuvel-246398-unsplash.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 85vh;
+    width: 100%;
+    color: #ffffff;
+    clip-path: polygon(0 0, 100% 0, 100% 81%, 0% 100%);
+    animation: fade2 15s infinite;
+    position: absolute;
+}
+#hero-bg-3 {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('./img/receive-parcel.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 85vh;
+    width: 100%;
+    color: #ffffff;
+    clip-path: polygon(0 0, 100% 0, 100% 81%, 0% 100%);
+    animation: fade3 15s infinite;
+}
+@keyframes fade1 {
+    5% {
+        opacity: 1;
+    }
+    33.333% {
+        opacity: 0;
+    }
+    66.666% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes fade2 {
+    0% {
+        opacity: 0;
+    }
+    33.333% {
+        opacity: 1;
+    }
+    66.666% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+ @keyframes fade3 {
+    0% {
+        opacity: 0;
+    }
+    33.333% {
+        opacity: 0;
+    }
+    66.666% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+.hero-text {
+    text-align: left;
+    padding: 6rem 1rem 0 1rem;
+    width: 60%;
+}
+.hero-text h1 {
+    font-size: 5rem;
+    letter-spacing: .4rem;
+    width: 100%;
+}
+.hero-description {
+    font-size: 2rem;
+}
+.services-title {
+    color: rgb(175, 171, 166);
+    font-size: 2rem;
+    margin: 2rem 1rem;
+}
+
+.add-border {
+    border-bottom: .1rem solid #373A36;
+    box-shadow: 0 .4rem .3rem 0 #333;
+}
+@media (max-width: 600px) {
+    .hero-text {
+        margin: 0;
+        padding: 0;
+    }
+    .hero-text h1 {
+        font-size: 2.7rem;
+   
+        padding-top: 2rem;
+    }
+    .get-started-actions {
+        flex-basis: 100%;
+    }
+}
+/* how to use section */
+.highlight {
+    color: #D48166;
+}
+.services h2 {
+    text-transform: capitalize;
+    margin: 2rem 1rem;
+}
+.services p {
+    font-size: 1.6rem;
+    margin: 0 1rem;
+}
+.how-to-use {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+}
+.how-to-use h2 {
+    margin: 3rem 0 1.5rem 0;
+}
+.how-to-use img {
+    width: 100%;
+    height: auto;
+    margin: .5rem 0 3rem 0;
+}
+.how-to-use p {
+    width: auto;
+}
+.description-cards {
+    display: inline-block;
+    width: 300px;
+    border: .1rem solid #F7F7F7;
+    padding: 0 1rem 1rem 1rem;
+    margin-top: .4rem;
+    border-radius: .4rem;
+    background: #F7F7F7;
+    box-shadow: 0 .3rem .3rem rgba(0,0,0,0.5);
+    transition: all .3s;
+    min-height: 31rem;
+}
+.description-cards:hover {
+    box-shadow: 0 .6rem .6rem rgba(0,0,0,0.5);
+}
+/*  */
+@media (max-width: 450px) {
+    .hero-text {
+        margin: 0;
+        padding: 0;
+    }
+    .hero-text h1 {
+        font-size: 2rem;
+        padding-top: 2rem;
+    }
+    .hero-description p {
+        font-size: 1.3rem;
+    }
+}

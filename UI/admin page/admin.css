@@ -1,0 +1,118 @@
+body {
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+/* the styling for the get started section */
+.td button {
+    display: flex;
+    justify-content: center;
+    margin: 1.2rem 0 0 0;
+    border: .2rem solid #777171;
+    background: #e3e3e3;
+    cursor: pointer;
+}
+.editbtn {
+    border: 0rem solid #e3e3e3;
+    background: #e3e3e3;
+}
+.dashboard {
+    border: 1px solid #89bdd3;
+    height: 100vh;
+}
+.dashboard h2 {
+    text-align: center;
+    padding: 2rem 0;
+    text-transform: capitalize;
+    font-size: 3rem;
+}
+
+@media(max-width: 600px) {
+    .dashboard {
+        height: 30vh;
+    }
+    header {
+        padding-bottom: 0;
+    }
+    nav {
+        display: flex;
+        justify-content: center;
+    }
+}
+.dashboard-min {
+    background: #89bdd3;
+}
+
+.btn-profile {
+    width: 20rem;
+    padding: 2rem;
+    margin: 2rem auto;
+    border-radius: 4rem;
+    border: .1rem solid #E6E2DD;
+    background: #E6E2DD;
+    box-shadow: .2rem .3rem .3rem 0 rgba(0,0,0,0.75);
+    cursor: pointer;
+    transition: all .3s;
+    font-size: 1.5rem;
+}
+.btn-profile:hover {
+    box-shadow: .3rem .4rem .5rem 0 rgba(0,0,0,0.75);
+}
+.col-9 h2 {
+    text-align: center;
+    padding: 2rem 0;
+    text-transform: capitalize;
+}
+#modal-admin-edit {
+    display: none;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow: auto;
+    background: rgba(0,0,0,0.62);
+}
+#modal-admin-content {
+    color: #333;
+    margin: 10% auto;
+    animation: fadeIn .4s ease-in-out;
+}
+@keyframes pulse {
+    0% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateY(1rem);
+    }
+    70% {
+        transform: translateY(1.4rem);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+/* this is still under the get-started section, this is the user action section */
+
+.profile-details {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+    width: 100%;
+    margin-bottom: 4rem;
+}
+/* profile tabs */
+.profile-tabs {
+    width: 60rem;
+    margin: 2rem;
+    text-align: center;
+    border: .1rem solid #373A36;
+    padding: 2rem;
+    background: #373A36;
+    color: #ffffff;
+    box-shadow: 0 .3rem .6rem .3rem rgba(0,0,0,0.5);
+}
+.profile-tabs h4 {
+    font-size: 3rem;
+}

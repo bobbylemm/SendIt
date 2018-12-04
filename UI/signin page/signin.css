@@ -1,0 +1,44 @@
+body {
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    min-height: 100vh;
+}
+main {
+    flex: 1;
+}
+
+form{
+    padding: 3rem;
+}
+
+.form-card{
+    margin-bottom: 14rem;
+}
+
+
+button{
+    display: block;
+    width: 11.5rem;
+    height: 5%;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+#tip {
+    margin-top: 10%;
+    text-align: center;
+    font-size: 1.6rem;
+    color: #333;
+}
+#tip a {
+    color: rgb(44, 88, 145);
+    font-weight: 600;
+}
+
+/* Media Query */
+@media(max-width: 600px) {
+    .form-card{
+        margin: 12rem auto !important;
+    }
+}
