@@ -36,8 +36,8 @@ CREATE TABLE IF NOT EXISTS parcels(
     status varchar(25) NOT NULL,
     cancelled boolean NOT NULL,
     user_id INTEGER REFERENCES users(user_id) ON DELETE CASCADE,
-    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP NOT NULL,
+    updated_at CURRENT_TIMESTAMP NOT NULL
 );`;
 
 pool.query(usersTable)

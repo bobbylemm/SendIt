@@ -14,7 +14,7 @@
     "dev": "NODE_ENV=development nodemon bin/dev",
     "start": "npm run build && npm run db_migrations && node bin/production",
     "postinstall": "npm run build",
-    "db_migrations": "node dist/dataMigrations/createTables.js --exit"
+    "db_migrations": "NODE_ENV=development node dist/dataMigrations/createTables.js --exit"
   },
   "repository": {
     "type": "git",

@@ -95,7 +95,10 @@ static async updateParcelStatus (req, res) {
     const dd = today.getDate();
     const mm = today.getMonth() + 1;
     const yyyy = today.getFullYear();
-    const updatedAt = `${dd}/${mm}/${yyyy}`;
+    const hr = today.getHours();
+    const mn = today.getMinutes();
+    const sec = today.getSeconds();
+    const updatedAt = `${dd}/${mm}/${yyyy} ${hr}:${mn}:${sec}`;
     const validStatus = ['in-transit', 'delivered'].includes(newStatus);
     if (!newStatus || !validStatus) {
         return res.status(400).json({
@@ -129,7 +132,10 @@ static async updateParcelPresentLocation (req, res) {
     const dd = today.getDate();
     const mm = today.getMonth() + 1;
     const yyyy = today.getFullYear();
-    const updatedAt = `${dd}/${mm}/${yyyy}`;
+    const hr = today.getHours();
+    const mn = today.getMinutes();
+    const sec = today.getSeconds();
+    const updatedAt = `${dd}/${mm}/${yyyy} ${hr}:${mn}:${sec}`;
     if(!newLocation) {
         return res.status(400).json({
             message: 'please put in a valid new location'
@@ -145,7 +151,8 @@ static async updateParcelPresentLocation (req, res) {
                 const subject = `parcel location update`;
                 sendEmail(recipient.rows[0].email, subject ,message)
                 return res.status(200).json({
-                    messsage: 'parcel present location was updated successfully'
+                    messsage: 'parcel present location was updated successfully',
+                    response: response.rows[0]
                 })
             }
         }
