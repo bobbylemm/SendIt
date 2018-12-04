@@ -18,7 +18,7 @@ main {
     position: relative;
 }
 #hero-bg {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('./img/hero-img.jpg') no-repeat;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('../img/hero-img.jpg') no-repeat;
     background-size: cover;
     background-position: center;
     height: 85vh;
@@ -29,7 +29,7 @@ main {
     position: absolute;
 }
 #hero-bg-2 {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('./img/maarten-van-den-heuvel-246398-unsplash.jpg') no-repeat;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('../img/maarten-van-den-heuvel-246398-unsplash.jpg') no-repeat;
     background-size: cover;
     background-position: center;
     height: 85vh;
@@ -40,7 +40,7 @@ main {
     position: absolute;
 }
 #hero-bg-3 {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('./img/receive-parcel.jpg') no-repeat;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('../img/receive-parcel.jpg') no-repeat;
     background-size: cover;
     background-position: center;
     height: 85vh;
