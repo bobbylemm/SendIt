@@ -37,10 +37,12 @@ class UsersControllers {
         });
       }
       return res.status (403).json ({
+        status: 'failed',
         message: 'unable to register user',
       });
     } catch (error) {
       res.status (401).json ({
+        status: 'failed',
         message: 'unable to register user',
       });
     }
@@ -66,10 +68,12 @@ class UsersControllers {
         });
       }
       return res.status (403).json ({
-        error: 'there was an error logging in',
+        status: 'failed',
+        message: 'there was an error logging in',
       });
     } catch (e) {
       res.status (401).json ({
+        status: 'failed',
         message: 'error logging in',
       });
     }
@@ -87,6 +91,7 @@ class UsersControllers {
               parcels: response.rows[0]
           })
         }return res.status(404).json({
+          status: 'failed',
           message: 'sorry could not find any of ypur parcels'
         })
     }catch(e) {
@@ -124,10 +129,12 @@ class UsersControllers {
                   parcel: response.rows[0]
               })
             }return res.status(400).json({
+              status: 'failed',
               message: 'could not update the location of this parcel'
             })
         }catch(e) {
             return res.status(400).json({
+              status: 'failed',
                 message: "this parcel destination was not updated successfully",
             })
         }      
@@ -145,14 +152,17 @@ class UsersControllers {
       const response = await usermanger.cancelParcelOrder(cancelled, userId, pid);
       if(response.rowCount === 1) {
         return res.status(200).json({
+          status: 'success',
           message: 'this parcel delivery has been cancelled successfully',
           parcel: response.rows[0]
         });
       }return res.status(401).json({
+        status: 'failed',
         message: 'sorry you cannot cancel a parcel order that is not yours'
       })
     }catch (e) {
       res.status(400).json({
+        status: 'failed',
         message: 'sorry could not cancel parcel delivery order'
       })
     }
@@ -172,13 +182,16 @@ static async createAdmin (req, res) {
         message = 'hey superadmin, you have successfully removed an admin';
       }
       return res.status(201).json({
+        status: 'success',
         message
       })
     }return res.status(400).json({
+      status: 'failed',
       message: 'could not find this email SuperAdmin'
     })
   }catch (e) {
     return res.status(400).json({
+      status: 'failed',
       message: 'sorry could not add or remove admin, as the user was not found'
     })
   }

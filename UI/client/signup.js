@@ -1,6 +1,8 @@
 const errFlag = document.getElementById ('message-output');
 const form = document.querySelector ('#form');
 const loader = document.querySelector('#loader');
+const apiMessageDiv = document.querySelector('#api-message-block');
+const apiMessage = document.querySelector('#api-message');
 
 const url = 'http://localhost:3000/api/v1/auth/register';
 
@@ -11,7 +13,7 @@ const handleSubmit = (e) => {
   const userName = document.querySelector ('#username').value;
   const password = document.querySelector ('#password').value;
 
-  const data = JSON.stringify({
+  const user = JSON.stringify({
     Email,
     userName,
     password
@@ -19,18 +21,25 @@ const handleSubmit = (e) => {
 
   fetch(url, {
     method: 'POST',
-    body: data,
+    body: user,
     headers: {
       'Content-Type': 'application/json'
     }
   })
   .then(res => res.json())
-  .then(d => {
-    loader.style.display = 'hidden';
-    console.log(d);
+  .then(data => {
+    loader.style.display = 'none';
+    if(data.status === 'success') {
+      apiMessageDiv.style.backgroundColor = '#89bdd3';
+        apiMessageDiv.style.display = 'block';
+        apiMessage.innerHTML = 'successfully registered';
+      setTimeout(() => {
+        
+      }, 2000);
+    }
   })
   .catch(err => {
-    loader.style.display = 'block';
+    loader.style.display = 'none';
     console.log(err);
   });
 

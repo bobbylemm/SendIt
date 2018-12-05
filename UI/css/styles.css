@@ -146,10 +146,18 @@ h3 a {
 .btn-primary:hover {
     box-shadow: 0rem .6rem .5rem 0rem rgba(0,0,0,0.57);
 }
+#api-message-block {
+    margin: 1rem auto;
+    padding: .8rem;
+    text-align: center;
+    width: 30%;
+    display: hidden;
+    animation: fadeIn 2s ease-in-out;
+}
 
 .form-card {
     max-width: 50rem;
-    margin: 10rem auto;
+    margin: 4rem auto;
     border: .1rem solid #EFEFEF;
     background: #EFEFEF;
     box-shadow: -.2rem 1rem 1.6rem -.2rem rgba(0,0,0,0.4);
