@@ -15,7 +15,6 @@ class ParcelController {
     const presentLocation = pickupLocation;
     try {
         const response = await parcelmanger.addNewParcel(packageName, pickupLocation, dropOfflocation, presentLocation, quantity, weight, price, initialStatus, cancelStatus, userId);
-        console.log(response);
         if (response.name !== 'error') {
             return res.status(201).json({
                 status: 'success',

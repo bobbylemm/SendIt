@@ -66,7 +66,7 @@ describe("all the test", () => {
                     password: 'sollsecret'
                 })
                 .end((err, res) => {
-                    expect(res.status).to.equal(401);
+                    expect(res.status).to.equal(403);
                     expect(res.body.message).to.equal('unable to register user');
                     done();
                 })
@@ -103,6 +103,7 @@ describe("all the test", () => {
                     pickupLocation: 'yaba',
                     dropOfflocation: 'berger',
                     presentLocation: 'yaba',
+                    quantity: '1',
                     weight: 300,
                     price: 10000
                 })
