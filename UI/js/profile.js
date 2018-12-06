@@ -23,14 +23,3 @@ const noCancel = () => {
         modalCancel.style.display = 'none';
 }
 // this is to be able to edit the table
-const edit = (e) => {
-        console.log('this is working');
-const td = e.closest('tr').querySelector('.editMe');
-        if (e.innerHTML === 'Edit') {
-                e.innerHTML = 'Save';
-                td.setAttribute("contenteditable", true);
-        }else {
-                e.innerHTML = 'Edit';
-                td.setAttribute("contenteditable", false);
-        }
-}

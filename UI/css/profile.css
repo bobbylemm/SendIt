@@ -3,15 +3,24 @@ body {
     padding: 0;
     color: #333;
 }
+.parcel-detail:empty:after {
+    content: "\00a0";
+}
 .profile-pic {
     height: 14rem;
     width: 14rem;
     margin: 1rem;
 }
+.profilePic {
+    background: url('../img/profilePic.jpg') no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 100vh;
+}
 /* the styling for the get started section */
 .dashboard {
     border: 1px solid #89bdd3;
-    height: 80vh;
+    height: 100vh;
 }
 .dashboard h1 {
     font-size: 2.5rem;
