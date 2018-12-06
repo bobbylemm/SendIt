@@ -6,25 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Delete-parcel | SendIt</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="../css/styles.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="./createParcel.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="../landingPage/landingPage.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/styles.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/createParcel.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/landingPage.css" />
 </head>
 
 <body>
     <header>
         <div class="container">
             <div id="app-logo">
-                <a href="../landingPage/landingPage.html">
-                    <img src='../img/icon.svg' />
-                    <a href="../../index.html"><h1>SendIt</h1></a>
+                <a href="./landingPage.html">
+                    <img src='./img/icon.svg' />
+                    <a href="./index.html"><h1>SendIt</h1></a>
                 </a>
             </div>
             <nav>
                 <ul>
-                    <li><a href="../profile page/profile.html">Profile</a></li>
-                    <li><a href="../signin page/signin.html">Login</a></li>
-                    <li class="highlight-current"><a href="../signup page/signup.html">Sign Up</a></li>
+                    <li><a href="./profile.html">Profile</a></li>
+                    <li><a href="./signin.html">Login</a></li>
+                    <li class="highlight-current"><a href="./signup.html">Sign Up</a></li>
                 </ul>
             </nav>
         </div>
@@ -38,7 +38,7 @@
         <div class="p-3">
             <div id="get-started-tabs">
                 <div class="get-started-actions">
-                    <h3><a href="../view all parcel/view-all-parcel.html">View all parcel delivery</a></h3>
+                    <h3><a href="./view-all-parcel.html">View all parcel delivery</a></h3>
                 </div>
             </div>
             <div class="user-actions-results">
@@ -58,10 +58,10 @@
                                 <!--  -->
                                 <div class="row">
                                     <div class="col-3">
-                                        <label class="label" for="parcelLocation">Parcel location</label>
+                                        <label class="label" for="parcelLocation">Pickup location</label>
                                     </div>
                                     <div class="col-9">
-                                        <input type="text" name="parcelLocation" id="parcelLocation" placeholder="Enter parcel location..." required>
+                                        <input type="text" name="pickupLocation" id="pickupLocation" placeholder="Enter pickup location..." required>
                                     </div>
                                 </div>
                                 <!--  -->
@@ -70,29 +70,25 @@
                                         <label class="label" for="Destination">Destination</label>
                                     </div>
                                     <div class="col-9">
-                                        <input type="text" name="Destination" id="Destination" placeholder="Enter destination..." required>
+                                        <input type="text" name="Destination" id="destination" placeholder="Enter parcel destination..." required>
                                     </div>
-                                </div>
-                                <!--  -->
-                                <div class="row">
-                                        <div class="col-3">
-                                            <label class="label" for="pickupLocation">Pickup location</label>
-                                        </div>
-                                        <div class="col-9">
-                                            <input type="text" name="pickupLocation" id="pickupLocation" placeholder="Enter pickup location" required>
-                                        </div>
                                 </div>
                                 <!--  -->
                                 <div class="row">
                                     <div class="col-3">
-                                        <label class="label" for="email">Weight categories</label>
+                                        <label class="label" for="parcelQuantity">Parcel quantity</label>
                                     </div>
                                     <div class="col-9">
-                                        <select name="weightCategories" id="weightCategories" required>
-                                            <option value="light-weight">0-100kg (light weight)</option>
-                                            <option value="medium-weight">101-200kg(medium weight)</option>
-                                            <option value="heavy-weight">201+(heavy-weight)</option>
-                                        </select>
+                                        <input type="number" name="parcelQuantity" id="parcelQuantity" placeholder="Enter parcel quantity" oninput="handleinputChange(this)" required>
+                                    </div>
+                                </div>
+                                <!--  -->
+                                <div class="row">
+                                    <div class="col-3">
+                                        <label class="label" for="weight">Weight (kg)</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="number" name="weight" id="weight" placeholder="Enter parcel weight" oninput="handleinputChange(this)" required>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -105,7 +101,7 @@
                             </div>
                             <div class="d-inline col-3 t-center">
                                 <h2>PRICE</h2>
-                                <h3>$45</h3>
+                                <h3 id="parcelPrice">&#8358;</h3>
                             </div>
                             <!--  -->
                         </form>
@@ -130,7 +126,7 @@
             <p>Designed by <span><a href="#">Nwoga Chidozie</a></span></p>
         </div>
     </footer>
-    <script src="./createParcel.js"></script>
+    <script src="./client/createNewParcel.js"></script>
 </body>
 
 </html>

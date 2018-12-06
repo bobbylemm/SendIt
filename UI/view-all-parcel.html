@@ -6,10 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Delete-parcel | SendIt</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="../css/styles.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="./viewAllParcel.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="../landingPage/landingPage.css" />
-
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/styles.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/viewAllParcel.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/landingPage.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 </head>
 
@@ -17,30 +16,30 @@
     <header>
         <div class="container">
             <div id="app-logo">
-                <a href="../../index.html">
-                    <img src='../img/icon.svg' />
+                <a href="./index.html">
+                    <img src='./img/icon.svg' />
                     <h1>SendIt</h1>
                 </a>
             </div>
             <nav>
                 <ul>
-                    <li><a href="../profile page/profile.html">Profile</a></li>
-                    <li><a href="../signin page/signin.html">Login</a></li>
-                    <li class="highlight-current"><a href="../signup page/signup.html">Sign Up</a></li>
+                    <li><a href="./profile.html">Profile</a></li>
+                    <li><a href="./signin.html">Login</a></li>
+                    <li class="highlight-current"><a href="./signup.html">Sign Up</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <!-- parcel features -->
-    <main id="get-started">
+    <main id="get-started" class="bg">
         <div class="container">
             <h1>view all parcel delivery</h1>
         </div>
         <div>
             <div id="get-started-tabs">
                 <div class="get-started-actions">
-                    <h3><a href="../create parcel/create-parcel.html">Create parcel delivery</a></h3>
+                    <h3><a href="./create-parcel.html">Create parcel delivery</a></h3>
                 </div>
             </div>
             <div class="user-actions-results">
@@ -52,25 +51,28 @@
                             <th>Pickup location</th>
                             <th>Dropoff location</th>
                             <th>Present location</th>
+                            <th>Cancelled</th>
                             <th>Price</th>
-                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td><span class="mobile-view-title">package name:</span><span class="parcel-detail">fridge</span></td>
-                            <td><span class="mobile-view-title">destination:</span><span class="parcel-detail">lagos</span></td>
-                            <td><span class="mobile-view-title">pickup location:</span><span class="parcel-detail">ipaja</span></td>
+                            <td><span class="mobile-view-title">pickup location:</span><span class="parcel-detail">lagos</span></td>
+                            <td><span class="mobile-view-title">dropoff location:</span><span class="parcel-detail">ipaja</span></td>
+                            <td><span class="mobile-view-title">present location:</span><span class="parcel-detail">ipaja</span></td>
+                            <td><span class="mobile-view-title">cancelled:</span><span class="parcel-detail">true</span></td>
                             <td><span class="mobile-view-title">price:</span><span class="parcel-detail">5678</span></td>
-                            <td class="td"><button class="table-action-btn fl" id="editBtn" onclick="edit()"><span><i class="far fa-edit"></i></span> Edit</button>&nbsp;<button class="table-action-btn fr" id="deleteBtn" onclick="cancel()"><span><i class="far fa-trash-alt"></i></span> cancel</button></td>
                             <!-- <td></td> -->
                         </tr>
                         <tr>
-                            <td><span class="mobile-view-title">package name:</span><span class="parcel-detail">car</span></td>
-                            <td><span class="mobile-view-title">destination:</span><span class="parcel-detail">abuja</span></td>
-                            <td><span class="mobile-view-title">pickup location:</span><span class="parcel-detail">maitama</span></td>
-                            <td><span class="mobile-view-title">price:</span><span class="parcel-detail">70000</span></td>
-                            <td class="td"><button class="table-action-btn fl" id="editBtn" onclick="edit()"><span><i class="far fa-edit"></i></span> Edit</button>&nbsp;<button class="table-action-btn fr" id="deleteBtn" onclick="cancel()"><span><i class="far fa-trash-alt"></i></span> cancel</button></td>
+                            <td><span class="mobile-view-title">package name:</span><span class="parcel-detail">fridge</span></td>
+                            <td><span class="mobile-view-title">pickup location:</span><span class="parcel-detail">lagos</span></td>
+                            <td><span class="mobile-view-title">dropoff location:</span><span class="parcel-detail">ipaja</span></td>
+                            <td><span class="mobile-view-title">present location:</span><span class="parcel-detail">ipaja</span></td>
+                            <td><span class="mobile-view-title">cancelled:</span><span class="parcel-detail">true</span></td>
+                            <td><span class="mobile-view-title">price:</span><span class="parcel-detail">5678</span></td>
+                            <!-- <td></td> -->
                         </tr>
                     </tbody>
                     <div id="modal-edit">

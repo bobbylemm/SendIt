@@ -1,16 +1,22 @@
 import express from 'express';
+import path from 'path';
 import morgan from 'morgan';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import routes from './routes/route';
 
 const app = express();
-const PORT = process.env.PORT || 6000;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+app.use(express.static(path.resolve(__dirname, '../UI/')));
+app.use('/UI', express.static(path.resolve(__dirname, '../UI/')));
+
+app.get('/', (req, res) => res.sendFile(path.resolve(__dirname, '../UI/index.html')))
 
 app.use('/api/v1/', routes);
 // catching an error before passing it to the erro handler

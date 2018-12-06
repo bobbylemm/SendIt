@@ -31,13 +31,14 @@ CREATE TABLE IF NOT EXISTS parcels(
     pickup_location varchar(25) NOT NULL,
     dropoff_location varchar(25) NOT NULL,
     present_location text NOT NULL,
+    quantity SMALLINT NOT NULL,
     weight SMALLINT NOT NULL,
     price INTEGER NOT NULL,
     status varchar(25) NOT NULL,
     cancelled boolean NOT NULL,
     user_id INTEGER REFERENCES users(user_id) ON DELETE CASCADE,
-    created_at TIMESTAMP NOT NULL,
-    updated_at CURRENT_TIMESTAMP NOT NULL
+    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMP NOT NULL DEFAULT NOW()
 );`;
 
 pool.query(usersTable)
