@@ -371,12 +371,13 @@ header a:hover{
 /* footer stlying */
 
 .footer {
-    background:#E6E2DD;
+    background:#312c32;
     display: flex;
     justify-content: space-around;
     flex-flow: row wrap;
     padding: 3rem 6rem;
     font-weight: 600;
+    color: #fff;
 }
 @keyframes fadeIn {
     0% {

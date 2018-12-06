@@ -3,6 +3,11 @@ body {
     padding: 0;
     color: #333;
 }
+.profile-pic {
+    height: 14rem;
+    width: 14rem;
+    margin: 1rem;
+}
 /* the styling for the get started section */
 .dashboard {
     border: 1px solid #89bdd3;
@@ -29,6 +34,7 @@ body {
 }
 .dashboard-min {
     background: #89bdd3;
+    text-align: center;
 }
 #user-ft {
     padding: 2rem 4rem;
