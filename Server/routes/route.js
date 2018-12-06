@@ -13,7 +13,7 @@ const router = express.Router();
 
 // this is for the home route
 router.get('/', (req, res) => {
-  res.status(200).send('welcome to SendIt');
+  res.status(200).send('welcome to SendIt API');
 });
 // this is the route for creating parcels
 router.post('/parcels', validateParcels, validateToken, createNewParcel);

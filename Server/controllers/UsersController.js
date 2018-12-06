@@ -88,7 +88,7 @@ class UsersControllers {
           return res.status(200).json({
             status: 'success',
               message: 'got all your parcels user',
-              parcels: response.rows[0]
+              parcels: [response.rows]
           })
         }return res.status(404).json({
           status: 'failed',
