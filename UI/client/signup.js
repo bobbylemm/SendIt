@@ -31,6 +31,7 @@ const handleSubmit = (e) => {
     console.log(data);
     loader.style.display = 'none';
     if(data.status === 'success') {
+      console.log(data.token.id);
       localStorage.setItem('x-auth-token', data.token);
       localStorage.setItem('user', user.userName);
       apiMessageDiv.style.backgroundColor = '#89bdd3';

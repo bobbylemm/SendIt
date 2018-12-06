@@ -51,68 +51,18 @@
                             <th>Pickup location</th>
                             <th>Dropoff location</th>
                             <th>Present location</th>
+                            <th>Weight</th>
+                            <th>Quantity</th>
                             <th>Cancelled</th>
                             <th>Price</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td><span class="mobile-view-title">package name:</span><span class="parcel-detail">fridge</span></td>
-                            <td><span class="mobile-view-title">pickup location:</span><span class="parcel-detail">lagos</span></td>
-                            <td><span class="mobile-view-title">dropoff location:</span><span class="parcel-detail">ipaja</span></td>
-                            <td><span class="mobile-view-title">present location:</span><span class="parcel-detail">ipaja</span></td>
-                            <td><span class="mobile-view-title">cancelled:</span><span class="parcel-detail">true</span></td>
-                            <td><span class="mobile-view-title">price:</span><span class="parcel-detail">5678</span></td>
-                            <!-- <td></td> -->
-                        </tr>
-                        <tr>
-                            <td><span class="mobile-view-title">package name:</span><span class="parcel-detail">fridge</span></td>
-                            <td><span class="mobile-view-title">pickup location:</span><span class="parcel-detail">lagos</span></td>
-                            <td><span class="mobile-view-title">dropoff location:</span><span class="parcel-detail">ipaja</span></td>
-                            <td><span class="mobile-view-title">present location:</span><span class="parcel-detail">ipaja</span></td>
-                            <td><span class="mobile-view-title">cancelled:</span><span class="parcel-detail">true</span></td>
-                            <td><span class="mobile-view-title">price:</span><span class="parcel-detail">5678</span></td>
-                            <!-- <td></td> -->
-                        </tr>
+                    <tbody id="tableBody">
+                        
                     </tbody>
-                    <div id="modal-edit">
-                        <div id="modal-content-edit">
-                            <main class="container">
-                                <div class="form-card p-3">
-                                    <span id="close">&times;</span>
-                                    <h2>Edit a parcel</h2>
-                                    <form id="form">
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <label class="label" for="newDestination">New destination</label>
-                                            </div>
-                                            <div class="col-9">
-                                                <input type="text" name="newDestination" id="newDestination" placeholder="new destination" required>
-                                            </div>
-                                        </div>
-                                        <!--  -->
-                                        <div class="row">
-                                            <div class="col-3">
-                                            </div>
-                                            <div class="col-9">
-                                                <button type="submit" id="signup" class="btn w-100">Done</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </main>
-                        </div>
-                    </div>
+                    
                     <!-- modal to cancel order -->
-                    <div id="modal-cancel">
-                        <div id="modal-content-cancel" class="bg-white p-3">
-                            <h3>Are you sure yo want to cancel parcel</h3>
-                            <main class="container">
-                                <button type="submit" id="signup" class="btn" onclick="yesCancel()">yes</button>
-                                <button type="submit" id="signup" class="btn" onclick="noCancel()">no</button>
-                            </main>
-                        </div>
-                    </div>
+                    
                 </table>
             </div>
         </div>
@@ -124,7 +74,7 @@
             <p>Designed by <span><a href="#">Nwoga Chidozie</a></span></p>
         </div>
     </footer>
-    <script src="./viewallParcel.js"></script>
+    <script src="./client/viewRecentParcels.js"></script>
 </body>
 
 </html>
