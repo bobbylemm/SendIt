@@ -152,7 +152,7 @@ h3 a {
     text-align: center;
     width: 30%;
     display: hidden;
-    animation: fadeIn 2s ease-in-out;
+    animation: fadeIn 3s ease-in-out;
 }
 
 .form-card {

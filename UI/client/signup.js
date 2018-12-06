@@ -28,13 +28,23 @@ const handleSubmit = (e) => {
   })
   .then(res => res.json())
   .then(data => {
+    console.log(data);
     loader.style.display = 'none';
     if(data.status === 'success') {
+      localStorage.setItem('x-auth-token', data.token);
+      localStorage.setItem('user', user.userName);
       apiMessageDiv.style.backgroundColor = '#89bdd3';
         apiMessageDiv.style.display = 'block';
         apiMessage.innerHTML = 'successfully registered';
       setTimeout(() => {
-        
+        window.location.replace('index.html');
+      }, 2000);
+    }else {
+      apiMessageDiv.style.backgroundColor = '#e62739';
+        apiMessageDiv.style.display = 'block';
+        apiMessage.innerHTML = 'error in registration';
+      setTimeout(() => {
+        apiMessageDiv.style.display = 'none';
       }, 2000);
     }
   })

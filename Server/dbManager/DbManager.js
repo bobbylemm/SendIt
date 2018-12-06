@@ -41,10 +41,10 @@ class DbManager {
   }
 
   // this is the section for the parcels
-    async insertNewParcel(packageName, pickupLocation, dropOfflocation, presentLocation, weight, price, initialStatus, cancelStatus, userId) {
+    async insertNewParcel(packageName, pickupLocation, dropOfflocation, presentLocation, quantity, weight, price, initialStatus, cancelStatus, userId) {
       try {
-          const q = 'INSERT INTO parcels (package_name, pickup_location, dropoff_location, present_location, weight, price, status, cancelled, user_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *';
-          const response = await this.pool.query(q, [packageName, pickupLocation, dropOfflocation, presentLocation, weight, price, initialStatus, cancelStatus, userId]);
+          const q = 'INSERT INTO parcels (package_name, pickup_location, dropoff_location, present_location, quantity, weight, price, status, cancelled, user_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *';
+          const response = await this.pool.query(q, [packageName, pickupLocation, dropOfflocation, presentLocation, quantity, weight, price, initialStatus, cancelStatus, userId]);
           return response;
       }catch(e) {
           return e;

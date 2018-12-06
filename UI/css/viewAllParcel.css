@@ -1,8 +1,14 @@
+.bg {
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('../img/bg-create-parcels.jpg') no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
 table {
   width: 100%;
   border-collapse: collapse;
   border: .1rem solid #ffffff;
   box-shadow: 0rem .4rem .5rem -.1rem rgba(0,0,0,0.62);
+  background: #fff;
 }
 .user-actions-results h2 {
   text-align: center;

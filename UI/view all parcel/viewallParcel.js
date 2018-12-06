@@ -28,16 +28,3 @@ const close = document.getElementById('close');
 //   packageName.appendChild (el);
 // });
 
-const edit = () => {
-  modalEdit.style.display = 'block';
-}
-close.addEventListener('click', () => {
-  modalEdit.style.display = 'none';
-})
-// 
-const cancel = () => {
-  modalCancel.style.display = 'block';
-}
-const noCancel = () => {
-  modalCancel.style.display = 'none';
-}

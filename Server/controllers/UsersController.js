@@ -25,7 +25,7 @@ class UsersControllers {
       if (response.status !== 400) {
         const {user_id, email, user_name, is_admin} = response.rows[0];
         const user = {user_id, email, user_name, is_admin};
-        return jwt.sign ({user}, process.env.SECRET_KEY, (err, token) => {
+        return jwt.sign ({user}, process.env.SECRET_KEY, {expiresIn: '5h'}, (err, token) => {
           if (err) {
             return err;
           }
@@ -41,7 +41,7 @@ class UsersControllers {
         message: 'unable to register user',
       });
     } catch (error) {
-      res.status (401).json ({
+      res.status (403).json ({
         status: 'failed',
         message: 'unable to register user',
       });
