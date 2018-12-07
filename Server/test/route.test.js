@@ -153,7 +153,7 @@ describe("all the test", () => {
                 })
                 .end((err, res) => {
                     expect(res.status).to.equal(201);
-                    expect(res.body.message).to.equal('parcel destination was updated successfully Admin');
+                    expect(res.body.message).to.equal('parcel destination was updated successfully');
                     done();
                 })
             })

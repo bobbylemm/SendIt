@@ -54,7 +54,7 @@ class DbManager {
   // get all parcels by a speciific user
   async getAllUserParcels(userId) {
     try {
-        const q = 'SELECT package_name, pickup_location, dropoff_location, present_location, weight, price, status FROM parcels WHERE user_id = $1';
+        const q = 'SELECT parcel_id, package_name, pickup_location, dropoff_location, present_location, weight, price, cancelled, user_id, status FROM parcels WHERE user_id = $1';
         const response = await this.pool.query(q, [userId]);
         return response
     }catch(e) {

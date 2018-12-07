@@ -125,7 +125,7 @@ class UsersControllers {
             if (response.rowCount === 1) {
               return res.status(201).json({
                 status: 'success',
-                  message: "parcel destination was updated successfully Admin",
+                  message: "parcel destination was updated successfully",
                   parcel: response.rows[0]
               })
             }return res.status(400).json({

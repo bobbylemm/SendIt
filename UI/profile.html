@@ -24,16 +24,19 @@
     </header>
     <!--  -->
     <main>
+        <div id="loader">
+            <img src="./img/loader.gif" alt="loader" id="loader-pic" />
+        </div>
         <div class="section">
             <div class="col-2 dashboard dashboard-min">
-                <h1>profile</h1>
+                <img src="./img/profile.svg" alt="profile-picture" class="profile-pic" />
                 <div class="profile-btn">
                     <button id="p-deliv" class="btn-profile">parcels delivered</button>
-                    <button id="view-all" class="btn-profile">view all parcels</button>
+                    <button id="view-all" class="btn-profile">view/edit parcels</button>
                 </div>
             </div>
             <!--  -->
-            <div class="col-10 border">
+            <div class="col-10 border profilePic">
                 <div id="user-ft">
                     <div id="btn-one-ft">
                         <table>
@@ -57,6 +60,7 @@
                             <h2>all parcel orders</h2>
                             <thead data-title="all parcels">
                                 <tr>
+                                    <th>Package id</th>
                                     <th>Package name</th>
                                     <th>Dropoff location</th>
                                     <th>Pickup location</th>
@@ -67,55 +71,15 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td><span class="mobile-view-title">Package name:</span><span class="parcel-detail">fridge</span></td>
-                                    <td class="editMe" contenteditable="false"><span class="mobile-view-title">Dropoff location:</span><span class="parcel-detail">lagos</span></td>
-                                    <td><span class="mobile-view-title">Pickup location:</span><span class="parcel-detail">ipaja</span></td>
-                                    <td><span class="mobile-view-title">Present location:</span><span class="parcel-detail">ketu</span></td>
-                                    <td><span class="mobile-view-title">Weight</span><span class="parcel-detail">45kg</span></td>
-                                    <td><span class="mobile-view-title">Status</span><span class="parcel-detail">enroute</span></td>
-                                    <td><span class="mobile-view-title">Price:</span><span class="parcel-detail">5678</span></td>
-                                    <td class="td"><button class="table-action-btn fl" id="editBtn" onclick="edit(this)"><span><i class="far fa-edit"></i></span> Edit</button>&nbsp;<button class="table-action-btn fr" id="deleteBtn" onclick="cancel()"><span><i class="far fa-trash-alt"></i></span> cancel</button></td>
-                                    <!-- <td></td> -->
-                                </tr>
-                                <tr>
-                                    <td><span class="mobile-view-title">Package name:</span><span class="parcel-detail">car</span></td>
-                                    <td class="editMe" contenteditable="false"><span class="mobile-view-title" >Dropoff location:</span><span class="parcel-detail">abuja</span></td>
-                                    <td><span class="mobile-view-title">Pickup location:</span><span class="parcel-detail">maitama</span></td>
-                                    <td><span class="mobile-view-title">Present location:</span><span class="parcel-detail">ipaja</span></td>
-                                    <td><span class="mobile-view-title">Weight</span><span class="parcel-detail">95kg</span></td>
-                                    <td><span class="mobile-view-title">Status</span><span class="parcel-detail">enroute</span></td>
-                                    <td><span class="mobile-view-title">Price:</span><span class="parcel-detail">70000</span></td>
-                                    <td class="td"><button class="table-action-btn fl" id="editBtn" onclick="edit(this)"><span><i class="far fa-edit"></i></span> Edit</button>&nbsp;<button class="table-action-btn fr" id="deleteBtn" onclick="cancel()"><span><i class="far fa-trash-alt"></i></span> cancel</button></td>
-                                </tr>
+                            <tbody id="tableBody">
+                                
                             </tbody>
                             <!-- midal section -->
                             <div id="modal-edit">
-                                <div id="modal-content-edit">
+                                <div id="modal-content-edit" class="bg-white p-3">
+                                    <h3 id="modal-message"></h3>
                                     <main class="container">
-                                        <div class="form-card p-3">
-                                            <span id="close">&times;</span>
-                                            <h2>Edit a parcel destination</h2>
-                                            <form id="form">
-                                                <div class="row">
-                                                    <div class="col-3">
-                                                        <label class="label" for="newDestination">New destination</label>
-                                                    </div>
-                                                    <div class="col-9">
-                                                        <input type="text" name="newDestination" id="newDestination" placeholder="new destination" required>
-                                                    </div>
-                                                </div>
-                                                <!--  -->
-                                                <div class="row">
-                                                    <div class="col-3">
-                                                    </div>
-                                                    <div class="col-9">
-                                                        <button type="submit" id="signup" class="btn w-100">Done</button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
+                                        <button type="submit" id="signup" class="btn w-3" onclick="ok()">Ok</button>
                                     </main>
                                 </div>
                             </div>
@@ -144,5 +108,6 @@
         </div>
     </footer>
     <script src='./js/profile.js'></script>
+    <script src='./client/userdashboard.js'></script>
 </body>
 </html>
