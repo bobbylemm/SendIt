@@ -1,9 +1,16 @@
 body {
-    height: 100%;
     display: flex;
     flex-flow: column;
     min-height: 100vh;
+    overflow: hidden;
 }
+
+.bg {
+    background: url('../img/signup-in.jpg') no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
 main {
     flex: 1;
 }

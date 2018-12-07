@@ -11,6 +11,16 @@ main {
     background-position: center center;
     background-size: cover;
 }
+#api-message {
+    display: block;
+    text-align: center;
+    font-size: 2rem;
+    width: 30%;
+    margin: 0 auto;
+    font-weight: 600;
+    padding: 1rem;
+    display: none;
+}
 .form-card {
     padding: 3rem;
     max-width: 70rem;

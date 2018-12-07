@@ -1,20 +1,54 @@
-const email = document.querySelector ('#email');
-const password = document.querySelector ('#password');
+const errFlag = document.getElementById ('message-output');
 const form = document.querySelector ('#form');
-const errFlag = document.querySelector('.message');
-form.addEventListener ('submit', handleSubmit);
-function handleSubmit (e) {
+const loader = document.querySelector('#loader');
+const apiMessageDiv = document.querySelector('#api-message-block');
+const apiMessage = document.querySelector('#api-message');
+
+const url = 'http://localhost:3000/api/v1/auth/login';
+
+const handleSubmit = (e) => {
   e.preventDefault ();
-  let data;
-  if (email.value && password.value) {
-    data = JSON.parse (sessionStorage.getItem (email.value));
-    // console.log ('hello');
-    if (email.value === data.email && password.value === data.password) {
-      console.log ('Successful');
-      //   errFlag.textContent = 'Error Logging  in';
-    } else {
-      console.log ('User Not Found');
+  loader.style.display = 'block';
+  const Email = document.querySelector ('#email').value;
+  const password = document.querySelector ('#password').value;
+
+  const user = JSON.stringify({
+    Email,
+    password
+  })
+
+  fetch(url, {
+    method: 'POST',
+    body: user,
+    headers: {
+      'Content-Type': 'application/json'
     }
-    //   console.log ();
-  }
+  })
+  .then(res => res.json())
+  .then(data => {
+    loader.style.display = 'none';
+    if(data.status === 'success') {
+      localStorage.setItem('x-auth-token', data.token);
+      localStorage.setItem('user', data.user);
+      apiMessageDiv.style.backgroundColor = '#89bdd3';
+        apiMessageDiv.style.display = 'block';
+        apiMessage.innerHTML = 'successfully logged in';
+      setTimeout(() => {
+        window.location.replace('index.html');
+      }, 2000);
+    }else {
+      apiMessageDiv.style.backgroundColor = '#e62739';
+        apiMessageDiv.style.display = 'block';
+        apiMessage.innerHTML = 'error logging in';
+      setTimeout(() => {
+        apiMessageDiv.style.display = 'none';
+      }, 2000);
+    }
+  })
+  .catch(err => {
+    loader.style.display = 'none';
+    console.log(err);
+  });
+
 }
+form.addEventListener ('submit', handleSubmit);

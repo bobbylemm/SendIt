@@ -23,45 +23,53 @@
             </nav>
         </div>
         </header>
-        <main class="container">
-            <div class="form-card">
-                <h2>Sign In</h2>
-                <form id="form">
-                    <div class="row">
-                        <div class="col-3">
-                            <label class="label" for="email">Email</label>
+        <main class="bg">       
+            <main class="container">
+                <div id="loader">
+                    <img src="./img/loader.gif" alt="loader" id="loader-pic" />
+                </div>
+                <div id="api-message-block">
+                    <h3 id="api-message"></h3>
+                </div>
+                <div class="form-card">
+                    <h2>Sign In</h2>
+                    <form id="form">
+                        <div class="row">
+                            <div class="col-3">
+                                <label class="label" for="email">Email</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="email" name="email" id="email" placeholder="Enter your Email..." required>
+                            </div>
                         </div>
-                        <div class="col-9">
-                            <input type="email" name="email" id="email" placeholder="Enter your Email..." required>
+                        <!--  -->
+                        <div class="row">
+                            <div class="col-3">
+                                <label class="label" for="password">Password</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="password" name="password" id="password" placeholder="Enter your Password" required>
+                            </div>
                         </div>
-                    </div>
-                    <!--  -->
-                    <div class="row">
-                        <div class="col-3">
-                            <label class="label" for="password">Password</label>
+                        <div class="message"></div>
+                        <!--  -->
+                        <div class="row">
+                            <div class="col-3">
+                            </div>
+                            <div class="col-9">
+                                <button type="submit" id="signup" class="btn w-100 ht-6">Sign in</button>
+                            </div>
                         </div>
-                        <div class="col-9">
-                            <input type="password" name="password" id="password" placeholder="Enter your Password" required>
-                        </div>
-                    </div>
-                    <div class="message"></div>
-                    <!--  -->
-                    <div class="row">
-                        <div class="col-3">
-                        </div>
-                        <div class="col-9">
-                            <button type="submit" id="signup" class="btn w-100 ht-6">Sign in</button>
-                        </div>
-                    </div>
-                    <p id="tip">Don't have an account ? <a href="./signup.html">Sign up </a></p>
-                </form>
-            </div>
+                        <p id="tip">Don't have an account ? <a href="./signup.html">Sign up </a></p>
+                    </form>
+                </div>
+            </main>
         </main>
         <!--  -->
         <footer>
             <div class="footer">
                 <p>SendIt &copy; 2018</p>
-                <p>Designed by <span><a href="#">Nwoga Chidozie</a></span></p>
+                <p>Designed by <span><a href="#"> Nwoga Chidozie</a></span></p>
             </div>
         </footer>
     <script src="./client/sigin.js"></script>
