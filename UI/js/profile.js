@@ -14,7 +14,6 @@ viewAllParcels.addEventListener('click', () => {
         contentTwo.style.display = 'block';
 })
 
-
 // 
 const cancel = () => {
         modalCancel.style.display = 'block';

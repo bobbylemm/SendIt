@@ -124,13 +124,17 @@ body {
   }
 #modal-content-edit {
     color: #333;
-    margin: 10% auto;
+    margin: 30% 35%;
     animation: fadeIn .4s ease-in-out;
+    border-radius: 1rem;
+    text-align: center;
 }
 #modal-content-cancel {
     color: #333;
-    margin: 10% 35%;
+    margin: 30% 35%;
     animation: fadeIn .4s ease-in-out;
+    border-radius: 1rem;
+    text-align: center;
 }
 #modal-content-cancel h3 {
     text-align: center;

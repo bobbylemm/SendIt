@@ -146,6 +146,24 @@ h3 a {
 .btn-primary:hover {
     box-shadow: 0rem .6rem .5rem 0rem rgba(0,0,0,0.57);
 }
+/* loader */
+#loader {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0.8;
+}
+#loader-pic {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    z-index: 100;
+}
 #api-message-block {
     margin: 1rem auto;
     padding: .8rem;
@@ -511,7 +529,7 @@ header a:hover{
 table {
     width: 100%;
     border-collapse: collapse;
-    border: .1rem solid #ffffff;
+    border: .1rem solid #78BDD2;
     box-shadow: 0rem .4rem .5rem -.1rem rgba(0,0,0,0.62);
   }
   .user-actions-results h2 {
@@ -556,8 +574,8 @@ table {
     display: none;
   }
   .td{
-    padding: 0 4px;
-    width: 138px;
+    width: 11rem;
+    padding: 0 .6rem;
   }
   @media(max-width: 600px) {
     .td{
