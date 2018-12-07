@@ -1,15 +1,19 @@
 const user = localStorage.getItem('user');
 const form = document.querySelector ('#form');
+const loader = document.querySelector('#loader');
 const packageName = document.querySelector('#packageName');
 const pickupLocation = document.querySelector('#pickupLocation');
 const destination = document.querySelector('#destination');
 const parcelQuantity = document.querySelector('#parcelQuantity');
 const weight = document.querySelector('#weight');
 const parcelPrice = document.querySelector('#parcelPrice');
+const pageGreeting = document.querySelector('.page-greeting');
 const token = localStorage.getItem('x-auth-token');
+const apiMessage = document.querySelector('#api-message');
 
 const url = 'http://localhost:3000/api/v1/parcels';
 let price;
+pageGreeting.innerHTML = `Welcome <em>${user}</em> Start Creating Your Parcel`;
 const handleinputChange = (inputThatChanged) => {
     const inputValue = inputThatChanged.value;
     const parcelQuan = parcelQuantity.value;
@@ -23,6 +27,7 @@ const handleinputChange = (inputThatChanged) => {
 }
 
 const handleSubmit = (e) => {
+    loader.style.display = 'block';
     e.preventDefault();
     const pricefigure = parcelPrice.innerHTML;
     const splitPrice = pricefigure.split(' ')[1];
@@ -45,7 +50,29 @@ const handleSubmit = (e) => {
         }
     })
     .then(res => res.json())
-    .then(data => console.log(data))
-    .catch(err => console.log(err))
+    .then(data => {
+        loader.style.display = 'none';
+        if(data.status === 'success') {
+            apiMessage.style.display = 'block';
+            apiMessage.innerHTML = 'Created Parcel successfully';
+            apiMessage.style.backgroundColor = '#89bdd3';
+            setTimeout(() => {
+                apiMessage.style.display = 'none';
+                window.location.replace('view-all-parcel.html');
+              }, 2000);
+        }else {
+            apiMessage.style.display = 'block';
+            apiMessage.innerHTML = 'Error Creating Parcel';
+            apiMessage.style.backgroundColor = '#e62739';
+            setTimeout(() => {
+                apiMessage.style.display = 'none';
+              }, 2000);
+        }
+    })
+    .catch(err => {
+        loader.style.display = 'none';
+        apiMessage.innerHTML = 'Error Creating Parcel';
+        console.log(err);
+    })
 }
 form.addEventListener('submit', handleSubmit);

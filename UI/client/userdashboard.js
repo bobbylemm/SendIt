@@ -38,12 +38,12 @@ const ok = () => {
 }
 
 const edit = (e) => {
-    modalMessage.innerHTML = 'Click On The Parcel Destination To Edit'
     const td = e.closest('tr').querySelector('.editMe');
     const dropofflocation = e.closest('tr').querySelector('.dropofflocation');
     const packageId = e.closest('tr').querySelector('.pid');
     const pid = packageId.innerHTML;
         if (e.innerHTML === 'Edit') {
+            modalMessage.innerHTML = 'Click On The Parcel Destination To Edit'
             modalEdit.style.display = 'block';
             e.innerHTML = 'Save';
             td.setAttribute("contenteditable", true);
@@ -82,7 +82,8 @@ const edit = (e) => {
             .then(res => res.json())
             .then(data => {
                 loader.style.display = 'none';
-                console.log(data);
+                modalMessage.innerHTML = 'Parcel Destination Updated Successfully'
+            modalEdit.style.display = 'block';
             })
             .catch(err => console.log(err))
         }

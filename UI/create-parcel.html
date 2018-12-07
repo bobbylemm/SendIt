@@ -31,93 +31,101 @@
     </header>
     
     <!-- parcel features -->
-    <main id="get-started" class="bg">
-        <div class="container">
-            <h1>create parcel delivery</h1>
-        </div>
-        <div class="p-3">
-            <div id="get-started-tabs">
-                <div class="get-started-actions">
-                    <h3><a href="./view-all-parcel.html">View all parcel delivery</a></h3>
-                </div>
+    <main class="bg">
+        <main id="get-started" class="bg">
+            <div id="loader">
+                <img src="./img/loader.gif" alt="loader" id="loader-pic" />
             </div>
-            <div class="user-actions-results">
-                <main class="container">
-                    <div class="form-card">
-                        <form id="form">
-                            <h2>Create a parcel order</h2>
-                            <div class="d-inline col-9">
-                                <div class="row">
-                                    <div class="col-3">
-                                        <label class="label" for="packageName">Package name</label>
-                                    </div>
-                                    <div class="col-9">
-                                        <input type="text" name="packageName" id="packageName" placeholder="Enter package name..." required>
-                                    </div>
-                                </div>
-                                <!--  -->
-                                <div class="row">
-                                    <div class="col-3">
-                                        <label class="label" for="parcelLocation">Pickup location</label>
-                                    </div>
-                                    <div class="col-9">
-                                        <input type="text" name="pickupLocation" id="pickupLocation" placeholder="Enter pickup location..." required>
-                                    </div>
-                                </div>
-                                <!--  -->
-                                <div class="row">
-                                    <div class="col-3">
-                                        <label class="label" for="Destination">Destination</label>
-                                    </div>
-                                    <div class="col-9">
-                                        <input type="text" name="Destination" id="destination" placeholder="Enter parcel destination..." required>
-                                    </div>
-                                </div>
-                                <!--  -->
-                                <div class="row">
-                                    <div class="col-3">
-                                        <label class="label" for="parcelQuantity">Parcel quantity</label>
-                                    </div>
-                                    <div class="col-9">
-                                        <input type="number" name="parcelQuantity" id="parcelQuantity" placeholder="Enter parcel quantity" oninput="handleinputChange(this)" required>
-                                    </div>
-                                </div>
-                                <!--  -->
-                                <div class="row">
-                                    <div class="col-3">
-                                        <label class="label" for="weight">Weight (kg)</label>
-                                    </div>
-                                    <div class="col-9">
-                                        <input type="number" name="weight" id="weight" placeholder="Enter parcel weight" oninput="handleinputChange(this)" required>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-3">
-                                    </div>
-                                    <div class="col-9">
-                                        <button type="submit" id="submit" class="btn-primary">Create</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-inline col-3 t-center">
-                                <h2>PRICE</h2>
-                                <h3 id="parcelPrice">&#8358;</h3>
-                            </div>
-                            <!--  -->
-                        </form>
+            <div class="container">
+                <h1 class="page-greeting"></h1>
+            </div>
+            <div id="api-message">
+                
+            </div>
+            <div class="p-3">
+                <div id="get-started-tabs">
+                    <div class="get-started-actions">
+                        <h3><a href="./view-all-parcel.html">View all parcel delivery</a></h3>
                     </div>
-                </main>
-                <!-- The Modal -->
-                <div id="myModal" class="modal">
+                </div>
+                <div class="user-actions-results">
+                    <main class="container">
+                        <div class="form-card">
+                            <form id="form">
+                                <h2>Create a parcel order</h2>
+                                <div class="d-inline col-9">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <label class="label" for="packageName">Package name</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input type="text" name="packageName" id="packageName" placeholder="Enter package name..." required>
+                                        </div>
+                                    </div>
+                                    <!--  -->
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <label class="label" for="parcelLocation">Pickup location</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input type="text" name="pickupLocation" id="pickupLocation" placeholder="Enter pickup location..." required>
+                                        </div>
+                                    </div>
+                                    <!--  -->
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <label class="label" for="Destination">Destination</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input type="text" name="Destination" id="destination" placeholder="Enter parcel destination..." required>
+                                        </div>
+                                    </div>
+                                    <!--  -->
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <label class="label" for="parcelQuantity">Parcel quantity</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input type="number" name="parcelQuantity" id="parcelQuantity" placeholder="Enter parcel quantity" oninput="handleinputChange(this)" required>
+                                        </div>
+                                    </div>
+                                    <!--  -->
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <label class="label" for="weight">Weight (kg)</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input type="number" name="weight" id="weight" placeholder="Enter parcel weight" oninput="handleinputChange(this)" required>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-3">
+                                        </div>
+                                        <div class="col-9">
+                                            <button type="submit" id="submit" class="btn-primary">Create</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-inline col-3 t-center">
+                                    <h2>PRICE</h2>
+                                    <h3 id="parcelPrice">&#8358;</h3>
+                                </div>
+                                <!--  -->
+                            </form>
+                        </div>
+                    </main>
+                    <!-- The Modal -->
+                    <div id="myModal" class="modal">
 
-                    <!-- Modal content -->
-                    <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <p>your parcel is on its way</p>
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <p>your parcel is on its way</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
     </main>
     <!-- footer section -->
     <footer>
