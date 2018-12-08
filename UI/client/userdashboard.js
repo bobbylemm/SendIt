@@ -26,7 +26,8 @@ fetch(url1, {
                     <td><span class="mobile-view-title">Weight</span><span class="parcel-detail">${parcel.weight}</span></td>
                     <td><span class="mobile-view-title">Status</span><span class="parcel-detail">${parcel.status}</span></td>
                     <td><span class="mobile-view-title">Price:</span><span class="parcel-detail">${parcel.price}</span></td>
-                    <td class="td"><button class="table-action-btn fl" id="editBtn" onclick="edit(this)">Edit</button><button class="table-action-btn fr" id="deleteBtn" onclick="cancel()">Cancel</button></td>
+                    <td><span class="mobile-view-title">Cancelled:</span><span class="parcel-detail">${parcel.cancelled}</span></td>
+                    <td class="td"><button class="table-action-btn fl" id="editBtn" onclick="edit(this)">Edit</button><button class="table-action-btn fr" id="deleteBtn" onclick="cancel(this)">Cancel</button></td>
         `;
         tableBody.appendChild(tr);
     })

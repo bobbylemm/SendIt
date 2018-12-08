@@ -2,7 +2,7 @@ const parcelsDelivered = document.getElementById('p-deliv');
 const viewAllParcels = document.getElementById('view-all');
 const contentOne = document.getElementById('btn-one-ft');
 const contentTwo = document.getElementById('btn-two-ft');
-const modalCancel = document.getElementById('modal-cancel');
+
 
 
 parcelsDelivered.addEventListener('click', () => {
@@ -15,10 +15,4 @@ viewAllParcels.addEventListener('click', () => {
 })
 
 // 
-const cancel = () => {
-        modalCancel.style.display = 'block';
-}
-const noCancel = () => {
-        modalCancel.style.display = 'none';
-}
 // this is to be able to edit the table
