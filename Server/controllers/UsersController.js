@@ -151,22 +151,33 @@ class UsersControllers {
     const userId = req.user.user.user_id;
     const { pid } = req.params;
     try {
-      const response = await usermanger.cancelParcelOrder(cancelled, userId, pid);
-      if(response.rowCount === 1) {
-        return res.status(200).json({
+      const ress = await usermanger.checkParcelStatus(pid, userId);
+      if (ress.rows[0].status === 'delivered') {
+        return res.status(400).json({
           status: 'success',
-          message: 'this parcel delivery has been cancelled successfully',
-          parcel: response.rows[0]
-        });
-      }return res.status(401).json({
-        status: 'failed',
-        message: 'sorry you cannot cancel a parcel order that is not yours'
-      })
-    }catch (e) {
-      res.status(400).json({
-        status: 'failed',
-        message: 'sorry could not cancel parcel delivery order'
-      })
+          message: 'sorry this parcel has been delivered'
+        })
+      }
+      try {
+        const response = await usermanger.cancelParcelOrder(cancelled, userId, pid);
+        if(response.rowCount === 1) {
+          return res.status(200).json({
+            status: 'success',
+            message: 'this parcel delivery has been cancelled successfully',
+            parcel: response.rows[0]
+          });
+        }return res.status(401).json({
+          status: 'failed',
+          message: 'sorry you cannot cancel a parcel order that is not yours'
+        })
+      }catch (e) {
+        res.status(400).json({
+          status: 'failed',
+          message: 'sorry could not cancel parcel delivery order'
+        })
+      }
+    }catch(e) {
+      return e;
     }
   }
 
