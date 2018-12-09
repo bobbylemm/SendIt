@@ -71,6 +71,15 @@ class UserManager {
 
 
 // -------------------admin only---------------------
+// this is to get all users in the application
+async getAllUsers() {
+  try {
+      const res = await this.database.getAllUsers();
+      return res;
+  }catch(e) {
+      return e;
+  }
+}
 // this is to create a new admin
 async createNewAdmin(adminEmail, isadmin) {
   try {
