@@ -70,12 +70,7 @@ body {
     box-shadow: .3rem .4rem .5rem 0 rgba(0,0,0,0.75);
 }
 
-#btn-one-ft {
-    display: block;
-    animation: fadeIn .8s ease-in-out;
-}
 #btn-two-ft {
-    display: none;
     animation: fadeIn .8s ease-in-out;
 }
 #btn-two-ft h2 {

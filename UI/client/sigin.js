@@ -27,7 +27,14 @@ const handleSubmit = (e) => {
   .then(res => res.json())
   .then(data => {
     loader.style.display = 'none';
-    if(data.status === 'success') {
+    if (data.status === 'success' && data.superAdmin === true) {
+      apiMessageDiv.style.display = 'block';
+      apiMessageDiv.style.backgroundColor = '#89bdd3';
+        apiMessage.innerHTML = 'Welcome superadmin';
+      setTimeout(() => {
+        window.location.replace('superadmin.html');
+      }, 2000);
+    }else if(data.status === 'success' && data.isAdmin === false) {
       localStorage.setItem('x-auth-token', data.token);
       localStorage.setItem('user', data.user);
       apiMessageDiv.style.backgroundColor = '#89bdd3';
