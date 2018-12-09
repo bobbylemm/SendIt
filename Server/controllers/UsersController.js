@@ -182,6 +182,23 @@ class UsersControllers {
   }
 
 // ---------------admin only-------------------------
+// this is to get all users in the application
+static async getAllUsers (req, res) {
+  try {
+      const response = await usermanger.getAllUsers();
+      return res.status(200).json({
+      status: 'success',
+      message: "there was success admin, all users have been fetched",
+      allParcels: response.rows[0]
+  })
+  }catch (error) {
+      return res.status(400).json({
+          message: "error in retrieving users, you are not authorized",
+          error
+      })
+  }
+}
+
 // this is for the super admin admin role
 static async createAdmin (req, res) {
   const { adminEmail, isadmin  } = req.body;

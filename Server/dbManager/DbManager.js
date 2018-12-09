@@ -118,6 +118,17 @@ async checkParcelStatus(pid, userId) {
     }
 }
 
+// this is to get all parcels in the app, accessible by admin only
+async getAllUsers() {
+    try {
+        const q = 'SELECT user_id, user_name, email, isadmin FROM users;';
+        const response = await this.pool.query(q);
+        return response;
+    }catch(e) {
+        return e;
+    }
+}
+
 // get specific parcel
 async getSpecificParcel(pid) {
     try {
