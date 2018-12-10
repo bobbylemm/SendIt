@@ -6,7 +6,6 @@
     <title>Admin | SendIt</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="./css/styles.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="./css/viewAllParcel.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./css/admin.css" />
 </head>
 <body>
@@ -14,7 +13,7 @@
         <div class="container">
             <div id="app-logo">
                 <img src="./img/icon.svg" />
-                    <a href="./index.html"><h1>SendIt</h1></a>
+                <a href="./index.html"><h1>SendIt</h1></a>
             </div>
             <nav>
                 <ul>
@@ -25,82 +24,58 @@
     </header>
     <!--  -->
     <main>
+        <div id="loader">
+            <img src="./img/loader.gif" alt="loader" id="loader-pic" />
+        </div>
         <div class="section">
             <div class="col-2 dashboard dashboard-min">
-                <h2>administrator</h2>
-                <!-- <button class="btn-profile">view more details</button> -->
+                <img src="./img/admin.svg" alt="profile-picture" class="profile-pic" />
+                <div class="profile-btn">
+                    <h2>Welcome Admin</h2>
+                    <p class="px-1">
+                        As an administrator you can perform the following actions
+                        <ul>
+                            <li><b>Edit parcel present location</b></li>
+                            <li><b>Edit parcel delivery status</b></li>
+                        </ul>
+                    </p>
+                </div>
             </div>
             <!--  -->
-            <div class="col-9 border">
-                <div class="p-3">
-                    <table>
-                        <h2>welcome admin</h2>
-                        <thead data-title="all parcels">
-                            <tr>
-                                <th>package name</th>
-                                <th>destination</th>
-                                <th>pickup location</th>
-                                <th>present location</th>
-                                <th>status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><span class="mobile-view-title">package name:</span><span class="parcel-detail">fridge</span></td>
-                                <td><span class="mobile-view-title">destination:</span><span class="parcel-detail">lagos</span></td>
-                                <td><span class="mobile-view-title">pickup location:</span><span class="parcel-detail">ipaja</span></td>
-                                <td><span class="mobile-view-title">present location</span><span class="parcel-detail">surulere</span></td>
-                                <td><span class="mobile-view-title">status</span><span class="parcel-detail">enroute</span></td>
-                                <td class="td"><button class="table-action-btn fl w-100 editBtn" onclick="edit()"><span><i class="far fa-edit"></i></span> Edit</button>
-                                <!-- <td></td> -->
-                            </tr>
-                            <tr>
-                                <td><span class="mobile-view-title">package name:</span><span class="parcel-detail">car</span></td>
-                                <td><span class="mobile-view-title">destination:</span><span class="parcel-detail">abuja</span></td>
-                                <td><span class="mobile-view-title">pickup location:</span><span class="parcel-detail">maitama</span></td>
-                                <td><span class="mobile-view-title">present location</span><span class="parcel-detail">agidingbi</span></td>
-                                <td><span class="mobile-view-title">status</span><span class="parcel-detail">delivered</span></td>
-                                <td class="td"><button class="table-action-btn fl w-100 editBtn" onclick="edit()"><span><i class="far fa-edit"></i></span> Edit</button>
-                            </tr>
-                        </tbody>
-                        <div id="modal-admin-edit">
-                            <div id="modal-admin-content">
-                                <main class="container">
-                                    <div class="form-card p-3">
-                                        <span id="close">&times;</span>
-                                        <h2>Edit a parcel</h2>
-                                        <form id="form">
-                                            <div class="row">
-                                                <div class="col-3">
-                                                    <label class="label" for="newLocation">updated present location</label>
-                                                </div>
-                                                <div class="col-9">
-                                                    <input type="text" name="newLocation" id="newLocation" placeholder="Enter new present location" required>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-3">
-                                                    <label class="label" for="newLocation">Updated Status</label>
-                                                </div>
-                                                <div class="col-9">
-                                                    <input type="text" name="newStatus" id="newStatus" placeholder="Enter new status" required>
-                                                </div>
-                                            </div>
-                                            <!--  -->
-                                            <div class="row">
-                                                <div class="col-3">
-                                                </div>
-                                                <div class="col-9">
-                                                    <button type="submit" id="signup" class="btn w-100">Done</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </main>
+            <div class="col-10 border profilePic">
+                <div id="user-ft">
+                    <div id="btn-two-ft">
+                        <table>
+                            <h2>Here are all the parcels</h2>
+                            <thead data-title="all parcels">
+                                <tr>
+                                    <th>Package id</th>
+                                    <th>User id</th>
+                                    <th>Package name</th>
+                                    <th>Dropoff location</th>
+                                    <th>Pickup location</th>
+                                    <th>Present location</th>
+                                    <th>Weight</th>
+                                    <th>Status</th>
+                                    <th>Price</th>
+                                    <th>Cancelled</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody">
+                                
+                            </tbody>
+                            <!-- modal section -->
+                            <div id="modal-edit">
+                                <div id="modal-content-edit" class="bg-white p-3">
+                                    <h3 id="modal-message"></h3>
+                                    <main class="container">
+                                        <button type="submit" id="signup" class="btn w-3" onclick="ok()">Ok</button>
+                                    </main>
+                                </div>
                             </div>
-                        </div>
-                    </table>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -113,6 +88,6 @@
             <p>Designed by <span><a href="#">Nwoga Chidozie</a></span></p>
         </div>
     </footer>
-    <script src="./admin.js"></script>
+    <script src='./client/superadmin.js'></script>
 </body>
 </html>

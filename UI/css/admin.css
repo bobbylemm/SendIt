@@ -3,28 +3,33 @@ body {
     padding: 0;
     color: #333;
 }
+.parcel-detail:empty:after {
+    content: "\00a0";
+}
+.profile-pic {
+    height: 14rem;
+    width: 14rem;
+    margin: 1rem;
+}
+.profilePic {
+    background: url('../img/profilePic.jpg') no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 100vh;
+}
 /* the styling for the get started section */
-.td button {
-    display: flex;
-    justify-content: center;
-    margin: 1.2rem 0 0 0;
-    border: .2rem solid #777171;
-    background: #e3e3e3;
-    cursor: pointer;
-}
-.editbtn {
-    border: 0rem solid #e3e3e3;
-    background: #e3e3e3;
-}
 .dashboard {
     border: 1px solid #89bdd3;
     height: 100vh;
 }
-.dashboard h2 {
+.dashboard h1 {
+    font-size: 2.5rem;
+    background: #89bdd3;
+    color: #333;
     text-align: center;
-    padding: 2rem 0;
-    text-transform: capitalize;
-    font-size: 3rem;
+}
+.td {
+    padding: 0 2.5rem;
 }
 
 @media(max-width: 600px) {
@@ -41,10 +46,18 @@ body {
 }
 .dashboard-min {
     background: #89bdd3;
+    text-align: center;
 }
-
+#user-ft {
+    padding: 2rem;
+}
+#user-ft h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+}
 .btn-profile {
-    width: 20rem;
+    width: 17rem;
     padding: 2rem;
     margin: 2rem auto;
     border-radius: 4rem;
@@ -54,30 +67,32 @@ body {
     cursor: pointer;
     transition: all .3s;
     font-size: 1.5rem;
+    outline: none;
 }
 .btn-profile:hover {
     box-shadow: .3rem .4rem .5rem 0 rgba(0,0,0,0.75);
 }
-.col-9 h2 {
+
+#btn-two-ft {
+    animation: fadeIn .8s ease-in-out;
+}
+#btn-two-ft h2 {
     text-align: center;
-    padding: 2rem 0;
-    text-transform: capitalize;
+    margin: 1rem
 }
-#modal-admin-edit {
-    display: none;
-    z-index: 1;
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    left: 0;
-    top: 0;
-    overflow: auto;
-    background: rgba(0,0,0,0.62);
-}
-#modal-admin-content {
-    color: #333;
-    margin: 10% auto;
-    animation: fadeIn .4s ease-in-out;
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    30% {
+        opacity: 0.4;
+    }
+    70% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 @keyframes pulse {
     0% {
@@ -93,26 +108,65 @@ body {
         transform: translateY(0);
     }
 }
-/* this is still under the get-started section, this is the user action section */
-
-.profile-details {
-    display: flex;
-    justify-content: space-around;
-    flex-flow: row wrap;
+/* this is for the modal section */
+#modal-edit, #modal-cancel {
+    display: none;
+    z-index: 1;
+    height: 100%;
     width: 100%;
-    margin-bottom: 4rem;
-}
-/* profile tabs */
-.profile-tabs {
-    width: 60rem;
-    margin: 2rem;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow: auto;
+    background: rgba(0,0,0,0.62);
+  }
+#modal-content-edit {
+    color: #333;
+    margin: 30% 35%;
+    animation: fadeIn .4s ease-in-out;
+    border-radius: 1rem;
     text-align: center;
-    border: .1rem solid #373A36;
-    padding: 2rem;
-    background: #373A36;
-    color: #ffffff;
-    box-shadow: 0 .3rem .6rem .3rem rgba(0,0,0,0.5);
 }
-.profile-tabs h4 {
-    font-size: 3rem;
+#modal-content-cancel {
+    color: #333;
+    margin: 30% 35%;
+    animation: fadeIn .4s ease-in-out;
+    border-radius: 1rem;
+    text-align: center;
 }
+#modal-content-cancel h3 {
+    text-align: center;
+}
+#modal-content-cancel .container {
+    display: flex;
+}
+#close {
+cursor: pointer;
+font-weight: 700;
+float: right;
+color: #333;
+font-size: 3rem;
+}
+.dropoff-input {
+    margin-top: 1.1rem;
+    border: 0rem solid #fff;
+    padding: 0 1rem;
+    width: 5rem;
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    30% {
+        opacity: 0.4;
+    }
+    70% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+/* profile tabs */
