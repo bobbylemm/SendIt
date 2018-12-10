@@ -28,6 +28,8 @@ const handleSubmit = (e) => {
   .then(data => {
     loader.style.display = 'none';
     if (data.status === 'success' && data.superAdmin === true) {
+      localStorage.setItem('superemail', Email);
+      localStorage.setItem('superpassword', password);
       apiMessageDiv.style.display = 'block';
       apiMessageDiv.style.backgroundColor = '#89bdd3';
         apiMessage.innerHTML = 'Welcome superadmin';

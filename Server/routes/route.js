@@ -42,5 +42,5 @@ router.put('/parcels/:pid/status', validateToken, validateAdmin, updateParcelSta
 // this is to change the dropofflocation of a parcel
 router.put('/parcels/:pid/currentlocation', validateToken, validateAdmin, updateParcelPresentLocation);
 // this is for the superadmin
-router.post('/superadmin/createadmin', validateSuperAdmin, createAdmin);
+router.put('/superadmin/createadmin', validateSuperAdmin, createAdmin);
 export default router;

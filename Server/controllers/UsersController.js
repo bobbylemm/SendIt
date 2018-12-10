@@ -196,12 +196,12 @@ static async getAllUsers (req, res) {
       return res.status(200).json({
       status: 'success',
       message: "there was success, all users have been fetched",
-      allParcels: response.rows[0]
+      allUsers: [response.rows]
   })
   }catch (error) {
       return res.status(400).json({
+          status: 'failed',
           message: "error in retrieving users, you are not authorized",
-          error
       })
   }
 }
@@ -215,12 +215,14 @@ static async createAdmin (req, res) {
       let message = '';
       if (isadmin === true) {
         message = 'hey superadmin, you have successfully added an admin';
-      }else if (isadmin === false) {
+      }if (isadmin === false) {
         message = 'hey superadmin, you have successfully removed an admin';
+        console.log('message1',message)
       }
+      console.log('m2',message)
       return res.status(201).json({
         status: 'success',
-        message
+        message,
       })
     }return res.status(400).json({
       status: 'failed',
@@ -232,7 +234,6 @@ static async createAdmin (req, res) {
       message: 'sorry could not add or remove admin, as the user was not found'
     })
   }
-  
 }
 // END OF CLASS
 }

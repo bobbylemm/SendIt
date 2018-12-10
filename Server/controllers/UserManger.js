@@ -74,7 +74,7 @@ class UserManager {
 // this is to get all users in the application
 async getAllUsers() {
   try {
-      const res = await this.database.getAllUsers();
+      const res = await this.db.getAllUsers();
       return res;
   }catch(e) {
       return e;
