@@ -52,6 +52,12 @@ class UsersControllers {
   // this is to login user
   static async login (req, res) {
     const {Email, password} = req.body;
+    if (Email === process.env.SUPER_ADMIN_EMAIL && password === process.env.SUPER_ADMIN_PASSWORD) {
+      return res.status(201).json({
+        status: 'success',
+        superAdmin: true
+      })
+    }
     try {
       const response = await usermanger.loginUser (Email, password);
       if (response.rows[0] !== undefined) {
@@ -65,7 +71,8 @@ class UsersControllers {
             status: 'success',
             message: 'successfully logged in',
             token,
-            user: response.rows[0].user_name
+            user: response.rows[0].user_name,
+            isAdmin: response.rows[0].is_admin
           });
         });
       }
@@ -78,7 +85,7 @@ class UsersControllers {
         status: 'failed',
         message: 'error logging in',
       });
-    }
+    } 
   }
 
   // this is to get all parcels by the user
@@ -188,13 +195,13 @@ static async getAllUsers (req, res) {
       const response = await usermanger.getAllUsers();
       return res.status(200).json({
       status: 'success',
-      message: "there was success admin, all users have been fetched",
-      allParcels: response.rows[0]
+      message: "there was success, all users have been fetched",
+      allUsers: [response.rows]
   })
   }catch (error) {
       return res.status(400).json({
+          status: 'failed',
           message: "error in retrieving users, you are not authorized",
-          error
       })
   }
 }
@@ -208,12 +215,12 @@ static async createAdmin (req, res) {
       let message = '';
       if (isadmin === true) {
         message = 'hey superadmin, you have successfully added an admin';
-      }else if (isadmin === false) {
+      }if (isadmin === false) {
         message = 'hey superadmin, you have successfully removed an admin';
       }
       return res.status(201).json({
         status: 'success',
-        message
+        message,
       })
     }return res.status(400).json({
       status: 'failed',
@@ -225,7 +232,6 @@ static async createAdmin (req, res) {
       message: 'sorry could not add or remove admin, as the user was not found'
     })
   }
-  
 }
 // END OF CLASS
 }

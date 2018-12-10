@@ -32,7 +32,7 @@ router.post('/auth/login', validateLogin, login);
 // GET ALL PARCELS IN THE APP (accessible to admin only)
 router.get('/parcels', validateToken, validateAdmin, getAllParcels);
 // GET ALL PARCELS IN THE APP (accessible to admin only)
-router.get('/users', validateToken, validateAdmin, getAllUsers);
+router.get('/users', validateSuperAdmin, getAllUsers);
 // this is to get all parcels for a specific user
 router.get('/parcels/:uid/users', validateToken, validateAdmin, getAllParcelsBySpecificUser);
 // this is to get a specific parcel
@@ -42,5 +42,5 @@ router.put('/parcels/:pid/status', validateToken, validateAdmin, updateParcelSta
 // this is to change the dropofflocation of a parcel
 router.put('/parcels/:pid/currentlocation', validateToken, validateAdmin, updateParcelPresentLocation);
 // this is for the superadmin
-router.post('/superadmin/createadmin', validateSuperAdmin, createAdmin);
+router.put('/superadmin/createadmin', validateSuperAdmin, createAdmin);
 export default router;

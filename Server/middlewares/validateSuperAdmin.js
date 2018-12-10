@@ -1,35 +1,12 @@
 import helpers from '../helpers/handleError';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const validateSuperAdmin = (req, res, next) => {
-  const { superemail, superpassword, adminEmail, isadmin } = req.body;
-  const emailRegex = /\S+@\S+\.\S+/;
-  if (!emailRegex.test(superemail)) {
-    return next(helpers.handleError(400, 'the superadmin email is not valid'));
-  }
-  if (!emailRegex.test(adminEmail)) {
-    return next(helpers.handleError(400, 'this admin email is not valid'));
-  }
-  if (!superemail) {
-    return next(helpers.handleError(400, 'please fill in a valid superadmin email'));
-  }
-  if (superemail !== 'osakaliker@gmail.com' || superpassword !== 'osakalikersecret') {
+  const { superemail, superpassword } = req.headers;
+  if (superemail !== process.env.SUPER_ADMIN_EMAIL || superpassword !== process.env.SUPER_ADMIN_PASSWORD) {
       return next(helpers.handleError(400, 'you dont have access to this part of the application'));
-  }
-  if (!superpassword) {
-    return next(helpers.handleError(400, 'please fill in a superadmin password'));
-  }
-  if (superpassword < 8) {
-    return next(helpers.handleError(400, 'your password cannot be less than 8 characters'));
-  }
-  if (!adminEmail) {
-    return next(helpers.handleError(400, 'please fill in a valid new admin email'));
-  }
-  if (isadmin === '') {
-    console.log(isadmin)
-    return next(helpers.handleError(400, 'you have to state new admin role'));
-  }
-  if (typeof isadmin !== 'boolean') {
-    return next(helpers.handleError(400, 'you have to state valid admin role'));
   }
   return next();
 };
