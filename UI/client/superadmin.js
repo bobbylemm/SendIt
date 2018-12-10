@@ -80,11 +80,15 @@ const edit = (e) => {
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 loader.style.display = 'none';
-                modalMessage.innerHTML = 'stuff'
-            modalEdit.style.display = 'block';
+                modalMessage.innerHTML = data.message;
+                modalEdit.style.display = 'block';
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                loader.style.display = 'none';
+                modalMessage.innerHTML = 'this action failed';
+                modalEdit.style.display = 'block';
+                console.log(err);
+            })
         }
     }

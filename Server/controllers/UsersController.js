@@ -217,9 +217,7 @@ static async createAdmin (req, res) {
         message = 'hey superadmin, you have successfully added an admin';
       }if (isadmin === false) {
         message = 'hey superadmin, you have successfully removed an admin';
-        console.log('message1',message)
       }
-      console.log('m2',message)
       return res.status(201).json({
         status: 'success',
         message,
