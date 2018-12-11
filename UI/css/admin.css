@@ -2,6 +2,14 @@ body {
     margin: 0;
     padding: 0;
     color: #333;
+    display: flex;
+    flex-flow: column;
+}
+main {
+    flex: 1
+}
+.section {
+    display: flex;
 }
 .parcel-detail:empty:after {
     content: "\00a0";
@@ -20,7 +28,12 @@ body {
 /* the styling for the get started section */
 .dashboard {
     border: 1px solid #89bdd3;
-    height: 100vh;
+    height: 100%;
+}
+.dashboard-lar {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 .dashboard h1 {
     font-size: 2.5rem;
@@ -28,10 +41,32 @@ body {
     color: #333;
     text-align: center;
 }
-.td {
-    padding: 0 2.5rem;
+span {
+    padding: .3rem 0.5rem;
+    border-radius: .3rem;
 }
-
+span:focus {
+    color: #767c80;
+    border: .1rem solid #a5b6bd;
+    outline: none;
+}
+.td {
+   width: 9rem;
+   padding: 0 2rem;
+}
+select {
+    padding: 0.4rem;
+    min-width: 80%;
+    border-radius: .3rem;
+}
+select:disabled {
+    background-color: rgb(134, 126, 126);
+    color: #333;
+}
+button img {
+    height: 1rem;
+    margin: .1rem;
+}
 @media(max-width: 600px) {
     .dashboard {
         height: 30vh;

@@ -110,7 +110,7 @@ async checkParcelStatus(pid, userId) {
   // this is to get all parcels in the app, accessible by admin only
   async getAllParcels() {
     try {
-        const q = 'SELECT package_name, dropoff_location, pickup_location, price, present_location, weight, price, status FROM parcels;';
+        const q = 'SELECT parcel_id, user_id, package_name, dropoff_location, pickup_location, price, present_location, weight, price, cancelled, status FROM parcels;';
         const response = await this.pool.query(q);
         return response;
     }catch(e) {

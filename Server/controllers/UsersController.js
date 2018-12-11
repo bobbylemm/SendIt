@@ -13,7 +13,7 @@ dotenv.config ();
 class UsersControllers {
   // this is to register a user
   static async registerUser (req, res) {
-    const {userName, Email, password} = req.body;
+    const { userName, Email, password } = req.body;
     const isAdmin = false;
     try {
       const response = await usermanger.registerUser (
@@ -51,9 +51,9 @@ class UsersControllers {
 
   // this is to login user
   static async login (req, res) {
-    const {Email, password} = req.body;
+    const { Email, password } = req.body;
     if (Email === process.env.SUPER_ADMIN_EMAIL && password === process.env.SUPER_ADMIN_PASSWORD) {
-      return res.status(201).json({
+      return res.status(201).header('superemail', Email).json({
         status: 'success',
         superAdmin: true
       })
@@ -63,7 +63,7 @@ class UsersControllers {
       if (response.rows[0] !== undefined) {
         const {user_id, email, user_name, is_admin} = response.rows[0];
         const user = {user_id, email, user_name, is_admin};
-        return jwt.sign ({user}, process.env.SECRET_KEY, {expiresIn: '5h'}, (err, token) => {
+        return jwt.sign ({user}, process.env.SECRET_KEY, { expiresIn: '5h'}, (err, token) => {
           if (err) {
             return err;
           }

@@ -1,12 +1,16 @@
 /* eslint-env mocha */
-
+import dotenv from 'dotenv';
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../app';
 
+dotenv.config();
+
 const { expect } = chai;
 
 let userToken = '';
+let superEmail = '';
+let superPassword = '';
 
 chai.use(chaiHttp);
 describe("handle all unregistered routes", () => {
@@ -203,6 +207,43 @@ describe("all the test", () => {
                 .end((err, res) => {
                     expect(res.status).to.equal(401);
                     expect(res.body.error.message).to.equal('you are not authorized to perform this action, admin only');
+                    done();
+                })
+            })
+        })
+    })
+    describe("super-admin routes", () => {
+        describe("login as a superadmin", () => {
+            it("should login in a superadmn", (done) => {
+                chai.request(app)
+                .post('/api/v1/auth/login')
+                .set('content-type', 'application/json')
+                .send({
+                    Email: process.env.SUPER_ADMIN_EMAIL,
+                    password: process.env.SUPER_ADMIN_PASSWORD
+                })
+                .end((err, res) => {
+                    expect(res.status).to.equal(201);
+                    expect(res.body.status).to.equal('success');
+                    expect(res.body.superAdmin).to.equal(true);
+                    superEmail = res.header['superemail'];
+                    done();
+                })
+            })
+        })
+        describe("add or remove an admin", () => {
+            it('should add an admin', (done) => {
+                chai.request(app)
+                .put('/api/v1/superadmin/createadmin')
+                .set('superemail', superEmail)
+                .set('content-type', 'application/json')
+                .send({
+                    adminEmail: 'soll@gmail.com',
+                    isadmin: true
+                })
+                .end((err, res) => {
+                    expect(res.status).to.equal(201);
+                    expect(res.body.message).to.equal('hey superadmin, you have successfully added an admin');
                     done();
                 })
             })
