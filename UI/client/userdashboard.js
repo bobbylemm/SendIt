@@ -19,6 +19,7 @@ fetch(url1, {
         const tr = document.createElement('tr');
         tr.innerHTML = `
                     <td><span class="mobile-view-title">Package id:</span><span class="parcel-detail pid">${parcel.parcel_id}</span></td>
+                    <td><span class="mobile-view-title">User id:</span><span class="parcel-detail pid">${parcel.user_id}</span></td>
                     <td><span class="mobile-view-title">Package name:</span><span class="parcel-detail">${parcel.package_name}</span></td>
                     <td class="editMe" contenteditable="false"><span class="mobile-view-title">Dropoff location:</span><span class="parcel-detail dropofflocation" contenteditable="false" onproperty>${parcel.dropoff_location}</span></td>
                     <td><span class="mobile-view-title">Pickup location:</span><span class="parcel-detail">${parcel.pickup_location}</span></td>

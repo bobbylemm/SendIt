@@ -26,22 +26,32 @@ const handleSubmit = (e) => {
   })
   .then(res => res.json())
   .then(data => {
+    console.log(data)
     loader.style.display = 'none';
     if (data.status === 'success' && data.superAdmin === true) {
       localStorage.setItem('superemail', Email);
       localStorage.setItem('superpassword', password);
       apiMessageDiv.style.display = 'block';
       apiMessageDiv.style.backgroundColor = '#89bdd3';
-        apiMessage.innerHTML = 'Welcome superadmin';
+        apiMessage.innerHTML = 'Welcome Super-Admin';
       setTimeout(() => {
         window.location.replace('superadmin.html');
+      }, 2000);
+    }else if(data.status === 'success' && data.isAdmin === true) {
+      localStorage.setItem('x-auth-token', data.token);
+      localStorage.setItem('user', data.user);
+      apiMessageDiv.style.backgroundColor = '#89bdd3';
+        apiMessageDiv.style.display = 'block';
+        apiMessage.innerHTML = 'Welcome Admin';
+      setTimeout(() => {
+        window.location.replace('admin.html');
       }, 2000);
     }else if(data.status === 'success' && data.isAdmin === false) {
       localStorage.setItem('x-auth-token', data.token);
       localStorage.setItem('user', data.user);
       apiMessageDiv.style.backgroundColor = '#89bdd3';
         apiMessageDiv.style.display = 'block';
-        apiMessage.innerHTML = 'successfully logged in';
+        apiMessage.innerHTML = 'Successfully Logged In';
       setTimeout(() => {
         window.location.replace('index.html');
       }, 2000);

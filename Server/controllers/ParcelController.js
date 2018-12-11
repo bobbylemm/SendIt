@@ -39,7 +39,7 @@ static async getAllParcels (req, res) {
         return res.status(200).json({
         status: 'success',
         message: "there was success admin, all parcels have been fetched",
-        allParcels: response.rows[0]
+        allParcels: [response.rows]
     })
     }catch (error) {
         return res.status(401).json({
@@ -100,7 +100,7 @@ static async updateParcelStatus (req, res) {
     const mn = today.getMinutes();
     const sec = today.getSeconds();
     const updatedAt = `${dd}/${mm}/${yyyy} ${hr}:${mn}:${sec}`;
-    const validStatus = ['in-transit', 'delivered'].includes(newStatus);
+    const validStatus = ['processing','in-transit', 'delivered'].includes(newStatus);
     if (!newStatus || !validStatus) {
         return res.status(400).json({
             message: 'please enter a valid status, as this is not valid'
@@ -152,13 +152,15 @@ static async updateParcelPresentLocation (req, res) {
                 const subject = `parcel location update`;
                 sendEmail(recipient.rows[0].email, subject ,message)
                 return res.status(200).json({
+                    status: 'success',
                     messsage: 'parcel present location was updated successfully',
                     response: response.rows[0]
                 })
             }
         }
             return res.status(400).json({
-                message: 'this parcel has already been delivered'
+                status: 'failed',
+                message: 'Present location of a delivered parcel cannot be updated'
             })
     }catch(e) {
         return e;
