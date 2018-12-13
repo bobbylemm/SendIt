@@ -6,6 +6,10 @@ const loader = document.querySelector('#loader');
 
 const url1 = `http://localhost:3000/api/v1/parcels`;
 
+// if(!token) {
+//     window.location.replace('index.html');
+// }
+
 fetch(url1, {
     method: 'GET',
     headers: {

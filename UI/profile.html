@@ -17,7 +17,8 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="./signin.html">Logout</a></li>
+                    <li id="profileLink"><a href="./profile.html">Profile</a></li>
+                    <li><a href="./signin.html" id="logoutLink">Logout</a></li>
                 </ul>
             </nav>
         </div>
@@ -28,15 +29,18 @@
             <img src="./img/loader.gif" alt="loader" id="loader-pic" />
         </div>
         <div class="section">
-            <div class="col-2 dashboard dashboard-min">
-                <img src="./img/profile.svg" alt="profile-picture" class="profile-pic" />
-                <div class="profile-btn">
-                    <button id="p-deliv" class="btn-profile">parcels delivered</button>
-                    <button id="view-all" class="btn-profile">view/edit parcels</button>
+            <div class="col-2">
+                <div class="dashboard dashboard-min">
+                    <img src="./img/profile.svg" alt="profile-picture" class="profile-pic" />
+                    <h3>Welcome user</h3>
+                    <div class="profile-btn">
+                        <button id="p-deliv" class="btn-profile">parcels delivered</button>
+                        <button id="view-all" class="btn-profile">view/edit parcels</button>
+                    </div>
                 </div>
             </div>
             <!--  -->
-            <div class="col-10 border profilePic">
+            <div class="col-10 border profilePic dashboard-lar">
                 <div id="user-ft">
                     <div id="btn-one-ft">
                         <table>
@@ -111,5 +115,6 @@
     <script src='./js/profile.js'></script>
     <script src='./client/userdashboard.js'></script>
     <script src='./client/cancelParcel.js'></script>
+    <script src='./client/logout.js'></script>
 </body>
 </html>

@@ -1,18 +1,20 @@
+html {
+    height: 100%;
+}
 body {
     margin: 0;
     padding: 0;
     color: #333;
     display: flex;
     flex-flow: column;
+    height: 100%;
 }
 main {
-    flex: 1
+    flex: 1;
 }
 .section {
     display: flex;
-}
-.parcel-detail:empty:after {
-    content: "\00a0";
+    height: 100%;
 }
 .profile-pic {
     height: 14rem;
@@ -23,17 +25,18 @@ main {
     background: url('../img/profilePic.jpg') no-repeat;
     background-size: cover;
     background-position: center center;
-    height: 100vh;
 }
 /* the styling for the get started section */
 .dashboard {
     border: 1px solid #89bdd3;
     height: 100%;
 }
+.dashboard-min {
+    background: #89bdd3;
+    text-align: center;
+}
 .dashboard-lar {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+    min-height: 100%;
 }
 .dashboard h1 {
     font-size: 2.5rem;
@@ -68,8 +71,33 @@ button img {
     margin: .1rem;
 }
 @media(max-width: 600px) {
+    ul {
+        list-style: none;
+    }
+    .section {
+        display: block;
+    }
+    .profile-pic {
+        height: 10rem;
+        width: 14rem;
+        margin: 1rem 11rem;
+    }
+    .col-2 {
+        display: block;
+        width: 100%;
+    }
+    .profile-btn {
+        display: flex;
+        align-items: center;
+        flex-flow: column;
+    }
     .dashboard {
-        height: 30vh;
+        min-height: 30vh;
+        width: 100% !important;
+        float: none;
+    }
+    .dashboard-lar {
+        width: 100%;
     }
     header {
         padding-bottom: 0;
@@ -78,10 +106,6 @@ button img {
         display: flex;
         justify-content: center;
     }
-}
-.dashboard-min {
-    background: #89bdd3;
-    text-align: center;
 }
 #user-ft {
     padding: 2rem;
@@ -188,20 +212,5 @@ font-size: 3rem;
     padding: 0 1rem;
     width: 5rem;
 }
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    30% {
-        opacity: 0.4;
-    }
-    70% {
-        opacity: 0.7;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
 
 /* profile tabs */

@@ -2,6 +2,10 @@ const token = localStorage.getItem('x-auth-token');
 const tableBody = document.querySelector('#tableBody');
 const url = `http://localhost:3000/api/v1/users/:1/parcels`;
 
+if(!token) {
+    window.location.replace('index.html');
+}
+
 fetch(url, {
     method: 'GET',
     headers: {
