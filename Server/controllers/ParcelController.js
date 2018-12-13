@@ -80,7 +80,7 @@ static async getASpecificParcel(req, res) {
                 message: 'success, got this specific parcel',
                 parcels: response.rows[0]
             })
-        }return res.status(404).json({
+        }return res.status(400).json({
             error: 'sorry admin there is no such parcel'
         })
     }catch(e) {

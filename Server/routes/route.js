@@ -16,9 +16,9 @@ router.get('/', (req, res) => {
   res.status(200).send('welcome to SendIt API');
 });
 // this is the route for creating parcels
-router.post('/parcels', validateParcels, validateToken, createNewParcel);
+router.post('/parcel', validateParcels, validateToken, createNewParcel);
 // this is the route to get all parcels for a user
-router.get('/users/:uid/parcels',validateToken, getParcelsByUser);
+router.get('/user/:uid/parcels',validateToken, getParcelsByUser);
 // this is to enable a user change the dropoff location of a parcel
 router.put('/parcels/:pid/destination',validateLocationUpdate, validateToken, updateParcelDestination);
 // this is to enable a user to cancel a parcel delivery order
@@ -42,5 +42,5 @@ router.put('/parcels/:pid/status', validateToken, validateAdmin, updateParcelSta
 // this is to change the dropofflocation of a parcel
 router.put('/parcels/:pid/currentlocation', validateToken, validateAdmin, updateParcelPresentLocation);
 // this is for the superadmin
-router.put('/superadmin/createadmin', validateSuperAdmin, createAdmin);
+router.put('/createadmin', validateSuperAdmin, createAdmin);
 export default router;

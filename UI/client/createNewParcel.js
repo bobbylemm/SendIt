@@ -11,7 +11,7 @@ const pageGreeting = document.querySelector('.page-greeting');
 const token = localStorage.getItem('x-auth-token');
 const apiMessage = document.querySelector('#api-message');
 
-const url = 'http://localhost:3000/api/v1/parcels';
+const url = 'http://localhost:3000/api/v1/parcel';
 let price;
 pageGreeting.innerHTML = `Welcome <em>${user}</em> Start Creating Your Parcel`;
 const handleinputChange = (inputThatChanged) => {

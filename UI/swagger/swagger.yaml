@@ -1,0 +1,425 @@
+swagger: "2.0"
+info:
+  description: "An API for a courier delivery service called SendIt"
+  version: "v1"
+  title: "SendIt"
+  contact:
+    email: "chidozienwoga@gmail.com"
+host: "fathomless-spire-38172.herokuapp.com"
+basePath: "/api/v1"
+tags:
+- name: "parcels"
+  description: "Everything about your parcels"
+- name: "admin"
+  description: "Operations about an admin"
+- name: "user"
+  description: "Operations about user"
+- name: "super-admin"
+  description: "Operations about super-admin"
+schemes:
+- "https"
+paths:
+  /api/v1/parcels/{parcelId}/destination:
+    put:
+      tags:
+      - "parcels"
+      summary: "Update parcel destination"
+      description: "Only a registered user can perform this action, and a user can only update a parcel order that has not been delivered, input a valid new parcel destination"
+      operationId: "updateParcelDestination"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "parcelId"
+        in: "path"
+        description: "parcel-id of parcel that destination needs to update"
+        required: true
+        type: "integer"
+        maximum: 10.0
+        minimum: 1.0
+        format: "int64"
+      - name: "newdropOff"
+        in: "formData"
+        description: "updated destination of new parcel"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successfull operation"
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: parcel destination was updated successfully
+        400:
+          description: "could not update the location of this parcel"
+  /api/v1/parcels/{parcelId}/cancel:
+    put:
+      tags:
+      - "parcels"
+      summary: "Cancel a parcel order"
+      description: "Only a registered user can perform this action, and a user can only cancel a parcel order that has not been delivered"
+      operationId: "cancelParcel"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "parcelId"
+        in: "path"
+        description: "parcel-id of parcel that needs to be cancelled"
+        required: true
+        type: "integer"
+        maximum: 10.0
+        minimum: 1.0
+        format: "int64"
+      responses:
+        200:
+          description: "successfull operation"
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                example: success
+              message:
+                type: string
+                example: this parcel delivery has been cancelled successfully
+        400:
+          description: "unsuccessfull operation"
+  /api/v1/user/{userId}/parcels:
+    get:
+      tags:
+      - "parcels"
+      summary: "get all parcels by a user"
+      description: "This action will get all parcels by a specific user, to get a valid response input an existing userid into the params"
+      operationId: "getUserParcel"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "userId"
+        in: "path"
+        description: "userid to filter parcels by"
+        required: true
+        type: "integer"
+        maximum: 10.0
+        minimum: 1.0
+        format: "int64"
+      responses:
+        200:
+          description: "got all your parcels user"
+          schema:
+            $ref: "#/definitions/parcel"
+        400:
+          description: "sorry could not find any of your parcels"
+  /api/v1/parcel:
+    post:
+      tags:
+      - "parcels"
+      summary: "Creates a new parcels order"
+      description: "this action can only be performed by a registered user"
+      operationId: "createParcel"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "packageName"
+        in: "formData"
+        description: "package name of the new parcel"
+        required: true
+        type: "string"
+      - name: "dropoffLocation"
+        in: "formData"
+        description: "dropoff location of the new parcel"
+        required: true
+        type: "string"
+      - name: "pickupLocation"
+        in: "formData"
+        description: "pickup location of the new parcel"
+        required: true
+        type: "string"
+      - name: "weight"
+        in: "formData"
+        description: "weight of the new parcel"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "quantity"
+        in: "formData"
+        description: "quantity of the new parcel"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "price"
+        in: "formData"
+        description: "price of the new parcel"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "new parcel created"
+          schema:
+            $ref: "#/definitions/parcel"
+        400:
+          description: "could not add a new parcel, please recheck details"
+  /api/v1/parcels:
+    get:
+      tags:
+      - "admin"
+      summary: "Gets all parcels from the application"
+      description: "Returns an array of objects containing all parcels created in the application"
+      operationId: "getAllParcels"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "there was success admin, all parcels have been fetched"
+          schema:
+            $ref: "#/definitions/parcel"
+        400:
+          description: "error in retrieving parcels, you are not authorized"
+  /api/v1/parcels/{parcelId}:
+    get:
+      tags:
+      - "admin"
+      summary: "Place an order for a parcel"
+      description: ""
+      operationId: "parcelOrder"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "parcelId"
+        in: "path"
+        description: "ID of parcel that needs to be fetched"
+        required: true
+        type: "integer"
+        maximum: 10.0
+        minimum: 1.0
+        format: "int64"
+      responses:
+        200:
+          description: "success, got this specific parcel"
+          schema:
+            $ref: "#/definitions/parcel"
+        400:
+          description: "sorry admin there is no such parcel"
+  /api/v1/parcels/{parcelId}/status:
+    put:
+      tags:
+      - "admin"
+      summary: "Update a parcel status"
+      description: "For valid responses, input an exisiting parcel ID, also the valid status inputs should be one of the following (processing, in-transit, delivered)."
+      operationId: "updateParcelStatusById"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "parcelId"
+        in: "path"
+        description: "ID of parcel that needs its status to be updated"
+        required: true
+        type: "integer"
+        maximum: 10.0
+        minimum: 1.0
+        format: "int64"
+      - name: "newStatus"
+        in: "formData"
+        description: "updated status of parcel"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "parcel status was updated successfully"
+        400:
+          description: "could not update the parcel status"
+  /api/v1/parcels/{parcelId}/currentlocation:
+    put:
+      tags:
+      - "admin"
+      summary: "Update a parcel status"
+      description: "For valid responses, input an exisiting parcel ID, for a valid response the status of the parcel should not be (delivered)."
+      operationId: "updatedParcelCurrentLocationById"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "parcelId"
+        in: "path"
+        description: "ID of parcel that needs its current location to be updated"
+        required: true
+        type: "integer"
+        maximum: 10.0
+        minimum: 1.0
+        format: "int64"
+      - name: "newLocation"
+        in: "formData"
+        description: "updated location of parcel"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "parcel present location was updated successfully"
+        400:
+          description: "Present location of a delivered parcel cannot be updated"
+  /api/v1/auth/register:
+    post:
+      tags:
+      - "user"
+      summary: "Create a new user"
+      description: "This is an operation can be performed by anyone."
+      operationId: "createUser"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "email"
+        in: "formData"
+        description: "The email for login"
+        required: true
+        type: "string"
+      - name: "username"
+        in: "formData"
+        description: "The username for login"
+        required: true
+        type: "string"
+      - name: "password"
+        in: "formData"
+        description: "The password for login in clear text"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successfully registered user"
+          schema:
+            $ref: "#/definitions/user"
+        400:
+          description: "unable to register user"
+  /api/v1/auth/login:
+    post:
+      tags:
+      - "user"
+      summary: "Logs user into the system"
+      description: "This action can only be performed by a registered user"
+      operationId: "loginUser"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "email"
+        in: "formData"
+        description: "The email for login"
+        required: true
+        type: "string"
+      - name: "password"
+        in: "formData"
+        description: "The password for login in clear text"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successfully logged in"
+          schema:
+            $ref: "#/definitions/user"
+        400:
+          description: "there was an error logging in"
+  /api/v1/users:
+    get:
+      tags:
+      - "super-admin"
+      summary: "Gets all users from the application"
+      description: "This action ccan only be performed by the super-admin of the application, Returns an array of objects containing all users created in the application"
+      operationId: "getUsers"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "there was success, all users have been fetched"
+          schema:
+            $ref: "#/definitions/user"
+        400:
+          description: "error in retrieving users, you are not authorized"
+  /api/v1/createadmin:
+    put:
+      tags:
+      - "super-admin"
+      summary: "Create/remove admin"
+      description: "For valid responses, put in a valid user email as an adminEmail and the admin role should be a boolean value"
+      operationId: "createNewAdmin"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "adminEmail"
+        in: "formData"
+        description: "email of the user to either grant/remove admin priviledges"
+        required: true
+        type: "string"
+      - name: "isadmin"
+        in: "formData"
+        description: "new admin role of adminEmail"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "hey superadmin, you have successfully added an admin"
+        400:
+          description: "could not find this email SuperAdmin"
+definitions:
+  parcel:
+    type: "object"
+    properties:
+      parcel_id:
+        type: "integer"
+        format: "int64"
+      user_id:
+        type: "integer"
+        format: "int64"
+      dropoff_location:
+        type: "string"
+      pickup_location:
+        type: "string"
+      present_location:
+        type: "string"
+      quantity:
+        type: "integer"
+        format: "int64"
+      weight:
+        type: "integer"
+        format: "int64"
+      status:
+        type: "string"
+        description: "parcel order Status"
+        enum:
+        - "processing"
+        - "approved"
+        - "delivered"
+      cancelled:
+        type: "boolean"
+        default: false
+  user:
+    type: "object"
+    properties:
+      user_id:
+        type: "integer"
+        format: "int64"
+      user_name:
+        type: "string"
+      email:
+        type: "string"
+      is_admin:
+        type: "boolean"
+        default: false

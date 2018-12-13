@@ -65,7 +65,7 @@ const edit = (e) => {
             const updatedAdminRole = splitAdminRole[0];
             const adminEmailText = adminEmail.innerHTML;
             const parsedAdminRole = JSON.parse(updatedAdminRole);
-            const url2 = `http://localhost:3000/api/v1/superadmin/createadmin`;
+            const url2 = `http://localhost:3000/api/v1/createadmin`;
             fetch(url2, {
                 method: 'PUT',
                 body: JSON.stringify({

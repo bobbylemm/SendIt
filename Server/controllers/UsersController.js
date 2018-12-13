@@ -95,13 +95,13 @@ class UsersControllers {
         const response = await usermanger.getAllUsersParcelOrder(userId);
         if (response.rowCount >= 1) {
           return res.status(200).json({
-            status: 'success',
+              status: 'success',
               message: 'got all your parcels user',
               parcels: [response.rows]
           })
         }return res.status(404).json({
           status: 'failed',
-          message: 'sorry could not find any of ypur parcels'
+          message: 'sorry could not find any of your parcels'
         })
     }catch(e) {
         return e;
