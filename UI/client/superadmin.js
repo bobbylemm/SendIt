@@ -7,6 +7,10 @@ const loader = document.querySelector('#loader');
 
 const url1 = `http://localhost:3000/api/v1/users`;
 
+if(!superemail) {
+    window.location.replace('index.html');
+}
+
 fetch(url1, {
     method: 'GET',
     headers: {

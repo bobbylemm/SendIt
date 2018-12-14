@@ -120,7 +120,7 @@ class UsersControllers {
     const hr = today.getHours();
     const mn = today.getMinutes();
     const sec = today.getSeconds();
-    const updatedAt = `${dd}/${mm}/${yyyy} ${hr}:${mn}:${sec}`;
+    const updatedAt = `${mm}/${dd}/${yyyy} ${hr}:${mn}:${sec}`;
     try {
       const ress = await usermanger.checkParcelStatus(pid, userId);
       if (ress.rows[0].status === 'delivered') {

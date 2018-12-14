@@ -1,10 +1,20 @@
+html {
+    height: 100%;
+}
 body {
     margin: 0;
     padding: 0;
     color: #333;
+    display: flex;
+    flex-flow: column;
+    height: 100%;
 }
-.parcel-detail:empty:after {
-    content: "\00a0";
+main {
+    flex: 1;
+}
+.section {
+    display: flex;
+    height: 100%;
 }
 .profile-pic {
     height: 14rem;
@@ -15,12 +25,15 @@ body {
     background: url('../img/profilePic.jpg') no-repeat;
     background-size: cover;
     background-position: center center;
-    height: 100vh;
 }
 /* the styling for the get started section */
 .dashboard {
     border: 1px solid #89bdd3;
-    height: 100vh;
+    height: 100%;
+}
+.dashboard-min {
+    background: #89bdd3;
+    text-align: center;
 }
 .dashboard h1 {
     font-size: 2.5rem;
@@ -28,10 +41,29 @@ body {
     color: #333;
     text-align: center;
 }
+.dashboard-lar {
+    min-height: 100%;
+}
 
 @media(max-width: 600px) {
+    .section {
+        display: block;
+    }
+    .profile-pic {
+        height: 10rem;
+        width: 14rem;
+        margin: 1rem 11rem;
+    }
+    .col-2 {
+        display: block;
+        width: 100%;
+        
+    }
     .dashboard {
-        height: 30vh;
+        padding: 1rem;
+    }
+    .dashboard-lar {
+        width: 100%;
     }
     header {
         padding-bottom: 0;
@@ -40,10 +72,6 @@ body {
         display: flex;
         justify-content: center;
     }
-}
-.dashboard-min {
-    background: #89bdd3;
-    text-align: center;
 }
 #user-ft {
     padding: 2rem;
@@ -55,7 +83,7 @@ body {
 }
 .btn-profile {
     width: 17rem;
-    padding: 2rem;
+    padding: 1rem;
     margin: 2rem auto;
     border-radius: 4rem;
     border: .1rem solid #E6E2DD;

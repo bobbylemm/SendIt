@@ -4,7 +4,11 @@ const modalEdit = document.querySelector('#modal-edit');
 const modalMessage = document.querySelector('#modal-message');
 const loader = document.querySelector('#loader');
 
-const url1 = `http://localhost:3000/api/v1/users/:1/parcels`;
+const url1 = `http://localhost:3000/api/v1/user/:1/parcels`;
+
+// if(!token) {
+//     window.location.replace('index.html');
+// }
 
 fetch(url1, {
     method: 'GET',

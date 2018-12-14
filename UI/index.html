@@ -16,9 +16,10 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="./profile.html">Profile</a></li>
-                    <li><a href="./signin.html">Login</a></li>
-                    <li><a href="./signup.html">Sign Up</a></li>
+                    <li class="disabled" id="profileLink"><a href="./profile.html">Profile</a></li>
+                    <li><a href="./signin.html" id="loginLink">Login</a></li>
+                    <li><a href="./signup.html" id="signUpLink">Sign Up</a></li>
+                    <li class="disabled"><a href="./signin.html" id="logoutLink">Logout</a></li>
                 </ul>
             </nav>
         </div>
@@ -115,6 +116,7 @@
             <p>Designed by <span><a href="#">Nwoga Chidozie</a></span></p>
         </div>
     </footer>
-    <script type="text/javascript" src="./landingPage.js"></script>
+    <script type="text/javascript" src="./client/index.js"></script>
+    <script type="text/javascript" src="./client/logout.js"></script>
 </body>
 </html>

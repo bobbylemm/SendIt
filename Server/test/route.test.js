@@ -99,7 +99,7 @@ describe("all the test", () => {
         describe("post/parcels", () => {
             it('should authenticate the token provided and create a parcel', (done) => {
                 chai.request(app)
-                .post('/api/v1/parcels')
+                .post('/api/v1/parcel')
                 .set('x-auth-token', userToken)
                 .set('content-type', 'application/json')
                 .send({
@@ -122,7 +122,7 @@ describe("all the test", () => {
         describe("get/parcels/user", () => {
             it('should get all the user parcels', (done) => {
                 chai.request(app)
-                .get('/api/v1/users/1/parcels')
+                .get('/api/v1/user/1/parcels')
                 .set('x-auth-token', userToken)
                 .set('content-type', 'application/json')
                 .end((err, res) => {
@@ -234,7 +234,7 @@ describe("all the test", () => {
         describe("add or remove an admin", () => {
             it('should add an admin', (done) => {
                 chai.request(app)
-                .put('/api/v1/superadmin/createadmin')
+                .put('/api/v1/createadmin')
                 .set('superemail', superEmail)
                 .set('content-type', 'application/json')
                 .send({
