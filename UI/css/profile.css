@@ -64,6 +64,7 @@ main {
     }
     .dashboard-lar {
         width: 100%;
+        min-height: 34rem;
     }
     header {
         padding-bottom: 0;

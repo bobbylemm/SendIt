@@ -81,3 +81,9 @@ main {
 .d-inline {
     display: inline-block;
 }
+
+@media (max-width:600px) {
+    #api-message {
+        width: 80%;
+    }
+}
