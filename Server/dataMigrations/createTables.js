@@ -5,7 +5,7 @@ import config from '../config/dbConfig';
 dotenv.config();
 let configString = '';
 if(process.env.NODE_ENV.trim() === 'production') {
-    configString = config.test;
+    configString = config.production;
 } else if (process.env.NODE_ENV.trim() === 'development') {
     configString = config.development;
 }else {
