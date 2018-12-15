@@ -14,9 +14,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(express.static(path.resolve(__dirname, './../UI/')));
-app.use('/UpI', express.static(path.resolve(__dirname, '../UI/')));
+app.use('/UI', express.static(path.resolve(__dirname, '../UI/')));
 
-app.get('/', (req, res) => res.sendFile(path.resolve(__dirname, '../UpI/index.html')))
+app.get('/', (req, res) => res.sendFile(path.resolve(__dirname, '../UI/index.html')));
+
+app.get('/create', (req, res) => res.sendFile(path.resolve(__dirname, '../UI/create-parcel.html')));
 
 app.use('/api/v1/', routes);
 // catching an error before passing it to the erro handler
