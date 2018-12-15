@@ -2,7 +2,7 @@
 import dotenv from 'dotenv';
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import app from '../app';
+import app from '../../app';
 
 dotenv.config();
 

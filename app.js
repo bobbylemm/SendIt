@@ -3,7 +3,7 @@ import path from 'path';
 import morgan from 'morgan';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import routes from './routes/route';
+import routes from './Server/routes/route';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
