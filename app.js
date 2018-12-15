@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(express.static(path.resolve(__dirname, './../UI/')));
-app.use('/UI', express.static(path.resolve(__dirname, '../UI/')));
+app.use('/UpI', express.static(path.resolve(__dirname, '../UI/')));
 
 app.get('/', (req, res) => res.sendFile(path.resolve(__dirname, '../UI/index.html')))
 
