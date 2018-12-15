@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.resolve(__dirname, './../UI/')));
 app.use('/UpI', express.static(path.resolve(__dirname, '../UI/')));
 
-app.get('/', (req, res) => res.sendFile(path.resolve(__dirname, '../UI/index.html')))
+app.get('/', (req, res) => res.sendFile(path.resolve(__dirname, '../UpI/index.html')))
 
 app.use('/api/v1/', routes);
 // catching an error before passing it to the erro handler
