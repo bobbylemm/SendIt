@@ -10,7 +10,7 @@ const cancel = (e) => {
 const yesCancel = () => {
     const packageId = element.closest('tr').querySelector('.pid');
     const pid = packageId.innerHTML;
-    const urlCancel = `http://localhost:3000/api/v1//parcels/${pid}/cancel`;
+    const urlCancel = `/api/v1//parcels/${pid}/cancel`;
     const token = localStorage.getItem('x-auth-token');
 
     fetch(urlCancel, {

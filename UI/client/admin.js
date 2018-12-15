@@ -4,11 +4,11 @@ const modalEdit = document.querySelector('#modal-edit');
 const modalMessage = document.querySelector('#modal-message');
 const loader = document.querySelector('#loader');
 
-const url1 = `http://localhost:3000/api/v1/parcels`;
+const url1 = `/api/v1/parcels`;
 
-// if(!token) {
-//     window.location.replace('index.html');
-// }
+if(!token) {
+    window.location.replace('index.html');
+}
 
 fetch(url1, {
     method: 'GET',
@@ -79,7 +79,7 @@ const edit = (e) => {
             const PresentLoca = presentlocation.innerHTML;
             const splitPresentLoca = PresentLoca.split('&');
             const updatedPresentLoca = splitPresentLoca[0];
-            const url2 = `http://localhost:3000/api/v1/parcels/${pid}/status`;
+            const url2 = `/api/v1/parcels/${pid}/status`;
             fetch(url2, {
                 method: 'PUT',
                 body: JSON.stringify({

@@ -3,7 +3,7 @@ const user = localStorage.getItem('user');
 const admin = localStorage.getItem('admin');
 const adminLink = document.querySelector('#adminLink');
 const tableBody = document.querySelector('#tableBody');
-const url = `http://localhost:3000/api/v1/user/:1/parcels`;
+const url = `/api/v1/user/:1/parcels`;
 
 if (!token) {
     window.location.replace('index.html');

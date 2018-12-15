@@ -21,7 +21,7 @@ if (!token) {
     adminLink.classList.add('disabled');
 }
 
-const url = 'http://localhost:3000/api/v1/parcel';
+const url = '/api/v1/parcel';
 let price;
 pageGreeting.innerHTML = `Welcome <em>${user}</em> Start Creating Your Parcel`;
 const handleinputChange = (inputThatChanged) => {

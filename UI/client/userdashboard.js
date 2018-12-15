@@ -8,7 +8,7 @@ const modalEdit = document.querySelector('#modal-edit');
 const modalMessage = document.querySelector('#modal-message');
 const loader = document.querySelector('#loader');
 
-const url1 = `http://localhost:3000/api/v1/user/:1/parcels`;
+const url1 = `/api/v1/user/:1/parcels`;
 
 if(!token) {
     window.location.replace('index.html');
@@ -82,7 +82,7 @@ const edit = (e) => {
             const splitDropOff = DropOff.split('&');
             const updatedDestination = splitDropOff[0];
             console.log(updatedDestination)
-            const url2 = `http://localhost:3000/api/v1/parcels/${pid}/destination`;
+            const url2 = `/api/v1/parcels/${pid}/destination`;
             console.log(url2);
             fetch(url2, {
                 method: 'PUT',
