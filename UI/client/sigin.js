@@ -40,6 +40,7 @@ const handleSubmit = (e) => {
     }else if(data.status === 'success' && data.isAdmin === true) {
       localStorage.setItem('x-auth-token', data.token);
       localStorage.setItem('user', data.user);
+      localStorage.setItem('admin', true);
       apiMessageDiv.style.backgroundColor = '#89bdd3';
         apiMessageDiv.style.display = 'block';
         apiMessage.innerHTML = 'Welcome Admin';

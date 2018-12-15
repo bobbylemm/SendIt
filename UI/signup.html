@@ -22,63 +22,65 @@
                 </ul>
             </nav>
         </div>
-        </header>
+    </header>
         <!--  -->
-        <main class="bg">
-            <main class="container">
-                <div id="loader">
-                    <img src="./img/loader.gif" alt="loader" id="loader-pic" />
-                </div>
-                <div id="api-message-block">
-                    <h3 id="api-message"></h3>
-                </div>
-                <div class="form-card">
-                    <h2>Signup</h2>
-                    <form id="form">
-                        <div class="row">
-                            <div class="col-3">
-                                <label class="label" for="username">Username</label>
+    <main>
+        <div class="bg">
+            <main class="container pyt-1">
+                    <div id="loader">
+                        <img src="./img/loader.gif" alt="loader" id="loader-pic" />
+                    </div>
+                    <div id="api-message-block">
+                        <h3 id="api-message"></h3>
+                    </div>
+                    <div class="form-card">
+                        <h2>Signup</h2>
+                        <form id="form">
+                            <div class="row">
+                                <div class="col-3">
+                                    <label class="label" for="username">Username</label>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" name="username" id="username" placeholder="Enter your Username for display..." required>
+                                </div>
                             </div>
-                            <div class="col-9">
-                                <input type="text" name="username" id="username" placeholder="Enter your Username for display..." required>
+                            <!--  -->
+                            <div class="row">
+                                <div class="col-3">
+                                    <label class="label" for="email">Email</label>
+                                </div>
+                                <div class="col-9">
+                                    <input type="email" name="email" id="email" placeholder="Enter your Email..." required>
+                                </div>
                             </div>
-                        </div>
-                        <!--  -->
-                        <div class="row">
-                            <div class="col-3">
-                                <label class="label" for="email">Email</label>
+                            <!--  -->
+                            <div class="row">
+                                <div class="col-3">
+                                    <label class="label" for="password">Password</label>
+                                </div>
+                                <div class="col-9">
+                                    <input type="password" name="password" id="password" placeholder="Enter your Password" required>
+                                </div>
                             </div>
-                            <div class="col-9">
-                                <input type="email" name="email" id="email" placeholder="Enter your Email..." required>
+                            <!--  -->
+                            <div class="row">
+                                <div class="col-3">
+                                </div>
+                                <div class="col-9">
+                                    <button type="submit" id="signup" class="btn w-100 ht-6">Sign up</button>
+                                </div>
                             </div>
-                        </div>
-                        <!--  -->
-                        <div class="row">
-                            <div class="col-3">
-                                <label class="label" for="password">Password</label>
+                            <div class="row">
+                                <div class="col-3">
+                                </div>
+                                <div class="col-9">
+                                    <p id="tip">Do you have an account ? <a href="./signin.html">Login </a></p>
+                                </div>
                             </div>
-                            <div class="col-9">
-                                <input type="password" name="password" id="password" placeholder="Enter your Password" required>
-                            </div>
-                        </div>
-                        <!--  -->
-                        <div class="row">
-                            <div class="col-3">
-                            </div>
-                            <div class="col-9">
-                                <button type="submit" id="signup" class="btn w-100 ht-6">Sign up</button>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-3">
-                            </div>
-                            <div class="col-9">
-                                <p id="tip">Do you have an account ? <a href="./signin.html">Login </a></p>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </main>
+                        </form>
+                    </div>
+                </main>
+        </div>
     </main>
         <!--  -->
     <footer>

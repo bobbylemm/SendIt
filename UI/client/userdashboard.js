@@ -1,4 +1,8 @@
 const token = localStorage.getItem('x-auth-token');
+const user = localStorage.getItem('user');
+const admin = localStorage.getItem('admin');
+const welcomeUser = document.querySelector('#welcomeUser');
+const adminLink = document.querySelector('#adminLink');
 const tableBody = document.querySelector('#tableBody');
 const modalEdit = document.querySelector('#modal-edit');
 const modalMessage = document.querySelector('#modal-message');
@@ -6,9 +10,15 @@ const loader = document.querySelector('#loader');
 
 const url1 = `http://localhost:3000/api/v1/user/:1/parcels`;
 
-// if(!token) {
-//     window.location.replace('index.html');
-// }
+if(!token) {
+    window.location.replace('index.html');
+}
+if (admin) {
+    adminLink.classList.add('enabled');
+}else {
+    adminLink.classList.add('disabled');
+}
+welcomeUser.innerHTML = `Welcome ${user}`;
 
 fetch(url1, {
     method: 'GET',
@@ -23,7 +33,6 @@ fetch(url1, {
         const tr = document.createElement('tr');
         tr.innerHTML = `
                     <td><span class="mobile-view-title">Package id:</span><span class="parcel-detail pid">${parcel.parcel_id}</span></td>
-                    <td><span class="mobile-view-title">User id:</span><span class="parcel-detail pid">${parcel.user_id}</span></td>
                     <td><span class="mobile-view-title">Package name:</span><span class="parcel-detail">${parcel.package_name}</span></td>
                     <td class="editMe" contenteditable="false"><span class="mobile-view-title">Dropoff location:</span><span class="parcel-detail dropofflocation" contenteditable="false" onproperty>${parcel.dropoff_location}</span></td>
                     <td><span class="mobile-view-title">Pickup location:</span><span class="parcel-detail">${parcel.pickup_location}</span></td>

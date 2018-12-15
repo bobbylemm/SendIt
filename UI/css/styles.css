@@ -97,6 +97,9 @@ h3 a {
 .px-1 {
     padding: 0.3rem .5rem;
 }
+.pyt-1 {
+    padding-top: 1rem;
+}
 .py-3 {
     padding: 1rem 2rem !important;
 }
@@ -210,6 +213,7 @@ input {
     border-radius: .5rem;
     cursor: auto;
     display: inline-block;
+    outline: none;
 }
 ::placeholder {
     opacity: 0.5;
@@ -447,6 +451,7 @@ header a:hover{
     header nav{
         display: flex;
         flex-flow: row nowrap;
+        justify-content: center;
     }
     header #app-logo {
         float: none;
@@ -507,17 +512,29 @@ header a:hover{
     .profile-btn button {
         margin: 0 0.5rem;
     }
+    #api-message-block {
+        margin: 1rem auto;
+        padding: .8rem;
+        text-align: center;
+        width: 80%;
+        display: hidden;
+        animation: fadeIn 3s ease-in-out;
+    }
     #user-ft {
         padding: 2rem 4rem;
     }
     footer {
-        margin-top: 18rem;
+        margin-top: 0;
     }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 400px) {
+    html {
+        width: 100%;
+    }
     body {
         padding: 0;
+        width: 100%;
     }
     header ul{
        display: flex;
@@ -591,7 +608,7 @@ table {
     width: 11rem;
     padding: 0 .6rem;
   }
-  @media(max-width: 600px) {
+  @media(max-width: 650px) {
     .td{
       padding: 0 4px;
       width: 117px;
@@ -603,12 +620,10 @@ table {
     td {
       display: block;
       font-size: 1.5rem;
+      margin: .4rem;
     }
     td button {
       margin: 1rem auto;
-    }
-    td .editBtn {
-      /* margin-top: 14rem; */
     }
     tr {
       text-align: unset;

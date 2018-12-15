@@ -1,4 +1,7 @@
 const user = localStorage.getItem('user');
+const token = localStorage.getItem('x-auth-token');
+const admin = localStorage.getItem('admin');
+const adminLink = document.querySelector('#adminLink');
 const form = document.querySelector ('#form');
 const loader = document.querySelector('#loader');
 const packageName = document.querySelector('#packageName');
@@ -8,8 +11,15 @@ const parcelQuantity = document.querySelector('#parcelQuantity');
 const weight = document.querySelector('#weight');
 const parcelPrice = document.querySelector('#parcelPrice');
 const pageGreeting = document.querySelector('.page-greeting');
-const token = localStorage.getItem('x-auth-token');
 const apiMessage = document.querySelector('#api-message');
+
+if (!token) {
+    window.location.replace('index.html');
+}if (!admin) {
+    adminLink.classList.add('enabled');
+}if (!admin) {
+    adminLink.classList.add('disabled');
+}
 
 const url = 'http://localhost:3000/api/v1/parcel';
 let price;

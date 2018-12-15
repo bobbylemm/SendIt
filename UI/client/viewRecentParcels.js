@@ -1,9 +1,16 @@
 const token = localStorage.getItem('x-auth-token');
+const user = localStorage.getItem('user');
+const admin = localStorage.getItem('admin');
+const adminLink = document.querySelector('#adminLink');
 const tableBody = document.querySelector('#tableBody');
-const url = `http://localhost:3000/api/v1/users/:1/parcels`;
+const url = `http://localhost:3000/api/v1/user/:1/parcels`;
 
-if(!token) {
+if (!token) {
     window.location.replace('index.html');
+}if (!admin) {
+    adminLink.classList.add('enabled');
+}if (!admin) {
+    adminLink.classList.add('disabled');
 }
 
 fetch(url, {
