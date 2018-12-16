@@ -6,7 +6,7 @@ const tableBody = document.querySelector('#tableBody');
 const url = `/api/v1/user/:1/parcels`;
 
 if (!token) {
-    window.location.replace('index.html');
+    window.location.replace('/');
 }if (!admin) {
     adminLink.classList.add('enabled');
 }if (!admin) {

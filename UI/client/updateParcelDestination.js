@@ -3,7 +3,7 @@ const tableBody = document.querySelector('#tableBody');
 const url = `/api/v1/users/:1/parcels`;
 
 if(!token) {
-    window.location.replace('index.html');
+    window.location.replace('/');
 }
 
 fetch(url, {

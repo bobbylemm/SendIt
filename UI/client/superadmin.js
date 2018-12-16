@@ -8,7 +8,7 @@ const loader = document.querySelector('#loader');
 const url1 = `/api/v1/users`;
 
 if(!superemail) {
-    window.location.replace('index.html');
+    window.location.replace('/');
 }
 
 fetch(url1, {

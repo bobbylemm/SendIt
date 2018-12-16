@@ -37,7 +37,7 @@ const handleSubmit = (e) => {
         apiMessageDiv.style.display = 'block';
         apiMessage.innerHTML = 'successfully registered';
       setTimeout(() => {
-        window.location.replace('index.html');
+        window.location.replace('/');
       }, 2000);
     }else {
       apiMessageDiv.style.backgroundColor = '#e62739';

@@ -14,7 +14,7 @@ const pageGreeting = document.querySelector('.page-greeting');
 const apiMessage = document.querySelector('#api-message');
 
 if (!token) {
-    window.location.replace('index.html');
+    window.location.replace('/');
 }if (!admin) {
     adminLink.classList.add('enabled');
 }if (!admin) {
@@ -68,7 +68,7 @@ const handleSubmit = (e) => {
             apiMessage.style.backgroundColor = '#89bdd3';
             setTimeout(() => {
                 apiMessage.style.display = 'none';
-                window.location.replace('view-all-parcel.html');
+                window.location.replace('/view-all-parcel');
               }, 2000);
         }else {
             apiMessage.style.display = 'block';

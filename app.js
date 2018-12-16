@@ -18,7 +18,21 @@ app.use('/UI', express.static(path.resolve(__dirname, '../UI/')));
 
 app.get('/', (req, res) => res.sendFile(path.resolve(__dirname, '../UI/index.html')));
 
-app.get('/create', (req, res) => res.sendFile(path.resolve(__dirname, '../UI/create-parcel.html')));
+app.get('/create-parcel', (req, res) => res.sendFile(path.resolve(__dirname, '../UI/create-parcel.html')));
+
+app.get('/profile', (req, res) => res.sendFile(path.resolve(__dirname, '../UI/profile.html')));
+
+app.get('/signin', (req, res) => res.sendFile(path.resolve(__dirname, '../UI/signin.html')));
+
+app.get('/signup', (req, res) => res.sendFile(path.resolve(__dirname, '../UI/signup.html')));
+
+app.get('/admin', (req, res) => res.sendFile(path.resolve(__dirname, '../UI/admin.html')));
+
+app.get('/superadmin', (req, res) => res.sendFile(path.resolve(__dirname, '../UI/superadmin.html')));
+
+app.get('/track-parcels', (req, res) => res.sendFile(path.resolve(__dirname, '../UI/trackDeliveries.html')));
+
+app.get('/view-all-parcels', (req, res) => res.sendFile(path.resolve(__dirname, '../UI/view-all-parcel.html')));
 
 app.use('/api/v1/', routes);
 // catching an error before passing it to the erro handler

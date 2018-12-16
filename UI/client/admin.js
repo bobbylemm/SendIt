@@ -7,7 +7,7 @@ const loader = document.querySelector('#loader');
 const url1 = `/api/v1/parcels`;
 
 if(!token) {
-    window.location.replace('index.html');
+    window.location.replace('/');
 }
 
 fetch(url1, {

@@ -35,7 +35,7 @@ const handleSubmit = (e) => {
       apiMessageDiv.style.backgroundColor = '#89bdd3';
         apiMessage.innerHTML = 'Welcome Super-Admin';
       setTimeout(() => {
-        window.location.replace('superadmin.html');
+        window.location.replace('/superadmin');
       }, 2000);
     }else if(data.status === 'success' && data.isAdmin === true) {
       localStorage.setItem('x-auth-token', data.token);
@@ -45,7 +45,7 @@ const handleSubmit = (e) => {
         apiMessageDiv.style.display = 'block';
         apiMessage.innerHTML = 'Welcome Admin';
       setTimeout(() => {
-        window.location.replace('admin.html');
+        window.location.replace('/admin');
       }, 2000);
     }else if(data.status === 'success' && data.isAdmin === false) {
       localStorage.setItem('x-auth-token', data.token);
@@ -54,7 +54,7 @@ const handleSubmit = (e) => {
         apiMessageDiv.style.display = 'block';
         apiMessage.innerHTML = 'Successfully Logged In';
       setTimeout(() => {
-        window.location.replace('index.html');
+        window.location.replace('/');
       }, 2000);
     }else {
       apiMessageDiv.style.backgroundColor = '#e62739';
