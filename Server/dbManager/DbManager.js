@@ -54,7 +54,7 @@ class DbManager {
   // get all parcels by a speciific user
   async getAllUserParcels(userId) {
     try {
-        const q = 'SELECT parcel_id, package_name, pickup_location, dropoff_location, present_location, weight, price, cancelled, user_id, status FROM parcels WHERE user_id = $1';
+        const q = 'SELECT parcel_id, package_name, pickup_location, dropoff_location, present_location, weight, price, cancelled, user_id, status FROM parcels WHERE user_id = $1 ORDER BY parcel_id ASC';
         const response = await this.pool.query(q, [userId]);
         return response
     }catch(e) {
@@ -110,7 +110,7 @@ async checkParcelStatus(pid, userId) {
   // this is to get all parcels in the app, accessible by admin only
   async getAllParcels() {
     try {
-        const q = 'SELECT parcel_id, user_id, package_name, dropoff_location, pickup_location, price, present_location, weight, price, cancelled, status FROM parcels;';
+        const q = 'SELECT parcel_id, user_name, package_name, dropoff_location, pickup_location, price, present_location, weight, price, cancelled, status FROM parcels ORDER BY parcel_id ASC;';
         const response = await this.pool.query(q);
         return response;
     }catch(e) {
@@ -121,7 +121,7 @@ async checkParcelStatus(pid, userId) {
 // this is to get all parcels in the app, accessible by admin only
 async getAllUsers() {
     try {
-        const q = 'SELECT user_id, user_name, email, is_admin FROM users;';
+        const q = 'SELECT user_id, user_name, email, is_admin FROM users ORDER BY user_id ASC;';
         const response = await this.pool.query(q);
         return response;
     }catch(e) {
@@ -152,10 +152,10 @@ async getEmail(id) {
 }
 
 // this is to get parcel orders for a specific user
-async getSpecificUserParcels(uid) {
+async getSpecificUserParcels(userName) {
     try {
-        const q = 'SELECT package_name, dropoff_location, pickup_location, price, present_location, weight, price, status FROM parcels WHERE user_id=$1;';
-        const response = await this.pool.query(q, [uid]);
+        const q = 'SELECT parcel_id, user_name, package_name, dropoff_location, pickup_location, price, present_location, weight, price, cancelled, status FROM parcels WHERE user_name=$1;';
+        const response = await this.pool.query(q, [userName]);
         return response;
     }catch(e) {
         return e;

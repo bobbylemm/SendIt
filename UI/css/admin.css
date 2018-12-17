@@ -66,6 +66,22 @@ select:disabled {
     background-color: rgb(134, 126, 126);
     color: #333;
 }
+#filterButton {
+    background: #62bcfa;
+    border: .1rem solid #62bcfa;
+    border-radius: .2rem;
+    padding: .6rem;
+    box-shadow: 0rem .5rem .4rem 0rem rgba(0,0,0,0.57);
+    outline: none;
+    cursor: pointer;
+}
+#usernameInput {
+    width: 30%;
+    margin: .7rem 0 0 0;
+}
+button {
+    padding: 0 .5rem;
+}
 button img {
     height: 1rem;
     margin: .1rem;

@@ -4,7 +4,7 @@ const modalEdit = document.querySelector('#modal-edit');
 const modalMessage = document.querySelector('#modal-message');
 const loader = document.querySelector('#loader');
 
-const url1 = `/api/v1/parcels`;
+const url1 = `http://localhost:3000/api/v1/parcels`;
 
 if(!token) {
     window.location.replace('/');
@@ -20,8 +20,21 @@ fetch(url1, {
 .then(data => {
     data.allParcels[0].forEach(parcel => {
         const tr = document.createElement('tr');
+        let option1 = '';
+        let option2 = '';
+        if (parcel.status === 'processing') {
+            option1 = 'in-transit';
+            option2 = 'delivered';
+        }else if (parcel.status === 'in-transit') {
+            option1 = 'processing';
+            option2 = 'delivered';
+        }else {
+            option1 = 'processing';
+            option2 = 'in-transit';
+        }
         tr.innerHTML = `
                     <td><span class="mobile-view-title">Package id:</span><span class="parcel-detail pid">${parcel.parcel_id}</span></td>
+                    <td><span class="mobile-view-title">User name:</span><span class="parcel-detail">${parcel.user_name}</span></td>
                     <td><span class="mobile-view-title">Package name:</span><span class="parcel-detail">${parcel.package_name}</span></td>
                     <td class="editMe" contenteditable="false"><span class="mobile-view-title">Dropoff location:</span><span class="parcel-detail dropofflocation" contenteditable="false" onproperty>${parcel.dropoff_location}</span></td>
                     <td><span class="mobile-view-title">Pickup location:</span><span class="parcel-detail">${parcel.pickup_location}</span></td>
@@ -29,13 +42,23 @@ fetch(url1, {
                     <td><span class="mobile-view-title">Weight</span><span class="parcel-detail">${parcel.weight}</span></td>
                     <td><span class="mobile-view-title">Status</span><span class="parcel-detail"><select id="parcelStatus" disabled>
                     <option value=${parcel.status}>${parcel.status}</option>
-                    <option value="in-transit">in-transit</option>
-                    <option value="delivered">delivered</option>
+                    <option value=${option1}>${option1}</option>
+                    <option value=${option2}>${option2}</option>
                     </select></span></td>
                     <td><span class="mobile-view-title">Price:</span><span class="parcel-detail">${parcel.price}</span></td>
                     <td><span class="mobile-view-title">Cancelled:</span><span class="parcel-detail">${parcel.cancelled}</span></td>
-                    <td class="td"><button class="table-action-btn fl" id="editBtn" onclick="edit(this)"><img src = './img/edit.svg' />Edit</button>
+                    <td class="td"><button class="table-action-btn fl" id="editBtn" onclick="edit(this)">Edit</button>
         `;
+        if (parcel.status === 'processing') {
+            tr.querySelector('select').style.backgroundColor = '#fae596';
+            tr.querySelector('select').style.color = '#333';
+        }else if (parcel.status === 'in-transit') {
+            tr.querySelector('select').style.backgroundColor = '#22264b';
+            tr.querySelector('select').style.color = '#fff';
+        }else {
+            tr.querySelector('select').style.backgroundColor = '#173e43';
+            tr.querySelector('select').style.color = '#fff';
+        }
         tableBody.appendChild(tr);
     })
 })
@@ -79,7 +102,7 @@ const edit = (e) => {
             const PresentLoca = presentlocation.innerHTML;
             const splitPresentLoca = PresentLoca.split('&');
             const updatedPresentLoca = splitPresentLoca[0];
-            const url2 = `/api/v1/parcels/${pid}/status`;
+            const url2 = `http://localhost:3000/api/v1/parcels/${pid}/status`;
             fetch(url2, {
                 method: 'PUT',
                 body: JSON.stringify({

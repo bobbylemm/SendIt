@@ -51,14 +51,14 @@ static async getAllParcels (req, res) {
 
 // this should enable an admin to get all parcels for a particular user
 static async getAllParcelsBySpecificUser(req, res) {
-    const { uid } = req.params;
+    const { userName } = req.body;
     try {
-        const response = await parcelmanger.getSpecificUsersParcel(uid);
-        if(response.rows[0] >= 1) {
+        const response = await parcelmanger.getSpecificUsersParcel(userName);
+        if(response.rowCount >= 1) {
             return res.status(200).json({
                 status: 'success',
                 message: 'got all this users parcels',
-                parcels: response.rows[0]
+                parcels: [response.rows]
             })
         }return res.status(404).json({
             status: 'failed',

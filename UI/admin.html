@@ -19,7 +19,7 @@
                 <ul>
                     <li><a href="/admin">Admin</a></li>
                     <li id="profileLink"><a href="/profile">Profile</a></li>
-                    <li><a href="/signin">Logout</a></li>
+                    <li><a href="/signin" id="logoutLink">Logout</a></li>
                 </ul>
             </nav>
         </div>
@@ -51,9 +51,18 @@
                     <div id="btn-two-ft">
                         <table>
                             <h2>Here are all the parcels</h2>
+                            <div class="row">
+                                <div class="col-2">
+                                    <button class="px-1 my-1" id="filterButton">get parcels by user</button>
+                                </div>
+                                <div class="col-10">
+                                    <input type="number" placeholder="put in a username" id="usernameInput"/>
+                                </div>
+                            </div>
                             <thead data-title="all parcels">
                                 <tr>
                                     <th>Package id</th>
+                                    <th>User name</th>
                                     <th>Package name</th>
                                     <th>Dropoff location</th>
                                     <th>Pickup location</th>
@@ -92,6 +101,7 @@
         </div>
     </footer>
     <script src='./../UI/client/admin.js'></script>
+    <script src='./../UI/client/getParcelsByUser.js'></script>
     <script src='./../UI/client/logout.js'></script>
 </body>
 </html>

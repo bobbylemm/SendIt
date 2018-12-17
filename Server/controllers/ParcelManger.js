@@ -45,9 +45,9 @@ class ParcelManager {
     }
 
     // this is to get all parcels for a particular delivery order
-    async getSpecificUsersParcel(uid) {
+    async getSpecificUsersParcel(userName) {
         try {
-            const res = await this.database.getSpecificUserParcels(uid);
+            const res = await this.database.getSpecificUserParcels(userName);
             return res;
         }catch(e) {
             return e;

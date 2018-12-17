@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS parcels(
     status varchar(25) NOT NULL,
     cancelled boolean NOT NULL,
     user_id INTEGER REFERENCES users(user_id) ON DELETE CASCADE,
+    user_name varchar(25) REFERENCES users(user_name) ON DELETE CASCADE,
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMP NOT NULL DEFAULT NOW()
 );`;

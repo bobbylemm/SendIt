@@ -4,7 +4,7 @@ const loader = document.querySelector('#loader');
 const apiMessageDiv = document.querySelector('#api-message-block');
 const apiMessage = document.querySelector('#api-message');
 
-const url = '/api/v1/auth/register';
+const url = `http://localhost:3000/api/v1/auth/register`;
 
 const handleSubmit = (e) => {
   e.preventDefault ();

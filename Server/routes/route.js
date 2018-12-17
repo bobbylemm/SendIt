@@ -34,7 +34,7 @@ router.get('/parcels', validateToken, validateAdmin, getAllParcels);
 // GET ALL PARCELS IN THE APP (accessible to admin only)
 router.get('/users', validateSuperAdmin, getAllUsers);
 // this is to get all parcels for a specific user
-router.get('/parcels/:uid/users', validateToken, validateAdmin, getAllParcelsBySpecificUser);
+router.post('/parcels/:uid/users', validateToken, validateAdmin, getAllParcelsBySpecificUser);
 // this is to get a specific parcel
 router.get('/parcels/:pid', validateToken, validateAdmin, getASpecificParcel);
 // this is the route for an admin to update the status of a parcel delivery order
