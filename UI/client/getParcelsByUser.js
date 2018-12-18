@@ -5,7 +5,7 @@ const tableBody1 = document.querySelector('#tableBody');
 const modalEdit1 = document.querySelector('#modal-edit');
 const modalMessage1 = document.querySelector('#modal-message');
 
-const url3 = `http://localhost:3000/api/v1/parcels/:uid/users`;
+const url3 = `/api/v1/parcels/:uid/users`;
 const getParcelsByUser = () => {
     const userName = usernameInput.value;
     fetch(url3, {
@@ -20,9 +20,10 @@ const getParcelsByUser = () => {
     })
     .then(res => res.json())
     .then(data => {
+        tableBody1.innerHTML = '';
         modalMessage1.innerHTML = data.message;
         modalEdit1.style.display = 'block';
-        data.allParcels[0].forEach(parcel => {
+        data.parcels[0].forEach(parcel => {
             const tr = document.createElement('tr');
             let option1 = '';
             let option2 = '';

@@ -11,10 +11,10 @@ class ParcelController {
     const userId = req.user.user.user_id;
     const initialStatus = 'processing';
     const cancelStatus = false;
-    const { packageName, pickupLocation, dropOfflocation, quantity, weight, price } = req.body;
+    const { packageName, pickupLocation, dropOfflocation, quantity, weight, price, userName } = req.body;
     const presentLocation = pickupLocation;
     try {
-        const response = await parcelmanger.addNewParcel(packageName, pickupLocation, dropOfflocation, presentLocation, quantity, weight, price, initialStatus, cancelStatus, userId);
+        const response = await parcelmanger.addNewParcel(packageName, pickupLocation, dropOfflocation, presentLocation, quantity, weight, price, initialStatus, cancelStatus, userId, userName);
         if (response.name !== 'error') {
             return res.status(201).json({
                 status: 'success',

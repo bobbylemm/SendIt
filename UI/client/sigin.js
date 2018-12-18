@@ -4,7 +4,7 @@ const loader = document.querySelector('#loader');
 const apiMessageDiv = document.querySelector('#api-message-block');
 const apiMessage = document.querySelector('#api-message');
 
-const url = 'http://localhost:3000/api/v1/auth/login';
+const url = `/api/v1/auth/login`;
 
 const handleSubmit = (e) => {
   e.preventDefault ();
@@ -26,7 +26,6 @@ const handleSubmit = (e) => {
   })
   .then(res => res.json())
   .then(data => {
-    console.log(data)
     loader.style.display = 'none';
     if (data.status === 'success' && data.superAdmin === true) {
       localStorage.setItem('superemail', Email);

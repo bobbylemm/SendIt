@@ -50,7 +50,7 @@ span {
 }
 span:focus {
     color: #767c80;
-    border: .1rem solid #a5b6bd;
+    border: .5rem solid #a5b6bd;
     outline: none;
 }
 .td {
@@ -86,6 +86,9 @@ button img {
     height: 1rem;
     margin: .1rem;
 }
+#modalButton {
+    padding: .6rem .5rem;
+}
 @media(max-width: 600px) {
     ul {
         list-style: none;
@@ -107,6 +110,14 @@ button img {
         align-items: center;
         flex-flow: column;
     }
+    .row {
+        justify-content: flex-start;
+        margin: .6rem 0;
+    }
+    #usernameInput {
+        width: 50%;
+        margin: .7rem 0 0 0;
+    }
     .dashboard {
         min-height: 30vh;
         width: 100% !important;
@@ -114,6 +125,7 @@ button img {
     }
     .dashboard-lar {
         width: 100%;
+        min-height: 34rem;
     }
     header {
         padding-bottom: 0;
@@ -121,6 +133,13 @@ button img {
     nav {
         display: flex;
         justify-content: center;
+    }
+    #modal-content-edit {
+        width: 80%;
+        margin: 10rem 4rem !important;
+        animation: fadeIn .4s ease-in-out;
+        border-radius: 1rem;
+        text-align: center;
     }
 }
 #user-ft {

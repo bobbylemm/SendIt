@@ -21,7 +21,7 @@ if (!token) {
     adminLink.classList.add('disabled');
 }
 
-const url = '/api/v1/parcel';
+const url = `/api/v1/parcel`;
 let price;
 pageGreeting.innerHTML = `Welcome <em>${user}</em> Start Creating Your Parcel`;
 const handleinputChange = (inputThatChanged) => {
@@ -48,7 +48,8 @@ const handleSubmit = (e) => {
         dropOfflocation: destination.value,
         quantity: parcelQuantity.value,
         weight: weight.value,
-        price: splitPrice
+        price: splitPrice,
+        userName: user
     })
 
     fetch(url, {

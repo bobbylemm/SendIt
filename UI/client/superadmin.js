@@ -5,7 +5,7 @@ const modalEdit = document.querySelector('#modal-edit');
 const modalMessage = document.querySelector('#modal-message');
 const loader = document.querySelector('#loader');
 
-const url1 = `http://localhost:3000/api/v1/users`;
+const url1 = `/api/v1/users`;
 
 if(!superemail) {
     window.location.replace('/');
@@ -86,7 +86,7 @@ const edit = (e) => {
             const adminRole = isadminStatus.options[isadminStatus.options.selectedIndex].innerHTML;
             const adminEmailText = adminEmail.innerHTML;
             const parsedAdminRole = JSON.parse(adminRole);
-            const url2 = `http://localhost:3000/api/v1/createadmin`;
+            const url2 = `/api/v1/createadmin`;
             fetch(url2, {
                 method: 'PUT',
                 body: JSON.stringify({

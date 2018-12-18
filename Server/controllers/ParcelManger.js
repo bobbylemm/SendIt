@@ -3,9 +3,9 @@ class ParcelManager {
         this.database = database;
     }
 
-    async addNewParcel(packageName, pickupLocation, dropOfflocation, presentLocation, quantity, weight, price, initialStatus, cancelStatus, userId) {
+    async addNewParcel(packageName, pickupLocation, dropOfflocation, presentLocation, quantity, weight, price, initialStatus, cancelStatus, userId, userName) {
         try {
-            const resp = await this.database.insertNewParcel(packageName, pickupLocation, dropOfflocation, presentLocation, quantity, weight, price, initialStatus, cancelStatus, userId);
+            const resp = await this.database.insertNewParcel(packageName, pickupLocation, dropOfflocation, presentLocation, quantity, weight, price, initialStatus, cancelStatus, userId, userName);
             return resp;
         }catch(e) {
             return e;
