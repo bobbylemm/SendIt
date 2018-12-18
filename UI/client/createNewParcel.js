@@ -69,7 +69,7 @@ const handleSubmit = (e) => {
             apiMessage.style.backgroundColor = '#89bdd3';
             setTimeout(() => {
                 apiMessage.style.display = 'none';
-                window.location.replace('/view-all-parcel');
+                window.location.replace('/view-all-parcels');
               }, 2000);
         }else {
             apiMessage.style.display = 'block';
