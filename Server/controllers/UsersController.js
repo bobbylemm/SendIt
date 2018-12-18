@@ -109,6 +109,44 @@ class UsersControllers {
     }
 }
 
+// get number of delivered parcels
+static async getNumOfDelivParcels(req, res) {
+  const userId = req.user.user.user_id;
+  try {
+      const response = await usermanger.getNumOfDelivParcels(userId);
+      if(response.rowCount >= 1) {
+          return res.status(200).json({
+            status: 'success',
+            message: 'here are the number of undelivered parcels',
+            count: response.rows[0].count
+          })
+      }return res.status(400).json({
+          error: 'sorry admin there is no such parcel'
+      })
+  }catch(e) {
+      return e;
+  }
+}
+
+// get number of un-delivered parcels
+static async getNumOfUnDelivParcels(req, res) {
+  const userId = req.user.user.user_id;
+  try {
+      const response = await usermanger.getNumOfUnDelivParcels(userId);
+      if(response.rowCount >= 1) {
+          return res.status(200).json({
+              status: 'success',
+              message: 'here are the number of undelivered parcels',
+              count: response.rows[0].count
+          })
+      }return res.status(400).json({
+          error: 'sorry admin there is no such parcel'
+      })
+  }catch(e) {
+      return e;
+  }
+}
+
   // this is to change the drop off location of a parcel order
   static async updateParcelDestination (req, res) {
     const { newdropOff } = req.body;

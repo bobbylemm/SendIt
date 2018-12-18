@@ -39,6 +39,26 @@ class UserManager {
     }
 }
 
+// this is to get the number of delivered parcels
+async getNumOfDelivParcels(userId) {
+  try {
+      const res = await this.db.getNumOfDelivParcels(userId);
+      return res;
+  }catch(e) {
+      return e;
+  }
+}
+
+// this is to get the number of delivered parcels
+async getNumOfUnDelivParcels(userId) {
+  try {
+      const res = await this.db.getNumOfUnDelivParcels(userId);
+      return res;
+  }catch(e) {
+      return e;
+  }
+}
+
   // this is to change the destination of a parcel order
   async changeParcelDestination(newdropOff, parcelId, userId, updatedAt) {
     try {

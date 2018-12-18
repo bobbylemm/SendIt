@@ -63,6 +63,7 @@ const edit = (e) => {
             e.innerHTML = 'Save';
             td.setAttribute("contenteditable", true);
             dropofflocation.setAttribute("contenteditable", true);
+            dropofflocation.focus();
             dropofflocation.addEventListener('DOMSubtreeModified', (ee) => {
                 if(ee.path[0].length === 1) {
                     dropofflocation.innerHTML = '&nbsp;'

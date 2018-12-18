@@ -5,7 +5,7 @@ import middlewares from '../middlewares/index';
 
 const { validateParcels, validateRegister, validateLogin, validateToken, validateSuperAdmin, validateAdmin, validateLocationUpdate } = middlewares;
 
-const { updateParcelDestination, cancelParcelOrder, registerUser, login, createAdmin, getParcelsByUser, getAllUsers  } = usersControllers;
+const { updateParcelDestination, cancelParcelOrder, registerUser, login, createAdmin, getParcelsByUser, getAllUsers, getNumOfDelivParcels, getNumOfUnDelivParcels  } = usersControllers;
 
 const { createNewParcel, getAllParcels, getAllParcelsBySpecificUser, updateParcelStatus, updateParcelPresentLocation, getASpecificParcel } = parcelController;
 
@@ -19,6 +19,10 @@ router.get('/', (req, res) => {
 router.post('/parcel', validateParcels, validateToken, createNewParcel);
 // this is the route to get all parcels for a user
 router.get('/user/:uid/parcels',validateToken, getParcelsByUser);
+// this is to get number of delivered parcels
+router.get('/user/:uid/num-delivered-parcels',validateToken, getNumOfDelivParcels);
+// this to get the number of undelivered parcels of a user
+router.get('/user/:uid/num-undelivered-parcels',validateToken, getNumOfUnDelivParcels);
 // this is to enable a user change the dropoff location of a parcel
 router.put('/parcels/:pid/destination',validateLocationUpdate, validateToken, updateParcelDestination);
 // this is to enable a user to cancel a parcel delivery order

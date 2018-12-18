@@ -140,6 +140,28 @@ async getSpecificParcel(pid) {
     }
 }
 
+// get number of delivered parcels
+async getNumOfDelivParcels(userId) {
+    try {
+        const q = "SELECT COUNT(*) FROM parcels WHERE user_id=$1 AND status LIKE 'delivered%';";
+        const response = await this.pool.query(q, [userId]);
+        return response;
+    }catch (e) {
+        return e;
+    }
+}
+
+// get number of delivered parcels
+async getNumOfUnDelivParcels(userId) {
+    try {
+        const q = "SELECT COUNT(*) FROM parcels WHERE user_id=$1 AND status NOT LIKE 'delivered%';";
+        const response = await this.pool.query(q, [userId]);
+        return response;
+    }catch (e) {
+        return e;
+    }
+}
+
 // get the email of a user
 async getEmail(id) {
     try {

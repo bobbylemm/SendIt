@@ -16,6 +16,9 @@ main {
     display: flex;
     height: 100%;
 }
+.td {
+    width: 12rem;
+}
 .profile-pic {
     height: 14rem;
     width: 14rem;
@@ -25,6 +28,15 @@ main {
     background: url('../img/profilePic.jpg') no-repeat;
     background-size: cover;
     background-position: center center;
+}
+span {
+    padding: .3rem 0.5rem;
+    border-radius: .3rem;
+}
+span:focus {
+    color: #767c80;
+    border: .5rem solid #a5b6bd;
+    outline: none;
 }
 /* the styling for the get started section */
 .dashboard {
