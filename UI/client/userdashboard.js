@@ -82,9 +82,7 @@ const edit = (e) => {
             const DropOff = dropofflocation.innerHTML;
             const splitDropOff = DropOff.split('&');
             const updatedDestination = splitDropOff[0];
-            console.log(updatedDestination)
             const url2 = `/api/v1/parcels/${pid}/destination`;
-            console.log(url2);
             fetch(url2, {
                 method: 'PUT',
                 body: JSON.stringify({
