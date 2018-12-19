@@ -108,6 +108,7 @@ static async updateParcelStatus (req, res) {
     }
     try {
         const response = await parcelmanger.updateParcelStatus(newStatus, pid, updatedAt);
+        console.log(response);
         const message = `hello there, your sendIt parcel delivery status is now ${newStatus}`;
         if (response.rows[0]) {
             const { user_id } = response.rows[0];
