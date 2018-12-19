@@ -99,7 +99,7 @@ static async updateParcelStatus (req, res) {
     const hr = today.getHours();
     const mn = today.getMinutes();
     const sec = today.getSeconds();
-    const updatedAt = `${dd}/${mm}/${yyyy} ${hr}:${mn}:${sec}`;
+    const updatedAt = `${mm}/${dd}/${yyyy} ${hr}:${mn}:${sec}`;
     const validStatus = ['processing','in-transit', 'delivered'].includes(newStatus);
     if (!newStatus || !validStatus) {
         return res.status(400).json({
@@ -108,7 +108,6 @@ static async updateParcelStatus (req, res) {
     }
     try {
         const response = await parcelmanger.updateParcelStatus(newStatus, pid, updatedAt);
-        console.log(response);
         const message = `hello there, your sendIt parcel delivery status is now ${newStatus}`;
         if (response.rows[0]) {
             const { user_id } = response.rows[0];
@@ -137,7 +136,7 @@ static async updateParcelPresentLocation (req, res) {
     const hr = today.getHours();
     const mn = today.getMinutes();
     const sec = today.getSeconds();
-    const updatedAt = `${dd}/${mm}/${yyyy} ${hr}:${mn}:${sec}`;
+    const updatedAt = `${mm}/${dd}/${yyyy} ${hr}:${mn}:${sec}`;
     if(!newLocation) {
         return res.status(400).json({
             message: 'please put in a valid new location'
