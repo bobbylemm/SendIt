@@ -61,6 +61,7 @@ class UsersControllers {
     }
     try {
       const response = await usermanger.loginUser (Email, password);
+      console.log('login', response);
       if (response.rows[0] !== undefined) {
         const {user_id, email, user_name, is_admin} = response.rows[0];
         const user = {user_id, email, user_name, is_admin};
