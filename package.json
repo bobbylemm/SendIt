@@ -12,8 +12,8 @@
     "test": "NODE_ENV=test npm run db_migrations && NODE_ENV=test nyc mocha --require babel-core/register ./Server/test/route.test.js --timeout 6000 --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "dev": "NODE_ENV=development nodemon bin/dev",
-    "start": "NODE_ENV=production npm run build && NODE_ENV=production npm run db_migrations && node bin/production",
-    "postinstall": "npm run build",
+    "start": "NODE_ENV=production npm run build && node bin/production",
+    "postinstall": "npm run build && NODE_ENV=production npm run db_migrations",
     "db_migrations": "node dist/Server/dataMigrations/createTables.js --exit"
   },
   "repository": {
