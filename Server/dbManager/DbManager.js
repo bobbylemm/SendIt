@@ -7,9 +7,9 @@ dotenv.config();
 class DbManager {
     constructor() {
         let configString = '';
-        if(process.env.NODE_ENV.trim() == 'production') {
-        configString = config.production;
-        } else if (process.env.NODE_ENV.trim() == 'development') {
+        if(process.env.NODE_ENV.trim() === 'production') {
+        configString = config.productionUrl;
+        } else if (process.env.NODE_ENV.trim() === 'development') {
             configString = config.development;
         }else {
             configString = config.test;

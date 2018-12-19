@@ -24,6 +24,9 @@ const databaseConfig = {
     password: process.env.DATABASE_PRODUCTION_PASSWORD,
     host: process.env.DATABASE_PRODUCTION_HOST,
     port: '5432'
+  },
+  "productionUrl": {
+    connectionString: process.env.DATABASE_URL
   }
 
 };
