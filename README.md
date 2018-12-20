@@ -41,3 +41,25 @@ SendIt is a courier service that helps users deliver parcels to different destin
 <hr/>
 <h4>Admin can get all parcels in the application</h4>
 <p>an admin can view all parcels that have been created in the application -- the endpoint is <code>GET api/v1/parcels/</code></p>
+
+<h4>Admin can get all users in the application</h4>
+<p>an admin can view all users that have been registered in the application -- the endpoint is <code>GET api/v1/users/</code></p>
+
+<h4>Admin can get all parcels for a specific user</h4>
+<p>an admin can view all parcels for a specific user -- the endpoint is <code>POST api/v1/parcels/:uid/users</code></p>
+
+<h4>Admin can get a specific parcel in the application</h4>
+<p>an admin can view a particular parcel in the application -- the endpoint is <code>GET api/v1/parcels/:pid</code></p>
+
+<h4>Admin can change the status of a parcel</h4>
+<p>an admin can change the status of a parcel to either (processing, in-transit, delivered) -- the endpoint is <code>PUT api/v1/parcels/:pid/status</code></p>
+
+<h4>Admin can change the current location of a parcel</h4>
+<p>an admin can change the current location of a parcel -- the endpoint is <code>PUT api/v1/parcels/:pid/currentlocation</code></p>
+
+<h2>Super-Admin Roles</h2>
+<hr/>
+<h4>The Application super-admin can add/remove admin priviledges from a user</h4>
+<p>The super-admin can either grabt or remove admin rights to any user in the application -- the endpoint is <code>PUT api/v1/createadmin</code></p>
+
+<h3>Work still in process ..................</h3>
