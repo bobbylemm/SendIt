@@ -1,6 +1,6 @@
 const token = localStorage.getItem('x-auth-token');
 const tableBody = document.querySelector('#tableBody');
-const url = `http://localhost:3000/api/v1/user/:1/parcels`;
+const url = `/api/v1/user/:1/parcels`;
 let optia = '';
 
 fetch(url, {
@@ -46,7 +46,6 @@ const track = (e) => {
                 let latDropOff = '';
                 let lngDropOff = '';
                 if(data.status === 'OK') {
-                        console.log(data.results[0].geometry.location)
                         latDropOff = data.results[0].geometry.location.lat;
                         lngDropOff = data.results[0].geometry.location.lng;
                         const url2 = `https://maps.googleapis.com/maps/api/geocode/json?address=${presentlocation}&region=ng&key=AIzaSyARDWNdmnFjV51FeFBWW_HtPpZlOnghPBQ`;
@@ -127,13 +126,10 @@ const track = (e) => {
                                         calculateRoute();
                                 }
                                 if(data1.status === 'OK') {
-                                        console.log('proomise 2',data1.results[0].geometry.location)
                                         latPresentLoca = data1.results[0].geometry.location.lat;
                                         lngPresentLoca = data1.results[0].geometry.location.lng;
                                         initMap(latDropOff, lngDropOff, latPresentLoca, lngPresentLoca);
                                 }
-                                console.log('res', latDropOff, lngDropOff);
-                                console.log('resali', latPresentLoca, lngPresentLoca);
                         })
                 }
         })
