@@ -6,9 +6,10 @@
     <title>landingPage | SendIt</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="./../UI/css/styles.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./../UI/css/profile.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./../UI/css/trackDeliveries.css" />
 </head>
-<body onscroll="addNavBorder()">
+<body>
     <header>
         <div class="container">
             <div id="app-logo">
@@ -16,6 +17,7 @@
             </div>
             <nav>
                 <ul>
+                    <li id="adminLink"><a href="/admin">Admin</a></li>
                     <li><a href="/profile">Profile</a></li>
                     <li><a href="/signin" id="logoutLink">Logout</a></li>
                 </ul>
@@ -24,9 +26,30 @@
     </header>
     <!-- the hero section -->
     <main>
-        <div class="container">
-            <div id="map">
-
+        <div class="background-image">
+            <div class="container py-1">
+                <div class="mb-1">
+                    <table class="parcelTable">
+                        <thead data-title="all parcels">
+                            <tr>
+                                <th>Package name</th>
+                                <th>Dropoff location</th>
+                                <th>Present location</th>
+                                <th>Status</th>
+                                <th>Cancelled</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                                    
+                        </tbody>
+                    </table>
+                </div>
+                <div class="distanceInfo mb-1 px-1">
+                </div>
+                <div id="map" class="my-1">
+    
+                </div>
             </div>
         </div>
     </main>
@@ -38,6 +61,7 @@
         </div>
     </footer>
     <script src="./../UI/js/trackDeliveries.js"></script>
+    <script src="./../UI/client/trackDeliveries.js"></script>
     <script src="./../UI/client/logout.js"></script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARDWNdmnFjV51FeFBWW_HtPpZlOnghPBQ&callback=initMap">
