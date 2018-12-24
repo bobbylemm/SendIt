@@ -35,7 +35,6 @@ fetch(url1, {
                     <td><span class="mobile-view-title">Package id:</span><span class="parcel-detail pid">${parcel.parcel_id}</span></td>
                     <td><span class="mobile-view-title">Package name:</span><span class="parcel-detail">${parcel.package_name}</span></td>
                     <td class="editMe" contenteditable="false"><span class="mobile-view-title">Dropoff location:</span><span class="parcel-detail dropofflocation" contenteditable="false" onproperty>${parcel.dropoff_location}</span></td>
-                    <td><span class="mobile-view-title">Pickup location:</span><span class="parcel-detail">${parcel.pickup_location}</span></td>
                     <td><span class="mobile-view-title">Present location:</span><span class="parcel-detail">${parcel.present_location}</span></td>
                     <td><span class="mobile-view-title">Weight</span><span class="parcel-detail">${parcel.weight}</span></td>
                     <td><span class="mobile-view-title">Status</span><span class="parcel-detail">${parcel.status}</span></td>
