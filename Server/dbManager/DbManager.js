@@ -9,13 +9,51 @@ class DbManager {
     constructor() {
         let configString = '';
         if(process.env.NODE_ENV.trim() === 'production') {
-        configString = config.production;
+        configString = config.productionUrl;
         } else if (process.env.NODE_ENV.trim() === 'development') {
             configString = config.development;
         }else {
             configString = config.test;
         }
     this.pool = new Pool(configString);
+    this.createTables();
+    }
+
+    createTables() {
+        const usersTable = `
+        CREATE TABLE IF NOT EXISTS users(
+            user_id SERIAL NOT NULL PRIMARY KEY,
+            user_name varchar(25) UNIQUE NOT NULL,
+            email varchar(100) UNIQUE NOT NULL,
+            password text NOT NULL,
+            is_admin boolean NOT NULL,
+            registered_at TIMESTAMP NOT NULL DEFAULT NOW()
+        );`;
+
+        const parcelsTable = `
+        CREATE TABLE IF NOT EXISTS parcels(
+            parcel_id SERIAL NOT NULL PRIMARY KEY,
+            package_name varchar(25) NOT NULL,
+            pickup_location varchar(25) NOT NULL,
+            dropoff_location varchar(25) NOT NULL,
+            present_location text NOT NULL,
+            quantity SMALLINT NOT NULL,
+            weight SMALLINT NOT NULL,
+            price INTEGER NOT NULL,
+            status varchar(25) NOT NULL,
+            cancelled boolean NOT NULL,
+            user_id INTEGER REFERENCES users(user_id) ON DELETE CASCADE,
+            user_name varchar(25) REFERENCES users(user_name) ON DELETE CASCADE,
+            created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+            updated_at TIMESTAMP NOT NULL DEFAULT NOW()
+        );`;
+
+    this.pool.query(usersTable)
+            .then(res => console.log('users table created', res));
+                this.pool.query(parcelsTable)
+                .then(res => console.log('parcels table created', res))
+            .catch(err => console.log('error parcels table', err))
+        .catch(err => console.log('error users table', err));
     }
 
   // this is to register a new user
