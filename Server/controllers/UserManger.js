@@ -6,9 +6,8 @@ class UserManager {
   }
 
   async registerUser(userName, email, password, isAdmin) {
-    const hashed = await bcrypt.hash(password, 10);
     try {
-      const res = await this.db.registerNewUser(userName, email, hashed, isAdmin);
+      const res = await this.db.registerNewUser(userName, email, password, isAdmin);
       return res;
     } catch (error) {
       return error;

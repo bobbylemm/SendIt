@@ -1,5 +1,6 @@
 import { Pool } from 'pg';
 import dotenv from 'dotenv';
+import bcrypt from 'bcrypt';
 import config from '../config/dbConfig';
 
 dotenv.config();
@@ -59,6 +60,8 @@ class DbManager {
 
   // this is to register a new user
   async registerNewUser(userName, email, password, isAdmin) {
+    const hashed = await bcrypt.hash(password, 10);
+    password = hashed;
     try {
       const q = 'INSERT INTO users(user_name, email, password, is_admin) VALUES($1, $2, $3, $4) RETURNING *;';
       const response = await this.pool.query(q, [userName, email, password, isAdmin]);
