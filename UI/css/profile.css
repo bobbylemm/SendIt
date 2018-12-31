@@ -56,7 +56,16 @@ span:focus {
 .dashboard-lar {
     min-height: 100%;
 }
-
+.pstatus {
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.pcancel {
+    padding: .7rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    border: .2rem solid rgba(71, 69, 69, 0.712);
+}
 @media(max-width: 600px) {
     .section {
         display: block;

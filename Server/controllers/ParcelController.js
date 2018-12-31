@@ -116,10 +116,12 @@ static async updateParcelStatus (req, res) {
             sendEmail(recipient.rows[0].email, subject ,message)
         }    
         return res.status(200).json({
+            status: 'success',
             messsage: 'parcel status was updated successfully'
         })
     }catch(e) {
         return res.status(400).json({
+            status: 'failed',
             message: 'could not update the parcel status'
         })
     }

@@ -599,16 +599,18 @@ table {
     padding: 0.4rem 0.5rem;
   }
   #deleteBtn {
-    background: #89bdd3;
-    border: .1rem solid #89bdd3;
+    background: #b56969;
+    border: .1rem solid #b56969;
     font-weight: bold;
     cursor: pointer;
+    box-shadow: 0.2rem 0.3rem 0.3rem 0 rgba(0,0,0,0.75);
   }
   #editBtn {
-    background: rgb(212, 197, 178);
-    border: .1rem solid #E6E2DD;
+    background: #f2efe8;
+    border: .1rem solid #837d6f;
     font-weight: bold;
     cursor: pointer;
+    box-shadow: 0.2rem 0.3rem 0.3rem 0 rgba(0,0,0,0.75);
   }
   td .mobile-view-title {
     display: none;

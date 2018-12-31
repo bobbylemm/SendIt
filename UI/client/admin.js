@@ -102,11 +102,11 @@ const edit = (e) => {
             const PresentLoca = presentlocation.innerHTML;
             const splitPresentLoca = PresentLoca.split('&');
             const updatedPresentLoca = splitPresentLoca[0];
-            const url2 = `/api/v1/parcels/${pid}/status`;
-            fetch(url2, {
+            const url3 = `/api/v1/parcels/${pid}/currentlocation`;
+                fetch(url3, {
                 method: 'PUT',
                 body: JSON.stringify({
-                    newStatus
+                    newLocation: updatedPresentLoca
                 }),
                 headers: {
                     'Content-Type': 'application/json',
@@ -116,11 +116,11 @@ const edit = (e) => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                const url3 = `/api/v1/parcels/${pid}/currentlocation`;
-                fetch(url3, {
+                const url2 = `/api/v1/parcels/${pid}/status`;
+            fetch(url2, {
                 method: 'PUT',
                 body: JSON.stringify({
-                    newLocation: updatedPresentLoca
+                    newStatus
                 }),
                 headers: {
                     'Content-Type': 'application/json',
