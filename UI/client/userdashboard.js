@@ -31,6 +31,18 @@ fetch(url1, {
 .then(data => {
     data.parcels[0].forEach(parcel => {
         const tr = document.createElement('tr');
+        tr.innerHTML = `
+                    <td><span class="mobile-view-title">Package id:</span><span class="parcel-detail pid">${parcel.parcel_id}</span></td>
+                    <td><span class="mobile-view-title">Package name:</span><span class="parcel-detail">${parcel.package_name}</span></td>
+                    <td class="editMe" contenteditable="false"><span class="mobile-view-title">Dropoff location:</span><span class="parcel-detail dropofflocation" contenteditable="false" onproperty>${parcel.dropoff_location}</span></td>
+                    <td><span class="mobile-view-title">Pick location:</span><span class="parcel-detail">${parcel.pickup_location}</span></td>
+                    <td><span class="mobile-view-title">Present location:</span><span class="parcel-detail">${parcel.present_location}</span></td>
+                    <td><span class="mobile-view-title">Weight</span><span class="parcel-detail">${parcel.weight}</span></td>
+                    <td><span class="mobile-view-title">Status</span><span class="parcel-detail pstatus">${parcel.status}</span></td>
+                    <td><span class="mobile-view-title">Price:</span><span class="parcel-detail">${parcel.price}</span></td>
+                    <td><span class="mobile-view-title">Cancelled:</span><span class="parcel-detail pcancel">${parcel.cancelled}</span></td>
+                    <td class="td"><button class="table-action-btn fl" id="editBtn" onclick="edit(this)">Edit</button><button class="table-action-btn fr" id="deleteBtn" onclick="cancel(this)">Cancel</button></td>
+        `;
         const pcancel = document.querySelector('.pcancel');
         const pstatus = document.querySelector('.status');
         if(parcel.status === 'delivered') {
@@ -45,18 +57,6 @@ fetch(url1, {
         }else {
             pcancel.style.backgroundColor = '#e62739';
         }
-        tr.innerHTML = `
-                    <td><span class="mobile-view-title">Package id:</span><span class="parcel-detail pid">${parcel.parcel_id}</span></td>
-                    <td><span class="mobile-view-title">Package name:</span><span class="parcel-detail">${parcel.package_name}</span></td>
-                    <td class="editMe" contenteditable="false"><span class="mobile-view-title">Dropoff location:</span><span class="parcel-detail dropofflocation" contenteditable="false" onproperty>${parcel.dropoff_location}</span></td>
-                    <td><span class="mobile-view-title">Pick location:</span><span class="parcel-detail">${parcel.pickup_location}</span></td>
-                    <td><span class="mobile-view-title">Present location:</span><span class="parcel-detail">${parcel.present_location}</span></td>
-                    <td><span class="mobile-view-title">Weight</span><span class="parcel-detail">${parcel.weight}</span></td>
-                    <td><span class="mobile-view-title">Status</span><span class="parcel-detail pstatus">${parcel.status}</span></td>
-                    <td><span class="mobile-view-title">Price:</span><span class="parcel-detail">${parcel.price}</span></td>
-                    <td><span class="mobile-view-title">Cancelled:</span><span class="parcel-detail pcancel">${parcel.cancelled}</span></td>
-                    <td class="td"><button class="table-action-btn fl" id="editBtn" onclick="edit(this)">Edit</button><button class="table-action-btn fr" id="deleteBtn" onclick="cancel(this)">Cancel</button></td>
-        `;
         tableBody.appendChild(tr);
     })
 })
