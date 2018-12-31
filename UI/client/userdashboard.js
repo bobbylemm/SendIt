@@ -44,18 +44,17 @@ fetch(url1, {
                     <td class="td"><button class="table-action-btn fl" id="editBtn" onclick="edit(this)">Edit</button><button class="table-action-btn fr" id="deleteBtn" onclick="cancel(this)">Cancel</button></td>
         `;
         const pcancel = document.querySelector('.pcancel');
-        const pstatus = document.querySelector('.pstatus');
         if(parcel.status === 'delivered') {
-            pstatus.style.color = '#16174f';
+            tr.querySelector('.pstatus').style.color = '#16174f';
         }else if (parcel.status === 'in-transit') {
-            pstatus.style.color = '#677077';
+            tr.querySelector('.pstatus').style.color = '#677077';
         }else {
-            pstatus.style.color = '#97743a';
+            tr.querySelector('.pstatus').style.color = '#97743a';
         }
         if(parcel.cancelled === true) {
-            pcancel.style.backgroundColor = '#6ed3cf';
+            tr.querySelector('.pcancel').style.backgroundColor = '#6ed3cf';
         }else {
-            pcancel.style.backgroundColor = '#e62739';
+            tr.querySelector('.pcancel').style.backgroundColor = '#e62739';
         }
         tableBody.appendChild(tr);
     })
