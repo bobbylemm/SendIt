@@ -44,7 +44,7 @@ fetch(url1, {
                     <td class="td"><button class="table-action-btn fl" id="editBtn" onclick="edit(this)">Edit</button><button class="table-action-btn fr" id="deleteBtn" onclick="cancel(this)">Cancel</button></td>
         `;
         const pcancel = document.querySelector('.pcancel');
-        const pstatus = document.querySelector('.status');
+        const pstatus = document.querySelector('.pstatus');
         if(parcel.status === 'delivered') {
             pstatus.style.color = '#16174f';
         }else if (parcel.status === 'in-transit') {
